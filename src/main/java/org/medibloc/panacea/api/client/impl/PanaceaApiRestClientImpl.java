@@ -5,6 +5,8 @@ import org.medibloc.panacea.api.client.PanaceaApiClientGenerator;
 import org.medibloc.panacea.api.client.PanaceaApiException;
 import org.medibloc.panacea.api.client.PanaceaApiRestClient;
 import org.medibloc.panacea.api.client.domain.Account;
+import org.medibloc.panacea.api.client.domain.TxResponse;
+import org.medibloc.panacea.api.client.encoding.message.BroadcastReq;
 
 /**
  * Panacea API rest client, supporting synchronous/blocking access Panacea's REST API.
@@ -18,5 +20,9 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
 
     public Account getAccount(String address) throws PanaceaApiException {
         return PanaceaApiClientGenerator.executeSync(panaceaApi.getAccount(address));
+    }
+
+    public TxResponse broadcast(BroadcastReq req) throws PanaceaApiException {
+        return PanaceaApiClientGenerator.executeSync(panaceaApi.broadcast(req));
     }
 }

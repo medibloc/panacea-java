@@ -18,10 +18,9 @@ public class Account {
     public static class Value {
         private String address;
         @JsonProperty("account_number")
-        private Integer accountNumber;
+        private Long accountNumber;
         private Long sequence;
     }
-    @JsonProperty("account_number")
 
     @Override
     public String toString() {
