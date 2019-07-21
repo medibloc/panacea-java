@@ -13,13 +13,13 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 @JsonPropertyOrder(alphabetic = true)
 public class StdSignDoc {
     @JsonProperty("account_number")
-    private Long accountNumber;
+    private String accountNumber;
     @JsonProperty("chain_id")
     private String chainId;
     private StdFee fee;
     private String memo;
     private PanaceaTransactionMessage[] msgs;
-    private Long sequence;
+    private String sequence;
 
     @Override
     public String toString() {

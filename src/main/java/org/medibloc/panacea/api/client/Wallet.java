@@ -8,12 +8,14 @@ import org.bitcoinj.core.ECKey;
 import org.medibloc.panacea.api.client.domain.Account;
 import org.medibloc.panacea.api.client.domain.NodeInfo;
 import org.medibloc.panacea.api.client.encoding.Crypto;
+import org.medibloc.panacea.api.client.encoding.EncodeUtils;
 import org.medibloc.panacea.api.client.encoding.message.Pubkey;
 import org.medibloc.panacea.api.client.ledger.LedgerDevice;
 import org.medibloc.panacea.api.client.ledger.LedgerKey;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 public class Wallet {
@@ -24,23 +26,19 @@ public class Wallet {
     private byte[] addressBytes;
     private Pubkey pubKeyForSign;
     private Long accountNumber;
-    private Long sequence = null;
-    private String hrp;
+    private Long sequence;
 
     private String chainId;
 
     public Wallet(String privateKey, String hrp) {
         if (!StringUtils.isEmpty(privateKey)) {
             this.privateKey = privateKey;
-            this.hrp = hrp;
             this.ecKey = ECKey.fromPrivate(new BigInteger(privateKey, 16));
             this.address = Crypto.getAddressFromECKey(this.ecKey, hrp);
             this.addressBytes = Crypto.decodeAddress(this.address);
             byte[] pubKey= ecKey.getPubKeyPoint().getEncoded(true);
             this.pubKeyForSign = new Pubkey();
             this.pubKeyForSign.setValue(Base64.encodeBase64String(pubKey));
-            this.accountNumber = 0L;
-            this.sequence = 0L;
         } else {
             throw new IllegalArgumentException("Private key cannot be empty.");
         }
@@ -48,23 +46,32 @@ public class Wallet {
 
     public Wallet(int[]bip44Path, LedgerDevice ledgerDevice, String hrp) throws IOException {
         this.ledgerKey = new LedgerKey(ledgerDevice, bip44Path, hrp);
-        this.hrp = hrp;
         this.address = this.ledgerKey.getAddress();
         this.addressBytes = Crypto.decodeAddress(this.address);
         byte[] pubKey = this.ledgerKey.getPubKey();
         this.pubKeyForSign = new Pubkey();
         this.pubKeyForSign.setValue(Base64.encodeBase64String(pubKey));
-        this.accountNumber = 0L;
-        this.sequence = 0L;
     }
 
-    public static Wallet createRandomWallet(String hrp) throws IOException {
+    public static Wallet createRandomWallet(String hrp) {
         return createWalletFromMnemonicCode(Crypto.generateMnemonicCode(), hrp);
     }
 
-    public static Wallet createWalletFromMnemonicCode(List<String> words, String hrp) throws IOException {
+    public static Wallet createWalletFromMnemonicCode(List<String> words, String hrp) {
         String privateKey = Crypto.getPrivateKeyFromMnemonicCode(words);
         return new Wallet(privateKey, hrp);
+    }
+
+    public byte[] sign(byte[] data) throws IOException, NoSuchAlgorithmException {
+        if (getEcKey() == null && getLedgerKey() != null) {
+            return Crypto.sign(data, getLedgerKey());
+        }
+        return Crypto.sign(data, getEcKey());
+    }
+
+    public byte[] sign(Object object) throws IOException, NoSuchAlgorithmException {
+        byte[] data = EncodeUtils.toJsonEncodeBytes(object);
+        return sign(data);
     }
 
     public synchronized void initAccount(PanaceaApiRestClient client) throws PanaceaApiException {

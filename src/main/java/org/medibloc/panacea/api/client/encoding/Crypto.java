@@ -17,7 +17,7 @@ import java.util.List;
 
 public class Crypto {
 
-    private static final String HD_PATH = "44H/714H/0H/0/0";
+    private static final String HD_PATH = "44H/371H/0H/0/0";
 
     public static byte[] sign(byte[] msg, String privateKey) throws NoSuchAlgorithmException {
         ECKey k = ECKey.fromPrivate(new BigInteger(privateKey, 16));
