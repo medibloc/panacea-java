@@ -23,6 +23,18 @@ public class StdTx {
     private List<StdSignature> signatures;
     private String memo;
 
+    public StdTx(PanaceaTransactionMessage msg, StdFee fee, String memo) {
+        this.msgs = new PanaceaTransactionMessage[]{msg};
+        this.fee = fee;
+        this.memo = memo;
+    }
+
+    public StdTx(PanaceaTransactionMessage[] msgs, StdFee fee, String memo) {
+        this.msgs = msgs;
+        this.fee = fee;
+        this.memo = memo;
+    }
+
     public void sign(Wallet wallet) throws IOException, NoSuchAlgorithmException {
         StdSignDoc sd = new StdSignDoc();
         sd.setAccountNumber(String.valueOf(wallet.getAccountNumber()));

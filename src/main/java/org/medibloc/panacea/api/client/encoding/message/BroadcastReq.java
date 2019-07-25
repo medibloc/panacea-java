@@ -11,6 +11,12 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BroadcastReq {
     private StdTx tx;
+
+    public BroadcastReq(StdTx tx, String mode) {
+        this.tx = tx;
+        this.mode = mode;
+    }
+
     private String mode;
 
     @Override
