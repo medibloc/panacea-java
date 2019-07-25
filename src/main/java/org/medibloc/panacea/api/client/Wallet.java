@@ -28,7 +28,7 @@ public class Wallet {
     private Pubkey pubKeyForSign;
     private Long accountNumber;
     private Long sequence;
-
+    private String pubKey;
     private String chainId;
 
     public Wallet(String privateKey, String hrp) {
@@ -37,9 +37,10 @@ public class Wallet {
             this.ecKey = ECKey.fromPrivate(new BigInteger(privateKey, 16));
             this.address = Crypto.getAddressFromECKey(this.ecKey, hrp);
             this.addressBytes = Crypto.decodeAddress(this.address);
-            byte[] pubKey= ecKey.getPubKeyPoint().getEncoded(true);
+            byte[] pubKeyBytes= ecKey.getPubKeyPoint().getEncoded(true);
             this.pubKeyForSign = new Pubkey();
-            this.pubKeyForSign.setValue(Base64.encodeBase64String(pubKey));
+            this.pubKeyForSign.setValue(Base64.encodeBase64String(pubKeyBytes));
+            this.pubKey = encodeBech32(pubKeyBytes, hrp+"pub");
         } else {
             throw new IllegalArgumentException("Private key cannot be empty.");
         }
@@ -49,9 +50,10 @@ public class Wallet {
         this.ledgerKey = new LedgerKey(ledgerDevice, bip44Path, hrp);
         this.address = this.ledgerKey.getAddress();
         this.addressBytes = Crypto.decodeAddress(this.address);
-        byte[] pubKey = this.ledgerKey.getPubKey();
+        byte[] pubKeyBytes = this.ledgerKey.getPubKey();
         this.pubKeyForSign = new Pubkey();
-        this.pubKeyForSign.setValue(Base64.encodeBase64String(pubKey));
+        this.pubKeyForSign.setValue(Base64.encodeBase64String(pubKeyBytes));
+        this.pubKey = encodeBech32(pubKeyBytes, hrp+"pub");
     }
 
     public static Wallet createRandomWallet(String hrp) {
@@ -204,6 +206,18 @@ public class Wallet {
 
     public byte[] getAddressBytes() {
         return addressBytes;
+    }
+
+    public String getPubKey() {
+        return pubKey;
+    }
+
+    private String encodeBech32(byte[] data, String hrp) {
+        byte[] typePrefixBytes = EncodeUtils.hexStringToByteArray("EB5AE98721");
+        byte[] bz = new byte[typePrefixBytes.length + data.length];
+        System.arraycopy(typePrefixBytes, 0, bz, 0, typePrefixBytes.length);
+        System.arraycopy(data, 0, bz, typePrefixBytes.length, data.length);
+        return Crypto.encodeAddress(hrp, bz);
     }
 
     @Override
