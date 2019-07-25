@@ -40,7 +40,7 @@ public class Wallet {
             byte[] pubKeyBytes= ecKey.getPubKeyPoint().getEncoded(true);
             this.pubKeyForSign = new Pubkey();
             this.pubKeyForSign.setValue(Base64.encodeBase64String(pubKeyBytes));
-            this.pubKey = encodeBech32(pubKeyBytes, hrp+"pub");
+            this.pubKey = encodeBech32PubKey(pubKeyBytes, hrp+"pub");
         } else {
             throw new IllegalArgumentException("Private key cannot be empty.");
         }
@@ -53,7 +53,7 @@ public class Wallet {
         byte[] pubKeyBytes = this.ledgerKey.getPubKey();
         this.pubKeyForSign = new Pubkey();
         this.pubKeyForSign.setValue(Base64.encodeBase64String(pubKeyBytes));
-        this.pubKey = encodeBech32(pubKeyBytes, hrp+"pub");
+        this.pubKey = encodeBech32PubKey(pubKeyBytes, hrp+"pub");
     }
 
     public static Wallet createRandomWallet(String hrp) {
@@ -212,12 +212,18 @@ public class Wallet {
         return pubKey;
     }
 
-    private String encodeBech32(byte[] data, String hrp) {
+    private String encodeBech32PubKey(byte[] data, String hrp) {
         byte[] typePrefixBytes = EncodeUtils.hexStringToByteArray("EB5AE98721");
         byte[] bz = new byte[typePrefixBytes.length + data.length];
         System.arraycopy(typePrefixBytes, 0, bz, 0, typePrefixBytes.length);
         System.arraycopy(data, 0, bz, typePrefixBytes.length, data.length);
         return Crypto.encodeAddress(hrp, bz);
+    }
+
+    private byte[] decodeBech32PubKey(String pubKey) {
+        byte[] bz = Crypto.decodeAddress(pubKey);
+        byte[] typePrefixBytes = EncodeUtils.hexStringToByteArray("EB5AE98721");
+        return Arrays.copyOfRange(bz, typePrefixBytes.length, bz.length);
     }
 
     @Override
