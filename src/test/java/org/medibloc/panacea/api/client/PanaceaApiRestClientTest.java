@@ -87,7 +87,7 @@ public class PanaceaApiRestClientTest {
             TxResponse res = client.broadcast(req);
             byte[] data = Hex.decodeHex(res.getData());
 
-            MsgAddRecordResponse msgRes = EncodeUtils.toObjectFromJsonString(new String(data), MsgAddRecordResponse.class);
+            ResAddRecord msgRes = EncodeUtils.toObjectFromJsonString(new String(data), ResAddRecord.class);
 
             Record rec = client.getRecord(msgRes.getValue().getOwnerAddress(), msgRes.getValue().getTopicName(), msgRes.getValue().getOffset());
             System.out.println(new String(rec.getKey()));

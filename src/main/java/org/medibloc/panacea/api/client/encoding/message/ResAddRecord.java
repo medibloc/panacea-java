@@ -11,8 +11,8 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 @Getter @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder(alphabetic = true)
-public class MsgAddRecordResponse implements PanaceaTransactionMessage {
-    private String type = "record/MsgAddRecordResponse";
+public class ResAddRecord {
+    private String type = "record/ResAddRecord";
     private Value value;
 
     @Getter @Setter
