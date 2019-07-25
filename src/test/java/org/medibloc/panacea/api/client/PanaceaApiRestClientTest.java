@@ -65,14 +65,14 @@ public class PanaceaApiRestClientTest {
         PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("http://localhost:1317");
         try {
             MsgAddRecord msg = new MsgAddRecord(
-                    "panacea1mm72d9c36zwszcck34nyl49j32hxx6jfhfs52l",
+                    "panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz",
                     "test",
                     "key1".getBytes(),
                     "data1".getBytes(),
                     "panacea1mm72d9c36zwszcck34nyl49j32hxx6jfhfs52l",
                     "");
 
-            StdFee fee = new StdFee("nmed", "10000", "200000");
+            StdFee fee = new StdFee("umed", "10000", "200000");
 
             Wallet wallet = Wallet.createWalletFromMnemonicCode(Arrays.asList(mnemonic), "panacea");
             wallet.ensureWalletIsReady(client);
