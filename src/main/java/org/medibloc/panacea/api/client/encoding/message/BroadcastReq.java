@@ -7,6 +7,8 @@ import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
+// mode = async | sync | block
+
 @Getter @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BroadcastReq {
