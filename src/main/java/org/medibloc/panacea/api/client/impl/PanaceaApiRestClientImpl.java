@@ -6,6 +6,7 @@ import org.medibloc.panacea.api.client.PanaceaApiException;
 import org.medibloc.panacea.api.client.PanaceaApiRestClient;
 import org.medibloc.panacea.api.client.domain.Account;
 import org.medibloc.panacea.api.client.domain.NodeInfo;
+import org.medibloc.panacea.api.client.domain.Record;
 import org.medibloc.panacea.api.client.domain.TxResponse;
 import org.medibloc.panacea.api.client.encoding.message.BroadcastReq;
 
@@ -29,5 +30,9 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
 
     public TxResponse broadcast(BroadcastReq req) throws PanaceaApiException {
         return PanaceaApiClientGenerator.executeSync(panaceaApi.broadcast(req));
+    }
+
+    public Record getRecord(String ownerAddress, String topicName, Long offset) throws PanaceaApiException {
+        return PanaceaApiClientGenerator.executeSync(panaceaApi.getRecord(ownerAddress, topicName, offset));
     }
 }
