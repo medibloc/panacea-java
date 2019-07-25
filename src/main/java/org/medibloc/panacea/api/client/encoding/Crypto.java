@@ -18,6 +18,7 @@ import java.util.List;
 public class Crypto {
 
     private static final String HD_PATH = "44H/371H/0H/0/0";
+    private static final String HD_PATH_PREFIX = "44H/371H/0H/0/";
 
     public static byte[] sign(byte[] msg, String privateKey) throws NoSuchAlgorithmException {
         ECKey k = ECKey.fromPrivate(new BigInteger(privateKey, 16));
@@ -64,22 +65,40 @@ public class Crypto {
         return Bech32.encode(hrp, convertBits(hash, 0, hash.length, 8, 5, false));
     }
 
-    public static String getPrivateKeyFromMnemonicCode(List<String> words) {
+    public static String getPrivateKeyFromMnemonicCode(List<String> words, String hdPath) {
         byte[] seed = MnemonicCode.INSTANCE.toSeed(words, "");
         DeterministicKey key = HDKeyDerivation.createMasterPrivateKey(seed);
 
-        List<ChildNumber> childNumbers = HDUtils.parsePath(HD_PATH);
+        List<ChildNumber> childNumbers = HDUtils.parsePath(hdPath);
         for (ChildNumber cn : childNumbers) {
             key = HDKeyDerivation.deriveChildKey(key, cn);
         }
         return key.getPrivateKeyAsHex();
     }
 
+    public static String getPrivateKeyFromMnemonicCode(List<String> words) {
+        return getPrivateKeyFromMnemonicCode(words, HD_PATH);
+    }
+
+    public static String getPrivateKeyFromMnemonicCode(List<String> words, int index) {
+        String hdPath = String.format("%s%d", HD_PATH_PREFIX, index);
+        return getPrivateKeyFromMnemonicCode(words, hdPath);
+    }
+
     public static List<String> generateMnemonicCode() {
-        byte[] entrophy = new byte[256 / 8];
-        new SecureRandom().nextBytes(entrophy);
+        byte[] entropy = new byte[256 / 8];
+        new SecureRandom().nextBytes(entropy);
         try {
-            return MnemonicCode.INSTANCE.toMnemonic(entrophy);
+            return MnemonicCode.INSTANCE.toMnemonic(entropy);
+        } catch (MnemonicException.MnemonicLengthException e) {
+            return null;
+        }
+    }
+
+    public static List<String> generateMnemonicCodeFromEntropy(byte[] entropy) {
+        try {
+            byte[] hash = Sha256Hash.hash(entropy);
+            return MnemonicCode.INSTANCE.toMnemonic(hash);
         } catch (MnemonicException.MnemonicLengthException e) {
             return null;
         }

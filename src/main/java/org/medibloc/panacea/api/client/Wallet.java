@@ -16,6 +16,7 @@ import org.medibloc.panacea.api.client.ledger.LedgerKey;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
 import java.util.List;
 
 public class Wallet {
@@ -57,9 +58,30 @@ public class Wallet {
         return createWalletFromMnemonicCode(Crypto.generateMnemonicCode(), hrp);
     }
 
+    public static Wallet createWalletFromEntropy(String hrp, byte[] entropy) {
+        return createWalletFromMnemonicCode(Crypto.generateMnemonicCodeFromEntropy(entropy), hrp);
+    }
+
+    public static Wallet createWalletFromMnemonicCode(String mnemonic, String hrp) {
+        return createWalletFromMnemonicCode(mnemonic, hrp, 0);
+    }
+
     public static Wallet createWalletFromMnemonicCode(List<String> words, String hrp) {
-        String privateKey = Crypto.getPrivateKeyFromMnemonicCode(words);
+        return createWalletFromMnemonicCode(words, hrp, 0);
+    }
+
+    public static Wallet createWalletFromMnemonicCode(String mnemonic, String hrp, int index) {
+        List<String> words = mnemonicStringToWords(mnemonic);
+        return createWalletFromMnemonicCode(words, hrp, index);
+    }
+
+    public static Wallet createWalletFromMnemonicCode(List<String> words, String hrp, int index) {
+        String privateKey = Crypto.getPrivateKeyFromMnemonicCode(words, index);
         return new Wallet(privateKey, hrp);
+    }
+
+    public static List<String> mnemonicStringToWords(String mnemonic) {
+        return Arrays.asList(mnemonic.split("\\s+"));
     }
 
     public byte[] sign(byte[] data) throws IOException, NoSuchAlgorithmException {

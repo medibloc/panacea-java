@@ -3,9 +3,11 @@ package org.medibloc.panacea.api.client;
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 import org.junit.Test;
+import org.medibloc.panacea.api.client.domain.Account;
 import org.medibloc.panacea.api.client.domain.Record;
 import org.medibloc.panacea.api.client.domain.Transfer;
 import org.medibloc.panacea.api.client.domain.TxResponse;
+import org.medibloc.panacea.api.client.encoding.Crypto;
 import org.medibloc.panacea.api.client.encoding.EncodeUtils;
 import org.medibloc.panacea.api.client.encoding.message.*;
 
@@ -16,29 +18,31 @@ import java.util.Collections;
 import java.util.List;
 
 public class PanaceaApiRestClientTest {
-    String[] mnemonic = {"enemy","segment","cupboard","fault","basic","ahead","fine","office",
-                        "ask","evidence","fortune","loan","tragic","pride","umbrella","stable",
-                        "weather","barrel","network","noodle","choose","argue","animal","twenty"};
+    String mnemonic = "genuine key outside escape oval unhappy mansion cricket practice quarter purchase picnic layer bicycle stem soup column creek convince obey rather rice there alcohol";
+
     @Test
     public void testGetAccount() {
         // client
         PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("http://localhost:1317");
         try {
-//            Account account = client.getAccount("panacea1mm72d9c36zwszcck34nyl49j32hxx6jfhfs52l");
+            System.out.println(Crypto.generateMnemonicCodeFromEntropy("asjdkfjafahkdfhdsakjhfkadshfkjasdhfkjsdhfkjsadhfkjhkjwehrkqwhaekjhakjsdhfkdsahfksadhkf".getBytes()));
+            System.out.println(Wallet.createWalletFromEntropy("panacea", "asjdkfjafahkdfhdsakjhfkadshfkjasdhfkjsdhfkjsadhfkjhkjwehrkqwhaekjhakjsdhfkdsahfksadhkf".getBytes()));
+            Account account = client.getAccount("panacea1mm72d9c36zwszcck34nyl49j32hxx6jfhfs52l");
+            System.out.println(account);
 
             // Msgs
             Transfer transfer = new Transfer();
             transfer.setAmount("1000");
-            transfer.setDenom("nmed");
-            transfer.setFromAddress("panacea1mm72d9c36zwszcck34nyl49j32hxx6jfhfs52l");
+            transfer.setDenom("umed");
+            transfer.setFromAddress("panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz");
             transfer.setToAddress("panacea1nmmdwc00cg9tp3hzaahyte7vpvjrp2vtkn84z8");
             PanaceaTransactionMessage msg = createMsgSend(transfer);
 
             // Fee
-            StdFee fee = new StdFee("nmed", "10000", "200000");
+            StdFee fee = new StdFee("umed", "10000", "200000");
 
             // Wallet
-            Wallet wallet = Wallet.createWalletFromMnemonicCode(Arrays.asList(mnemonic), "panacea");
+            Wallet wallet = Wallet.createWalletFromMnemonicCode(Arrays.asList(mnemonic.split("\\s+")), "panacea", 0);
             wallet.ensureWalletIsReady(client);
 
             // StdTx
@@ -69,12 +73,12 @@ public class PanaceaApiRestClientTest {
                     "test",
                     "key1".getBytes(),
                     "data1".getBytes(),
-                    "panacea1mm72d9c36zwszcck34nyl49j32hxx6jfhfs52l",
+                    "panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz",
                     "");
 
             StdFee fee = new StdFee("umed", "10000", "200000");
 
-            Wallet wallet = Wallet.createWalletFromMnemonicCode(Arrays.asList(mnemonic), "panacea");
+            Wallet wallet = Wallet.createWalletFromMnemonicCode(Arrays.asList(mnemonic), "panacea", 0);
             wallet.ensureWalletIsReady(client);
 
             StdTx tx = new StdTx(msg, fee, "");
