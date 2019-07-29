@@ -20,4 +20,7 @@ public interface PanaceaApi {
 
     @GET("api/v1/aol/{ownerAddress}/topics/{topicName}/records/{offset}")
     Call<Record> getRecord(@Path("ownerAddress") String ownerAddress, @Path("topicName") String topicName, @Path("offset") Long offset);
+
+    @GET("txs/{txHash}")
+    Call<TxResponse> getTxResponse(@Path("txHash") String txHash);
 }

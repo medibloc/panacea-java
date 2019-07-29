@@ -35,4 +35,8 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
     public Record getRecord(String ownerAddress, String topicName, Long offset) throws PanaceaApiException {
         return PanaceaApiClientGenerator.executeSync(panaceaApi.getRecord(ownerAddress, topicName, offset));
     }
+
+    public TxResponse getTxResponse(String txHash) throws PanaceaApiException {
+        return PanaceaApiClientGenerator.executeSync(panaceaApi.getTxResponse(txHash));
+    }
 }

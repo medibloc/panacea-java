@@ -14,7 +14,7 @@ public class TxResponse {
     private Long height;
     @JsonProperty("txhash")
     private String txHash;
-    private Integer code;
+    private int code;
     private String data;
     @JsonProperty("raw_log")
     private String rawLog;
@@ -24,7 +24,6 @@ public class TxResponse {
     @JsonProperty("gas_used")
     private Long gasUsed;
     private String codespace;
-    private StdTx tx;
     private String timestamp;
 
     @Override
@@ -39,7 +38,6 @@ public class TxResponse {
                 .append("gasWanted", gasWanted)
                 .append("gasUsed", gasUsed)
                 .append("codespace", codespace)
-                .append("tx", tx)
                 .append("timestamp", timestamp)
                 .toString();
     }

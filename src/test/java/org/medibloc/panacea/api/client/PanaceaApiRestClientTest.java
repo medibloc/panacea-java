@@ -89,6 +89,7 @@ public class PanaceaApiRestClientTest {
             BroadcastReq req = new BroadcastReq(tx, "block");
 
             TxResponse res = client.broadcast(req);
+            System.out.println(res);
             byte[] data = Hex.decodeHex(res.getData());
 
             ResAddRecord msgRes = EncodeUtils.toObjectFromJsonString(new String(data), ResAddRecord.class);
@@ -97,6 +98,8 @@ public class PanaceaApiRestClientTest {
             System.out.println(new String(rec.getKey()));
             System.out.println(new String(rec.getValue()));
             System.out.println(rec);
+
+            System.out.println(client.getTxResponse("1C2BA43186173C1F1DEE483B3C27D59A8968389939C49B853514D654777F3F1F"));
         } catch (PanaceaApiException | NoSuchAlgorithmException | IOException | DecoderException e) {
             e.printStackTrace();
         }

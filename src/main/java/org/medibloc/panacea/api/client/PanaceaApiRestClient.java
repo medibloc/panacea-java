@@ -14,4 +14,6 @@ public interface PanaceaApiRestClient {
     TxResponse broadcast(BroadcastReq req) throws PanaceaApiException;
 
     Record getRecord(String ownerAddress, String topicName, Long offset) throws PanaceaApiException;
+
+    TxResponse getTxResponse(String txHash) throws PanaceaApiException;
 }
