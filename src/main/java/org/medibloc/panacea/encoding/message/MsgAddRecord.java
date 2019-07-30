@@ -12,7 +12,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder(alphabetic = true)
 public class MsgAddRecord implements PanaceaTransactionMessage {
-    private String type = "record/MsgAddRecord";
+    private String type = "aol/MsgAddRecord";
     private Value value;
 
     public MsgAddRecord(String ownerAddress, String topicName, byte[] keyData, byte[] valueData, String writerAddress, String feePayerAddress) {

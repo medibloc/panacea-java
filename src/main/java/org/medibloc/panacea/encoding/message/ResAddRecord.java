@@ -12,7 +12,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder(alphabetic = true)
 public class ResAddRecord {
-    private String type = "record/ResAddRecord";
+    private String type = "aol/ResAddRecord";
     private Value value;
 
     @Getter @Setter

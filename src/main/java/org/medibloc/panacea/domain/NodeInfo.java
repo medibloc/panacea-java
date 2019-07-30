@@ -21,6 +21,7 @@ public class NodeInfo {
         return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
                 .append("id", id)
                 .append("listenAddr", listenAddr)
+                .append("network", network)
                 .append("version", version)
                 .toString();
     }
