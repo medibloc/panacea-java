@@ -1,6 +1,7 @@
 package org.medibloc.panacea;
 
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -210,6 +211,14 @@ public class Wallet {
 
     public String getPubKey() {
         return pubKey;
+    }
+
+    public String getPrivateKeyHexString() {
+        return privateKey;
+    }
+
+    public String getPubKeyHexString() {
+        return Hex.encodeHexString(decodeBech32PubKey(pubKey));
     }
 
     private String encodeBech32PubKey(byte[] data, String hrp) {

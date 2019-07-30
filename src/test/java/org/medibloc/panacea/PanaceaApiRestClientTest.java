@@ -45,6 +45,9 @@ public class PanaceaApiRestClientTest {
             Wallet wallet = Wallet.createWalletFromMnemonicCode(Arrays.asList(mnemonic.split("\\s+")), "panacea", 0);
             wallet.ensureWalletIsReady(client);
 
+            System.out.println(wallet.getPubKeyHexString());
+            System.out.println(wallet.getPrivateKeyHexString());
+
             // StdTx
             StdTx tx = new StdTx(msg, fee, "");
 
