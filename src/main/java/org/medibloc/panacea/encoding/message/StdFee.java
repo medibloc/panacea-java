@@ -3,6 +3,7 @@ package org.medibloc.panacea.encoding.message;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
@@ -10,6 +11,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import java.util.Collections;
 import java.util.List;
 
+@NoArgsConstructor
 @Getter @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder(alphabetic = true)

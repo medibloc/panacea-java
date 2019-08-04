@@ -3,6 +3,7 @@ package org.medibloc.panacea.encoding.message;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -14,6 +15,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
 @Getter @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StdTx {

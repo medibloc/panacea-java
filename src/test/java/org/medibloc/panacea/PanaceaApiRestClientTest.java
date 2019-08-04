@@ -93,6 +93,7 @@ public class PanaceaApiRestClientTest {
 
             TxResponse res = client.broadcast(req);
             System.out.println(res);
+            System.out.println(res.getTx());
             byte[] data = Hex.decodeHex(res.getData());
 
             ResAddRecord msgRes = EncodeUtils.toObjectFromJsonString(new String(data), ResAddRecord.class);
@@ -102,7 +103,20 @@ public class PanaceaApiRestClientTest {
             System.out.println(new String(rec.getValue()));
             System.out.println(rec);
 
-            System.out.println(client.getTxResponse("1C2BA43186173C1F1DEE483B3C27D59A8968389939C49B853514D654777F3F1F"));
+
+            TxResponse txRes = client.getTxResponse(res.getTxHash());
+            System.out.println(txRes);
+
+            PanaceaTransactionMessage txMsg = txRes.getTx().getValue().getMsgs()[0];
+            System.out.println(txMsg.getType());
+            if (txMsg.getType() == "aol/MsgAddRecord") {
+                MsgAddRecord m = (MsgAddRecord) txMsg;
+                System.out.println(new String(m.getValue().getKey()));
+                System.out.println(new String(m.getValue().getValue()));
+            } else if (txMsg.getType() == "cosmos-sdk/MsgSend") {
+                MsgSend m = (MsgSend) txMsg;
+                System.out.println(m.getValue().getAmount());
+            }
         } catch (PanaceaApiException | NoSuchAlgorithmException | IOException | DecoderException e) {
             e.printStackTrace();
         }
