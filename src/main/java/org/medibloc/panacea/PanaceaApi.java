@@ -1,9 +1,6 @@
 package org.medibloc.panacea;
 
-import org.medibloc.panacea.domain.Account;
-import org.medibloc.panacea.domain.NodeInfo;
-import org.medibloc.panacea.domain.Record;
-import org.medibloc.panacea.domain.TxResponse;
+import org.medibloc.panacea.domain.*;
 import org.medibloc.panacea.encoding.message.BroadcastReq;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -23,4 +20,10 @@ public interface PanaceaApi {
 
     @GET("txs/{txHash}")
     Call<TxResponse> getTxResponse(@Path("txHash") String txHash);
+
+    @GET("blocks/{height}")
+    Call<BlockInfo> getBlockByHeight(@Path("height") Long height);
+
+    @GET("blocks/latest")
+    Call<BlockInfo> getLatestBlock();
 }

@@ -1,9 +1,6 @@
 package org.medibloc.panacea;
 
-import org.medibloc.panacea.domain.Account;
-import org.medibloc.panacea.domain.NodeInfo;
-import org.medibloc.panacea.domain.Record;
-import org.medibloc.panacea.domain.TxResponse;
+import org.medibloc.panacea.domain.*;
 import org.medibloc.panacea.encoding.message.BroadcastReq;
 
 public interface PanaceaApiRestClient {
@@ -16,4 +13,8 @@ public interface PanaceaApiRestClient {
     Record getRecord(String ownerAddress, String topicName, Long offset) throws PanaceaApiException;
 
     TxResponse getTxResponse(String txHash) throws PanaceaApiException;
+
+    BlockInfo getBlockByHeight(Long height) throws PanaceaApiException;
+
+    BlockInfo getLatestBlock() throws PanaceaApiException;
 }

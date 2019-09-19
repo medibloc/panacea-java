@@ -4,10 +4,7 @@ import org.medibloc.panacea.PanaceaApi;
 import org.medibloc.panacea.PanaceaApiClientGenerator;
 import org.medibloc.panacea.PanaceaApiException;
 import org.medibloc.panacea.PanaceaApiRestClient;
-import org.medibloc.panacea.domain.Account;
-import org.medibloc.panacea.domain.NodeInfo;
-import org.medibloc.panacea.domain.Record;
-import org.medibloc.panacea.domain.TxResponse;
+import org.medibloc.panacea.domain.*;
 import org.medibloc.panacea.encoding.message.BroadcastReq;
 
 /**
@@ -38,5 +35,13 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
 
     public TxResponse getTxResponse(String txHash) throws PanaceaApiException {
         return PanaceaApiClientGenerator.executeSync(panaceaApi.getTxResponse(txHash));
+    }
+
+    public BlockInfo getBlockByHeight(Long height) throws PanaceaApiException {
+        return PanaceaApiClientGenerator.executeSync(panaceaApi.getBlockByHeight(height));
+    }
+
+    public BlockInfo getLatestBlock() throws PanaceaApiException {
+        return PanaceaApiClientGenerator.executeSync(panaceaApi.getLatestBlock());
     }
 }

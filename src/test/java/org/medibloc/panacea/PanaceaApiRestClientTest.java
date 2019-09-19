@@ -3,10 +3,7 @@ package org.medibloc.panacea;
 import org.apache.commons.codec.DecoderException;
 import org.apache.commons.codec.binary.Hex;
 import org.junit.Test;
-import org.medibloc.panacea.domain.Account;
-import org.medibloc.panacea.domain.Record;
-import org.medibloc.panacea.domain.Transfer;
-import org.medibloc.panacea.domain.TxResponse;
+import org.medibloc.panacea.domain.*;
 import org.medibloc.panacea.encoding.Crypto;
 import org.medibloc.panacea.encoding.EncodeUtils;
 import org.medibloc.panacea.encoding.message.*;
@@ -19,6 +16,16 @@ import java.util.List;
 
 public class PanaceaApiRestClientTest {
     String mnemonic = "genuine key outside escape oval unhappy mansion cricket practice quarter purchase picnic layer bicycle stem soup column creek convince obey rather rice there alcohol";
+
+    @Test
+    public void testGetAccountTestnet() throws PanaceaApiException {
+        PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("http://52.78.196.16:1317");
+        Account acc = client.getAccount("panacea1tkat7m78exe89jkx40e3c7rurytu5pukajdamq");
+        System.out.println(acc);
+        BlockInfo bi = client.getBlockByHeight(3171824L);
+        System.out.println(bi);
+        System.out.println(client.getLatestBlock());
+    }
 
     @Test
     public void testGetAccount() {
