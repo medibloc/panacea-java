@@ -25,6 +25,9 @@ public class PanaceaApiRestClientTest {
         BlockInfo bi = client.getBlockByHeight(3171824L);
         System.out.println(bi);
         System.out.println(client.getLatestBlock());
+
+        List<TxResponse> txs = client.getTxsByHeight(3171824L);
+        System.out.println(txs);
     }
 
     @Test

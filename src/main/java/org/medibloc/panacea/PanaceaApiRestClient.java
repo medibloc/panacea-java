@@ -3,6 +3,8 @@ package org.medibloc.panacea;
 import org.medibloc.panacea.domain.*;
 import org.medibloc.panacea.encoding.message.BroadcastReq;
 
+import java.util.List;
+
 public interface PanaceaApiRestClient {
     Account getAccount(String address) throws PanaceaApiException;
 
@@ -17,4 +19,6 @@ public interface PanaceaApiRestClient {
     BlockInfo getBlockByHeight(Long height) throws PanaceaApiException;
 
     BlockInfo getLatestBlock() throws PanaceaApiException;
+
+    List<TxResponse> getTxsByHeight(Long height) throws PanaceaApiException;
 }

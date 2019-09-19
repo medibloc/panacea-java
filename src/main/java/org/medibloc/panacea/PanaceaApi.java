@@ -5,6 +5,8 @@ import org.medibloc.panacea.encoding.message.BroadcastReq;
 import retrofit2.Call;
 import retrofit2.http.*;
 
+import java.util.List;
+
 public interface PanaceaApi {
     @GET("auth/accounts/{address}")
     Call<Account> getAccount(@Path("address") String address);
@@ -26,4 +28,7 @@ public interface PanaceaApi {
 
     @GET("blocks/latest")
     Call<BlockInfo> getLatestBlock();
+
+    @GET("txs")
+    Call<List<TxResponse>> getTxsByHeight(@Query("tx.height") Long height);
 }

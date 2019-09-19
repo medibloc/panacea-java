@@ -7,6 +7,8 @@ import org.medibloc.panacea.PanaceaApiRestClient;
 import org.medibloc.panacea.domain.*;
 import org.medibloc.panacea.encoding.message.BroadcastReq;
 
+import java.util.List;
+
 /**
  * Panacea API rest client, supporting synchronous/blocking access Panacea's REST API.
  */
@@ -43,5 +45,9 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
 
     public BlockInfo getLatestBlock() throws PanaceaApiException {
         return PanaceaApiClientGenerator.executeSync(panaceaApi.getLatestBlock());
+    }
+
+    public List<TxResponse> getTxsByHeight(Long height) throws PanaceaApiException {
+        return PanaceaApiClientGenerator.executeSync(panaceaApi.getTxsByHeight(height));
     }
 }
