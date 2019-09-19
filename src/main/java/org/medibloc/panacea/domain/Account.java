@@ -6,6 +6,9 @@ import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.medibloc.panacea.encoding.message.Coin;
+
+import java.util.List;
 
 @Getter @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -20,6 +23,7 @@ public class Account {
         @JsonProperty("account_number")
         private Long accountNumber;
         private Long sequence;
+        private List<Coin> coins;
     }
 
     @Override
@@ -28,6 +32,7 @@ public class Account {
                 .append("accountNumber", value.accountNumber)
                 .append("address", value.address)
                 .append("sequence", value.sequence)
+                .append("coins", value.coins)
                 .toString();
     }
 }
