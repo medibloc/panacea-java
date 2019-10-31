@@ -1,10 +1,11 @@
 package org.medibloc.panacea;
 
-import org.apache.commons.codec.binary.Base64;
+
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
+import org.apache.commons.net.util.Base64;
 import org.bitcoinj.core.ECKey;
 import org.medibloc.panacea.domain.Account;
 import org.medibloc.panacea.domain.NodeInfo;
@@ -38,23 +39,23 @@ public class Wallet {
             this.ecKey = ECKey.fromPrivate(new BigInteger(privateKey, 16));
             this.address = Crypto.getAddressFromECKey(this.ecKey, hrp);
             this.addressBytes = Crypto.decodeAddress(this.address);
-            byte[] pubKeyBytes= ecKey.getPubKeyPoint().getEncoded(true);
+            byte[] pubKeyBytes = ecKey.getPubKeyPoint().getEncoded(true);
             this.pubKeyForSign = new Pubkey();
             this.pubKeyForSign.setValue(Base64.encodeBase64String(pubKeyBytes));
-            this.pubKey = encodeBech32PubKey(pubKeyBytes, hrp+"pub");
+            this.pubKey = encodeBech32PubKey(pubKeyBytes, hrp + "pub");
         } else {
             throw new IllegalArgumentException("Private key cannot be empty.");
         }
     }
 
-    public Wallet(int[]bip44Path, LedgerDevice ledgerDevice, String hrp) throws IOException {
+    public Wallet(int[] bip44Path, LedgerDevice ledgerDevice, String hrp) throws IOException {
         this.ledgerKey = new LedgerKey(ledgerDevice, bip44Path, hrp);
         this.address = this.ledgerKey.getAddress();
         this.addressBytes = Crypto.decodeAddress(this.address);
         byte[] pubKeyBytes = this.ledgerKey.getPubKey();
         this.pubKeyForSign = new Pubkey();
         this.pubKeyForSign.setValue(Base64.encodeBase64String(pubKeyBytes));
-        this.pubKey = encodeBech32PubKey(pubKeyBytes, hrp+"pub");
+        this.pubKey = encodeBech32PubKey(pubKeyBytes, hrp + "pub");
     }
 
     public static Wallet createRandomWallet(String hrp) {
@@ -106,8 +107,8 @@ public class Wallet {
             this.sequence = account.getValue().getSequence();
         } else {
             throw new IllegalStateException(
-                "Cannot get account information for address " + this.address +
-                    " (does this account exist on the blockchain yet?)");
+                    "Cannot get account information for address " + this.address +
+                            " (does this account exist on the blockchain yet?)");
         }
     }
 
@@ -218,7 +219,7 @@ public class Wallet {
     }
 
     public String getPubKeyHexString() {
-        return Hex.encodeHexString(decodeBech32PubKey(pubKey));
+        return new String(Hex.encodeHex(decodeBech32PubKey(pubKey)));
     }
 
     private String encodeBech32PubKey(byte[] data, String hrp) {
