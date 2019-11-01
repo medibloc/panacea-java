@@ -1,5 +1,6 @@
 package org.medibloc.panacea;
 
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.joda.JodaModule;
 import okhttp3.Dispatcher;
@@ -18,7 +19,10 @@ import java.util.concurrent.TimeUnit;
 
 public class PanaceaApiClientGenerator {
     private static final Converter.Factory converterFactory =
-            JacksonConverterFactory.create(new ObjectMapper().registerModule(new JodaModule()));
+            JacksonConverterFactory.create(
+                    new ObjectMapper()
+                            .registerModule(new JodaModule())
+                            .configure(DeserializationFeature.FAIL_ON_INVALID_SUBTYPE, false));
 
     @SuppressWarnings("unchecked")
     private static final Converter<ResponseBody, PanaceaApiError> errorBodyConverter =
