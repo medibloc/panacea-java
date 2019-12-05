@@ -52,7 +52,7 @@ public class StdTx {
         stdsig.setSignature(sig);
 
         if (signatures == null) {
-            signatures = new ArrayList<>();
+            signatures = new ArrayList();
         }
         signatures.add(stdsig);
     }

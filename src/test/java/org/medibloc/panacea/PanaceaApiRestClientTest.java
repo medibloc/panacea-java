@@ -71,7 +71,7 @@ public class PanaceaApiRestClientTest {
             // Broadcast
             TxResponse res = client.broadcast(req);
             System.out.println(res);
-        } catch (PanaceaApiException | NoSuchAlgorithmException | IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
@@ -127,7 +127,7 @@ public class PanaceaApiRestClientTest {
                 MsgSend m = (MsgSend) txMsg;
                 System.out.println(m.getValue().getAmount());
             }
-        } catch (PanaceaApiException | NoSuchAlgorithmException | IOException | DecoderException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

@@ -1,12 +1,27 @@
+import org.medibloc.phr.common.parameter.ParameterClient
+
+buildscript {
+    repositories {
+        maven {
+            url "http://15.164.103.247:8081/repository/maven-releases/"
+        }
+    }
+
+    dependencies {
+        classpath 'org.medibloc.phr.common:parameter:0.0.1'
+    }
+}
+
 plugins {
     id 'java'
     id 'maven'
 }
 
 group 'org.medibloc.panacea'
-version '0.0.5'
+version '0.0.6'
 
-sourceCompatibility = 1.8
+sourceCompatibility = JavaVersion.VERSION_1_6
+targetCompatibility = JavaVersion.VERSION_1_6
 
 repositories {
     mavenCentral()
@@ -26,16 +41,20 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
+ext {
+    nexusId = ParameterClient.getValue("nexus.id")
+    nexusPw = ParameterClient.getValue("nexus.pw")
+}
 
 uploadArchives {
     repositories {
         mavenDeployer {
             snapshotRepository(url: "http://15.164.103.247:8081/repository/maven-snapshots/") {
-                authentication(userName: "admin", password: "medimedi")
+                authentication(userName: "${nexusId}", password: "${nexusPw}")
             }
 
             repository(url: "http://15.164.103.247:8081/repository/maven-releases/") {
-                authentication(userName: "admin", password: "medimedi")
+                authentication(userName: "${nexusId}", password: "${nexusPw}")
             }
 
             pom.groupId = project.group
