@@ -1,29 +1,21 @@
-package org.medibloc.panacea.domain;
+package org.medibloc.panacea.domain.migrate;
+
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonRawValue;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.medibloc.panacea.encoding.message.Coin;
+import org.medibloc.panacea.encoding.message.Pubkey;
 
 import java.util.List;
 
-@Getter @Setter @ToString
-public class TxResponse {
-    @JsonProperty("total_count")
-    private String totalCount;
-    private String count;
-    @JsonProperty("page_number")
-    private String pageNumber;
-    @JsonProperty("page_total")
-    private String pageTotal;
-    private String limit;
-    private List<Tx> txs;
-}
 
 @Getter @Setter @ToString
-class Tx {
+public class Tx_v1 {
     private String height;
-    private String txHash;
+    private String txhash;
     @JsonProperty("raw_log")
     private String rawLog;
     private List<Log> logs;
@@ -31,9 +23,9 @@ class Tx {
     private String gasWanted;
     @JsonProperty("gas_used")
     private String gasUsed;
+    private List<Tag> tags;
     private StdTx tx;
     private String timestamp;
-    private List<Event> events;
 }
 
 @Getter @Setter @ToString
@@ -53,7 +45,7 @@ class StdTx {
 @Getter @Setter @ToString
 class Signature {
     @JsonProperty("pub_key")
-    private PubKey pubKey;
+    private Pubkey pubKey;
     private String signature;
 }
 
@@ -75,21 +67,13 @@ class Log {
     private Long msgIndex;
     private boolean success;
     private String log;
-    private List<Event> events;
 }
 
 @Getter @Setter @ToString
-class Event {
-    private String type;
-    private List<Attribute> attributes;
-}
-
-@ToString @Getter @Setter
-class Attribute {
+class Tag {
     private String key;
     private String value;
 }
-
 
 
 

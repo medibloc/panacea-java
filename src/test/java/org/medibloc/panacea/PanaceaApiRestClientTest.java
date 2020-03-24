@@ -1,32 +1,41 @@
 package org.medibloc.panacea;
 
-import org.apache.commons.codec.DecoderException;
-import org.apache.commons.codec.binary.Hex;
+import org.junit.Before;
 import org.junit.Test;
 import org.medibloc.panacea.domain.*;
 import org.medibloc.panacea.encoding.Crypto;
-import org.medibloc.panacea.encoding.EncodeUtils;
 import org.medibloc.panacea.encoding.message.*;
-
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class PanaceaApiRestClientTest {
+
+
     String mnemonic = "genuine key outside escape oval unhappy mansion cricket practice quarter purchase picnic layer bicycle stem soup column creek convince obey rather rice there alcohol";
+
+    private PanaceaApiRestClient restClient = null;
+
+    @Before
+    public void setup() {
+        restClient = PanaceaApiClientFactory.newInstance().newRestClient("http://52.78.196.16:1317");
+    }
 
     @Test
     public void testGetAccountTestnet() throws PanaceaApiException {
-        PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("http://52.78.196.16:1317");
-        Account acc = client.getAccount("panacea1tkat7m78exe89jkx40e3c7rurytu5pukajdamq");
+        AccountResponse acc = restClient.getAccount("panacea1tkat7m78exe89jkx40e3c7rurytu5pukajdamq");
         System.out.println(acc);
-        BlockInfo bi = client.getBlockByHeight(3171824L);
-        System.out.println(bi);
-        System.out.println(client.getLatestBlock());
 
-        List<TxResponse> txs = client.getTxsByHeight(3171824L);
+        BlockInfo bi = restClient.getBlockByHeight(3171824L);
+        System.out.println(bi);
+
+        BlockInfo latestBlock = restClient.getLatestBlock();
+        System.out.println(latestBlock);
+    }
+
+    @Test
+    public void testGetTxsByHeight() throws PanaceaApiException {
+        TxResponse txs = restClient.getTxsByHeight(3171824L);
         System.out.println(txs);
     }
 
@@ -37,8 +46,8 @@ public class PanaceaApiRestClientTest {
         try {
             System.out.println(Crypto.generateMnemonicCodeFromEntropy("asjdkfjafahkdfhdsakjhfkadshfkjasdhfkjsdhfkjsadhfkjhkjwehrkqwhaekjhakjsdhfkdsahfksadhkf".getBytes()));
             System.out.println(Wallet.createWalletFromEntropy("panacea", "asjdkfjafahkdfhdsakjhfkadshfkjasdhfkjsdhfkjsadhfkjhkjwehrkqwhaekjhakjsdhfkdsahfksadhkf".getBytes()));
-            Account account = client.getAccount("panacea1mm72d9c36zwszcck34nyl49j32hxx6jfhfs52l");
-            System.out.println(account);
+            AccountResponse accountResponse = client.getAccount("panacea1tkat7m78exe89jkx40e3c7rurytu5pukajdamq");
+            System.out.println(accountResponse);
 
             // Msgs
             Transfer transfer = new Transfer();
@@ -103,30 +112,30 @@ public class PanaceaApiRestClientTest {
 
             TxResponse res = client.broadcast(req);
             System.out.println(res);
-            System.out.println(res.getTx());
-            byte[] data = Hex.decodeHex(res.getData());
+//            System.out.println(res.getTx());
+//            byte[] data = Hex.decodeHex(res.getData());
 
-            ResAddRecord msgRes = EncodeUtils.toObjectFromJsonString(new String(data), ResAddRecord.class);
+//            ResAddRecord msgRes = EncodeUtils.toObjectFromJsonString(new String(data), ResAddRecord.class);
 
-            Record rec = client.getRecord(msgRes.getValue().getOwnerAddress(), msgRes.getValue().getTopicName(), msgRes.getValue().getOffset());
-            System.out.println(new String(rec.getKey()));
-            System.out.println(new String(rec.getValue()));
-            System.out.println(rec);
-
-
-            TxResponse txRes = client.getTxResponse(res.getTxHash());
-            System.out.println(txRes);
-
-            PanaceaTransactionMessage txMsg = txRes.getTx().getValue().getMsgs()[0];
-            System.out.println(txMsg.getType());
-            if (txMsg.getType() == "aol/MsgAddRecord") {
-                MsgAddRecord m = (MsgAddRecord) txMsg;
-                System.out.println(new String(m.getValue().getKey()));
-                System.out.println(new String(m.getValue().getValue()));
-            } else if (txMsg.getType() == "cosmos-sdk/MsgSend") {
-                MsgSend m = (MsgSend) txMsg;
-                System.out.println(m.getValue().getAmount());
-            }
+//            Record rec = client.getRecord(msgRes.getValue().getOwnerAddress(), msgRes.getValue().getTopicName(), msgRes.getValue().getOffset());
+//            System.out.println(new String(rec.getKey()));
+//            System.out.println(new String(rec.getValue()));
+//            System.out.println(rec);
+//
+//
+//            TxResponse txRes = client.getTxResponse(res.getTxHash());
+//            System.out.println(txRes);
+//
+//            PanaceaTransactionMessage txMsg = txRes.getTx().getValue().getMsgs()[0];
+//            System.out.println(txMsg.getType());
+//            if (txMsg.getType() == "aol/MsgAddRecord") {
+//                MsgAddRecord m = (MsgAddRecord) txMsg;
+//                System.out.println(new String(m.getValue().getKey()));
+//                System.out.println(new String(m.getValue().getValue()));
+//            } else if (txMsg.getType() == "cosmos-sdk/MsgSend") {
+//                MsgSend m = (MsgSend) txMsg;
+//                System.out.println(m.getValue().getAmount());
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }

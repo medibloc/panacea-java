@@ -10,11 +10,6 @@ public class PanaceaApiClientFactory {
         return new PanaceaApiClientFactory();
     }
 
-//    TODO
-//    public PanaceaApiRestClient newRestClient() {
-//        return newRestClient(PanaceaEnvironment.PROD.getBaseUrl());
-//    }
-
     public PanaceaApiRestClient newRestClient(String baseUrl) {
         return new PanaceaApiRestClientImpl(baseUrl);
     }

@@ -2,23 +2,14 @@ package org.medibloc.panacea.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
-@Getter @Setter
+@Getter @Setter @ToString
 public class Transfer {
     private String fromAddress;
     private String toAddress;
     private String denom;
     private String amount;
-
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                .append("fromAddress", fromAddress)
-                .append("toAddress", toAddress)
-                .append("denom", denom)
-                .append("amount", amount)
-                .toString();
-    }
 }

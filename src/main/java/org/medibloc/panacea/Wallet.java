@@ -7,8 +7,8 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.commons.net.util.Base64;
 import org.bitcoinj.core.ECKey;
-import org.medibloc.panacea.domain.Account;
-import org.medibloc.panacea.domain.NodeInfo;
+import org.medibloc.panacea.domain.AccountResponse;
+import org.medibloc.panacea.domain.NodeInfoResponse;
 import org.medibloc.panacea.encoding.Crypto;
 import org.medibloc.panacea.encoding.EncodeUtils;
 import org.medibloc.panacea.encoding.message.Pubkey;
@@ -101,10 +101,10 @@ public class Wallet {
     }
 
     public synchronized void initAccount(PanaceaApiRestClient client) throws PanaceaApiException {
-        Account account = client.getAccount(this.address);
-        if (account != null) {
-            this.accountNumber = account.getValue().getAccountNumber();
-            this.sequence = account.getValue().getSequence();
+        AccountResponse accountResponse = client.getAccount(this.address);
+        if (accountResponse != null) {
+            this.accountNumber = accountResponse.getResult().getValue().getAccountNumber();
+            this.sequence = accountResponse.getResult().getValue().getSequence();
         } else {
             throw new IllegalStateException(
                     "Cannot get account information for address " + this.address +
@@ -113,9 +113,9 @@ public class Wallet {
     }
 
     public synchronized void reloadAccount(PanaceaApiRestClient client) throws PanaceaApiException {
-        Account account = client.getAccount(this.address);
-        this.accountNumber = account.getValue().getAccountNumber();
-        this.sequence = account.getValue().getSequence();
+        AccountResponse accountResponse = client.getAccount(this.address);
+        this.accountNumber = accountResponse.getResult().getValue().getAccountNumber();
+        this.sequence = accountResponse.getResult().getValue().getSequence();
     }
 
     public synchronized void reloadAccountOffline(Long accountNumber, Long sequence, String chainId) {
@@ -174,8 +174,8 @@ public class Wallet {
     }
 
     public synchronized void initChainId(PanaceaApiRestClient client) throws PanaceaApiException {
-        NodeInfo info = client.getNodeInfo();
-        chainId = info.getNetwork();
+        NodeInfoResponse info = client.getNodeInfo();
+        chainId = info.getNodeInfo().getNetwork();
     }
 
     public String getPrivateKey() {
