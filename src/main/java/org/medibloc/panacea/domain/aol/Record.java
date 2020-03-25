@@ -1,4 +1,4 @@
-package org.medibloc.panacea.domain;
+package org.medibloc.panacea.domain.aol;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;

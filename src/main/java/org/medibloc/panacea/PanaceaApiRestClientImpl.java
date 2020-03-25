@@ -1,13 +1,14 @@
-package org.medibloc.panacea.impl;
+package org.medibloc.panacea;
 
-import org.medibloc.panacea.PanaceaApi;
-import org.medibloc.panacea.PanaceaApiClientGenerator;
-import org.medibloc.panacea.PanaceaApiException;
-import org.medibloc.panacea.PanaceaApiRestClient;
+
 import org.medibloc.panacea.domain.*;
-import org.medibloc.panacea.domain.migrate.Tx_v1;
-import org.medibloc.panacea.encoding.message.BroadcastReq;
+import org.medibloc.panacea.domain.aol.RecordResponse;
+import org.medibloc.panacea.domain.bucket.Bucket;
+import org.medibloc.panacea.domain.bucket.BucketObject;
+import org.medibloc.panacea.domain.bucket.BucketWriter;
+import org.medibloc.panacea.domain.BroadcastReq;
 
+import java.security.acl.Owner;
 import java.util.List;
 
 /**
@@ -28,7 +29,7 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
         return PanaceaApiClientGenerator.executeSync(panaceaApi.getNodeInfo());
     }
 
-    public TxResponse broadcast(BroadcastReq req) throws PanaceaApiException {
+    public SearchTxsResult broadcast(BroadcastReq req) throws PanaceaApiException {
         return PanaceaApiClientGenerator.executeSync(panaceaApi.broadcast(req));
     }
 
@@ -36,7 +37,7 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
         return PanaceaApiClientGenerator.executeSync(panaceaApi.getRecord(ownerAddress, topicName, offset));
     }
 
-    public TxHashResponse getTxResponse(String txHash) throws PanaceaApiException {
+    public TxResponse getTxResponse(String txHash) throws PanaceaApiException {
         return PanaceaApiClientGenerator.executeSync(panaceaApi.getTxResponse(txHash));
     }
 
@@ -48,11 +49,41 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
         return PanaceaApiClientGenerator.executeSync(panaceaApi.getLatestBlock());
     }
 
-    public TxResponse getTxsByHeight(Long height) throws PanaceaApiException {
+    public SearchTxsResult getTxsByHeight(Long height) throws PanaceaApiException {
         return PanaceaApiClientGenerator.executeSync(panaceaApi.getTxsByHeight(height));
     }
 
-    public List<Tx_v1> getTxsByAction(String action, Long page, Long limit) throws PanaceaApiException {
+    public List<TxResponse> getTxsByAction(String action, Long page, Long limit) throws PanaceaApiException {
         return PanaceaApiClientGenerator.executeSync(panaceaApi.getTxsByAction(action, page, limit));
+    }
+
+    @Override
+    public BucketObject getBucketObject(String ownerAddr, String objectKey) throws PanaceaApiException {
+        return null;
+    }
+
+    @Override
+    public List<BucketObject> getBucketObjects(String ownerAddr) throws PanaceaApiException {
+        return null;
+    }
+
+    @Override
+    public List<BucketWriter> getBucketWriters(String ownerAddr, String bucketName) throws PanaceaApiException {
+        return null;
+    }
+
+    @Override
+    public BucketWriter getBucketWriter(String ownerAddr) throws PanaceaApiException {
+        return null;
+    }
+
+    @Override
+    public List<Bucket> getBucket(String ownerAddr) throws PanaceaApiException {
+        return null;
+    }
+
+    @Override
+    public List<Owner> getOwner() throws PanaceaApiException {
+        return null;
     }
 }

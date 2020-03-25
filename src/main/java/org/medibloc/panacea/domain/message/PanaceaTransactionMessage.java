@@ -1,4 +1,4 @@
-package org.medibloc.panacea.encoding.message;
+package org.medibloc.panacea.domain.message;
 
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonSubTypes.Type;

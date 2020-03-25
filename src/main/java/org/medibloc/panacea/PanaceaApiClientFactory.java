@@ -1,7 +1,5 @@
 package org.medibloc.panacea;
 
-import org.medibloc.panacea.impl.PanaceaApiRestClientImpl;
-
 public class PanaceaApiClientFactory {
     private PanaceaApiClientFactory() {
     }

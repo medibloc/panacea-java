@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.medibloc.panacea.domain.*;
 import org.medibloc.panacea.encoding.Crypto;
-import org.medibloc.panacea.encoding.message.*;
+import org.medibloc.panacea.domain.message.*;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -35,7 +35,7 @@ public class PanaceaApiRestClientTest {
 
     @Test
     public void testGetTxsByHeight() throws PanaceaApiException {
-        TxResponse txs = restClient.getTxsByHeight(3171824L);
+        SearchTxsResult txs = restClient.getTxsByHeight(3171824L);
         System.out.println(txs);
     }
 
@@ -78,7 +78,7 @@ public class PanaceaApiRestClientTest {
             BroadcastReq req = new BroadcastReq(tx, "block");
 
             // Broadcast
-            TxResponse res = client.broadcast(req);
+            SearchTxsResult res = client.broadcast(req);
             System.out.println(res);
         } catch (Exception e) {
             e.printStackTrace();
@@ -110,7 +110,7 @@ public class PanaceaApiRestClientTest {
 
             BroadcastReq req = new BroadcastReq(tx, "block");
 
-            TxResponse res = client.broadcast(req);
+            SearchTxsResult res = client.broadcast(req);
             System.out.println(res);
 //            System.out.println(res.getTx());
 //            byte[] data = Hex.decodeHex(res.getData());

@@ -1,12 +1,12 @@
 package org.medibloc.panacea.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
 
 @Getter @Setter @ToString
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Transfer {
     private String fromAddress;
     private String toAddress;

@@ -1,4 +1,4 @@
-package org.medibloc.panacea.domain;
+package org.medibloc.panacea.domain.aol;
 
 import lombok.Getter;
 import lombok.Setter;

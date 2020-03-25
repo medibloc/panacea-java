@@ -1,4 +1,4 @@
-package org.medibloc.panacea.encoding.message;
+package org.medibloc.panacea.domain.message;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -6,20 +6,20 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import lombok.ToString;
+import org.medibloc.panacea.domain.Coin;
 
 import java.util.List;
 
 @NoArgsConstructor
-@Getter @Setter
+@Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder(alphabetic = true)
 public class MsgSend implements PanaceaTransactionMessage {
     private String type = "cosmos-sdk/MsgSend";
     private Value value;
 
-    @Getter @Setter
+    @Getter @Setter @ToString
     @JsonIgnoreProperties(ignoreUnknown = true)
     @JsonPropertyOrder(alphabetic = true)
     public static class Value {
@@ -30,12 +30,4 @@ public class MsgSend implements PanaceaTransactionMessage {
         private List<Coin> amount;
     }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                .append("fromAddress", value.fromAddress)
-                .append("toAddress", value.toAddress)
-                .append("amount", value.amount)
-                .toString();
-    }
 }

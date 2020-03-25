@@ -4,8 +4,14 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.medibloc.panacea.domain.*;
-import org.medibloc.panacea.encoding.message.BroadcastReq;
-import org.medibloc.panacea.encoding.message.StdTx;
+import org.medibloc.panacea.domain.aol.RecordResponse;
+import org.medibloc.panacea.domain.StdTx;
+import org.medibloc.panacea.domain.bucket.Bucket;
+import org.medibloc.panacea.domain.bucket.BucketObject;
+import org.medibloc.panacea.domain.bucket.BucketWriter;
+
+import java.security.acl.Owner;
+import java.util.List;
 
 public class LocalClientTest {
 
@@ -53,15 +59,15 @@ public class LocalClientTest {
     @Test
     public void testBroadcast() throws PanaceaApiException {
         BroadcastReq req = new BroadcastReq(stdTx, "block"); // todo sync async 모델도 같은지 테스트
-        TxResponse res = restClient.broadcast(req);
+        SearchTxsResult res = restClient.broadcast(req);
         System.out.println(res);
 
         BroadcastReq syncReq = new BroadcastReq(stdTx, "sync");
-        TxResponse syncRes = restClient.broadcast(syncReq);
+        SearchTxsResult syncRes = restClient.broadcast(syncReq);
         System.out.println(syncRes);
 
         BroadcastReq asyncReq = new BroadcastReq(stdTx, "async");
-        TxResponse asyncRes = restClient.broadcast(asyncReq);
+        SearchTxsResult asyncRes = restClient.broadcast(asyncReq);
         System.out.println(asyncRes);
     }
 
@@ -69,7 +75,7 @@ public class LocalClientTest {
     public void testGetTxResponse() throws PanaceaApiException {
         String txHash = "192C1AF789D035FCA7C9374EEACBAC23817BB2ED18938027BB2ACF04B492A89F";
 
-        TxHashResponse res = restClient.getTxResponse(txHash);
+        TxResponse res = restClient.getTxResponse(txHash);
         System.out.println(res);
         Assert.assertNotNull(res);
     }
@@ -90,11 +96,52 @@ public class LocalClientTest {
 
     @Test
     public void testGetTxsByHeight() throws PanaceaApiException {
-        TxResponse responses = restClient.getTxsByHeight(4911L);
+        SearchTxsResult responses = restClient.getTxsByHeight(4911L);
         System.out.println(responses);
         Assert.assertNotNull(responses);
     }
 
+    @Test
+    public void testGetTxsByAction() throws PanaceaApiException {
+        List<TxResponse> txResponse = restClient.getTxsByAction("", 0L, 0L);
+        System.out.println(txResponse);
+    }
+
+    @Test
+    public void testGetBucketObject() throws PanaceaApiException {
+        BucketObject bucketObject = restClient.getBucketObject("", "");
+        System.out.println(bucketObject);
+    }
+
+    @Test
+    public void testGetBucketObjects() throws PanaceaApiException {
+        List<BucketObject> bucketObjects = restClient.getBucketObjects("");
+        System.out.println(bucketObjects);
+    }
+
+    @Test
+    public void testGetBucketWriters() throws PanaceaApiException {
+        List<BucketWriter> bucketWriters = restClient.getBucketWriters("","");
+        System.out.println(bucketWriters);
+    }
+
+    @Test
+    public void testGetBucketWriter() throws PanaceaApiException {
+        BucketWriter bucketWriter = restClient.getBucketWriter("");
+        System.out.println(bucketWriter);
+    }
+
+    @Test
+    public void testGetBucket() throws PanaceaApiException {
+        List<Bucket> buckets = restClient.getBucket("");
+        System.out.println(buckets);
+    }
+
+    @Test
+    public void testGetOwner() throws PanaceaApiException {
+        List<Owner> owners = restClient.getOwner();
+        System.out.println(owners);
+    }
 
 
 

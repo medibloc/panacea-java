@@ -1,14 +1,14 @@
-package org.medibloc.panacea.encoding.message;
+package org.medibloc.panacea.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import lombok.ToString;
 import org.apache.commons.net.util.Base64;
 import org.medibloc.panacea.Wallet;
+import org.medibloc.panacea.domain.message.PanaceaTransactionMessage;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
-@Getter @Setter
+@Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StdTx {
     @JsonProperty("msg")
@@ -57,13 +57,4 @@ public class StdTx {
         signatures.add(stdsig);
     }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                .append("msgs", msgs)
-                .append("fee", fee)
-                .append("signatures", signatures)
-                .append("memo", memo)
-                .toString();
-    }
 }

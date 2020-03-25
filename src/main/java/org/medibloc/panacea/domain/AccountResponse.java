@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.medibloc.panacea.encoding.message.Coin;
 
 import java.util.List;
 
@@ -25,7 +24,7 @@ public class AccountResponse {
         private String address;
         private List<Coin> coins;
         @JsonProperty("public_key")
-        private PubKey publicKey;
+        private Pubkey publicKey;
         @JsonProperty("account_number")
         private Long accountNumber;
         private Long sequence;
