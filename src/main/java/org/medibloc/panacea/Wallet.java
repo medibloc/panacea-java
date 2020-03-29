@@ -7,9 +7,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.commons.net.util.Base64;
 import org.bitcoinj.core.ECKey;
-import org.medibloc.panacea.domain.AccountResponse;
-import org.medibloc.panacea.domain.NodeInfoResponse;
-import org.medibloc.panacea.domain.Pubkey;
+import org.medibloc.panacea.domain.*;
 import org.medibloc.panacea.encoding.Crypto;
 import org.medibloc.panacea.encoding.EncodeUtils;
 import org.medibloc.panacea.ledger.LedgerDevice;
@@ -101,7 +99,7 @@ public class Wallet {
     }
 
     public synchronized void initAccount(PanaceaApiRestClient client) throws PanaceaApiException {
-        AccountResponse accountResponse = client.getAccount(this.address);
+        Res<TV<Account>> accountResponse = client.getAccount(this.address);
         if (accountResponse != null) {
             this.accountNumber = accountResponse.getResult().getValue().getAccountNumber();
             this.sequence = accountResponse.getResult().getValue().getSequence();
@@ -113,7 +111,7 @@ public class Wallet {
     }
 
     public synchronized void reloadAccount(PanaceaApiRestClient client) throws PanaceaApiException {
-        AccountResponse accountResponse = client.getAccount(this.address);
+        Res<TV<Account>> accountResponse = client.getAccount(this.address);
         this.accountNumber = accountResponse.getResult().getValue().getAccountNumber();
         this.sequence = accountResponse.getResult().getValue().getSequence();
     }

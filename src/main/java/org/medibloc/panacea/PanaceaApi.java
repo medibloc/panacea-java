@@ -1,28 +1,29 @@
 package org.medibloc.panacea;
 
 import org.medibloc.panacea.domain.*;
-import org.medibloc.panacea.domain.aol.RecordResponse;
+import org.medibloc.panacea.domain.aol.Record;
 import org.medibloc.panacea.domain.aol.Topic;
-import org.medibloc.panacea.domain.aol.Writer;
+import org.medibloc.panacea.domain.aol.AolWriter;
 import org.medibloc.panacea.domain.bucket.Bucket;
 import org.medibloc.panacea.domain.bucket.BucketObject;
+import org.medibloc.panacea.domain.bucket.BucketOwner;
 import org.medibloc.panacea.domain.bucket.BucketWriter;
 import org.medibloc.panacea.domain.BroadcastReq;
 import retrofit2.Call;
 import retrofit2.http.*;
 
-import java.security.acl.Owner;
 import java.util.List;
 
 public interface PanaceaApi {
+
     @GET("auth/accounts/{address}")
-    Call<AccountResponse> getAccount(@Path("address") String address);
+    Call<Res<TV<Account>>> getAccount(@Path("address") String address);
 
     @GET("node_info")
     Call<NodeInfoResponse> getNodeInfo();
 
     @POST("txs")
-    Call<SearchTxsResult> broadcast(@Body BroadcastReq req);
+    Call<TxResponse> broadcast(@Body BroadcastReq req);
 
     @GET("txs/{hash}")
     Call<TxResponse> getTxResponse(@Path("hash") String hash);
@@ -37,8 +38,8 @@ public interface PanaceaApi {
     Call<SearchTxsResult> getTxsByHeight(@Query("tx.height") Long height);
 
     @GET("txs")
-    Call<List<TxResponse>> getTxsByAction(
-            @Query("action") String action,
+    Call<SearchTxsResult> getTxsByAction(
+            @Query("message.action") String action,
             @Query("page") Long page,
             @Query("limit") Long limit);
 
@@ -46,24 +47,24 @@ public interface PanaceaApi {
      ******************************  AOL ********************************
      */
 
-    @GET("api/v1/aol/{ownerAddr}/listTopic")
-    Call<List<Topic>> getTopics(@Path("ownerAddr") String ownerAddress);
+    @GET("api/v1/aol/{ownerAddr}/topics")
+    Call<Res<List<Topic>>> getTopics(@Path("ownerAddr") String ownerAddress);
 
     @GET("api/v1/aol/{ownerAddr}/topic")
-    Call<Topic> getTopic(@Path("ownerAddr") String ownerAddress);
+    Call<Res<Topic>> getTopic(@Path("ownerAddr") String ownerAddress);
 
     @GET("api/v1/aol/{ownerAddr}/listWriter")
-    Call<List<Writer>> getWriters(
+    Call<Res<List<String>>> getWriters(
             @Path("ownerAddr") String ownerAddress,
             @Query("topic") String topic);
 
     @GET("api/v1/aol/{ownerAddr}/writer")
-    Call<Writer> getWriter(
+    Call<Res<AolWriter>> getWriter(
             @Path("ownerAddr") String ownerAddress
     );
 
     @GET("api/v1/aol/{ownerAddr}/topics/{topicName}/records/{offset}")
-    Call<RecordResponse> getRecord(
+    Call<Res<Record>> getRecord(
             @Path("ownerAddr") String ownerAddress,
             @Path("topicName") String topicName,
             @Path("offset") Long offset);
@@ -72,45 +73,42 @@ public interface PanaceaApi {
      ****************************** Bucket *******************************
      */
 
-    @GET("/api/v1/bucket/{ownerAddr}/object")
-    Call<BucketObject> getBucketObject(
-            @Path("ownerAddr") String ownerAddr,
+    @GET("api/v1/bucket/owners")
+    Call<Res<List<BucketOwner>>> getOwners();
+    @GET("api/v1/bucket/owner")
+    Call<Res<BucketOwner>> getOwner(@Query("ownerAddr") String ownerAddr);
+
+    @GET("/api/v1/bucket/buckets")
+    Call<Res<List<Bucket>>> getBuckets(@Query("ownerAddr") String ownerAddr);
+    @GET("api/v1/bucket/bucket")
+    Call<Res<Bucket>> getBucket(
+            @Query("ownerAddr") String ownerAddr,
+            @Query("bucketName") String bucketName
+    );
+
+    @GET("/api/v1/bucket/objects")
+    Call<Res<List<BucketObject>>> getBucketObjects(
+            @Query("ownerAddr") String ownerAddr,
+            @Query("bucketName") String bucketName
+    );
+    @GET("/api/v1/bucket/object")
+    Call<Res<BucketObject>> getBucketObject(
+            @Query("ownerAddr") String ownerAddr,
             @Query("objectKey") String objectKey
     );
 
-    @GET("/api/v1/bucket/{ownerAddr}/objects")
-    Call<List<BucketObject>> getBucketObjects(
-            @Path("ownerAddr") String ownerAddr
-    );
-
-    @GET("/api/v1/bucket/{ownerAddr}/writers")
-    Call<List<BucketWriter>> getBucketWriters(
-            @Path("ownerAddr") String ownerAddr,
+    @GET("/api/v1/bucket/writers")
+    Call<Res<List<BucketWriter>>> getBucketWriters(
+            @Query("ownerAddr") String ownerAddr,
             @Query("bucketName") String bucketName
     );
 
-    @GET("/api/v1/bucket/{ownerAddr}/writer")
-    Call<BucketWriter> getBucketWriter(
-            @Path("ownerAddr") String ownerAddr,
-            @Query("bucketName") String bucketName
+    @GET("/api/v1/bucket/writer")
+    Call<Res<BucketWriter>> getBucketWriter(
+            @Query("ownerAddr") String ownerAddr,
+            @Query("bucketName") String bucketName,
+            @Query("writerAddr") String writerAddr
     );
-
-    @GET("/api/v1/bucket/{ownerAddr}/buckets")
-    Call<List<Bucket>> getBuckets(
-            @Path("ownerAddr") String ownerAddr
-    );
-
-    @GET("api/v1/bucket/{ownerAddr}bucket")
-    Call<Bucket> getBucket(
-            @Path("ownerAddr") String ownerAddr
-    );
-
-    @GET("api/v1/bucket/owners")
-    Call<List<Owner>> getOwners();
-
-    @GET("api/v1/bucket/owner")
-    Call<Owner> getOwner();
-
 
 
 }

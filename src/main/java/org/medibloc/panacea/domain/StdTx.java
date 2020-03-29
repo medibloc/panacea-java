@@ -13,16 +13,16 @@ import org.medibloc.panacea.domain.message.PanaceaTransactionMessage;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
-import java.util.List;
 
 @NoArgsConstructor
 @Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class StdTx {
+
     @JsonProperty("msg")
     private PanaceaTransactionMessage[] msgs;
     private StdFee fee;
-    private List<StdSignature> signatures;
+    private ArrayList<StdSignature> signatures;
     private String memo;
 
     public StdTx(PanaceaTransactionMessage msg, StdFee fee, String memo) {
@@ -52,7 +52,7 @@ public class StdTx {
         stdsig.setSignature(sig);
 
         if (signatures == null) {
-            signatures = new ArrayList();
+            signatures = new ArrayList<StdSignature>();
         }
         signatures.add(stdsig);
     }

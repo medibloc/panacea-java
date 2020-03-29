@@ -10,9 +10,7 @@ public class Bucket {
 
     @JsonProperty("owner_address")
     private String ownerAddress;
-
     @JsonProperty("bucket_name")
     private String bucketName;
-
     private String description;
 }

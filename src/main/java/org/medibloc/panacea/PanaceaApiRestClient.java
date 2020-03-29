@@ -1,23 +1,24 @@
 package org.medibloc.panacea;
 
 import org.medibloc.panacea.domain.*;
-import org.medibloc.panacea.domain.aol.RecordResponse;
+import org.medibloc.panacea.domain.aol.Record;
+import org.medibloc.panacea.domain.aol.Topic;
+import org.medibloc.panacea.domain.aol.AolWriter;
 import org.medibloc.panacea.domain.bucket.Bucket;
 import org.medibloc.panacea.domain.bucket.BucketObject;
+import org.medibloc.panacea.domain.bucket.BucketOwner;
 import org.medibloc.panacea.domain.bucket.BucketWriter;
 import org.medibloc.panacea.domain.BroadcastReq;
 
-import java.security.acl.Owner;
 import java.util.List;
 
 public interface PanaceaApiRestClient {
-    AccountResponse getAccount(String address) throws PanaceaApiException;
+
+    Res<TV<Account>> getAccount(String address) throws PanaceaApiException;
 
     NodeInfoResponse getNodeInfo() throws PanaceaApiException;
 
-    SearchTxsResult broadcast(BroadcastReq req) throws PanaceaApiException;
-
-    RecordResponse getRecord(String ownerAddress, String topicName, Long offset) throws PanaceaApiException;
+    TxResponse broadcast(BroadcastReq req) throws PanaceaApiException;
 
     TxResponse getTxResponse(String txHash) throws PanaceaApiException;
 
@@ -27,19 +28,40 @@ public interface PanaceaApiRestClient {
 
     SearchTxsResult getTxsByHeight(Long height) throws PanaceaApiException;
 
-    List<TxResponse> getTxsByAction(String action, Long page, Long limit) throws PanaceaApiException;
+    SearchTxsResult getTxsByAction(String action, Long page, Long limit) throws PanaceaApiException;
 
-    BucketObject getBucketObject(String ownerAddr, String objectKey) throws PanaceaApiException;
+    /**
+     ******************************  AOL ********************************
+     */
 
-    List<BucketObject> getBucketObjects(String ownerAddr) throws PanaceaApiException;
+    Res<List<Topic>> getTopics(String ownerAddress) throws PanaceaApiException;
 
-    List<BucketWriter> getBucketWriters(String ownerAddr, String bucketName) throws PanaceaApiException;
+    Res<Topic> getTopic(String ownerAddress) throws PanaceaApiException;
 
-    BucketWriter getBucketWriter(String ownerAddr) throws PanaceaApiException;
+    Res<List<String>> getAolWriters(String ownerAddress, String topic) throws PanaceaApiException;
 
-    List<Bucket> getBucket(String ownerAddr) throws PanaceaApiException;
+    Res<AolWriter> getAolWriter(String ownerAddress) throws PanaceaApiException;
 
-    List<Owner> getOwner() throws PanaceaApiException;
+    Res<Record> getRecord(String ownerAddress, String topicName, Long offset) throws PanaceaApiException;
 
-    
+    /**
+     ****************************** Bucket *******************************
+     */
+
+    Res<BucketObject> getBucketObject(String ownerAddr, String objectKey) throws PanaceaApiException;
+
+    Res<List<BucketObject>> getBucketObjects(String ownerAddr, String bucketName) throws PanaceaApiException;
+
+    Res<List<BucketWriter>> getBucketWriters(String ownerAddr, String bucketName) throws PanaceaApiException;
+
+    Res<BucketWriter> getBucketWriter(String ownerAddr, String bucketName, String writerAddr) throws PanaceaApiException;
+
+    Res<List<Bucket>> getBuckets(String ownerAddr) throws PanaceaApiException;
+
+    Res<Bucket> getBucket(String ownerAddr, String bucketName) throws PanaceaApiException;
+
+    Res<List<BucketOwner>> getOwners() throws PanaceaApiException;
+
+    Res<BucketOwner> getOwner(String ownerAddr) throws PanaceaApiException;
+
 }

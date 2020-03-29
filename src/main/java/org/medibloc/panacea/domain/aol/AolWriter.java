@@ -5,7 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @Getter @Setter @ToString
-public class Writer {
+public class AolWriter {
     private String moniker;
     private String description;
     private long nano_timestamp;

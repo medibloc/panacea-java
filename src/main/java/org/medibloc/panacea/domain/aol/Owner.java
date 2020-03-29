@@ -4,10 +4,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-@Getter @Setter @ToString
-public class RecordResponse {
-
-    private long height;
-    private Record result;
-
+@Getter
+@Setter
+@ToString
+public class Owner {
+    private Long total_topics;
 }

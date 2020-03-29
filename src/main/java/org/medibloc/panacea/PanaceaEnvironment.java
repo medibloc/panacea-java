@@ -16,6 +16,7 @@ public class PanaceaEnvironment {
             "panacea"
     );
 
+
     private String baseUrl;
     private String hrp;
 

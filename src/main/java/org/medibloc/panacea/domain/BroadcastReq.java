@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.medibloc.panacea.domain.StdTx;
 
 // mode = async | sync | block
 

@@ -23,7 +23,7 @@ public class PanaceaApiRestClientTest {
 
     @Test
     public void testGetAccountTestnet() throws PanaceaApiException {
-        AccountResponse acc = restClient.getAccount("panacea1tkat7m78exe89jkx40e3c7rurytu5pukajdamq");
+        Res<TV<Account>> acc = restClient.getAccount("panacea1tkat7m78exe89jkx40e3c7rurytu5pukajdamq");
         System.out.println(acc);
 
         BlockInfo bi = restClient.getBlockByHeight(3171824L);
@@ -46,7 +46,7 @@ public class PanaceaApiRestClientTest {
         try {
             System.out.println(Crypto.generateMnemonicCodeFromEntropy("asjdkfjafahkdfhdsakjhfkadshfkjasdhfkjsdhfkjsadhfkjhkjwehrkqwhaekjhakjsdhfkdsahfksadhkf".getBytes()));
             System.out.println(Wallet.createWalletFromEntropy("panacea", "asjdkfjafahkdfhdsakjhfkadshfkjasdhfkjsdhfkjsadhfkjhkjwehrkqwhaekjhakjsdhfkdsahfksadhkf".getBytes()));
-            AccountResponse accountResponse = client.getAccount("panacea1tkat7m78exe89jkx40e3c7rurytu5pukajdamq");
+            Res<TV<Account>> accountResponse = client.getAccount("panacea1tkat7m78exe89jkx40e3c7rurytu5pukajdamq");
             System.out.println(accountResponse);
 
             // Msgs
@@ -78,7 +78,7 @@ public class PanaceaApiRestClientTest {
             BroadcastReq req = new BroadcastReq(tx, "block");
 
             // Broadcast
-            SearchTxsResult res = client.broadcast(req);
+            TxResponse res = client.broadcast(req);
             System.out.println(res);
         } catch (Exception e) {
             e.printStackTrace();
@@ -110,7 +110,7 @@ public class PanaceaApiRestClientTest {
 
             BroadcastReq req = new BroadcastReq(tx, "block");
 
-            SearchTxsResult res = client.broadcast(req);
+            TxResponse res = client.broadcast(req);
             System.out.println(res);
 //            System.out.println(res.getTx());
 //            byte[] data = Hex.decodeHex(res.getData());

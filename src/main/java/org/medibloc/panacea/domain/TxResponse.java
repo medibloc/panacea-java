@@ -7,16 +7,20 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 @Getter @Setter @ToString
 @JsonPropertyOrder(alphabetic = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TxResponse {
-    private String height;
-    private String txhash;
+    // used for fail
     private int code;
     private String data;
+
+    // success
+    private String height;
+    private String txhash;
     @JsonProperty("raw_log")
     private String rawLog;
     private List<Log> logs;
