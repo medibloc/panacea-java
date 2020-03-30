@@ -157,7 +157,7 @@ public class CommonTest {
         transfer.setAmount("10000");
         transfer.setDenom("umed");
         transfer.setFromAddress("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
-        transfer.setToAddress("panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g");
+        transfer.setToAddress("panacea145tgu5y60qsxvwjykfgd7277kzeqd7y3qqwn4j");
 
         MsgSend msgSend = createMsgSend(transfer);
 

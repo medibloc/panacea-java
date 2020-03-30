@@ -13,7 +13,6 @@ import org.medibloc.panacea.domain.message.*;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.util.Arrays;
 import java.util.List;
 
 public class BucketTest {
@@ -173,7 +172,7 @@ public class BucketTest {
 
 
     private void broadcastMsgSync(PanaceaTransactionMessage msg) throws PanaceaApiException {
-        StdFee fee = new StdFee("umed", "10000", "30000");
+        StdFee fee = new StdFee("umed", "10000", "80000");
 
         String mnemonic = "giraffe wreck kit enemy anger nephew silk sphere tuna tube lady evil market lizard humor usage sand cattle wedding access wall basket define fresh";
 
@@ -192,7 +191,7 @@ public class BucketTest {
 
         wallet.increaseAccountSequence();
 
-        BroadcastReq req = new BroadcastReq(tx, "sync");
+        BroadcastReq req = new BroadcastReq(tx, "block");
 
         TxResponse res = restClient.broadcast(req);
         System.out.println(res);

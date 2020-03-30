@@ -9,9 +9,7 @@ import lombok.ToString;
 
 
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
+@Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder(alphabetic = true)
 public class MsgCreateObject implements PanaceaTransactionMessage {
