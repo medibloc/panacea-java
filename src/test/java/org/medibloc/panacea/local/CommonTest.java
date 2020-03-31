@@ -169,7 +169,7 @@ public class CommonTest {
         wallet.ensureWalletIsReady(restClient);
 
         Account account = restClient.getAccount(wallet.getAddress());
-        print(account.getCoins().get(0).getAmount());
+//        print(account.getCoins().get(0).getAmount());
 
         StdTx tx = new StdTx(msgSend, fee, "");
 

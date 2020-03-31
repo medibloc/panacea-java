@@ -8,7 +8,7 @@ import lombok.ToString;
 
 @Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-class ApplicationVersion {
+public class ApplicationVersion {
     private String name;
     @JsonProperty("server_name")
     private String serverName;

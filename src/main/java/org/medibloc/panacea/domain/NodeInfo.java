@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.medibloc.panacea.domain.model.response.NodeInfoResponse;
 
 @Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)

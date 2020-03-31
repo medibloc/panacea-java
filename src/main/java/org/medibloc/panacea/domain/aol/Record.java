@@ -11,21 +11,13 @@ import java.util.Date;
 @Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Record {
-
-    private int height;
-    private Result result;
-
-    @Deprecated
     private byte[] key;
 
-    @Deprecated
     private byte[] value;
 
-    @Deprecated
     @JsonProperty("nano_timestamp")
     private Long nanoTimestamp;
 
-    @Deprecated
     @JsonProperty("writer_address")
     private String writerAddress;
 

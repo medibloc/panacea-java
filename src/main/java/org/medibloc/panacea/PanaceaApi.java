@@ -2,13 +2,13 @@ package org.medibloc.panacea;
 
 import org.medibloc.panacea.domain.*;
 import org.medibloc.panacea.domain.aol.AolWriter;
-import org.medibloc.panacea.domain.aol.Record;
 import org.medibloc.panacea.domain.aol.Topic;
 import org.medibloc.panacea.domain.bucket.Bucket;
 import org.medibloc.panacea.domain.bucket.BucketObject;
 import org.medibloc.panacea.domain.bucket.BucketOwner;
 import org.medibloc.panacea.domain.bucket.BucketWriter;
-import org.medibloc.panacea.domain.NodeInfoResponse;
+import org.medibloc.panacea.domain.model.response.NodeInfoResponse;
+import org.medibloc.panacea.domain.model.response.RecordResponse;
 import org.medibloc.panacea.domain.model.response.Res;
 import retrofit2.Call;
 import retrofit2.http.*;
@@ -65,7 +65,7 @@ public interface PanaceaApi {
     );
 
     @GET("api/v1/aol/{ownerAddr}/topics/{topicName}/records/{offset}")
-    Call<Record> getRecord(
+    Call<Res<RecordResponse>> getRecord(
             @Path("ownerAddr") String ownerAddress,
             @Path("topicName") String topicName,
             @Path("offset") Long offset);

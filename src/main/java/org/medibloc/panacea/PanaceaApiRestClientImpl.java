@@ -9,6 +9,8 @@ import org.medibloc.panacea.domain.bucket.Bucket;
 import org.medibloc.panacea.domain.bucket.BucketObject;
 import org.medibloc.panacea.domain.bucket.BucketOwner;
 import org.medibloc.panacea.domain.bucket.BucketWriter;
+import org.medibloc.panacea.domain.model.response.NodeInfoResponse;
+import org.medibloc.panacea.domain.model.response.RecordResponse;
 import org.medibloc.panacea.domain.model.response.Res;
 
 import java.util.List;
@@ -27,11 +29,6 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
     @Override
     public Account getAccount(String address) throws PanaceaApiException {
         Res<Account> resAccount = PanaceaApiClientGenerator.executeSync(panaceaApi.getAccount(address));
-//        Account account = resAccount.getResult();
-//        account.getValue().setAccountNumber(account.getAccountNumber());
-//        account.getValue().setSequence(account.getSequence());
-//        account.getValue().setCoins(account.getCoins());
-//        account.getValue().setAddress(account.getAddress());
         return resAccount.getResult();
     }
 
@@ -48,11 +45,12 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
 
     @Override
     public Record getRecord(String ownerAddress, String topicName, Long offset) throws PanaceaApiException {
-        Record record = PanaceaApiClientGenerator.executeSync(panaceaApi.getRecord(ownerAddress, topicName, offset));
-        record.setNanoTimestamp(record.getResult().getNanoTimestamp());
-        record.setWriterAddress(record.getResult().getWriterAddress());
-        record.setKey(record.getResult().getKey());
-        record.setValue(record.getResult().getValue());
+        Res<RecordResponse> recordResponse = PanaceaApiClientGenerator.executeSync(panaceaApi.getRecord(ownerAddress, topicName, offset));
+        Record record = new Record();
+        record.setWriterAddress(recordResponse.getResult().getWriterAddress());
+        record.setNanoTimestamp(recordResponse.getResult().getNanoTimestamp());
+        record.setKey(recordResponse.getResult().getKey());
+        record.setValue(recordResponse.getResult().getValue());
         return record;
     }
 
