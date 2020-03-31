@@ -14,7 +14,6 @@ import org.medibloc.panacea.domain.model.response.RecordResponse;
 import org.medibloc.panacea.domain.model.response.Res;
 
 import java.util.ArrayList;
-
 import java.util.List;
 
 /**
