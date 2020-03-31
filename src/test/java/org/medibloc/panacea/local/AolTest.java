@@ -9,6 +9,7 @@ import org.medibloc.panacea.domain.aol.AolWriter;
 import org.medibloc.panacea.domain.aol.Record;
 import org.medibloc.panacea.domain.aol.Topic;
 import org.medibloc.panacea.domain.message.*;
+import org.medibloc.panacea.domain.model.response.Res;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -16,8 +17,6 @@ import java.util.List;
 
 public class AolTest {
     private PanaceaApiRestClient restClient = null;
-
-    private StdTx stdTx = null;
 
     @Before
     public void setup() {
@@ -53,7 +52,7 @@ public class AolTest {
 
     @Test
     public void testGetRecord() throws PanaceaApiException {
-        Res<Record> record = restClient.getRecord("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm", "abc", 0L);
+        Record record = restClient.getRecord("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm", "abc", 0L);
         System.out.println(record);
         Assert.assertNotNull(record);
     }
@@ -63,7 +62,7 @@ public class AolTest {
         MsgCreateTopic.Value value = new MsgCreateTopic.Value();
         value.setDescription("description");
         value.setOwnerAddress("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
-        value.setTopicName("ccc");
+        value.setTopicName("ccc1");
 
         MsgCreateTopic msg = new MsgCreateTopic();
         msg.setValue(value);

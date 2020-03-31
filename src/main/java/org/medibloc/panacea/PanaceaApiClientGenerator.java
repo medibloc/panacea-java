@@ -35,7 +35,7 @@ public class PanaceaApiClientGenerator {
         dispatcher.setMaxRequestsPerHost(500);
         dispatcher.setMaxRequests(500);
         sharedClient = new OkHttpClient.Builder()
-                .addInterceptor(new LoggingInterceptor())
+//                .addInterceptor(new LoggingInterceptor())
             .dispatcher(dispatcher)
             .pingInterval(20, TimeUnit.SECONDS)
             .build();

@@ -7,7 +7,8 @@ import lombok.ToString;
 
 @Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Attribute {
-    private String key;
-    private String value;
+class ProtocolVersion {
+    private String p2p;
+    private String block;
+    private String app;
 }

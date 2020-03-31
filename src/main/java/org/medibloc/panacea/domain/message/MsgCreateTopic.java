@@ -26,5 +26,4 @@ public class MsgCreateTopic implements PanaceaTransactionMessage {
         @JsonProperty("owner_address")
         private String ownerAddress;
     }
-
 }

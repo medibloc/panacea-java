@@ -8,6 +8,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.commons.net.util.Base64;
 import org.bitcoinj.core.ECKey;
 import org.medibloc.panacea.domain.*;
+import org.medibloc.panacea.domain.model.response.Res;
 import org.medibloc.panacea.encoding.Crypto;
 import org.medibloc.panacea.encoding.EncodeUtils;
 import org.medibloc.panacea.ledger.LedgerDevice;
@@ -99,10 +100,10 @@ public class Wallet {
     }
 
     public synchronized void initAccount(PanaceaApiRestClient client) throws PanaceaApiException {
-        Res<TV<Account>> accountResponse = client.getAccount(this.address);
-        if (accountResponse != null) {
-            this.accountNumber = accountResponse.getResult().getValue().getAccountNumber();
-            this.sequence = accountResponse.getResult().getValue().getSequence();
+        Account account = client.getAccount(this.address);
+        if (account != null) {
+            this.accountNumber = account.getValue().getAccountNumber();
+            this.sequence = account.getValue().getSequence();
         } else {
             throw new IllegalStateException(
                     "Cannot get account information for address " + this.address +
@@ -111,9 +112,9 @@ public class Wallet {
     }
 
     public synchronized void reloadAccount(PanaceaApiRestClient client) throws PanaceaApiException {
-        Res<TV<Account>> accountResponse = client.getAccount(this.address);
-        this.accountNumber = accountResponse.getResult().getValue().getAccountNumber();
-        this.sequence = accountResponse.getResult().getValue().getSequence();
+        Account account = client.getAccount(this.address);
+        this.accountNumber = account.getValue().getAccountNumber();
+        this.sequence = account.getValue().getSequence();
     }
 
     public synchronized void reloadAccountOffline(Long accountNumber, Long sequence, String chainId) {
@@ -172,8 +173,8 @@ public class Wallet {
     }
 
     public synchronized void initChainId(PanaceaApiRestClient client) throws PanaceaApiException {
-        NodeInfoResponse info = client.getNodeInfo();
-        chainId = info.getNodeInfo().getNetwork();
+        NodeInfo info = client.getNodeInfo();
+        chainId = info.getNetwork();
     }
 
     public String getPrivateKey() {

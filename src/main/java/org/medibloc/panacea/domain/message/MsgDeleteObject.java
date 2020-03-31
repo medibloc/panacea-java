@@ -1,6 +1,7 @@
 package org.medibloc.panacea.domain.message;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,9 +23,12 @@ public class MsgDeleteObject implements PanaceaTransactionMessage {
     @JsonIgnoreProperties(ignoreUnknown = true)
     @JsonPropertyOrder(alphabetic = true)
     public static class Value {
-        private String owner_address;
-        private String bucket_name;
-        private String writer_address;
+        @JsonProperty("owner_address")
+        private String ownerAddress;
+        @JsonProperty("bucket_name")
+        private String bucketName;
+        @JsonProperty("writer_address")
+        private String writerAddress;
         private String key;
     }
 }

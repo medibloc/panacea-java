@@ -27,14 +27,14 @@ public class CommonTest {
 
     @Test
     public void testGetAccount() throws PanaceaApiException {
-        Res<TV<Account>> acc = restClient.getAccount("panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g");
+        Account acc = restClient.getAccount("panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g");
         System.out.println(acc);
         Assert.assertNotNull(acc);
     }
 
     @Test
     public void testGetNodeInfo() throws PanaceaApiException {
-        NodeInfoResponse nodeInfo = restClient.getNodeInfo();
+        NodeInfo nodeInfo = restClient.getNodeInfo();
         System.out.println(nodeInfo);
         Assert.assertNotNull(nodeInfo);
     }
@@ -48,7 +48,7 @@ public class CommonTest {
 
     @Test
     public void testGetTxResponse() throws PanaceaApiException {
-        String txHash = "192C1AF789D035FCA7C9374EEACBAC23817BB2ED18938027BB2ACF04B492A89F";
+        String txHash = "C90726F576B717813697EFF5A9AA99A2DB16150D47895609A3C1FBC03261AE30";
 
         TxResponse res = restClient.getTxResponse(txHash);
         System.out.println(res);
@@ -71,7 +71,7 @@ public class CommonTest {
 
     @Test
     public void testGetTxsByHeight() throws PanaceaApiException {
-        SearchTxsResult responses = restClient.getTxsByHeight(4911L);
+        List<TxResponse> responses = restClient.getTxsByHeight(4911L);
         System.out.println(responses);
         Assert.assertNotNull(responses);
     }
@@ -168,8 +168,8 @@ public class CommonTest {
         Wallet wallet = Wallet.createWalletFromMnemonicCode(mnemonic, hrp);
         wallet.ensureWalletIsReady(restClient);
 
-        Res<TV<Account>> account = restClient.getAccount(wallet.getAddress());
-        print(account.getResult().getValue().getCoins().get(0).getAmount());
+        Account account = restClient.getAccount(wallet.getAddress());
+        print(account.getCoins().get(0).getAmount());
 
         StdTx tx = new StdTx(msgSend, fee, "");
 

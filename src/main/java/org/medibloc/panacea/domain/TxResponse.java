@@ -7,30 +7,46 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.annotation.Nullable;
 import java.util.List;
 
 @Getter @Setter @ToString
-@JsonPropertyOrder(alphabetic = true)
 @JsonIgnoreProperties(ignoreUnknown = true)
+@JsonPropertyOrder(alphabetic = true)
 public class TxResponse {
     // used for fail
     private int code;
     private String data;
 
-    // success
-    private String height;
-    private String txhash;
+    private Long height;
+    @JsonProperty("txhash")
+    private String txHash;
     @JsonProperty("raw_log")
     private String rawLog;
     private List<Log> logs;
+
     private String info;
+
     @JsonProperty("gas_wanted")
-    private String gasWanted;
+    private Long gasWanted;
+
     @JsonProperty("gas_used")
-    private String gasUsed;
+    private Long gasUsed;
+
     private String codespace;
-    private StdTx tx;
+
+    private AminoStdTx tx;
+
     private String timestamp;
+
     private List<Event> events;
+
+
+    @Getter @Setter @ToString
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    @JsonPropertyOrder(alphabetic = true)
+    public static class AminoStdTx {
+        private String type;
+        private StdTx value;
+    }
+
 }

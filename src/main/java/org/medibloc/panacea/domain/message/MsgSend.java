@@ -29,5 +29,4 @@ public class MsgSend implements PanaceaTransactionMessage {
         private String toAddress;
         private List<Coin> amount;
     }
-
 }

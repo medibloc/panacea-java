@@ -1,14 +1,15 @@
 package org.medibloc.panacea;
 
 import org.medibloc.panacea.domain.*;
+import org.medibloc.panacea.domain.aol.AolWriter;
 import org.medibloc.panacea.domain.aol.Record;
 import org.medibloc.panacea.domain.aol.Topic;
-import org.medibloc.panacea.domain.aol.AolWriter;
 import org.medibloc.panacea.domain.bucket.Bucket;
 import org.medibloc.panacea.domain.bucket.BucketObject;
 import org.medibloc.panacea.domain.bucket.BucketOwner;
 import org.medibloc.panacea.domain.bucket.BucketWriter;
-import org.medibloc.panacea.domain.BroadcastReq;
+import org.medibloc.panacea.domain.NodeInfoResponse;
+import org.medibloc.panacea.domain.model.response.Res;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -17,7 +18,7 @@ import java.util.List;
 public interface PanaceaApi {
 
     @GET("auth/accounts/{address}")
-    Call<Res<TV<Account>>> getAccount(@Path("address") String address);
+    Call<Res<Account>> getAccount(@Path("address") String address);
 
     @GET("node_info")
     Call<NodeInfoResponse> getNodeInfo();
@@ -64,7 +65,7 @@ public interface PanaceaApi {
     );
 
     @GET("api/v1/aol/{ownerAddr}/topics/{topicName}/records/{offset}")
-    Call<Res<Record>> getRecord(
+    Call<Record> getRecord(
             @Path("ownerAddr") String ownerAddress,
             @Path("topicName") String topicName,
             @Path("offset") Long offset);

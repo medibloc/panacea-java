@@ -10,6 +10,7 @@ import org.medibloc.panacea.domain.bucket.BucketObject;
 import org.medibloc.panacea.domain.bucket.BucketOwner;
 import org.medibloc.panacea.domain.bucket.BucketWriter;
 import org.medibloc.panacea.domain.message.*;
+import org.medibloc.panacea.domain.model.response.Res;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -40,16 +41,6 @@ public class BucketTest {
         Res<BucketOwner> owner = restClient.getOwner("panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g");
         System.out.println(owner);
         Assert.assertNotNull(owner);
-    }
-
-    @Test
-    public void testGetTxsByAction() throws PanaceaApiException {
-        SearchTxsResult result = restClient.getTxsByAction("send", 1L, 30L);
-        System.out.println(result);
-        Assert.assertNotNull(result);
-        SearchTxsResult result2 = restClient.getTxsByAction("create_topic", 1L, 30L);
-        System.out.println(result2);
-        Assert.assertNotNull(result2);
     }
 
     @Test
@@ -102,8 +93,8 @@ public class BucketTest {
     public void testCreateBucket() throws PanaceaApiException {
         MsgCreateBucket msg = new MsgCreateBucket();
         MsgCreateBucket.Value value = new MsgCreateBucket.Value();
-        value.setBucket_name("123ab");
-        value.setBucket_owner("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
+        value.setBucketName("123ab");
+        value.setBucketOwner("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
         value.setDescription("test bucket");
         msg.setValue(value);
         broadcastMsgSync(msg);
@@ -113,8 +104,8 @@ public class BucketTest {
     public void testDeleteBucket() throws PanaceaApiException {
         MsgDeleteBucket msg = new MsgDeleteBucket();
         MsgDeleteBucket.Value value = new MsgDeleteBucket.Value();
-        value.setBucket_name("123ab");
-        value.setOwner_address("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
+        value.setBucketName("123ab");
+        value.setOwnerAddress("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
         msg.setValue(value);
         broadcastMsgSync(msg);
     }
@@ -147,9 +138,9 @@ public class BucketTest {
     public void testCreateObject() throws PanaceaApiException {
         MsgCreateObject msg = new MsgCreateObject();
         MsgCreateObject.Value value = new MsgCreateObject.Value();
-        value.setBucket_name("123ab");
-        value.setOwner_address("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
-        value.setWriter_address("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
+        value.setBucketName("123ab");
+        value.setOwnerAddress("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
+        value.setWriterAddress("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
         value.setKey("key11");
         value.setValue("22value");
         broadcastMsgSync(msg);
@@ -159,9 +150,9 @@ public class BucketTest {
     public void testDeleteObject() throws PanaceaApiException {
         MsgDeleteObject msg = new MsgDeleteObject();
         MsgDeleteObject.Value value = new MsgDeleteObject.Value();
-        value.setBucket_name("123ab");
-        value.setOwner_address("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
-        value.setWriter_address("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
+        value.setBucketName("123ab");
+        value.setOwnerAddress("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
+        value.setWriterAddress("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
         value.setKey("key11");
         broadcastMsgSync(msg);
     }

@@ -8,9 +8,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @NoArgsConstructor
-@Getter
-@Setter
-@ToString
+@Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder(alphabetic = true)
 public class MsgRemoveWriter implements PanaceaTransactionMessage {

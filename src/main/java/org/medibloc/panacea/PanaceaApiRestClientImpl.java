@@ -2,14 +2,14 @@ package org.medibloc.panacea;
 
 
 import org.medibloc.panacea.domain.*;
+import org.medibloc.panacea.domain.aol.AolWriter;
 import org.medibloc.panacea.domain.aol.Record;
 import org.medibloc.panacea.domain.aol.Topic;
-import org.medibloc.panacea.domain.aol.AolWriter;
 import org.medibloc.panacea.domain.bucket.Bucket;
 import org.medibloc.panacea.domain.bucket.BucketObject;
 import org.medibloc.panacea.domain.bucket.BucketOwner;
 import org.medibloc.panacea.domain.bucket.BucketWriter;
-import org.medibloc.panacea.domain.BroadcastReq;
+import org.medibloc.panacea.domain.model.response.Res;
 
 import java.util.List;
 
@@ -25,13 +25,20 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
     }
 
     @Override
-    public Res<TV<Account>> getAccount(String address) throws PanaceaApiException {
-        return PanaceaApiClientGenerator.executeSync(panaceaApi.getAccount(address));
+    public Account getAccount(String address) throws PanaceaApiException {
+        Res<Account> resAccount = PanaceaApiClientGenerator.executeSync(panaceaApi.getAccount(address));
+//        Account account = resAccount.getResult();
+//        account.getValue().setAccountNumber(account.getAccountNumber());
+//        account.getValue().setSequence(account.getSequence());
+//        account.getValue().setCoins(account.getCoins());
+//        account.getValue().setAddress(account.getAddress());
+        return resAccount.getResult();
     }
 
     @Override
-    public NodeInfoResponse getNodeInfo() throws PanaceaApiException {
-        return PanaceaApiClientGenerator.executeSync(panaceaApi.getNodeInfo());
+    public NodeInfo getNodeInfo() throws PanaceaApiException {
+        NodeInfoResponse nodeInfo = PanaceaApiClientGenerator.executeSync(panaceaApi.getNodeInfo());
+        return nodeInfo.getNodeInfo();
     }
 
     @Override
@@ -40,8 +47,13 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
     }
 
     @Override
-    public Res<Record> getRecord(String ownerAddress, String topicName, Long offset) throws PanaceaApiException {
-        return PanaceaApiClientGenerator.executeSync(panaceaApi.getRecord(ownerAddress, topicName, offset));
+    public Record getRecord(String ownerAddress, String topicName, Long offset) throws PanaceaApiException {
+        Record record = PanaceaApiClientGenerator.executeSync(panaceaApi.getRecord(ownerAddress, topicName, offset));
+        record.setNanoTimestamp(record.getResult().getNanoTimestamp());
+        record.setWriterAddress(record.getResult().getWriterAddress());
+        record.setKey(record.getResult().getKey());
+        record.setValue(record.getResult().getValue());
+        return record;
     }
 
     @Override
@@ -60,13 +72,9 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
     }
 
     @Override
-    public SearchTxsResult getTxsByHeight(Long height) throws PanaceaApiException {
-        return PanaceaApiClientGenerator.executeSync(panaceaApi.getTxsByHeight(height));
-    }
-
-    @Override
-    public SearchTxsResult getTxsByAction(String action, Long page, Long limit) throws PanaceaApiException {
-        return PanaceaApiClientGenerator.executeSync(panaceaApi.getTxsByAction(action, page, limit));
+    public List<TxResponse> getTxsByHeight(Long height) throws PanaceaApiException {
+        SearchTxsResult searchTxsResult = PanaceaApiClientGenerator.executeSync(panaceaApi.getTxsByHeight(height));
+        return searchTxsResult.getTxs();
     }
 
     @Override
