@@ -9,7 +9,6 @@ import lombok.ToString;
 @Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Bucket {
-
     @JsonProperty("owner_address")
     private String ownerAddress;
     @JsonProperty("bucket_name")

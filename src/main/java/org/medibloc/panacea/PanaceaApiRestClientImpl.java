@@ -13,6 +13,8 @@ import org.medibloc.panacea.domain.model.response.NodeInfoResponse;
 import org.medibloc.panacea.domain.model.response.RecordResponse;
 import org.medibloc.panacea.domain.model.response.Res;
 
+import java.util.ArrayList;
+
 import java.util.List;
 
 /**
@@ -71,8 +73,20 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
 
     @Override
     public List<TxResponse> getTxsByHeight(Long height) throws PanaceaApiException {
-        SearchTxsResult searchTxsResult = PanaceaApiClientGenerator.executeSync(panaceaApi.getTxsByHeight(height));
-        return searchTxsResult.getTxs();
+
+        List<TxResponse> txResponses = new ArrayList<TxResponse>();
+        SearchTxsResult txsResult;
+
+        for (int i = 1;; i++) {
+            txsResult = PanaceaApiClientGenerator.executeSync(panaceaApi.getTxsByHeight(height, i));
+
+            txResponses.addAll(txsResult.getTxs());
+            if (txsResult.getTxs().size() < 30) {
+                break;
+            }
+        }
+
+        return txResponses;
     }
 
     @Override

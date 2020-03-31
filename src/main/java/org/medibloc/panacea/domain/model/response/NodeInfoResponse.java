@@ -17,13 +17,4 @@ public class NodeInfoResponse {
     @JsonProperty("application_version")
     private ApplicationVersion applicationVersion;
 
-
-    @Getter @Setter @ToString
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Other {
-        @JsonProperty("tx_index")
-        private String txIndex;
-        @JsonProperty("rpc_address")
-        private String rpcAddress;
-    }
 }

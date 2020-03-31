@@ -36,7 +36,10 @@ public interface PanaceaApi {
     Call<BlockInfo> getLatestBlock();
 
     @GET("txs")
-    Call<SearchTxsResult> getTxsByHeight(@Query("tx.height") Long height);
+    Call<SearchTxsResult> getTxsByHeight(
+            @Query("tx.height") Long height,
+            @Query("page") int page);
+
 
     @GET("txs")
     Call<SearchTxsResult> getTxsByAction(

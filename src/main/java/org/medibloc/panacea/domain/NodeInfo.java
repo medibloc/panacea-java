@@ -19,5 +19,14 @@ public class NodeInfo {
     private String version;
     private String channels;
     private String moniker;
-    private NodeInfoResponse.Other other;
+    private Other other;
+
+    @Getter @Setter @ToString
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class Other {
+        @JsonProperty("tx_index")
+        private String txIndex;
+        @JsonProperty("rpc_address")
+        private String rpcAddress;
+    }
 }

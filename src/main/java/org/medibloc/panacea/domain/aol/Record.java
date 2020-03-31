@@ -12,26 +12,11 @@ import java.util.Date;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Record {
     private byte[] key;
-
     private byte[] value;
-
     @JsonProperty("nano_timestamp")
     private Long nanoTimestamp;
-
     @JsonProperty("writer_address")
     private String writerAddress;
-
-    @Getter @Setter @ToString
-    @JsonIgnoreProperties(ignoreUnknown = true)
-    public static class Result {
-        private int height;
-        private byte[] key;
-        private byte[] value;
-        @JsonProperty("nano_timestamp")
-        private Long nanoTimestamp;
-        @JsonProperty("writer_address")
-        private String writerAddress;
-    }
 
     public Date getTime() {
         return new Date(nanoTimestamp/1000000);

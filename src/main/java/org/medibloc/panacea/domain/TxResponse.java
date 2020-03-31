@@ -23,23 +23,15 @@ public class TxResponse {
     @JsonProperty("raw_log")
     private String rawLog;
     private List<Log> logs;
-
     private String info;
-
     @JsonProperty("gas_wanted")
     private Long gasWanted;
-
     @JsonProperty("gas_used")
     private Long gasUsed;
-
     private String codespace;
-
     private AminoStdTx tx;
-
     private String timestamp;
-
     private List<Event> events;
-
 
     @Getter @Setter @ToString
     @JsonIgnoreProperties(ignoreUnknown = true)

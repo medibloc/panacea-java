@@ -19,8 +19,6 @@ import java.util.List;
 public class BucketTest {
     private PanaceaApiRestClient restClient = null;
 
-    private StdTx stdTx = null;
-
     @Before
     public void setup() {
         restClient = PanaceaApiClientFactory.newInstance()
@@ -127,9 +125,9 @@ public class BucketTest {
     public void testRemoveWriter() throws PanaceaApiException {
         MsgRemoveWriter msg = new MsgRemoveWriter();
         MsgRemoveWriter.Value value = new MsgRemoveWriter.Value();
-        value.setBucket_name("123ab");
-        value.setOwner_address("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
-        value.setWriter_address("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
+        value.setBucketName("123ab");
+        value.setOwnerAddress("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
+        value.setWriterAddress("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
         msg.setValue(value);
         broadcastMsgSync(msg);
     }

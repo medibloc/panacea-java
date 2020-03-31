@@ -71,14 +71,21 @@ public class CommonTest {
 
     @Test
     public void testGetTxsByHeight() throws PanaceaApiException {
-        List<TxResponse> responses = restClient.getTxsByHeight(4911L);
+        List<TxResponse> responses = restClient.getTxsByHeight(557L);
         System.out.println(responses);
         Assert.assertNotNull(responses);
     }
 
     @Test
-    public void testSendTransactionBlock() throws PanaceaApiException {
+    public void testGetTxsByHeightWithPaged() throws PanaceaApiException {
+        List<TxResponse> responses = restClient.getTxsByHeight(557L);
+        System.out.println(responses.size());
+        Assert.assertNotNull(responses);
+        Assert.assertEquals(99, responses.size());
+    }
 
+    @Test
+    public void testSendTransactionBlock() throws PanaceaApiException {
         Transfer transfer = new Transfer();
         transfer.setAmount("10000");
         transfer.setDenom("umed");
@@ -112,6 +119,45 @@ public class CommonTest {
 
         TxResponse res = restClient.broadcast(req);
         System.out.println(res);
+    }
+
+    @Test
+    public void testSend100Txs() throws PanaceaApiException {
+
+        String mnemonic = "giraffe wreck kit enemy anger nephew silk sphere tuna tube lady evil market lizard humor usage sand cattle wedding access wall basket define fresh";
+
+        Wallet wallet = Wallet.createWalletFromMnemonicCode(mnemonic, hrp);
+        wallet.ensureWalletIsReady(restClient);
+
+        for (int i = 1; i < 100; i++) {
+            Transfer transfer = new Transfer();
+            transfer.setAmount(String.valueOf(i*100));
+            transfer.setDenom("umed");
+            transfer.setFromAddress("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
+            transfer.setToAddress("panacea145tgu5y60qsxvwjykfgd7277kzeqd7y3qqwn4j");
+
+            MsgSend msgSend = createMsgSend(transfer);
+
+            StdFee fee = new StdFee("umed", "10000", "60000");
+
+            StdTx tx = new StdTx(msgSend, fee, "");
+
+            try {
+                tx.sign(wallet);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (NoSuchAlgorithmException e) {
+                e.printStackTrace();
+            }
+
+            wallet.increaseAccountSequence();
+
+            BroadcastReq req = new BroadcastReq(tx, "sync");
+
+            TxResponse res = restClient.broadcast(req);
+            System.out.println(res);
+        }
+
     }
 
     @Test
@@ -215,3 +261,5 @@ public class CommonTest {
         System.out.println(str);
     }
 }
+
+

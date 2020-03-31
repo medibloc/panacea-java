@@ -21,7 +21,6 @@ import java.util.Locale;
 
 import static com.google.common.base.Preconditions.checkArgument;
 
-// TODO: Copied from https://github.com/bitcoinj/bitcoinj. Remove these files after they are included in a new bitconj release
 public class Bech32 {
     /**
      * The io.nayuki.bitcoin.crypto.Bech32 character set for encoding.

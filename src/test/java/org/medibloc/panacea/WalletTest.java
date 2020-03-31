@@ -15,8 +15,4 @@ public class WalletTest {
         Assert.assertEquals("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm", wallet.getAddress());
     }
 
-    @Test
-    public void test() {
-        
-    }
 }

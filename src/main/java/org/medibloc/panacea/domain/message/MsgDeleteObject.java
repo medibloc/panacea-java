@@ -16,7 +16,7 @@ import lombok.ToString;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder(alphabetic = true)
 public class MsgDeleteObject implements PanaceaTransactionMessage {
-    private String type = "bucket/MsgCreateObject";
+    private String type = "bucket/MsgDeleteObject";
     private Value value;
 
     @Getter @Setter @ToString

@@ -28,7 +28,7 @@ public class AolTest {
 
     @Test
     public void testGetTopics() throws PanaceaApiException {
-        Res<List<Topic>> topics = restClient.getTopics("panacea17uvx489y05m3tfnlsrkwrnr6p03zh8k22www0g");
+        Res<List<Topic>> topics = restClient.getTopics("panacea1spdn9tmssd2zcllrn5ycduwqdhenca6vhtk3fm");
         System.out.println(topics);
     }
 

@@ -1,6 +1,7 @@
 package org.medibloc.panacea.domain.aol;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
@@ -9,6 +10,8 @@ import lombok.ToString;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Topic {
     private String description;
-    private long total_records;
-    private long total_writers;
+    @JsonProperty("total_records")
+    private long totalRecords;
+    @JsonProperty("total_writers")
+    private long totalWriters;
 }

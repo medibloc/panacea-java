@@ -14,7 +14,6 @@ import java.util.List;
 public class BlockInfo {
     @JsonProperty("block_meta")
     private BlockMeta blockMeta;
-
     private Block block;
 
     @Getter @Setter @ToString
@@ -43,9 +42,10 @@ public class BlockInfo {
     @JsonIgnoreProperties(ignoreUnknown = true)
     public static class Block {
         private Header header;
-        private Block.Data data;
-        private Block.Evidence evidence;
-        private Block.LastCommit last_commit;
+        private Data data;
+        private Evidence evidence;
+        @JsonProperty("last_commit")
+        private LastCommit lastCommit;
 
         @Getter @Setter @ToString
         @JsonIgnoreProperties(ignoreUnknown = true)
@@ -62,8 +62,9 @@ public class BlockInfo {
         @Getter @Setter @ToString
         @JsonIgnoreProperties(ignoreUnknown = true)
         public static class LastCommit {
-            private BlockId block_id;
-            private List<Block.LastCommit.PreCommit> precommits;
+            @JsonProperty("block_id")
+            private BlockId blockId;
+            private List<PreCommit> precommits;
 
             @Getter @Setter @ToString
             @JsonIgnoreProperties(ignoreUnknown = true)
@@ -71,10 +72,13 @@ public class BlockInfo {
                 private int type;
                 private String height;
                 private String round;
-                private BlockId block_id;
+                @JsonProperty("block_id")
+                private BlockId blockId;
                 private Date timestamp;
-                private String validator_address;
-                private String validator_index;
+                @JsonProperty("validator_address")
+                private String validatorAddress;
+                @JsonProperty("validator_index")
+                private String validatorIndex;
                 private String signature;
 
             }

@@ -9,7 +9,6 @@ import lombok.ToString;
 @Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BucketWriter {
-
     @JsonProperty("writer_address")
     private String writerAddress;
     @JsonProperty("owner_address")
