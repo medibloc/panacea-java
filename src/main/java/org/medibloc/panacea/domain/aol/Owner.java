@@ -1,15 +1,14 @@
-package org.medibloc.panacea.domain;
+package org.medibloc.panacea.domain.aol;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 @Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Transfer {
-    private String fromAddress;
-    private String toAddress;
-    private String denom;
-    private String amount;
+public class Owner {
+    @JsonProperty("total_topics")
+    private Long totalTopics;
 }

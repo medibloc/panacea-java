@@ -5,11 +5,11 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.util.List;
+
 @Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Transfer {
-    private String fromAddress;
-    private String toAddress;
-    private String denom;
-    private String amount;
+public class Event {
+    private String type;
+    private List<Attribute> attributes;
 }

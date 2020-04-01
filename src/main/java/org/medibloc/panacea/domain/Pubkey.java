@@ -7,9 +7,8 @@ import lombok.ToString;
 
 @Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Transfer {
-    private String fromAddress;
-    private String toAddress;
-    private String denom;
-    private String amount;
+public class Pubkey {
+    private String type = "tendermint/PubKeySecp256k1";
+    private String value;
+
 }

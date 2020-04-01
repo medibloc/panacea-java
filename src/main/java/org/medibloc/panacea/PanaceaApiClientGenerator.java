@@ -77,8 +77,14 @@ public class PanaceaApiClientGenerator {
      * Extracts and converts the response error body into an object.
      */
     public static PanaceaApiError getPanaceaApiError(Response<?> response) throws IOException {
-        return errorBodyConverter.convert(response.errorBody());
-    }
+        ResponseBody errorBody = response.errorBody();
+        if (errorBody == null) {
+            return null;
+        } else {
+            assert errorBodyConverter != null;
+            return errorBodyConverter.convert(errorBody);
+        }
+     }
 
     /**
      * Returns the shared OkHttpClient instance.

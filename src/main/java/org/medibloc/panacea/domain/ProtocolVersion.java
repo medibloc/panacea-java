@@ -7,9 +7,8 @@ import lombok.ToString;
 
 @Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Transfer {
-    private String fromAddress;
-    private String toAddress;
-    private String denom;
-    private String amount;
+class ProtocolVersion {
+    private String p2p;
+    private String block;
+    private String app;
 }

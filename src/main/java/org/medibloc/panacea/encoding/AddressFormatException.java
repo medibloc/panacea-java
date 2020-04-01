@@ -19,8 +19,6 @@ package org.medibloc.panacea.encoding;
 
 import org.bitcoinj.core.Base58;
 
-@SuppressWarnings("serial")
-// TODO: Copied from https://github.com/bitcoinj/bitcoinj. Remove these files after they are included in a new bitconj release
 public class AddressFormatException extends IllegalArgumentException {
     public AddressFormatException() {
         super();

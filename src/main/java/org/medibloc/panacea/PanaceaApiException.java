@@ -1,6 +1,5 @@
 package org.medibloc.panacea;
 
-//public class PanaceaApiException extends RuntimeException {
 public class PanaceaApiException extends Exception {
     private static final long serialVersionUID = 3788669840036201041L;
     private PanaceaApiError error;

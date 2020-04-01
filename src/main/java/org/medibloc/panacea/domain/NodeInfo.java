@@ -4,25 +4,28 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import lombok.ToString;
 
-@Getter @Setter
+@Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NodeInfo {
+    @JsonProperty("protocol_version")
+    private ProtocolVersion protocolVersion;
     private String id;
     @JsonProperty("listen_addr")
     private String listenAddr;
     private String network;
     private String version;
+    private String channels;
+    private String moniker;
+    private Other other;
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                .append("id", id)
-                .append("listenAddr", listenAddr)
-                .append("network", network)
-                .append("version", version)
-                .toString();
+    @Getter @Setter @ToString
+    @JsonIgnoreProperties(ignoreUnknown = true)
+    public static class Other {
+        @JsonProperty("tx_index")
+        private String txIndex;
+        @JsonProperty("rpc_address")
+        private String rpcAddress;
     }
 }

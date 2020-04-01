@@ -5,11 +5,10 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+
 @Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Transfer {
-    private String fromAddress;
-    private String toAddress;
-    private String denom;
-    private String amount;
+public class StdTxWrapper {
+    private String type;
+    private StdTx value;
 }

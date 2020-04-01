@@ -5,21 +5,24 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.Getter;
 import lombok.Setter;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-import org.medibloc.panacea.encoding.message.StdTx;
+import lombok.ToString;
 
-@Getter @Setter
+import java.util.List;
+
+@Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder(alphabetic = true)
 public class TxResponse {
+    // used for fail
+    private int code;
+    private String data;
+
     private Long height;
     @JsonProperty("txhash")
     private String txHash;
-    private int code;
-    private String data;
     @JsonProperty("raw_log")
     private String rawLog;
+    private List<Log> logs;
     private String info;
     @JsonProperty("gas_wanted")
     private Long gasWanted;
@@ -28,35 +31,14 @@ public class TxResponse {
     private String codespace;
     private AminoStdTx tx;
     private String timestamp;
+    private List<Event> events;
 
-    @Getter @Setter
+    @Getter @Setter @ToString
     @JsonIgnoreProperties(ignoreUnknown = true)
     @JsonPropertyOrder(alphabetic = true)
     public static class AminoStdTx {
         private String type;
         private StdTx value;
-        public String toString() {
-            return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE).
-                    append("type", type).
-                    append("value", value).
-                    toString();
-        }
     }
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-                .append("height", height)
-                .append("txHash", txHash)
-                .append("code", code)
-                .append("data", data)
-                .append("rawLog", rawLog)
-                .append("info", info)
-                .append("gasWanted", gasWanted)
-                .append("gasUsed", gasUsed)
-                .append("codespace", codespace)
-                .append("timestamp", timestamp)
-                .append("tx", tx)
-                .toString();
-    }
 }

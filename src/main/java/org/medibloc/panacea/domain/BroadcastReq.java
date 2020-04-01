@@ -5,11 +5,17 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+// mode = async | sync | block
+
 @Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Transfer {
-    private String fromAddress;
-    private String toAddress;
-    private String denom;
-    private String amount;
+public class BroadcastReq {
+    private StdTx tx;
+    private String mode;
+
+    public BroadcastReq(StdTx tx, String mode) {
+        this.tx = tx;
+        this.mode = mode;
+    }
+
 }
