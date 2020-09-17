@@ -162,13 +162,11 @@ public class PanaceaApiRestClientTest {
         ));
 
         MsgCreateDID msg = new MsgCreateDID(
-                new MsgCreateDID.Value(
-                        did,
-                        doc,
-                        veriMethod.getId(),
-                        sigBase64,
-                        "panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz"
-                )
+                did,
+                doc,
+                veriMethod.getId(),
+                sigBase64,
+                "panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz"
         );
 
         StdFee fee = new StdFee("umed", "10000", "200000");

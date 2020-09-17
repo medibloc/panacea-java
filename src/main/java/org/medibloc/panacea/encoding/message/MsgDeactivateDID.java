@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import lombok.*;
 import org.medibloc.panacea.encoding.message.did.DID;
+import org.medibloc.panacea.encoding.message.did.DIDDocument;
 import org.medibloc.panacea.encoding.message.did.DIDVerificationMethod;
 
 @NoArgsConstructor
@@ -17,6 +18,10 @@ import org.medibloc.panacea.encoding.message.did.DIDVerificationMethod;
 public class MsgDeactivateDID implements PanaceaTransactionMessage {
     private final String type = "did/MsgDeleteDID";
     private Value value;
+
+    public MsgDeactivateDID(DID did, DIDVerificationMethod.ID verificationMethodId, String signatureBase64, String fromAddress) {
+        this.value = new MsgDeactivateDID.Value(did, verificationMethodId, signatureBase64, fromAddress);
+    }
 
     @AllArgsConstructor
     @Getter

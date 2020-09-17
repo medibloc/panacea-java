@@ -9,7 +9,6 @@ import org.medibloc.panacea.encoding.message.did.DIDDocument;
 import org.medibloc.panacea.encoding.message.did.DIDVerificationMethod;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -18,6 +17,10 @@ import org.medibloc.panacea.encoding.message.did.DIDVerificationMethod;
 public class MsgUpdateDID implements PanaceaTransactionMessage {
     private final String type = "did/MsgUpdateDID";
     private Value value;
+
+    public MsgUpdateDID(DID did, DIDDocument document, DIDVerificationMethod.ID verificationMethodId, String signatureBase64, String fromAddress) {
+        this.value = new Value(did, document, verificationMethodId, signatureBase64, fromAddress);
+    }
 
     @AllArgsConstructor
     @Getter
