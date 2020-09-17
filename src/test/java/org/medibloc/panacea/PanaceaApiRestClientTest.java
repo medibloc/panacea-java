@@ -1,15 +1,20 @@
 package org.medibloc.panacea;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.apache.commons.codec.DecoderException;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
+import org.bitcoinj.core.Base58;
+import org.bitcoinj.core.ECKey;
 import org.junit.Test;
 import org.medibloc.panacea.domain.*;
 import org.medibloc.panacea.encoding.Crypto;
 import org.medibloc.panacea.encoding.EncodeUtils;
 import org.medibloc.panacea.encoding.message.*;
+import org.medibloc.panacea.encoding.message.did.*;
 
-import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -131,6 +136,40 @@ public class PanaceaApiRestClientTest {
             e.printStackTrace();
         }
 
+    }
+
+    @Test
+    public void testDID() throws JsonProcessingException, NoSuchAlgorithmException {
+        // client
+        PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("http://localhost:1317");
+
+        ECKey ecKey = new ECKey(new SecureRandom());
+        byte[] pubKey = ecKey.getPubKeyPoint().getEncoded(true);
+
+        DID did = new DID(DID.NetworkID.TESTNET, pubKey);
+        DIDVerificationMethod veriMethod = new DIDVerificationMethod(
+                new DIDVerificationMethod.ID(did, "key1"),
+                DIDKeyType.ES256K,
+                did,
+                pubKey
+        );
+        DIDDocument doc = new DIDDocument(
+                Collections.singletonList(DIDDocument.Context.DID_V1),
+                did,
+                Collections.singletonList(veriMethod),
+                Collections.singletonList((DIDAuthentication) new DIDVeriMethodIdAuthentication(veriMethod.getId()))
+        );
+        String sigBase64 = Base64.encodeBase64String(Crypto.sign(EncodeUtils.toJsonEncodeBytes(doc), ecKey));
+
+        MsgCreateDID msg = new MsgCreateDID(
+                new MsgCreateDID.Value(
+                        did,
+                        doc,
+                        veriMethod.getId(),
+                        sigBase64,
+                        "panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz"
+                )
+        );
     }
 
     private MsgSend createMsgSend(Transfer transfer) {
