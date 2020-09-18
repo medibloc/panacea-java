@@ -1,6 +1,7 @@
 package org.medibloc.panacea;
 
 
+import lombok.ToString;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -8,7 +9,6 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 import org.apache.commons.net.util.Base64;
 import org.bitcoinj.core.ECKey;
 import org.medibloc.panacea.domain.Account;
-import org.medibloc.panacea.domain.NodeInfo;
 import org.medibloc.panacea.encoding.Crypto;
 import org.medibloc.panacea.encoding.EncodeUtils;
 import org.medibloc.panacea.encoding.message.Pubkey;
@@ -21,21 +21,20 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
 
+@ToString
 public class Wallet {
-    private String privateKey;
     private LedgerKey ledgerKey;
-    private String address;
-    private ECKey ecKey;
-    private byte[] addressBytes;
-    private Pubkey pubKeyForSign;
+    private final String address;
+    private final ECKey ecKey;
+    private final byte[] addressBytes;
+    private final Pubkey pubKeyForSign;
     private Long accountNumber;
     private Long sequence;
-    private String pubKey;
+    private final String pubKey;
     private String chainId;
 
     public Wallet(String privateKey, String hrp) {
         if (!StringUtils.isEmpty(privateKey)) {
-            this.privateKey = privateKey;
             this.ecKey = ECKey.fromPrivate(new BigInteger(privateKey, 16));
             this.address = Crypto.getAddressFromECKey(this.ecKey, hrp);
             this.addressBytes = Crypto.decodeAddress(this.address);
@@ -56,6 +55,7 @@ public class Wallet {
         this.pubKeyForSign = new Pubkey();
         this.pubKeyForSign.setValue(Base64.encodeBase64String(pubKeyBytes));
         this.pubKey = encodeBech32PubKey(pubKeyBytes, hrp + "pub");
+        this.ecKey = ECKey.fromPublicOnly(pubKeyBytes);
     }
 
     public static Wallet createRandomWallet(String hrp) {
@@ -89,7 +89,7 @@ public class Wallet {
     }
 
     public byte[] sign(byte[] data) throws IOException, NoSuchAlgorithmException {
-        if (getEcKey() == null && getLedgerKey() != null) {
+        if (ecKey.isPubKeyOnly() && getLedgerKey() != null) {
             return Crypto.sign(data, getLedgerKey());
         }
         return Crypto.sign(data, getEcKey());
@@ -174,12 +174,12 @@ public class Wallet {
     }
 
     public synchronized void initChainId(PanaceaApiRestClient client) throws PanaceaApiException {
-        NodeInfo info = client.getNodeInfo();
-        chainId = info.getNetwork();
+        chainId = client.getNodeInfo().getNetwork();
     }
 
+    @Deprecated
     public String getPrivateKey() {
-        return privateKey;
+        return getPrivateKeyHexString();
     }
 
     public String getAddress() {
@@ -215,7 +215,7 @@ public class Wallet {
     }
 
     public String getPrivateKeyHexString() {
-        return privateKey;
+        return ecKey.getPrivateKeyAsHex();
     }
 
     public String getPubKeyHexString() {
