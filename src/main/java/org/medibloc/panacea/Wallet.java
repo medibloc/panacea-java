@@ -1,7 +1,6 @@
 package org.medibloc.panacea;
 
 
-import lombok.ToString;
 import org.apache.commons.codec.binary.Hex;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ToStringBuilder;
@@ -21,7 +20,6 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
 
-@ToString
 public class Wallet {
     private LedgerKey ledgerKey;
     private final String address;
