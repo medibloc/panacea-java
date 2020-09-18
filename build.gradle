@@ -28,6 +28,11 @@ dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
+test {
+    //TODO: enable this test when the panacea-core docker image is ready
+    exclude 'org/medibloc/panacea/PanaceaApiRestClientTest.class'
+}
+
 publishing {
     repositories {
         maven {
