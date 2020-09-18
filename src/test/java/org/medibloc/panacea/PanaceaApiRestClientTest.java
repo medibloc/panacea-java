@@ -138,6 +138,7 @@ public class PanaceaApiRestClientTest {
         // client
         PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("http://localhost:1317");
 
+        //TODO @youngjoon-lee: make this as DIDWallet
         ECKey ecKey = new ECKey(new SecureRandom());
         byte[] pubKey = ecKey.getPubKeyPoint().getEncoded(true);
 
@@ -156,6 +157,7 @@ public class PanaceaApiRestClientTest {
         );
         System.out.println(new ObjectMapper().writeValueAsString(doc));
 
+        //TODO @youngjoon-lee: Do this via DIDWallet
         String sigBase64 = Base64.encodeBase64String(Crypto.sign(
                 EncodeUtils.toJsonEncodeBytes(new DIDSignable(doc)),
                 ecKey
