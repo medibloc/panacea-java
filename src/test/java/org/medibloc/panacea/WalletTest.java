@@ -3,8 +3,8 @@ package org.medibloc.panacea;
 import org.bitcoinj.core.ECKey;
 import org.junit.Test;
 import org.medibloc.panacea.encoding.Crypto;
+import org.medibloc.panacea.encoding.EncodeUtils;
 import org.medibloc.panacea.encoding.message.Pubkey;
-import org.spongycastle.util.Strings;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -24,8 +24,11 @@ public class WalletTest {
 
     @Test
     public void signViaPrivKey() throws IOException, NoSuchAlgorithmException {
-        byte[] data = Strings.toByteArray("hello");
-        byte[] expectedSig = Crypto.sign(data, ECKey.fromPrivate(new BigInteger(privKeyHex, 16)));
+        String data = "hello";
+        byte[] expectedSig = Crypto.sign(
+                EncodeUtils.toJsonEncodeBytes(data),
+                ECKey.fromPrivate(new BigInteger(privKeyHex, 16))
+        );
 
         Wallet wallet = Wallet.createWalletFromMnemonicCode(mnemonic, hrp);
         assertArrayEquals(expectedSig, wallet.sign(data));
