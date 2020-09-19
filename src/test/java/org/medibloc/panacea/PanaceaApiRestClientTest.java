@@ -1,10 +1,7 @@
 package org.medibloc.panacea;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.codec.DecoderException;
-import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.codec.binary.Hex;
-import org.bitcoinj.core.ECKey;
 import org.junit.Test;
 import org.medibloc.panacea.domain.*;
 import org.medibloc.panacea.encoding.Crypto;
@@ -14,12 +11,11 @@ import org.medibloc.panacea.encoding.message.did.*;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 public class PanaceaApiRestClientTest {
     String mnemonic = "genuine key outside escape oval unhappy mansion cricket practice quarter purchase picnic layer bicycle stem soup column creek convince obey rather rice there alcohol";
@@ -134,13 +130,12 @@ public class PanaceaApiRestClientTest {
     }
 
     @Test
-    public void testDID() throws IOException, NoSuchAlgorithmException, PanaceaApiException, DecoderException {
+    public void testDID() throws IOException, NoSuchAlgorithmException, PanaceaApiException {
         // client
         PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("http://localhost:1317");
 
-        //TODO @youngjoon-lee: make this as DIDWallet
-        ECKey ecKey = new ECKey(new SecureRandom());
-        byte[] pubKey = ecKey.getPubKeyPoint().getEncoded(true);
+        DIDWallet didWallet = DIDWallet.createRandomWallet();
+        byte[] pubKey = didWallet.getPubKeyBytes();
 
         DID did = new DID(DID.NetworkID.TESTNET, pubKey);
         DIDVerificationMethod veriMethod = new DIDVerificationMethod(
@@ -155,25 +150,13 @@ public class PanaceaApiRestClientTest {
                 Collections.singletonList(veriMethod),
                 Collections.singletonList((DIDAuthentication) new DIDVeriMethodIdAuthentication(veriMethod.getId()))
         );
-        System.out.println(new ObjectMapper().writeValueAsString(doc));
 
-        //TODO @youngjoon-lee: Do this via DIDWallet
-        String sigBase64 = Base64.encodeBase64String(Crypto.sign(
-                EncodeUtils.toJsonEncodeBytes(new DIDSignable(doc)),
-                ecKey
-        ));
-
-        MsgCreateDID msg = new MsgCreateDID(
-                did,
-                doc,
-                veriMethod.getId(),
-                sigBase64,
-                "panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz"
-        );
+        MsgCreateDID msg = new MsgCreateDID(did, doc, "panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz");
+        msg.sign(veriMethod.getId(), didWallet, DIDSignable.initialSequence);
 
         StdFee fee = new StdFee("umed", "10000", "200000");
 
-        Wallet wallet = Wallet.createWalletFromMnemonicCode(Arrays.asList(mnemonic), "panacea", 0);
+        Wallet wallet = Wallet.createWalletFromMnemonicCode(mnemonic, "panacea", 0);
         wallet.ensureWalletIsReady(client);
 
         StdTx tx = new StdTx(msg, fee, "");
