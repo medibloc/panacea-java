@@ -31,7 +31,7 @@ public class DIDDocument {
     @Getter
     public static enum Context {
         DID_V1("https://www.w3.org/ns/did/v1"),
-        Security_V1("https://w3id.org/security/v1");
+        SECURITY_V1("https://w3id.org/security/v1");
 
         @JsonValue
         private final String value;
