@@ -20,9 +20,5 @@ public class DIDSignable {
     @JsonSerialize(using = ToStringSerializer.class)  // NOTE: The String->Long deserialization is done automatically
     private final Long sequence;
 
-    private static final Long initialSequence = 0L;
-
-    public DIDSignable(Object data) {
-        this(data, initialSequence);
-    }
+    public static final Long initialSequence = 0L;
 }
