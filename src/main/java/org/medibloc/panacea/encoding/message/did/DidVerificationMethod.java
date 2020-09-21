@@ -14,13 +14,13 @@ import org.bitcoinj.core.Base58;
 @EqualsAndHashCode
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder(alphabetic = true)
-public class DIDVerificationMethod {
-    private ID id;
-    private DIDKeyType type;
-    private DID controller;
+public class DidVerificationMethod {
+    private Id id;
+    private DidKeyType type;
+    private Did controller;
     private String publicKeyBase58;
 
-    public DIDVerificationMethod(ID id, DIDKeyType type, DID controller, byte[] publicKey) {
+    public DidVerificationMethod(Id id, DidKeyType type, Did controller, byte[] publicKey) {
         this.id = id;
         this.type = type;
         this.controller = controller;
@@ -31,11 +31,11 @@ public class DIDVerificationMethod {
     @Getter
     @ToString
     @EqualsAndHashCode
-    public static class ID {
+    public static class Id {
         @JsonValue
         private final String value;
 
-        public ID(DID did, String name) {
+        public Id(Did did, String name) {
             this(String.format("%s#%s", did.getValue(), name));
         }
     }

@@ -7,14 +7,14 @@ import java.security.SecureRandom;
 
 import static org.junit.Assert.*;
 
-public class DIDTest {
+public class DidTest {
 
     @Test
     public void testGenerate() {
         ECKey ecKey = new ECKey(new SecureRandom());
         byte[] pubKey = ecKey.getPubKeyPoint().getEncoded(true);
 
-        DID did = new DID(DID.NetworkID.TESTNET, pubKey);
+        Did did = new Did(Did.NetworkID.TESTNET, pubKey);
         System.out.println(did);
         assertTrue(did.getValue().matches("^did:panacea:(mainnet|testnet):[123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{21,22}$"));
     }

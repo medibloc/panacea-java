@@ -13,7 +13,7 @@ import lombok.ToString;
 @Getter
 @ToString
 @EqualsAndHashCode
-public class DIDVeriMethodIdAuthentication implements DIDAuthentication {
+public class DidVeriMethodIdAuthentication implements DidAuthentication {
     @JsonValue
-    private final DIDVerificationMethod.ID id;
+    private final DidVerificationMethod.Id id;
 }

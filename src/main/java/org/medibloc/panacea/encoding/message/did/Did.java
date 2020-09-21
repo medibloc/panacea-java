@@ -4,19 +4,17 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.*;
 import org.bitcoinj.core.Base58;
 
-import javax.annotation.MatchesPattern;
-
 @AllArgsConstructor
 @Getter
 @ToString
 @EqualsAndHashCode
-public class DID {
+public class Did {
     @JsonValue
     private final String value;
 
     private static final short pubKeyTruncateLen = 16;
 
-    public DID(NetworkID networkID, byte[] pubKey) {
+    public Did(NetworkID networkID, byte[] pubKey) {
         this(String.format(
                 "did:panacea:%s:%s",
                 networkID.getValue(),

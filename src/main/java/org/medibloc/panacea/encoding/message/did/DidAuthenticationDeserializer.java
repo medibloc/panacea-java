@@ -9,18 +9,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 
-public class DIDAuthenticationDeserializer extends JsonDeserializer<DIDAuthentication> {
+public class DidAuthenticationDeserializer extends JsonDeserializer<DidAuthentication> {
     @Override
-    public DIDAuthentication deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public DidAuthentication deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
         JsonToken jsonToken = p.getCurrentToken();
         if (jsonToken == JsonToken.VALUE_STRING) {
-            return new DIDVeriMethodIdAuthentication(
-                    new DIDVerificationMethod.ID(p.getValueAsString())
+            return new DidVeriMethodIdAuthentication(
+                    new DidVerificationMethod.Id(p.getValueAsString())
             );
         }
 
         ObjectMapper objectMapper = (ObjectMapper) p.getCodec();
-        DIDVerificationMethod veriMethod =  objectMapper.readValue(p, DIDVerificationMethod.class);
-        return new DIDVeriMethodAuthentication(veriMethod);
+        DidVerificationMethod veriMethod =  objectMapper.readValue(p, DidVerificationMethod.class);
+        return new DidVeriMethodAuthentication(veriMethod);
     }
 }

@@ -15,10 +15,10 @@ import lombok.ToString;
 @EqualsAndHashCode
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder(alphabetic = true)
-public class DIDSignable {
+public class DidSignable {
     private final Object data;
     @JsonSerialize(using = ToStringSerializer.class)  // NOTE: The String->Long deserialization is done automatically
     private final Long sequence;
 
-    public static final Long initialSequence = 0L;
+    public static final Long INITIAL_SEQUENCE = 0L;
 }

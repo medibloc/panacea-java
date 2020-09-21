@@ -14,9 +14,9 @@ import static com.fasterxml.jackson.annotation.JsonTypeInfo.Id.NAME;
         @Type(value = MsgCreateTopic.class, name = "aol/MsgCreateTopic"),
         @Type(value = MsgAddWriter.class, name = "aol/MsgAddWriter"),
         @Type(value = MsgDeleteWriter.class, name = "aol/MsgDeleteWriter"),
-        @Type(value = MsgCreateDID.class, name = "did/MsgCreateDID"),
-        @Type(value = MsgUpdateDID.class, name = "did/MsgUpdateDID"),
-        @Type(value = MsgDeactivateDID.class, name = "did/MsgDeactivateDID")
+        @Type(value = MsgCreateDid.class, name = "did/MsgCreateDID"),
+        @Type(value = MsgUpdateDid.class, name = "did/MsgUpdateDID"),
+        @Type(value = MsgDeactivateDid.class, name = "did/MsgDeactivateDID")
 })
 public interface PanaceaTransactionMessage {
     String getType();

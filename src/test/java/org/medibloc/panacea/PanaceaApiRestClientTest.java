@@ -130,29 +130,29 @@ public class PanaceaApiRestClientTest {
     }
 
     @Test
-    public void testDID() throws IOException, NoSuchAlgorithmException, PanaceaApiException {
+    public void testDid() throws IOException, NoSuchAlgorithmException, PanaceaApiException {
         // client
         PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("http://localhost:1317");
 
-        DIDWallet didWallet = DIDWallet.createRandomWallet();
+        DidWallet didWallet = DidWallet.createRandomWallet();
         byte[] pubKey = didWallet.getPubKeyBytes();
 
-        DID did = new DID(DID.NetworkID.TESTNET, pubKey);
-        DIDVerificationMethod veriMethod = new DIDVerificationMethod(
-                new DIDVerificationMethod.ID(did, "key1"),
-                DIDKeyType.ES256K,
+        Did did = new Did(Did.NetworkID.TESTNET, pubKey);
+        DidVerificationMethod veriMethod = new DidVerificationMethod(
+                new DidVerificationMethod.Id(did, "key1"),
+                DidKeyType.ES256K,
                 did,
                 pubKey
         );
-        DIDDocument doc = new DIDDocument(
-                Collections.singletonList(DIDDocument.Context.DID_V1),
+        DidDocument doc = new DidDocument(
+                Collections.singletonList(DidDocument.Context.DID_V1),
                 did,
                 Collections.singletonList(veriMethod),
-                Collections.singletonList((DIDAuthentication) new DIDVeriMethodIdAuthentication(veriMethod.getId()))
+                Collections.singletonList((DidAuthentication) new DidVeriMethodIdAuthentication(veriMethod.getId()))
         );
 
-        MsgCreateDID msg = new MsgCreateDID(did, doc, "panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz");
-        msg.sign(veriMethod.getId(), didWallet, DIDSignable.initialSequence);
+        MsgCreateDid msg = new MsgCreateDid(did, doc, "panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz");
+        msg.sign(veriMethod.getId(), didWallet, DidSignable.INITIAL_SEQUENCE);
 
         StdFee fee = new StdFee("umed", "10000", "200000");
 
