@@ -137,7 +137,7 @@ public class PanaceaApiRestClientTest {
         DidWallet didWallet = DidWallet.createRandomWallet();
         byte[] pubKey = didWallet.getPubKeyBytes();
 
-        Did did = new Did(Did.NetworkID.TESTNET, pubKey);
+        Did did = new Did(pubKey);
         DidVerificationMethod veriMethod = new DidVerificationMethod(
                 new DidVerificationMethod.Id(did, "key1"),
                 DidKeyType.ES256K,
