@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonValue;
 import lombok.*;
 import org.bitcoinj.core.Base58;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
 @AllArgsConstructor
 @Getter
 @ToString
@@ -12,33 +15,12 @@ public class Did {
     @JsonValue
     private final String value;
 
-    private static final short pubKeyTruncateLen = 16;
-
-    public Did(NetworkID networkID, byte[] pubKey) {
-        this(String.format(
-                "did:panacea:%s:%s",
-                networkID.getValue(),
-                truncateAndEncodePubKey(pubKey)
-        ));
+    public Did(byte[] pubKey) throws NoSuchAlgorithmException {
+        this(String.format("did:panacea:%s", encodePubKey(pubKey)));
     }
 
-    private static String truncateAndEncodePubKey(byte[] pubKey) {
-        if (pubKey.length < pubKeyTruncateLen) {
-            throw new IllegalArgumentException("public key is too short. it should be >= " + pubKeyTruncateLen);
-        }
-
-        byte[] pubKeyTruncated = new byte[pubKeyTruncateLen];
-        System.arraycopy(pubKey, 0, pubKeyTruncated, 0, pubKeyTruncateLen);
-        return Base58.encode(pubKeyTruncated);
-    }
-
-    @AllArgsConstructor
-    @Getter
-    public enum NetworkID {
-        MAINNET("mainnet"),
-        TESTNET("testnet");
-
-        @JsonValue
-        private final String value;
+    private static String encodePubKey(byte[] pubKey) throws NoSuchAlgorithmException {
+        MessageDigest digest = MessageDigest.getInstance("SHA-256");
+        return Base58.encode(digest.digest(pubKey));
     }
 }
