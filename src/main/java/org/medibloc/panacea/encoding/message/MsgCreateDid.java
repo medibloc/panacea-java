@@ -35,6 +35,7 @@ public class MsgCreateDid implements PanaceaTransactionMessage {
     }
 
     @RequiredArgsConstructor
+    @NoArgsConstructor
     @Getter
     @Setter
     @JsonIgnoreProperties(ignoreUnknown = true)

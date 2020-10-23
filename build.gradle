@@ -30,7 +30,7 @@ dependencies {
 
 test {
     //TODO: enable this test when the panacea-core docker image is ready
-    exclude 'org/medibloc/panacea/PanaceaApiRestClientTest.class'
+//    exclude 'org/medibloc/panacea/PanaceaApiRestClientTest.class'
 }
 
 publishing {

@@ -9,7 +9,6 @@ import java.security.NoSuchAlgorithmException;
 
 @AllArgsConstructor
 @Getter
-@ToString
 @EqualsAndHashCode
 public class Did {
     @JsonValue
@@ -22,5 +21,10 @@ public class Did {
     private static String encodePubKey(byte[] pubKey) throws NoSuchAlgorithmException {
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         return Base58.encode(digest.digest(pubKey));
+    }
+
+    @Override
+    public String toString() {
+        return value;
     }
 }
