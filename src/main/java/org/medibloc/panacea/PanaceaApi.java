@@ -9,16 +9,16 @@ import java.util.List;
 
 public interface PanaceaApi {
     @GET("auth/accounts/{address}")
-    Call<Account> getAccount(@Path("address") String address);
+    Call<AccountResponse> getAccount(@Path("address") String address);
 
     @GET("node_info")
-    Call<NodeInfo> getNodeInfo();
+    Call<NodeInfoResponse> getNodeInfo();
 
     @POST("txs")
     Call<TxResponse> broadcast(@Body BroadcastReq req);
 
     @GET("api/v1/aol/{ownerAddress}/topics/{topicName}/records/{offset}")
-    Call<Record> getRecord(@Path("ownerAddress") String ownerAddress, @Path("topicName") String topicName, @Path("offset") Long offset);
+    Call<RecordResponse> getRecord(@Path("ownerAddress") String ownerAddress, @Path("topicName") String topicName, @Path("offset") Long offset);
 
     @GET("txs/{txHash}")
     Call<TxResponse> getTxResponse(@Path("txHash") String txHash);
@@ -30,5 +30,5 @@ public interface PanaceaApi {
     Call<BlockInfo> getLatestBlock();
 
     @GET("txs")
-    Call<List<TxResponse>> getTxsByHeight(@Query("tx.height") Long height);
+    Call<TxResponses> getTxsByHeight(@Query("tx.height") Long height);
 }
