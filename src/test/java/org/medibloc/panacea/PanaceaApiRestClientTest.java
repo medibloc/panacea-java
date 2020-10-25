@@ -139,7 +139,7 @@ public class PanaceaApiRestClientTest {
     @Test
     public void testDid() throws IOException, NoSuchAlgorithmException, PanaceaApiException {
         // client
-        PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("https://testnet-api.gopanacea.org");
+        PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("https://localhost:1317");
 
         DidWallet didWallet = DidWallet.createRandomWallet();
         byte[] pubKey = didWallet.getPubKeyBytes();
@@ -158,7 +158,7 @@ public class PanaceaApiRestClientTest {
                 Collections.singletonList((DidAuthentication) new DidVeriMethodIdAuthentication(veriMethod.getId()))
         );
 
-        MsgCreateDid msg = new MsgCreateDid(did, doc, "panacea1d8xsncdn4m9e0gxx4u9jq3u84rd88tdkthz6pu");
+        MsgCreateDid msg = new MsgCreateDid(did, doc, "panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz");
         msg.sign(veriMethod.getId(), didWallet, DidSignable.INITIAL_SEQUENCE);
 
         StdFee fee = new StdFee("umed", "10000", "200000");
