@@ -139,7 +139,7 @@ public class PanaceaApiRestClientTest {
     @Test
     public void testDid() throws IOException, NoSuchAlgorithmException, PanaceaApiException {
         // client
-        PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("https://localhost:1317");
+        PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("http://localhost:1317");
 
         DidWallet didWallet = DidWallet.createRandomWallet();
         byte[] pubKey = didWallet.getPubKeyBytes();
