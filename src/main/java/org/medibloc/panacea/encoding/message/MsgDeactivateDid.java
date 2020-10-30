@@ -35,6 +35,7 @@ public class MsgDeactivateDid implements PanaceaTransactionMessage {
     }
 
     @RequiredArgsConstructor
+    @NoArgsConstructor
     @Getter
     @Setter
     @JsonIgnoreProperties(ignoreUnknown = true)

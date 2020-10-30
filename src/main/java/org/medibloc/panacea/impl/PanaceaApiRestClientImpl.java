@@ -6,6 +6,8 @@ import org.medibloc.panacea.PanaceaApiException;
 import org.medibloc.panacea.PanaceaApiRestClient;
 import org.medibloc.panacea.domain.*;
 import org.medibloc.panacea.encoding.message.BroadcastReq;
+import org.medibloc.panacea.encoding.message.did.Did;
+import org.medibloc.panacea.encoding.message.did.DidDocumentWithMeta;
 
 import java.util.List;
 
@@ -33,6 +35,10 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
 
     public Record getRecord(String ownerAddress, String topicName, Long offset) throws PanaceaApiException {
         return PanaceaApiClientGenerator.executeSync(panaceaApi.getRecord(ownerAddress, topicName, offset)).getRecord();
+    }
+
+    public DidDocumentWithMeta getDidDocument(Did did) throws PanaceaApiException {
+        return PanaceaApiClientGenerator.executeSync(panaceaApi.getDidDocument(did)).getResult();
     }
 
     public TxResponse getTxResponse(String txHash) throws PanaceaApiException {

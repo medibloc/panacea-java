@@ -2,6 +2,7 @@ package org.medibloc.panacea;
 
 import org.medibloc.panacea.domain.*;
 import org.medibloc.panacea.encoding.message.BroadcastReq;
+import org.medibloc.panacea.encoding.message.did.Did;
 import retrofit2.Call;
 import retrofit2.http.*;
 
@@ -19,6 +20,9 @@ public interface PanaceaApi {
 
     @GET("api/v1/aol/{ownerAddress}/topics/{topicName}/records/{offset}")
     Call<RecordResponse> getRecord(@Path("ownerAddress") String ownerAddress, @Path("topicName") String topicName, @Path("offset") Long offset);
+
+    @GET("api/v1/did/{did}")
+    Call<DidDocumentResponse> getDidDocument(@Path("did") Did did);
 
     @GET("txs/{txHash}")
     Call<TxResponse> getTxResponse(@Path("txHash") String txHash);

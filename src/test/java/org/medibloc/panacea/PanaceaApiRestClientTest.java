@@ -177,6 +177,10 @@ public class PanaceaApiRestClientTest {
         assertEquals(0, res.getCode());
         System.out.println(res);
         System.out.println(res.getTx());
+
+        DidDocumentWithMeta documentWithMeta = client.getDidDocument(did);
+        assertEquals(new Long(0), documentWithMeta.getSequence());
+        assertEquals(doc, documentWithMeta.getDocument());
     }
 
     private MsgSend createMsgSend(Transfer transfer) {
