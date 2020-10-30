@@ -24,12 +24,19 @@ public class PanaceaApiRestClientTest {
     public void testGetAccountTestnet() throws PanaceaApiException {
         PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("http://52.78.196.16:1317");
         Account acc = client.getAccount("panacea1tkat7m78exe89jkx40e3c7rurytu5pukajdamq");
+        assertEquals("panacea1tkat7m78exe89jkx40e3c7rurytu5pukajdamq", acc.getValue().getAddress());
         System.out.println(acc);
-        BlockInfo bi = client.getBlockByHeight(3171824L);
+
+        //TODO: setup proper integration tests, instead of using the magic block height
+        BlockInfo bi = client.getBlockByHeight(7710L);
+        assertEquals(new Long(7710), bi.getBlockMeta().getHeader().getHeight());
         System.out.println(bi);
         System.out.println(client.getLatestBlock());
 
-        List<TxResponse> txs = client.getTxsByHeight(3171824L);
+        //TODO: setup proper integration tests, instead of using the magic block height
+        List<TxResponse> txs = client.getTxsByHeight(7710L);
+        assertEquals(1, txs.size());
+        assertEquals(new Long(7710), txs.get(0).getHeight());
         System.out.println(txs);
     }
 
@@ -109,9 +116,9 @@ public class PanaceaApiRestClientTest {
         ResAddRecord msgRes = EncodeUtils.toObjectFromJsonString(new String(data), ResAddRecord.class);
 
         Record rec = client.getRecord(msgRes.getValue().getOwnerAddress(), msgRes.getValue().getTopicName(), msgRes.getValue().getOffset());
-        System.out.println(new String(rec.getKey()));
-        System.out.println(new String(rec.getValue()));
-        System.out.println(rec);
+        assertEquals("key1", new String(rec.getKey()));
+        assertEquals("data1", new String(rec.getValue()));
+        assertEquals("panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz", rec.getWriterAddress());
 
 
         TxResponse txRes = client.getTxResponse(res.getTxHash());
@@ -121,8 +128,8 @@ public class PanaceaApiRestClientTest {
         System.out.println(txMsg.getType());
         if (txMsg.getType() == "aol/MsgAddRecord") {
             MsgAddRecord m = (MsgAddRecord) txMsg;
-            System.out.println(new String(m.getValue().getKey()));
-            System.out.println(new String(m.getValue().getValue()));
+            assertEquals("key1", new String(m.getValue().getKey()));
+            assertEquals("data1", new String(m.getValue().getValue()));
         } else if (txMsg.getType() == "cosmos-sdk/MsgSend") {
             MsgSend m = (MsgSend) txMsg;
             System.out.println(m.getValue().getAmount());

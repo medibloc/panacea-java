@@ -20,11 +20,11 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
     }
 
     public Account getAccount(String address) throws PanaceaApiException {
-        return PanaceaApiClientGenerator.executeSync(panaceaApi.getAccount(address));
+        return PanaceaApiClientGenerator.executeSync(panaceaApi.getAccount(address)).getAccount();
     }
 
     public NodeInfo getNodeInfo() throws PanaceaApiException {
-        return PanaceaApiClientGenerator.executeSync(panaceaApi.getNodeInfo());
+        return PanaceaApiClientGenerator.executeSync(panaceaApi.getNodeInfo()).getNodeInfo();
     }
 
     public TxResponse broadcast(BroadcastReq req) throws PanaceaApiException {
@@ -32,7 +32,7 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
     }
 
     public Record getRecord(String ownerAddress, String topicName, Long offset) throws PanaceaApiException {
-        return PanaceaApiClientGenerator.executeSync(panaceaApi.getRecord(ownerAddress, topicName, offset));
+        return PanaceaApiClientGenerator.executeSync(panaceaApi.getRecord(ownerAddress, topicName, offset)).getRecord();
     }
 
     public TxResponse getTxResponse(String txHash) throws PanaceaApiException {
@@ -48,6 +48,6 @@ public class PanaceaApiRestClientImpl implements PanaceaApiRestClient {
     }
 
     public List<TxResponse> getTxsByHeight(Long height) throws PanaceaApiException {
-        return PanaceaApiClientGenerator.executeSync(panaceaApi.getTxsByHeight(height));
+        return PanaceaApiClientGenerator.executeSync(panaceaApi.getTxsByHeight(height)).getResponses();
     }
 }
