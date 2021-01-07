@@ -13,6 +13,7 @@ public class EncodeUtils {
 
     static {
         OBJECT_MAPPER = new ObjectMapper();
+        OBJECT_MAPPER.getFactory().setCharacterEscapes(new JsonHTMLCharacterEscapes());
     }
 
     public static byte[] hexStringToByteArray(String s) {

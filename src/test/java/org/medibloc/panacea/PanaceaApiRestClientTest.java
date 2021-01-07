@@ -101,7 +101,7 @@ public class PanaceaApiRestClientTest {
         Wallet wallet = Wallet.createWalletFromMnemonicCode(Arrays.asList(mnemonic), "panacea", 0);
         wallet.ensureWalletIsReady(client);
 
-        StdTx tx = new StdTx(msg, fee, "");
+        StdTx tx = new StdTx(msg, fee, "메 ><& 모 memo");
 
         tx.sign(wallet);
         wallet.increaseAccountSequence();
@@ -123,6 +123,7 @@ public class PanaceaApiRestClientTest {
 
         TxResponse txRes = client.getTxResponse(res.getTxHash());
         System.out.println(txRes);
+        assertEquals("메 ><& 모 memo", txRes.getTx().getValue().getMemo());
 
         PanaceaTransactionMessage txMsg = txRes.getTx().getValue().getMsgs()[0];
         System.out.println(txMsg.getType());
