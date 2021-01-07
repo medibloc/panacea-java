@@ -4,6 +4,10 @@
 
 TBD
 
+## [v0.1.1](https://github.com/medibloc/medibloc-panacea-api/releases/tag/v0.1.1) - 2021-01-07
+
+- [\#17](https://github.com/medibloc/medibloc-panacea-api/pull/17) Escape HTML characters for JSON marshalling when signing on transactions
+
 ## [v0.1.0](https://github.com/medibloc/medibloc-panacea-api/releases/tag/v0.1.0) - 2020-11-02
 
 ### Features
