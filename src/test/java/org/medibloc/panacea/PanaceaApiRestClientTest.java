@@ -142,44 +142,34 @@ public class PanaceaApiRestClientTest {
         // client
         PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("http://localhost:1317");
 
-        DidWallet didWallet = DidWallet.createRandomWallet();
-        byte[] pubKey = didWallet.getPubKeyBytes();
+        // Generate a DID Wallet and a DID Document
+        DidWallet didWallet = DidWallet.createRandomWallet();  // which holds a private/public key pair
+        DidDocument doc = DidDocument.create(didWallet);
 
-        Did did = new Did(pubKey);
-        DidVerificationMethod veriMethod = new DidVerificationMethod(
-                new DidVerificationMethod.Id(did, "key1"),
-                DidKeyType.ES256K,
-                did,
-                pubKey
-        );
-        DidDocument doc = new DidDocument(
-                Collections.singletonList(DidDocument.Context.DID_V1),
-                did,
-                Collections.singletonList(veriMethod),
-                Collections.singletonList((DidAuthentication) new DidVeriMethodIdAuthentication(veriMethod.getId()))
-        );
+        // Build a message for registering the DID to Panacea
+        MsgCreateDid msg = new MsgCreateDid(doc.getId(), doc, "panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz");
+        // The message itself must be signed by the private key which is associated with the DID.
+        msg.sign(doc.getVerificationMethods().get(0).getId(), didWallet, DidSignable.INITIAL_SEQUENCE);
 
-        MsgCreateDid msg = new MsgCreateDid(did, doc, "panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz");
-        msg.sign(veriMethod.getId(), didWallet, DidSignable.INITIAL_SEQUENCE);
-
-        StdFee fee = new StdFee("umed", "10000", "200000");
-
+        // Prepare a Panacea account to execute a transaction
         Wallet wallet = Wallet.createWalletFromMnemonicCode(mnemonic, "panacea", 0);
         wallet.ensureWalletIsReady(client);
 
+        // Sign on the transaction using a private key of the Panacea account
+        StdFee fee = new StdFee("umed", "10000", "200000");
         StdTx tx = new StdTx(msg, fee, "");
-
         tx.sign(wallet);
         wallet.increaseAccountSequence();
 
+        // Broadcast the transaction and Get a response
         BroadcastReq req = new BroadcastReq(tx, "block");
-
         TxResponse res = client.broadcast(req);
         assertEquals(0, res.getCode());
         System.out.println(res);
         System.out.println(res.getTx());
 
-        DidDocumentWithMeta documentWithMeta = client.getDidDocument(did);
+        // Check if the DID was registered successfully by getting its DID Document
+        DidDocumentWithMeta documentWithMeta = client.getDidDocument(doc.getId());
         assertEquals(new Long(0), documentWithMeta.getSequence());
         assertEquals(doc, documentWithMeta.getDocument());
     }
