@@ -5,7 +5,7 @@ plugins {
 }
 
 group 'org.medibloc.panacea'
-version '0.1.1'
+version '0.1.2'
 
 sourceCompatibility = JavaVersion.VERSION_1_6
 targetCompatibility = JavaVersion.VERSION_1_6
@@ -36,7 +36,7 @@ test {
 publishing {
     repositories {
         maven {
-            url = uri("https://maven.pkg.github.com/medibloc/medibloc-panacea-api")
+            url = uri("https://maven.pkg.github.com/medibloc/panacea-java")
             credentials {
                 username = System.getenv("GPR_USER")
                 password = System.getenv("GPR_API_KEY")
