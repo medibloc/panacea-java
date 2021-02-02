@@ -4,7 +4,6 @@ import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.Sha256Hash;
 import org.bitcoinj.core.Utils;
 import org.bitcoinj.crypto.*;
-import org.medibloc.panacea.ledger.LedgerKey;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -37,12 +36,6 @@ public class Crypto {
         System.arraycopy(Utils.bigIntegerToBytes(signature.r, 32), 0, result, 0, 32);
         System.arraycopy(Utils.bigIntegerToBytes(signature.s, 32), 0, result, 32, 32);
         return result;
-    }
-
-    public static byte[] sign(byte[] msg, LedgerKey ledgerKey) throws IOException {
-        ledgerKey.getLedgerDevice().showAddressSECP256K1(ledgerKey.getBip44Path(), ledgerKey.getHrp());
-        byte[] signature = ledgerKey.getLedgerDevice().signSECP256K1(ledgerKey.getBip44Path(), msg);
-        return signatureConvertDERtoBER(signature);
     }
 
     public static byte[] decodeAddress(String address) throws SegwitAddressException {
