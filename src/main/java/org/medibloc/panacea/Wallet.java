@@ -8,8 +8,6 @@ import org.medibloc.panacea.domain.NodeInfo;
 import org.medibloc.panacea.encoding.Crypto;
 import org.medibloc.panacea.encoding.EncodeUtils;
 import org.medibloc.panacea.encoding.message.Pubkey;
-import org.medibloc.panacea.ledger.LedgerDevice;
-import org.medibloc.panacea.ledger.LedgerKey;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -18,7 +16,6 @@ import java.util.List;
 
 @ToString
 public class Wallet extends BaseWallet {
-    private final LedgerKey ledgerKey;
     private final String address;
     private final byte[] addressBytes;
     private final Pubkey pubKeyForSign;
@@ -30,23 +27,6 @@ public class Wallet extends BaseWallet {
     public Wallet(String privateKey, String hrp) {
         super(privateKey);
 
-        this.ledgerKey = null;
-        this.address = Crypto.getAddressFromECKey(getEcKey(), hrp);
-        this.addressBytes = Crypto.decodeAddress(this.address);
-        this.pubKeyForSign = new Pubkey();
-        byte[] pubKeyBytes = getPubKeyBytes();
-        this.pubKeyForSign.setValue(Base64.encodeBase64String(pubKeyBytes));
-        this.pubKeyBech32 = encodeBech32PubKey(pubKeyBytes, hrp + "pub");
-    }
-
-    public Wallet(int[] bip44Path, LedgerDevice ledgerDevice, String hrp) throws IOException {
-        this(new LedgerKey(ledgerDevice, bip44Path, hrp), hrp);
-    }
-
-    private Wallet(LedgerKey ledgerKey, String hrp) throws IOException {
-        super(ledgerKey.getPubKey());
-
-        this.ledgerKey = ledgerKey;
         this.address = Crypto.getAddressFromECKey(getEcKey(), hrp);
         this.addressBytes = Crypto.decodeAddress(this.address);
         this.pubKeyForSign = new Pubkey();
@@ -79,14 +59,6 @@ public class Wallet extends BaseWallet {
     public static Wallet createWalletFromMnemonicCode(List<String> words, String hrp, int index) {
         String privateKey = Crypto.getPrivateKeyFromMnemonicCode(words, index);
         return new Wallet(privateKey, hrp);
-    }
-
-    @Override
-    public byte[] sign(byte[] data) throws IOException, NoSuchAlgorithmException {
-        if (getEcKey().isPubKeyOnly() && ledgerKey != null) {
-            return Crypto.sign(data, ledgerKey);
-        }
-        return super.sign(data);
     }
 
     public synchronized void initAccount(PanaceaApiRestClient client) throws PanaceaApiException {
@@ -169,10 +141,6 @@ public class Wallet extends BaseWallet {
 
     public String getAddress() {
         return address;
-    }
-
-    public LedgerKey getLedgerKey() {
-        return ledgerKey;
     }
 
     public Pubkey getPubKeyForSign() {
