@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    compile group: 'org.medibloc.panacea', name: 'panacea-java', version: '0.1.2'
+    compile group: 'org.medibloc.panacea', name: 'panacea-java', version: '0.1.3'
 }
 ```
 

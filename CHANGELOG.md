@@ -4,6 +4,14 @@
 
 TBD
 
+
+## [v0.1.3](https://github.com/medibloc/panacea-java/releases/tag/v0.1.3) - 2021-03-15
+
+### Features
+
+- [\#22](https://github.com/medibloc/panacea-java/pull/22) feat: Add decodePublicKey() to DidVerificationMethod'
+
+
 ## [v0.1.2](https://github.com/medibloc/panacea-java/releases/tag/v0.1.2) - 2021-01-26
 
 ### Features
