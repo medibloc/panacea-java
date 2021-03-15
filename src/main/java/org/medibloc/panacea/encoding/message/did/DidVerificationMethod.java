@@ -27,6 +27,10 @@ public class DidVerificationMethod {
         this.publicKeyBase58 = Base58.encode(publicKey);
     }
 
+    public byte[] decodePublicKey() {
+        return Base58.decode(this.publicKeyBase58);
+    }
+
     @AllArgsConstructor
     @Getter
     @ToString
