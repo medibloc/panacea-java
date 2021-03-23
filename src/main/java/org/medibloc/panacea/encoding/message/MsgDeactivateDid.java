@@ -21,7 +21,7 @@ import java.security.NoSuchAlgorithmException;
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonPropertyOrder(alphabetic = true)
 public class MsgDeactivateDid implements PanaceaTransactionMessage {
-    private final String type = "did/MsgDeleteDID";
+    private final String type = "did/MsgDeactivateDID";
     private Value value;
 
     public MsgDeactivateDid(Did did, String fromAddress) {
