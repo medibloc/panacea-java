@@ -34,6 +34,15 @@ public class MsgDeactivateDid implements PanaceaTransactionMessage {
         );
     }
 
+    public MsgDeactivateDid(Did did, DidVerificationMethod.Id veriMethodId, String signatureBase64, String fromAddress) {
+        this.value = new Value(
+                did,
+                veriMethodId,
+                signatureBase64,
+                fromAddress
+        );
+    }
+
     @AllArgsConstructor
     @NoArgsConstructor
     @Getter

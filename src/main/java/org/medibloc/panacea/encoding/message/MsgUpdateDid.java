@@ -35,6 +35,16 @@ public class MsgUpdateDid implements PanaceaTransactionMessage {
         );
     }
 
+    public MsgUpdateDid(DidDocument document, DidVerificationMethod.Id veriMethodId, String signatureBase64, String fromAddress) {
+        this.value = new Value(
+                document.getId(),
+                document,
+                veriMethodId,
+                signatureBase64,
+                fromAddress
+        );
+    }
+
     @AllArgsConstructor
     @NoArgsConstructor
     @Getter
