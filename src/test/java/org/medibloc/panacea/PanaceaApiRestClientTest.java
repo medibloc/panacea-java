@@ -146,10 +146,13 @@ public class PanaceaApiRestClientTest {
         DidWallet didWallet = DidWallet.createRandomWallet();  // which holds a private/public key pair
         DidDocument doc = DidDocument.create(didWallet);
 
-        // Build a message for registering the DID to Panacea
-        MsgCreateDid msg = new MsgCreateDid(doc.getId(), doc, "panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz");
-        // The message itself must be signed by the private key which is associated with the DID.
-        msg.sign(doc.getVerificationMethods().get(0).getId(), didWallet, DidSignable.INITIAL_SEQUENCE);
+        // Build a message for registering the DID to Panacea (with signing by the private key which is associated with the DID).
+        MsgCreateDid msg = new MsgCreateDid(
+                doc,
+                doc.getVerificationMethods().get(0).getId(),
+                didWallet,
+                "panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz"
+        );
 
         // Prepare a Panacea account to execute a transaction
         Wallet wallet = Wallet.createWalletFromMnemonicCode(mnemonic, "panacea", 0);
