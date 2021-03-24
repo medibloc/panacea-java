@@ -24,17 +24,26 @@ public class MsgDeactivateDid implements PanaceaTransactionMessage {
     private final String type = "did/MsgDeleteDID";
     private Value value;
 
-    public MsgDeactivateDid(Did did, String fromAddress) {
-        this.value = new Value(did, fromAddress);
+    public MsgDeactivateDid(Did did, DidVerificationMethod.Id veriMethodId, DidWallet wallet, Long sequence, String fromAddress) throws IOException, NoSuchAlgorithmException {
+        byte[] sig = wallet.sign(new DidSignable(did, sequence));
+        this.value = new Value(
+                did,
+                veriMethodId,
+                Base64.encodeBase64String(sig),
+                fromAddress
+        );
     }
 
-    public void sign(DidVerificationMethod.Id veriMethodId, DidWallet wallet, Long sequence) throws IOException, NoSuchAlgorithmException {
-        byte[] sig = wallet.sign(new DidSignable(this.value.getDid(), sequence));
-        this.value.setSignatureBase64(Base64.encodeBase64String(sig));
-        this.value.setVerificationMethodId(veriMethodId);
+    public MsgDeactivateDid(Did did, DidVerificationMethod.Id veriMethodId, String signatureBase64, String fromAddress) {
+        this.value = new Value(
+                did,
+                veriMethodId,
+                signatureBase64,
+                fromAddress
+        );
     }
 
-    @RequiredArgsConstructor
+    @AllArgsConstructor
     @NoArgsConstructor
     @Getter
     @Setter
@@ -43,8 +52,10 @@ public class MsgDeactivateDid implements PanaceaTransactionMessage {
     public static class Value {
         @NonNull
         private Did did;
+        @NonNull
         @JsonProperty("verification_method_id")
         private DidVerificationMethod.Id verificationMethodId;
+        @NonNull
         @JsonProperty("signature")
         private String signatureBase64;
         @NonNull

@@ -24,17 +24,28 @@ public class MsgUpdateDid implements PanaceaTransactionMessage {
     private final String type = "did/MsgUpdateDID";
     private Value value;
 
-    public MsgUpdateDid(Did did, DidDocument document, String fromAddress) {
-        this.value = new MsgUpdateDid.Value(did, document, fromAddress);
+    public MsgUpdateDid(DidDocument document, DidVerificationMethod.Id veriMethodId, DidWallet wallet, Long sequence, String fromAddress) throws IOException, NoSuchAlgorithmException {
+        byte[] sig = wallet.sign(new DidSignable(document, sequence));
+        this.value = new Value(
+                document.getId(),
+                document,
+                veriMethodId,
+                Base64.encodeBase64String(sig),
+                fromAddress
+        );
     }
 
-    public void sign(DidVerificationMethod.Id veriMethodId, DidWallet wallet, Long sequence) throws IOException, NoSuchAlgorithmException {
-        byte[] sig = wallet.sign(new DidSignable(this.value.getDocument(), sequence));
-        this.value.setSignatureBase64(Base64.encodeBase64String(sig));
-        this.value.setVerificationMethodId(veriMethodId);
+    public MsgUpdateDid(DidDocument document, DidVerificationMethod.Id veriMethodId, String signatureBase64, String fromAddress) {
+        this.value = new Value(
+                document.getId(),
+                document,
+                veriMethodId,
+                signatureBase64,
+                fromAddress
+        );
     }
 
-    @RequiredArgsConstructor
+    @AllArgsConstructor
     @NoArgsConstructor
     @Getter
     @Setter
@@ -45,8 +56,10 @@ public class MsgUpdateDid implements PanaceaTransactionMessage {
         private Did did;
         @NonNull
         private DidDocument document;
+        @NonNull
         @JsonProperty("verification_method_id")
         private DidVerificationMethod.Id verificationMethodId;
+        @NonNull
         @JsonProperty("signature")
         private String signatureBase64;
         @NonNull
