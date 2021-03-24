@@ -5,6 +5,17 @@
 TBD
 
 
+## [v0.1.4](https://github.com/medibloc/panacea-java/releases/tag/v0.1.4) - 2021-03-24
+
+### Features
+
+- [\#23](https://github.com/medibloc/panacea-java/pull/23) feat: Refine constructors of DID tx messages
+
+### Bug fixes
+
+- [\#24](https://github.com/medibloc/panacea-java/pull/24) fix: Incorrect msg type: MsgDeleteDID -> MsgDeactivateDID
+
+
 ## [v0.1.3](https://github.com/medibloc/panacea-java/releases/tag/v0.1.3) - 2021-03-15
 
 ### Features
