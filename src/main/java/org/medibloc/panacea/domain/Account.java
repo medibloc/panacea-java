@@ -24,6 +24,14 @@ public class Account {
         private Long accountNumber;
         private Long sequence;
         private List<Coin> coins;
+
+        boolean isEmpty() {
+            return this.address.isEmpty() && this.accountNumber == 0 && this.sequence == 0 && this.coins.isEmpty();
+        }
+    }
+
+    boolean isEmpty() {
+        return this.value.isEmpty();
     }
 
     @Override
