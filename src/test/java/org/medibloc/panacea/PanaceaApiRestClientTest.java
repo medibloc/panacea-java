@@ -47,7 +47,6 @@ public class PanaceaApiRestClientTest {
         PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("http://52.78.196.16:1317");
         Wallet wallet = Wallet.createRandomWallet("panacea");
         wallet.ensureWalletIsReady(client);
-        System.out.println(wallet);
     }
 
     @Test
