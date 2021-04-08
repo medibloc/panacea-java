@@ -24,6 +24,16 @@ public class Account {
         private Long accountNumber;
         private Long sequence;
         private List<Coin> coins;
+
+        // When the account doesn't exist yet on the blockchain, the following empty response is returned from blockchain.
+        // {"height":"123","result":{"type":"cosmos-sdk/Account","value":{"address":"","coins":[],"public_key":null,"account_number":"0","sequence":"0"}}}
+        boolean isEmpty() {
+            return this.address.isEmpty() && this.accountNumber == 0 && this.sequence == 0 && this.coins.isEmpty();
+        }
+    }
+
+    boolean isEmpty() {
+        return this.value.isEmpty();
     }
 
     @Override

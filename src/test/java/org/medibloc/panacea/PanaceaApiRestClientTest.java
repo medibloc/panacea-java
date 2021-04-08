@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class PanaceaApiRestClientTest {
     String mnemonic = "genuine key outside escape oval unhappy mansion cricket practice quarter purchase picnic layer bicycle stem soup column creek convince obey rather rice there alcohol";
@@ -24,6 +25,7 @@ public class PanaceaApiRestClientTest {
     public void testGetAccountTestnet() throws PanaceaApiException {
         PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("http://52.78.196.16:1317");
         Account acc = client.getAccount("panacea1tkat7m78exe89jkx40e3c7rurytu5pukajdamq");
+        assertNotNull(acc);
         assertEquals("panacea1tkat7m78exe89jkx40e3c7rurytu5pukajdamq", acc.getValue().getAddress());
         System.out.println(acc);
 
@@ -38,6 +40,13 @@ public class PanaceaApiRestClientTest {
         assertEquals(1, txs.size());
         assertEquals(new Long(7710), txs.get(0).getHeight());
         System.out.println(txs);
+    }
+
+    @Test(expected = IllegalStateException.class)
+    public void testEnsureWalletForUnknownAccount() throws PanaceaApiException {
+        PanaceaApiRestClient client = PanaceaApiClientFactory.newInstance().newRestClient("http://52.78.196.16:1317");
+        Wallet wallet = Wallet.createRandomWallet("panacea");
+        wallet.ensureWalletIsReady(client);
     }
 
     @Test
