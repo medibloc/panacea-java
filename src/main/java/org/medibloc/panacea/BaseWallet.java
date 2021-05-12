@@ -62,4 +62,8 @@ class BaseWallet {
     public byte[] getPubKeyBytes() {
         return ecKey.getPubKey();
     }
+
+    public byte[] getPubKeyBytes(boolean compressed) {
+        return ecKey.getPubKeyPoint().getEncoded(compressed);
+    }
 }
