@@ -79,6 +79,8 @@ dependencies {
     implementation 'org.projectlombok:lombok:1.18.8'
     implementation 'commons-codec:commons-codec:1.12'
     implementation 'commons-net:commons-net:3.6'
+    implementation 'com.fasterxml.jackson.core:jackson-core:2.12.3'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
     implementation 'io.grpc:grpc-protobuf:1.22.1'
     implementation 'io.grpc:grpc-netty-shaded:1.22.1'
     implementation 'io.grpc:grpc-stub:1.22.1'
