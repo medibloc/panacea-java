@@ -1,24 +1,20 @@
 package org.medibloc.panacea;
 
+import com.google.protobuf.ByteString;
+import com.subgraph.orchid.encoders.Hex;
+import cosmos.auth.v1beta1.BaseAccount;
+import cosmos.crypto.secp256k1.Keys;
+import org.medibloc.panacea.encoding.Bech32;
+import org.medibloc.panacea.utils.CryptoUtils;
+import tendermint.p2p.DefaultNodeInfo;
 
-import lombok.ToString;
-import org.apache.commons.net.util.Base64;
-import org.medibloc.panacea.domain.Account;
-import org.medibloc.panacea.domain.NodeInfo;
-import org.medibloc.panacea.encoding.Crypto;
-import org.medibloc.panacea.encoding.EncodeUtils;
-import org.medibloc.panacea.encoding.message.Pubkey;
-
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
 
-@ToString
 public class Wallet extends BaseWallet {
     private final String address;
     private final byte[] addressBytes;
-    private final Pubkey pubKeyForSign;
+    private final Keys.PubKey pubKeyForSign;
     private Long accountNumber;
     private Long sequence;
     private final String pubKeyBech32;
@@ -27,20 +23,21 @@ public class Wallet extends BaseWallet {
     public Wallet(String privateKey, String hrp) {
         super(privateKey);
 
-        this.address = Crypto.getAddressFromECKey(getEcKey(), hrp);
-        this.addressBytes = Crypto.decodeAddress(this.address);
-        this.pubKeyForSign = new Pubkey();
+        this.address = CryptoUtils.getAddressFromECKey(getEcKey(), hrp);
+        this.addressBytes = CryptoUtils.decodeAddress(this.address);
         byte[] pubKeyBytes = getPubKeyBytes();
-        this.pubKeyForSign.setValue(Base64.encodeBase64String(pubKeyBytes));
+        this.pubKeyForSign = Keys.PubKey.newBuilder()
+                .setKey(ByteString.copyFrom(pubKeyBytes))
+                .build();
         this.pubKeyBech32 = encodeBech32PubKey(pubKeyBytes, hrp + "pub");
     }
 
     public static Wallet createRandomWallet(String hrp) {
-        return createWalletFromMnemonicCode(Crypto.generateMnemonicCode(), hrp);
+        return createWalletFromMnemonicCode(CryptoUtils.generateMnemonicCode(), hrp);
     }
 
     public static Wallet createWalletFromEntropy(String hrp, byte[] entropy) {
-        return createWalletFromMnemonicCode(Crypto.generateMnemonicCodeFromEntropy(entropy), hrp);
+        return createWalletFromMnemonicCode(CryptoUtils.generateMnemonicCodeFromEntropy(entropy), hrp);
     }
 
     public static Wallet createWalletFromMnemonicCode(String mnemonic, String hrp) {
@@ -57,15 +54,15 @@ public class Wallet extends BaseWallet {
     }
 
     public static Wallet createWalletFromMnemonicCode(List<String> words, String hrp, int index) {
-        String privateKey = Crypto.getPrivateKeyFromMnemonicCode(words, index);
+        String privateKey = CryptoUtils.getPrivateKeyFromMnemonicCode(words, index);
         return new Wallet(privateKey, hrp);
     }
 
-    public synchronized void initAccount(PanaceaApiRestClient client) throws PanaceaApiException {
-        Account account = client.getAccount(this.getAddress());
+    public synchronized void initAccount(PanaceaGrpcClient client) throws PanaceaApiException {
+        BaseAccount account = client.getAccount(this.getAddress());
         if (account != null) {
-            this.accountNumber = account.getValue().getAccountNumber();
-            this.sequence = account.getValue().getSequence();
+            this.accountNumber = account.getAccountNumber();
+            this.sequence = account.getSequence();
         } else {
             throw new IllegalStateException(
                     "Cannot get account information for address " + this.getAddress() +
@@ -73,10 +70,10 @@ public class Wallet extends BaseWallet {
         }
     }
 
-    public synchronized void reloadAccount(PanaceaApiRestClient client) throws PanaceaApiException {
-        Account account = client.getAccount(this.getAddress());
-        this.accountNumber = account.getValue().getAccountNumber();
-        this.sequence = account.getValue().getSequence();
+    public synchronized void reloadAccount(PanaceaGrpcClient client) throws PanaceaApiException {
+        BaseAccount account = client.getAccount(this.getAddress());
+        this.accountNumber = account.getAccountNumber();
+        this.sequence = account.getSequence();
     }
 
     public synchronized void reloadAccountOffline(Long accountNumber, Long sequence, String chainId) {
@@ -117,7 +114,7 @@ public class Wallet extends BaseWallet {
         this.sequence = null;
     }
 
-    public synchronized void ensureWalletIsReady(PanaceaApiRestClient client) throws PanaceaApiException {
+    public synchronized void ensureWalletIsReady(PanaceaGrpcClient client) throws PanaceaApiException {
         if (accountNumber == null) {
             initAccount(client);
         }
@@ -134,8 +131,8 @@ public class Wallet extends BaseWallet {
         reloadAccountOffline(accountNumber, sequence, chainId);
     }
 
-    public synchronized void initChainId(PanaceaApiRestClient client) throws PanaceaApiException {
-        NodeInfo info = client.getNodeInfo();
+    public synchronized void initChainId(PanaceaGrpcClient client) throws PanaceaApiException {
+        DefaultNodeInfo info = client.getNodeInfo();
         chainId = info.getNetwork();
     }
 
@@ -143,7 +140,7 @@ public class Wallet extends BaseWallet {
         return address;
     }
 
-    public Pubkey getPubKeyForSign() {
+    public Keys.PubKey getPubKeyForSign() {
         return pubKeyForSign;
     }
 
@@ -159,26 +156,21 @@ public class Wallet extends BaseWallet {
         return addressBytes;
     }
 
-    @Deprecated
-    public String getPubKey() {
-        return getPubKeyBech32();
-    }
-
     public String getPubKeyBech32() {
         return pubKeyBech32;
     }
 
     private String encodeBech32PubKey(byte[] data, String hrp) {
-        byte[] typePrefixBytes = EncodeUtils.hexStringToByteArray("EB5AE98721");
+        byte[] typePrefixBytes = Hex.decode("EB5AE98721");
         byte[] bz = new byte[typePrefixBytes.length + data.length];
         System.arraycopy(typePrefixBytes, 0, bz, 0, typePrefixBytes.length);
         System.arraycopy(data, 0, bz, typePrefixBytes.length, data.length);
-        return Crypto.encodeAddress(hrp, bz);
+        return CryptoUtils.encodeAddress(hrp, bz);
     }
 
     private byte[] decodeBech32PubKey(String pubKey) {
-        byte[] bz = Crypto.decodeAddress(pubKey);
-        byte[] typePrefixBytes = EncodeUtils.hexStringToByteArray("EB5AE98721");
+        byte[] bz = CryptoUtils.decodeAddress(pubKey);
+        byte[] typePrefixBytes = Hex.decode("EB5AE98721");
         return Arrays.copyOfRange(bz, typePrefixBytes.length, bz.length);
     }
 }
