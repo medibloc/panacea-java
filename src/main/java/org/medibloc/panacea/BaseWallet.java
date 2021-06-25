@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @ToString
-public class BaseWallet {
+class BaseWallet {
     private final ECKey ecKey;
 
     BaseWallet(String privateKey) {
