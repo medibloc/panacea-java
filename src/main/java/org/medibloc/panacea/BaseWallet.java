@@ -1,11 +1,9 @@
 package org.medibloc.panacea;
 
-
 import lombok.ToString;
 import org.apache.commons.lang3.StringUtils;
 import org.bitcoinj.core.ECKey;
-import org.medibloc.panacea.encoding.Crypto;
-import org.medibloc.panacea.encoding.EncodeUtils;
+import org.medibloc.panacea.utils.CryptoUtils;
 
 import java.io.IOException;
 import java.math.BigInteger;
@@ -25,21 +23,12 @@ class BaseWallet {
         }
     }
 
-    BaseWallet(byte[] pubKey) {
-        this.ecKey = ECKey.fromPublicOnly(pubKey);
-    }
-
     public static List<String> mnemonicStringToWords(String mnemonic) {
         return Arrays.asList(mnemonic.split("\\s+"));
     }
 
     public byte[] sign(byte[] data) throws IOException, NoSuchAlgorithmException {
-        return Crypto.sign(data, getEcKey());
-    }
-
-    public byte[] sign(Object object) throws IOException, NoSuchAlgorithmException {
-        byte[] data = EncodeUtils.toJsonEncodeBytes(object);
-        return sign(data);
+        return CryptoUtils.sign(data, getEcKey());
     }
 
     @Deprecated
