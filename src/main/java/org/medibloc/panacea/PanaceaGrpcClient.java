@@ -28,7 +28,6 @@ public class PanaceaGrpcClient {
         QueryAccountRequest request = QueryAccountRequest.newBuilder()
                 .setAddress(address)
                 .build();
-
         QueryAccountResponse response = grpcStub.getAuthQueryStub().account(request);
         try {
             return response.getAccount().unpack(BaseAccount.class);
@@ -70,7 +69,7 @@ public class PanaceaGrpcClient {
         return response.getDIDDocumentWithSeq();
     }
 
-    public TxResponse broadCast(BroadcastTxRequest request) {
+    public TxResponse broadcast(BroadcastTxRequest request) {
         BroadcastTxResponse response = grpcStub.getTxServiceStub().broadcastTx(request);
         return response.getTxResponse();
     }
@@ -103,6 +102,4 @@ public class PanaceaGrpcClient {
         GetLatestBlockResponse response = grpcStub.getTendermintQueryStub().getLatestBlock(GetLatestBlockRequest.getDefaultInstance());
         return response.getBlock();
     }
-
-
 }

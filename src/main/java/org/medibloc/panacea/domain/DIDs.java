@@ -24,7 +24,7 @@ public class DIDs {
     }
 
 
-    public static VerificationMethod createVerificationMethod(String did, DIDWallet wallet, String key) throws NoSuchAlgorithmException {
+    public static VerificationMethod createVerificationMethod(String did, DIDWallet wallet, String key) {
         byte[] pubKey = wallet.getPubKeyBytes();
 
         return VerificationMethod.newBuilder()
@@ -52,7 +52,7 @@ public class DIDs {
                 .build();
     }
 
-    public static DIDDocument createDIDDocument(String did, DIDWallet wallet) throws NoSuchAlgorithmException {
+    public static DIDDocument createDIDDocument(String did, DIDWallet wallet) {
         VerificationMethod verificationMethod = createVerificationMethod(did, wallet, "key1");
 
         VerificationRelationship authentication = createVerificationRelationship(verificationMethod.getID());

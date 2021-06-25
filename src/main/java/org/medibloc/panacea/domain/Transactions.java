@@ -66,7 +66,6 @@ public class Transactions {
         return createAutoInfo(Collections.singletonList(wallet), fee);
     }
 
-
     public static AuthInfo createAutoInfo(List<Wallet> wallets, Coin coin, long gasLimit) {
         return createAutoInfo(wallets, createFee(coin, gasLimit));
     }

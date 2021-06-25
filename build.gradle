@@ -17,19 +17,8 @@ plugins {
 
 sourceSets {
     main {
-        proto {
-            srcDir 'src/main/resources/proto'
-        }
         java {
             srcDir 'src/main/java'
-        }
-    }
-    test {
-        proto {
-            srcDir 'src/test/resources/proto'
-        }
-        proto {
-            srcDir 'src/test/java'
         }
     }
 }

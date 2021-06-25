@@ -22,6 +22,7 @@ import panacea.aol.v2.*;
 import panacea.did.v2.*;
 import tendermint.p2p.DefaultNodeInfo;
 import tendermint.types.Block;
+import panacea.aol.v2.MsgAddRecord;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
@@ -30,17 +31,13 @@ import java.util.List;
 
 public class GRPCTest {
     // owner mnemonic
-    String ownerMnemonic = "genuine key outside escape oval unhappy mansion cricket practice quarter purchase picnic layer bicycle stem soup column creek convince obey rather rice there alcohol";
-    String ownerAddress = "panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz";
-
-    // to mnemonic
-    String toMnemonic = "margin river antenna nest drama combine crystal clarify route country genuine acoustic hold ocean image fox flame invite scrub chalk destroy resource item final";
-    String toAddress = "panacea1rwxd29u3cmsuh9gmmrzlujl2e5lc8p33flpz2e";
+    private final String ownerMnemonic = "genuine key outside escape oval unhappy mansion cricket practice quarter purchase picnic layer bicycle stem soup column creek convince obey rather rice there alcohol";
+    private final String toMnemonic = "margin river antenna nest drama combine crystal clarify route country genuine acoustic hold ocean image fox flame invite scrub chalk destroy resource item final";
 
     private PanaceaGrpcClient client;
 
     @Before
-    public void setUp() throws PanaceaApiException {
+    public void setUp() {
         ManagedChannel channel = ManagedChannelBuilder.forTarget("localhost:9090")
                 .usePlaintext()
                 .build();
@@ -55,6 +52,9 @@ public class GRPCTest {
 
     @Test
     public void testGetAccount() throws Exception {
+        String ownerAddress = getWallet(ownerMnemonic).getAddress();
+        String toAddress = getWallet(toMnemonic).getAddress();
+
         BaseAccount account = client.getAccount(ownerAddress);
         Assert.assertEquals(ownerAddress, account.getAddress());
         String publicKey = CryptoUtils.getPublicKeyFrom(account);
@@ -76,6 +76,11 @@ public class GRPCTest {
 
     @Test
     public void testSendMsg() throws PanaceaApiException, IOException, NoSuchAlgorithmException {
+        Wallet ownerWallet = getWallet(ownerMnemonic);
+        String ownerAddress = ownerWallet.getAddress();
+        Wallet toWallet = getWallet(ownerMnemonic);
+        String toAddress = toWallet.getAddress();
+
         Coin sendCoin = Coins.createCoin("umed", "100000000");
         MsgSend msg = MsgSend.newBuilder()
                 .addAmount(sendCoin)
@@ -85,41 +90,48 @@ public class GRPCTest {
         String memo = "send msg";
         Fee fee = Transactions.createFee(Coins.createCoin("umed", "1000"), 200000);
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
-                getWallet(ownerMnemonic),
+                ownerWallet,
                 msg,
                 memo,
                 fee,
                 BroadcastMode.BROADCAST_MODE_BLOCK);
 
-        TxResponse response = client.broadCast(request);
+        TxResponse response = client.broadcast(request);
         System.out.println(response.toString());
     }
 
     @Test
     public void testSendMsgs() throws PanaceaApiException, IOException, NoSuchAlgorithmException {
+        Wallet ownerWallet = getWallet(ownerMnemonic);
+        Wallet toWallet = getWallet(toMnemonic);
+
         Coin sendCoin = Coins.createCoin("umed", "100000000");
         MsgSend msg = MsgSend.newBuilder()
                 .addAmount(sendCoin)
-                .setFromAddress(ownerAddress)
-                .setToAddress(toAddress)
+                .setFromAddress(ownerWallet.getAddress())
+                .setToAddress(toWallet.getAddress())
                 .build();
         String memo = "send msg";
         Fee fee = Transactions.createFee(Coins.createCoin("umed", "1000"), 200000);
 
-        Wallet wallet = getWallet(ownerMnemonic);
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
-                wallet,
+                ownerWallet,
                 Arrays.asList(msg, msg),
                 memo,
                 fee,
                 BroadcastMode.BROADCAST_MODE_BLOCK);
 
-        TxResponse response = client.broadCast(request);
+        TxResponse response = client.broadcast(request);
         System.out.println(response.toString());
     }
 
     @Test
     public void testAol() throws IOException, NoSuchAlgorithmException, PanaceaApiException {
+        Wallet ownerWallet = getWallet(ownerMnemonic);
+        String ownerAddress = ownerWallet.getAddress();
+        Wallet toWallet = getWallet(toMnemonic);
+        String toAddress = toWallet.getAddress();
+
         String topicName = RandomStringUtils.randomAlphabetic(10);
         System.out.printf("Create topic : %s\n", topicName);
 
@@ -173,7 +185,7 @@ public class GRPCTest {
                 fee,
                 BroadcastMode.BROADCAST_MODE_BLOCK);
 
-        TxResponse response = client.broadCast(request);
+        TxResponse response = client.broadcast(request);
         System.out.println(response.toString());
         Assert.assertNotNull(response.getTxhash());
         Assert.assertEquals(0, response.getCode());
@@ -190,7 +202,7 @@ public class GRPCTest {
                 fee,
                 BroadcastMode.BROADCAST_MODE_BLOCK);
 
-        TxResponse response = client.broadCast(request);
+        TxResponse response = client.broadcast(request);
         System.out.println(response.toString());
         Assert.assertNotNull(response.getTxhash());
         Assert.assertEquals(0, response.getCode());
@@ -207,7 +219,7 @@ public class GRPCTest {
                 fee,
                 BroadcastMode.BROADCAST_MODE_BLOCK);
 
-        TxResponse response = client.broadCast(request);
+        TxResponse response = client.broadcast(request);
         System.out.println(response.toString());
         Assert.assertNotNull(response.getTxhash());
         Assert.assertEquals(0, response.getCode());
@@ -226,13 +238,16 @@ public class GRPCTest {
                 fee,
                 BroadcastMode.BROADCAST_MODE_BLOCK);
 
-        TxResponse response = client.broadCast(request);
+        TxResponse response = client.broadcast(request);
         System.out.println(response.toString());
         Assert.assertNotNull(response.getTxhash());
         Assert.assertEquals(0, response.getCode());
     }
 
-    private void testGetTopic(String topicName, long totalWriters, long totalRecords, String description) {
+    private void testGetTopic(String topicName, long totalWriters, long totalRecords, String description) throws PanaceaApiException {
+        Wallet ownerWallet = getWallet(ownerMnemonic);
+        String ownerAddress = ownerWallet.getAddress();
+
         Topic topic1 = client.getTopic(ownerAddress, topicName);
         Assert.assertEquals(totalWriters, topic1.getTotalWriters());
         Assert.assertEquals(totalRecords, topic1.getTotalRecords());
@@ -290,6 +305,9 @@ public class GRPCTest {
     }
 
     private void testCreateDID(DIDWallet createDIDWallet, DIDDocument createDoc) throws IOException, NoSuchAlgorithmException, PanaceaApiException {
+        Wallet ownerWallet = getWallet(ownerMnemonic);
+        String ownerAddress = ownerWallet.getAddress();
+
         DataWithSeq dataWithSeq = DataWithSeq.newBuilder()
                 .setData(createDoc.toByteString())
                 .setSeq(0)
@@ -306,13 +324,13 @@ public class GRPCTest {
         Fee fee = Transactions.createFee(Coins.createCoin("umed", "1000"), 200000);
 
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
-                getWallet(ownerMnemonic),
+                ownerWallet,
                 msg,
                 memo,
                 fee,
                 BroadcastMode.BROADCAST_MODE_BLOCK);
 
-        TxResponse response = client.broadCast(request);
+        TxResponse response = client.broadcast(request);
 
         System.out.println(response.toString());
         Assert.assertNotNull(response.getTxhash());
@@ -320,6 +338,9 @@ public class GRPCTest {
     }
 
     private void testUpdateDID(DIDWallet didWallet, DIDDocument doc, long seq) throws IOException, NoSuchAlgorithmException, PanaceaApiException {
+        Wallet ownerWallet = getWallet(ownerMnemonic);
+        String ownerAddress = ownerWallet.getAddress();
+
         DataWithSeq dataWithSeq = DataWithSeq.newBuilder()
                 .setData(doc.toByteString())
                 .setSeq(seq)
@@ -338,12 +359,12 @@ public class GRPCTest {
         Fee fee = Transactions.createFee(Coins.createCoin("umed", "1000"), 200000);
 
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
-                getWallet(ownerMnemonic),
+                ownerWallet,
                 msg,
                 memo,
                 fee,
                 BroadcastMode.BROADCAST_MODE_BLOCK);
-        TxResponse response = client.broadCast(request);
+        TxResponse response = client.broadcast(request);
         System.out.println(response.toString());
         Assert.assertNotNull(response.getTxhash());
         Assert.assertEquals(0, response.getCode());

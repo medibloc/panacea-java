@@ -23,10 +23,6 @@ public class BaseWallet {
         }
     }
 
-    BaseWallet(byte[] pubKey) {
-        this.ecKey = ECKey.fromPublicOnly(pubKey);
-    }
-
     public static List<String> mnemonicStringToWords(String mnemonic) {
         return Arrays.asList(mnemonic.split("\\s+"));
     }
