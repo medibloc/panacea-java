@@ -57,7 +57,7 @@ public class PanaceaGrpcClient {
         return response.getRecord();
     }
 
-    public TxResponse broadCast(BroadcastTxRequest request) {
+    public TxResponse broadcast(BroadcastTxRequest request) {
         BroadcastTxResponse response = txServiceStub.broadcastTx(request);
         return response.getTxResponse();
     }

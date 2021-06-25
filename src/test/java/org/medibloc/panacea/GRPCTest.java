@@ -25,11 +25,11 @@ import java.util.List;
 public class GRPCTest {
     // owner mnemonic
     String ownerMnemonic = "genuine key outside escape oval unhappy mansion cricket practice quarter purchase picnic layer bicycle stem soup column creek convince obey rather rice there alcohol";
-    String ownerAddress = "panacea1gtx6lmnjg6ykvv07ruyxamth6yuhgcvmhg3pqz";
+    String ownerAddress;
 
     // to mnemonic
     String toMnemonic = "margin river antenna nest drama combine crystal clarify route country genuine acoustic hold ocean image fox flame invite scrub chalk destroy resource item final";
-    String toAddress = "panacea1rwxd29u3cmsuh9gmmrzlujl2e5lc8p33flpz2e";
+    String toAddress;
 
     private PanaceaGrpcClient client;
     private Wallet ownerWallet;
@@ -43,8 +43,10 @@ public class GRPCTest {
         this.client = new PanaceaGrpcClient(channel);
         this.ownerWallet = Wallet.createWalletFromMnemonicCode(ownerMnemonic, "panacea", 0);
         this.ownerWallet.ensureWalletIsReady(client);
+        this.ownerAddress = ownerWallet.getAddress();
         this.toWallet = Wallet.createWalletFromMnemonicCode(toMnemonic, "panacea", 0);
         this.toWallet.ensureWalletIsReady(client);
+        this.toAddress = toWallet.getAddress();
     }
 
     @Test
@@ -94,7 +96,7 @@ public class GRPCTest {
                 gasLimit,
                 BroadcastMode.BROADCAST_MODE_BLOCK);
 
-        TxResponse response = client.broadCast(request);
+        TxResponse response = client.broadcast(request);
         System.out.println(response.toString());
     }
 
@@ -118,7 +120,7 @@ public class GRPCTest {
                 gasLimit,
                 BroadcastMode.BROADCAST_MODE_BLOCK);
 
-        TxResponse response = client.broadCast(request);
+        TxResponse response = client.broadcast(request);
         System.out.println(response.toString());
     }
 
@@ -146,7 +148,7 @@ public class GRPCTest {
                 gasLimit,
                 BroadcastMode.BROADCAST_MODE_BLOCK);
 
-        TxResponse response = client.broadCast(request);
+        TxResponse response = client.broadcast(request);
         System.out.println(response.toString());
         Assert.assertNotNull(response.getTxhash());
         Assert.assertEquals(0, response.getCode());

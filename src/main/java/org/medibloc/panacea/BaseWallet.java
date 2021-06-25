@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @ToString
-public class BaseWallet {
+class BaseWallet {
     private final ECKey ecKey;
 
     BaseWallet(String privateKey) {
@@ -21,10 +21,6 @@ public class BaseWallet {
         } else {
             throw new IllegalArgumentException("Private key cannot be empty.");
         }
-    }
-
-    BaseWallet(byte[] pubKey) {
-        this.ecKey = ECKey.fromPublicOnly(pubKey);
     }
 
     public static List<String> mnemonicStringToWords(String mnemonic) {
