@@ -24,10 +24,8 @@ public class DIDs {
     }
 
 
-    public static VerificationMethod createVerificationMethod(DIDWallet wallet, String key) throws NoSuchAlgorithmException {
+    public static VerificationMethod createVerificationMethod(String did, DIDWallet wallet, String key) throws NoSuchAlgorithmException {
         byte[] pubKey = wallet.getPubKeyBytes();
-
-        String did = createDID(pubKey);
 
         return VerificationMethod.newBuilder()
                 .setID(createVerificationMethodId(did, key))
@@ -37,16 +35,7 @@ public class DIDs {
                 .build();
     }
 
-    public static VerificationMethod createVerificationMethodOnlyId(DIDWallet wallet, String key) throws NoSuchAlgorithmException {
-        byte[] pubKey = wallet.getPubKeyBytes();
-        String did = createDID(pubKey);
-
-        return VerificationMethod.newBuilder()
-                .setID(createVerificationMethodId(did, key))
-                .build();
-    }
-
-    private static String createVerificationMethodId(String did, String key) {
+    public static String createVerificationMethodId(String did, String key) {
         return String.format("%s#%s", did, key);
     }
 
@@ -58,14 +47,13 @@ public class DIDs {
 
     public static VerificationRelationship createVerificationRelationship(VerificationMethod verificationMethod) {
         return VerificationRelationship.newBuilder()
+                .setVerificationMethodID(verificationMethod.getID())
                 .setDedicatedVerificationMethod(verificationMethod)
                 .build();
     }
 
-    public static DIDDocument createDIDDocument(DIDWallet wallet) throws NoSuchAlgorithmException {
-        String did = createDID(wallet.getPubKeyBytes());
-
-        VerificationMethod verificationMethod = createVerificationMethod(wallet, "key1");
+    public static DIDDocument createDIDDocument(String did, DIDWallet wallet) throws NoSuchAlgorithmException {
+        VerificationMethod verificationMethod = createVerificationMethod(did, wallet, "key1");
 
         VerificationRelationship authentication = createVerificationRelationship(verificationMethod.getID());
 
