@@ -62,6 +62,10 @@ public class Transactions {
         return createAutoInfo(Collections.singletonList(wallet), createFee(coin, gasLimit));
     }
 
+    public static AuthInfo createAutoInfo(Wallet wallet, Fee fee) {
+        return createAutoInfo(Collections.singletonList(wallet), fee);
+    }
+
     public static AuthInfo createAutoInfo(List<Wallet> wallets, Coin coin, long gasLimit) {
         return createAutoInfo(wallets, createFee(coin, gasLimit));
     }
@@ -114,57 +118,51 @@ public class Transactions {
     public static Tx createTxWithSign(List<Wallet> wallets,
                                       GeneratedMessageV3 msg,
                                       String memo,
-                                      Coin feeCoin,
-                                      long gasLimit) throws IOException, NoSuchAlgorithmException {
-        return createTxWithSign(wallets, Collections.singletonList(msg), memo, feeCoin, gasLimit);
+                                      Fee fee) throws IOException, NoSuchAlgorithmException {
+        return createTxWithSign(wallets, Collections.singletonList(msg), memo, fee);
     }
 
     public static Tx createTxWithSign(List<Wallet> wallets,
                                       List<? extends GeneratedMessageV3> msgs,
                                       String memo,
-                                      Coin feeCoin,
-                                      long gasLimit) throws IOException, NoSuchAlgorithmException {
+                                      Fee fee) throws IOException, NoSuchAlgorithmException {
         TxBody txBody = createTxBody(msgs, memo);
-        AuthInfo authInfo = createAutoInfo(wallets, feeCoin, gasLimit);
+        AuthInfo authInfo = createAutoInfo(wallets, fee);
         return createTxWithSign(wallets, txBody, authInfo);
     }
 
     public static BroadcastTxRequest createBroadcastTxRequest(Wallet wallet,
                                                               GeneratedMessageV3 message,
                                                               String memo,
-                                                              Coin feeCoin,
-                                                              long gasLimit,
+                                                              Fee fee,
                                                               BroadcastMode mode) throws IOException, NoSuchAlgorithmException {
-        return createBroadcastTxRequest(Collections.singletonList(wallet), Collections.singletonList(message), memo, feeCoin, gasLimit, mode);
+        return createBroadcastTxRequest(Collections.singletonList(wallet), Collections.singletonList(message), memo, fee, mode);
     }
 
     public static BroadcastTxRequest createBroadcastTxRequest(Wallet wallet,
                                                               List<? extends GeneratedMessageV3> messages,
                                                               String memo,
-                                                              Coin feeCoin,
-                                                              long gasLimit,
+                                                              Fee fee,
                                                               BroadcastMode mode) throws IOException, NoSuchAlgorithmException {
 
-        return createBroadcastTxRequest(Collections.singletonList(wallet), messages, memo, feeCoin, gasLimit, mode);
+        return createBroadcastTxRequest(Collections.singletonList(wallet), messages, memo, fee, mode);
     }
 
     public static BroadcastTxRequest createBroadcastTxRequest(List<Wallet> wallets,
                                                               GeneratedMessageV3 message,
                                                               String memo,
-                                                              Coin feeCoin,
-                                                              long gasLimit,
+                                                              Fee fee,
                                                               BroadcastMode mode) throws IOException, NoSuchAlgorithmException {
-        Tx tx = createTxWithSign(wallets, Collections.singletonList(message), memo, feeCoin, gasLimit);
+        Tx tx = createTxWithSign(wallets, Collections.singletonList(message), memo, fee);
         return createBroadcastTxRequest(mode, tx);
     }
 
     public static BroadcastTxRequest createBroadcastTxRequest(List<Wallet> wallets,
                                                               List<? extends GeneratedMessageV3> messages,
                                                               String memo,
-                                                              Coin feeCoin,
-                                                              long gasLimit,
+                                                              Fee fee,
                                                               BroadcastMode mode) throws IOException, NoSuchAlgorithmException {
-        Tx tx = createTxWithSign(wallets, messages, memo, feeCoin, gasLimit);
+        Tx tx = createTxWithSign(wallets, messages, memo, fee);
         return createBroadcastTxRequest(mode, tx);
     }
 

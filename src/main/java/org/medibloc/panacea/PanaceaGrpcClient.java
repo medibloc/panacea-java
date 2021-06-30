@@ -5,35 +5,30 @@ import cosmos.auth.v1beta1.BaseAccount;
 import cosmos.auth.v1beta1.QueryAccountRequest;
 import cosmos.auth.v1beta1.QueryAccountResponse;
 import cosmos.base.abci.v1beta1.TxResponse;
-import cosmos.base.tendermint.v1beta1.GetNodeInfoRequest;
-import cosmos.base.tendermint.v1beta1.GetNodeInfoResponse;
-import cosmos.tx.v1beta1.BroadcastTxRequest;
-import cosmos.tx.v1beta1.BroadcastTxResponse;
+import cosmos.base.tendermint.v1beta1.*;
+import cosmos.tx.v1beta1.*;
 import io.grpc.Channel;
-import panacea.aol.v2.QueryGetRecordRequest;
-import panacea.aol.v2.QueryGetRecordResponse;
-import panacea.aol.v2.Record;
+import panacea.aol.v2.*;
+import panacea.did.v2.DIDDocumentWithSeq;
+import panacea.did.v2.QueryGetDIDRequest;
+import panacea.did.v2.QueryGetDIDResponse;
 import tendermint.p2p.DefaultNodeInfo;
+import tendermint.types.Block;
+
+import java.util.List;
 
 public class PanaceaGrpcClient {
-    private final cosmos.auth.v1beta1.QueryGrpc.QueryBlockingStub authQueryStub;
-    private final panacea.aol.v2.QueryGrpc.QueryBlockingStub aolQueryStub;
-    private final cosmos.base.tendermint.v1beta1.ServiceGrpc.ServiceBlockingStub tendermintQueryStub;
-    private final cosmos.tx.v1beta1.ServiceGrpc.ServiceBlockingStub txServiceStub;
+    private final GrpcStub grpcStub;
 
     public PanaceaGrpcClient(Channel channel) {
-        this.authQueryStub = cosmos.auth.v1beta1.QueryGrpc.newBlockingStub(channel);
-        this.aolQueryStub = panacea.aol.v2.QueryGrpc.newBlockingStub(channel);
-        this.tendermintQueryStub = cosmos.base.tendermint.v1beta1.ServiceGrpc.newBlockingStub(channel);
-        this.txServiceStub = cosmos.tx.v1beta1.ServiceGrpc.newBlockingStub(channel);
+        this.grpcStub = new GrpcStub(channel);
     }
 
     public BaseAccount getAccount(String address) throws PanaceaApiException {
         QueryAccountRequest request = QueryAccountRequest.newBuilder()
                 .setAddress(address)
                 .build();
-
-        QueryAccountResponse response = authQueryStub.account(request);
+        QueryAccountResponse response = grpcStub.getAuthQueryStub().account(request);
         try {
             return response.getAccount().unpack(BaseAccount.class);
         } catch (InvalidProtocolBufferException e) {
@@ -43,8 +38,17 @@ public class PanaceaGrpcClient {
 
     public DefaultNodeInfo getNodeInfo() {
         GetNodeInfoRequest request = GetNodeInfoRequest.getDefaultInstance();
-        GetNodeInfoResponse response = tendermintQueryStub.getNodeInfo(request);
+        GetNodeInfoResponse response = grpcStub.getTendermintQueryStub().getNodeInfo(request);
         return response.getDefaultNodeInfo();
+    }
+
+    public Topic getTopic(String ownerAddress, String topicName) {
+        QueryGetTopicRequest request = QueryGetTopicRequest.newBuilder()
+                .setTopicName(topicName)
+                .setOwnerAddress(ownerAddress)
+                .build();
+        QueryGetTopicResponse response = grpcStub.getAolQueryStub().topic(request);
+        return response.getTopic();
     }
 
     public Record getRecord(String ownerAddress, String topicName, Long offset) {
@@ -53,14 +57,49 @@ public class PanaceaGrpcClient {
                 .setTopicName(topicName)
                 .setOffset(offset)
                 .build();
-        QueryGetRecordResponse response = aolQueryStub.record(request);
+        QueryGetRecordResponse response = grpcStub.getAolQueryStub().record(request);
         return response.getRecord();
     }
 
+    public DIDDocumentWithSeq getDIDDocumentWithSeq(String did) {
+        QueryGetDIDRequest request = QueryGetDIDRequest.newBuilder()
+                .setDID(did)
+                .build();
+        QueryGetDIDResponse response = grpcStub.getDidQueryStub().dIDDocumentWithSeq(request);
+        return response.getDIDDocumentWithSeq();
+    }
+
     public TxResponse broadcast(BroadcastTxRequest request) {
-        BroadcastTxResponse response = txServiceStub.broadcastTx(request);
+        BroadcastTxResponse response = grpcStub.getTxServiceStub().broadcastTx(request);
         return response.getTxResponse();
     }
 
+    public TxResponse getTxResponse(String txHash) {
+        GetTxRequest request = GetTxRequest.newBuilder()
+                .setHash(txHash)
+                .build();
+        GetTxResponse response = grpcStub.getTxServiceStub().getTx(request);
+        return response.getTxResponse();
+    }
 
+    public List<TxResponse> getTxResponsesByHeight(long height) {
+        GetTxsEventRequest request = GetTxsEventRequest.newBuilder()
+                .addEvents("tx.height=" + height)
+                .build();
+        GetTxsEventResponse response = grpcStub.getTxServiceStub().getTxsEvent(request);
+        return response.getTxResponsesList();
+    }
+
+    public Block getBlockByHeight(long height) {
+        GetBlockByHeightRequest request = GetBlockByHeightRequest.newBuilder()
+                .setHeight(height)
+                .build();
+        GetBlockByHeightResponse response = grpcStub.getTendermintQueryStub().getBlockByHeight(request);
+        return response.getBlock();
+    }
+
+    public Block getLatestBlock() {
+        GetLatestBlockResponse response = grpcStub.getTendermintQueryStub().getLatestBlock(GetLatestBlockRequest.getDefaultInstance());
+        return response.getBlock();
+    }
 }

@@ -4,6 +4,9 @@ import com.google.protobuf.ByteString;
 import com.subgraph.orchid.encoders.Hex;
 import cosmos.auth.v1beta1.BaseAccount;
 import cosmos.crypto.secp256k1.Keys;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.net.util.Base64;
 import org.medibloc.panacea.encoding.Bech32;
 import org.medibloc.panacea.utils.CryptoUtils;
 import tendermint.p2p.DefaultNodeInfo;
@@ -14,10 +17,18 @@ import java.util.List;
 public class Wallet extends BaseWallet {
     private final String address;
     private final byte[] addressBytes;
+    @Getter
     private final Keys.PubKey pubKeyForSign;
+    @Setter
+    @Getter
     private Long accountNumber;
+    @Setter
     private Long sequence;
+    @Getter
     private final String pubKeyBech32;
+    @Getter
+    private final String pubKeyBase64;
+    @Getter
     private String chainId;
 
     public Wallet(String privateKey, String hrp) {
@@ -30,6 +41,7 @@ public class Wallet extends BaseWallet {
                 .setKey(ByteString.copyFrom(pubKeyBytes))
                 .build();
         this.pubKeyBech32 = encodeBech32PubKey(pubKeyBytes, hrp + "pub");
+        this.pubKeyBase64 = Base64.encodeBase64String(pubKeyBytes);
     }
 
     public static Wallet createRandomWallet(String hrp) {
@@ -98,12 +110,9 @@ public class Wallet extends BaseWallet {
         return sequence;
     }
 
-    public synchronized void setAccountNumber(Long accountNumber) {
-        this.accountNumber = accountNumber;
-    }
-
-    public synchronized void setSequence(Long sequence) {
-        this.sequence = sequence;
+    @Deprecated
+    public String getPubKey() {
+        return getPubKeyBech32();
     }
 
     public synchronized void setChainId(String chainId) {
@@ -140,24 +149,8 @@ public class Wallet extends BaseWallet {
         return address;
     }
 
-    public Keys.PubKey getPubKeyForSign() {
-        return pubKeyForSign;
-    }
-
-    public Long getAccountNumber() {
-        return accountNumber;
-    }
-
-    public String getChainId() {
-        return chainId;
-    }
-
     public byte[] getAddressBytes() {
         return addressBytes;
-    }
-
-    public String getPubKeyBech32() {
-        return pubKeyBech32;
     }
 
     private String encodeBech32PubKey(byte[] data, String hrp) {
