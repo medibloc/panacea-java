@@ -2,8 +2,8 @@
 
 ## Unreleased
 
-TBD
-
+### Features
+- [\#31](https://github.com/medibloc/panacea-java/issues/32) feat: Upgrade `Stargate` version  
 
 ## [v0.1.5](https://github.com/medibloc/panacea-java/releases/tag/v0.1.5) - 2021-04-08
 

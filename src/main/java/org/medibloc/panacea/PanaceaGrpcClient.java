@@ -4,8 +4,10 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import cosmos.auth.v1beta1.BaseAccount;
 import cosmos.auth.v1beta1.QueryAccountRequest;
 import cosmos.auth.v1beta1.QueryAccountResponse;
+import cosmos.bank.v1beta1.QueryBalanceRequest;
 import cosmos.base.abci.v1beta1.TxResponse;
 import cosmos.base.tendermint.v1beta1.*;
+import cosmos.base.v1beta1.Coin;
 import cosmos.tx.v1beta1.*;
 import io.grpc.Channel;
 import panacea.aol.v2.*;
@@ -34,6 +36,15 @@ public class PanaceaGrpcClient {
         } catch (InvalidProtocolBufferException e) {
             throw new PanaceaApiException(e.getMessage());
         }
+    }
+
+    public Coin getBalance(String address, String denom) {
+        QueryBalanceRequest request = QueryBalanceRequest.newBuilder()
+                .setAddress(address)
+                .setDenom(denom)
+                .build();
+
+        return grpcStub.getBankQueryStub().balance(request).getBalance();
     }
 
     public DefaultNodeInfo getNodeInfo() {
