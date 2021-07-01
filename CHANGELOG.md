@@ -4,6 +4,10 @@
 
 TBD
 
+## [v2.0.0-alpha.1](https://github.com/medibloc/panacea-java/releases/tag/v2.0.0-alpha.1) - 2021-07-01 
+
+### Features
+- [\#32](https://github.com/medibloc/panacea-java/pull/32) feat: Make compatible with panacea-core v2.0.0 based on Cosmos SDK Stargate  
 
 ## [v0.1.5](https://github.com/medibloc/panacea-java/releases/tag/v0.1.5) - 2021-04-08
 
