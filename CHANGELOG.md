@@ -2,8 +2,8 @@
 
 ## Unreleased
 
-TBD
-
+### Features
+- [\#32](https://github.com/medibloc/panacea-java/pull/32) Make compatible with panacea-core v2.0.0 based on Cosmos SDK Stargate  
 
 ## [v0.1.5](https://github.com/medibloc/panacea-java/releases/tag/v0.1.5) - 2021-04-08
 
