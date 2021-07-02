@@ -48,7 +48,7 @@ public class GrpcQueryTest extends AbstractGrpcTest {
 
     @Test
     public void testGetTxResponseByHash() {
-        TxResponse txResponse = client.getTxResponse("A78719222BB3A93706AE6017CEC23C02AD5BA974741273A2616901FAECA631D7");
+        TxResponse txResponse = client.getTxResponse("30FAB3C12B46C0424D04006557028872D0F2674F8B9E695A722383F3CA2078FB");
         System.out.println(txResponse);
     }
 
@@ -60,7 +60,7 @@ public class GrpcQueryTest extends AbstractGrpcTest {
 
     @Test
     public void testGetBlockByHeight() {
-        Block block = client.getBlockByHeight(10367);
+        Block block = client.getBlockByHeight(10);
         System.out.println(block);
     }
 

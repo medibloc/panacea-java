@@ -1,13 +1,12 @@
 package org.medibloc.panacea;
 
 import com.google.protobuf.ByteString;
-import com.subgraph.orchid.encoders.Hex;
 import cosmos.auth.v1beta1.BaseAccount;
 import cosmos.crypto.secp256k1.Keys;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.net.util.Base64;
-import org.medibloc.panacea.encoding.Bech32;
+import org.bouncycastle.util.encoders.Hex;
 import org.medibloc.panacea.utils.CryptoUtils;
 import tendermint.p2p.DefaultNodeInfo;
 
