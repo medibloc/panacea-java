@@ -14,7 +14,7 @@ TBD
 ### Bug fixes
 
 - [\#26](https://github.com/medibloc/panacea-java/pull/26) fix: Make Wallet.ensureWalletIsReady throws an exception for unknown accounts
-
+- [\#34](https://github.com/medibloc/panacea-java/pull/34) fix: Change module version related to google protobuf, change sdk release version
 
 ## [v0.1.4](https://github.com/medibloc/panacea-java/releases/tag/v0.1.4) - 2021-03-24
 
