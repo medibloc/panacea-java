@@ -9,7 +9,7 @@ panacead init node1 --chain-id=testing
 
 # Create a key to hold your validator account
 echo -e "${OWNER_MNEMONIC}\n\n" | panacead keys add validator -i
-echo -e "${TO_MNEMONIC}\n\n" | panacead keys add toAccount -i
+echo -e "${RECIPIENT_MNEMONIC}\n\n" | panacead keys add recipientAccount -i
 
 # Add that key into the genesis.app_state.accounts array in the genesis file
 # NOTE: this command lets you set the number of coins. Make sure this account has some coins

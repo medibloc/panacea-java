@@ -20,16 +20,24 @@ jobs:
     - name: Build panacea-core
       env:
         OWNER_MNEMONIC: genuine key outside escape oval unhappy mansion cricket practice quarter purchase picnic layer bicycle stem soup column creek convince obey rather rice there alcohol
-        TO_MNEMONIC: margin river antenna nest drama combine crystal clarify route country genuine acoustic hold ocean image fox flame invite scrub chalk destroy resource item final
+        RECIPIENT_MNEMONIC: margin river antenna nest drama combine crystal clarify route country genuine acoustic hold ocean image fox flame invite scrub chalk destroy resource item final
         DOCKER_NAME: panacea-core-${{ github.sha }}
         DOCKER_TAG: panacea-core:${{ github.sha }}
       run: |
         echo "OWNER_MNEMONIC=${OWNER_MNEMONIC}"
-        echo "TO_MNEMONIC=${TO_MNEMONIC}"
-        docker build -t ${DOCKER_TAG} .
-        docker run -d -e "OWNER_MNEMONIC=${OWNER_MNEMONIC}" -e "TO_MNEMONIC=${TO_MNEMONIC}" -p 9090:9090 --name ${DOCKER_NAME} ${DOCKER_TAG}
+        echo "RECIPIENT_MNEMONIC=${RECIPIENT_MNEMONIC}"
+        pwd
+        ls
+        ls /
+        docker build -f src/test/resources/scripts/Dockerfile -t ${DOCKER_TAG} .
+        docker run -d -e \
+          "OWNER_MNEMONIC=${OWNER_MNEMONIC}" \
+          -e "RECIPIENT_MNEMONIC=${RECIPIENT_MNEMONIC}" \
+          -p 9090:9090 \
+          --name ${DOCKER_NAME} \
+          ${DOCKER_TAG}
         docker exec ${DOCKER_NAME} panacead keys show validator
-        docker exec ${DOCKER_NAME} panacead keys show toAccount
+        docker exec ${DOCKER_NAME} panacead keys show recipientAccount
 
     - name: Set up JDK 1.8
       uses: actions/setup-java@v1
