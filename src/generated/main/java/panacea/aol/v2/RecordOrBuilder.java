@@ -18,16 +18,16 @@ public interface RecordOrBuilder extends
   com.google.protobuf.ByteString getValue();
 
   /**
-   * <code>int64 nanoTimestamp = 3;</code>
+   * <code>int64 nano_timestamp = 3;</code>
    */
   long getNanoTimestamp();
 
   /**
-   * <code>string writerAddress = 4;</code>
+   * <code>string writer_address = 4;</code>
    */
   java.lang.String getWriterAddress();
   /**
-   * <code>string writerAddress = 4;</code>
+   * <code>string writer_address = 4;</code>
    */
   com.google.protobuf.ByteString
       getWriterAddressBytes();

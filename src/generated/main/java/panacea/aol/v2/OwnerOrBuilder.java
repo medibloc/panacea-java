@@ -8,7 +8,7 @@ public interface OwnerOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>uint64 totalTopics = 1;</code>
+   * <code>uint64 total_topics = 1;</code>
    */
   long getTotalTopics();
 }

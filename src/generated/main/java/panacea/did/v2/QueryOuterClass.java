@@ -15,15 +15,15 @@ public final class QueryOuterClass {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_panacea_did_v2_QueryGetDIDRequest_descriptor;
+    internal_static_panacea_did_v2_QueryDIDRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_panacea_did_v2_QueryGetDIDRequest_fieldAccessorTable;
+      internal_static_panacea_did_v2_QueryDIDRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_panacea_did_v2_QueryGetDIDResponse_descriptor;
+    internal_static_panacea_did_v2_QueryDIDResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_panacea_did_v2_QueryGetDIDResponse_fieldAccessorTable;
+      internal_static_panacea_did_v2_QueryDIDResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -36,15 +36,15 @@ public final class QueryOuterClass {
       "\n\032panacea/did/v2/query.proto\022\016panacea.di" +
       "d.v2\032\034google/api/annotations.proto\032*cosm" +
       "os/base/query/v1beta1/pagination.proto\032\030" +
-      "panacea/did/v2/did.proto\"!\n\022QueryGetDIDR" +
-      "equest\022\013\n\003DID\030\001 \001(\t\"U\n\023QueryGetDIDRespon" +
-      "se\022>\n\022DIDDocumentWithSeq\030\001 \001(\0132\".panacea" +
-      ".did.v2.DIDDocumentWithSeq2\213\001\n\005Query\022\201\001\n" +
-      "\022DIDDocumentWithSeq\022\".panacea.did.v2.Que" +
-      "ryGetDIDRequest\032#.panacea.did.v2.QueryGe" +
-      "tDIDResponse\"\"\202\323\344\223\002\034\022\032/panacea/did/v2/di" +
-      "ds/{DID}B0P\001Z,github.com/medibloc/panace" +
-      "a-core/x/did/typesb\006proto3"
+      "panacea/did/v2/did.proto\"%\n\017QueryDIDRequ" +
+      "est\022\022\n\ndid_base64\030\001 \001(\t\"U\n\020QueryDIDRespo" +
+      "nse\022A\n\025did_document_with_seq\030\001 \001(\0132\".pan" +
+      "acea.did.v2.DIDDocumentWithSeq2|\n\005Query\022" +
+      "s\n\003DID\022\037.panacea.did.v2.QueryDIDRequest\032" +
+      " .panacea.did.v2.QueryDIDResponse\")\202\323\344\223\002" +
+      "#\022!/panacea/did/v2/dids/{did_base64}B0P\001" +
+      "Z,github.com/medibloc/panacea-core/x/did" +
+      "/typesb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -61,18 +61,18 @@ public final class QueryOuterClass {
           cosmos.base.query.v1beta1.Pagination.getDescriptor(),
           panacea.did.v2.Did.getDescriptor(),
         }, assigner);
-    internal_static_panacea_did_v2_QueryGetDIDRequest_descriptor =
+    internal_static_panacea_did_v2_QueryDIDRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_panacea_did_v2_QueryGetDIDRequest_fieldAccessorTable = new
+    internal_static_panacea_did_v2_QueryDIDRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_panacea_did_v2_QueryGetDIDRequest_descriptor,
-        new java.lang.String[] { "DID", });
-    internal_static_panacea_did_v2_QueryGetDIDResponse_descriptor =
+        internal_static_panacea_did_v2_QueryDIDRequest_descriptor,
+        new java.lang.String[] { "DidBase64", });
+    internal_static_panacea_did_v2_QueryDIDResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_panacea_did_v2_QueryGetDIDResponse_fieldAccessorTable = new
+    internal_static_panacea_did_v2_QueryDIDResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_panacea_did_v2_QueryGetDIDResponse_descriptor,
-        new java.lang.String[] { "DIDDocumentWithSeq", });
+        internal_static_panacea_did_v2_QueryDIDResponse_descriptor,
+        new java.lang.String[] { "DidDocumentWithSeq", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();
     registry.add(com.google.api.AnnotationsProto.http);

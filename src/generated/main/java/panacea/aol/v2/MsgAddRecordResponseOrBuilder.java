@@ -8,21 +8,21 @@ public interface MsgAddRecordResponseOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string ownerAddress = 1;</code>
+   * <code>string owner_address = 1;</code>
    */
   java.lang.String getOwnerAddress();
   /**
-   * <code>string ownerAddress = 1;</code>
+   * <code>string owner_address = 1;</code>
    */
   com.google.protobuf.ByteString
       getOwnerAddressBytes();
 
   /**
-   * <code>string topicName = 2;</code>
+   * <code>string topic_name = 2;</code>
    */
   java.lang.String getTopicName();
   /**
-   * <code>string topicName = 2;</code>
+   * <code>string topic_name = 2;</code>
    */
   com.google.protobuf.ByteString
       getTopicNameBytes();

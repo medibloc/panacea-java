@@ -3,6 +3,7 @@ package org.medibloc.panacea;
 import com.google.protobuf.ByteString;
 import cosmos.auth.v1beta1.BaseAccount;
 import cosmos.crypto.secp256k1.Keys;
+import cosmos.crypto.secp256k1.PubKey;
 import lombok.Getter;
 import lombok.Setter;
 import org.apache.commons.net.util.Base64;
@@ -17,7 +18,7 @@ public class Wallet extends BaseWallet {
     private final String address;
     private final byte[] addressBytes;
     @Getter
-    private final Keys.PubKey pubKeyForSign;
+    private final PubKey pubKeyForSign;
     @Setter
     @Getter
     private Long accountNumber;
@@ -36,7 +37,7 @@ public class Wallet extends BaseWallet {
         this.address = CryptoUtils.getAddressFromECKey(getEcKey(), hrp);
         this.addressBytes = CryptoUtils.decodeAddress(this.address);
         byte[] pubKeyBytes = getPubKeyBytes();
-        this.pubKeyForSign = Keys.PubKey.newBuilder()
+        this.pubKeyForSign = PubKey.newBuilder()
                 .setKey(ByteString.copyFrom(pubKeyBytes))
                 .build();
         this.pubKeyBech32 = encodeBech32PubKey(pubKeyBytes, hrp + "pub");

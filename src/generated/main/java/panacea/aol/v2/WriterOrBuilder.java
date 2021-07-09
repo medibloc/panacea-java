@@ -28,7 +28,7 @@ public interface WriterOrBuilder extends
       getDescriptionBytes();
 
   /**
-   * <code>int64 nanoTimestamp = 3;</code>
+   * <code>int64 nano_timestamp = 3;</code>
    */
   long getNanoTimestamp();
 }

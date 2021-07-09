@@ -4,6 +4,10 @@
 package panacea.did.v2;
 
 /**
+ * <pre>
+ * DataWithSeq defines a message for data with a sequence number for preventing replay attacks.
+ * </pre>
+ *
  * Protobuf type {@code panacea.did.v2.DataWithSeq}
  */
 public  final class DataWithSeq extends
@@ -50,7 +54,7 @@ private static final long serialVersionUID = 0L;
           }
           case 16: {
 
-            seq_ = input.readUInt64();
+            sequence_ = input.readUInt64();
             break;
           }
           default: {
@@ -94,13 +98,13 @@ private static final long serialVersionUID = 0L;
     return data_;
   }
 
-  public static final int SEQ_FIELD_NUMBER = 2;
-  private long seq_;
+  public static final int SEQUENCE_FIELD_NUMBER = 2;
+  private long sequence_;
   /**
-   * <code>uint64 seq = 2;</code>
+   * <code>uint64 sequence = 2;</code>
    */
-  public long getSeq() {
-    return seq_;
+  public long getSequence() {
+    return sequence_;
   }
 
   private byte memoizedIsInitialized = -1;
@@ -120,8 +124,8 @@ private static final long serialVersionUID = 0L;
     if (!data_.isEmpty()) {
       output.writeBytes(1, data_);
     }
-    if (seq_ != 0L) {
-      output.writeUInt64(2, seq_);
+    if (sequence_ != 0L) {
+      output.writeUInt64(2, sequence_);
     }
     unknownFields.writeTo(output);
   }
@@ -136,9 +140,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeBytesSize(1, data_);
     }
-    if (seq_ != 0L) {
+    if (sequence_ != 0L) {
       size += com.google.protobuf.CodedOutputStream
-        .computeUInt64Size(2, seq_);
+        .computeUInt64Size(2, sequence_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -157,8 +161,8 @@ private static final long serialVersionUID = 0L;
 
     if (!getData()
         .equals(other.getData())) return false;
-    if (getSeq()
-        != other.getSeq()) return false;
+    if (getSequence()
+        != other.getSequence()) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -172,9 +176,9 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + DATA_FIELD_NUMBER;
     hash = (53 * hash) + getData().hashCode();
-    hash = (37 * hash) + SEQ_FIELD_NUMBER;
+    hash = (37 * hash) + SEQUENCE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
-        getSeq());
+        getSequence());
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -271,6 +275,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * DataWithSeq defines a message for data with a sequence number for preventing replay attacks.
+   * </pre>
+   *
    * Protobuf type {@code panacea.did.v2.DataWithSeq}
    */
   public static final class Builder extends
@@ -310,7 +318,7 @@ private static final long serialVersionUID = 0L;
       super.clear();
       data_ = com.google.protobuf.ByteString.EMPTY;
 
-      seq_ = 0L;
+      sequence_ = 0L;
 
       return this;
     }
@@ -339,7 +347,7 @@ private static final long serialVersionUID = 0L;
     public panacea.did.v2.DataWithSeq buildPartial() {
       panacea.did.v2.DataWithSeq result = new panacea.did.v2.DataWithSeq(this);
       result.data_ = data_;
-      result.seq_ = seq_;
+      result.sequence_ = sequence_;
       onBuilt();
       return result;
     }
@@ -391,8 +399,8 @@ private static final long serialVersionUID = 0L;
       if (other.getData() != com.google.protobuf.ByteString.EMPTY) {
         setData(other.getData());
       }
-      if (other.getSeq() != 0L) {
-        setSeq(other.getSeq());
+      if (other.getSequence() != 0L) {
+        setSequence(other.getSequence());
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -452,28 +460,28 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private long seq_ ;
+    private long sequence_ ;
     /**
-     * <code>uint64 seq = 2;</code>
+     * <code>uint64 sequence = 2;</code>
      */
-    public long getSeq() {
-      return seq_;
+    public long getSequence() {
+      return sequence_;
     }
     /**
-     * <code>uint64 seq = 2;</code>
+     * <code>uint64 sequence = 2;</code>
      */
-    public Builder setSeq(long value) {
+    public Builder setSequence(long value) {
       
-      seq_ = value;
+      sequence_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>uint64 seq = 2;</code>
+     * <code>uint64 sequence = 2;</code>
      */
-    public Builder clearSeq() {
+    public Builder clearSequence() {
       
-      seq_ = 0L;
+      sequence_ = 0L;
       onChanged();
       return this;
     }

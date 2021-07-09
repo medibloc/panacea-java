@@ -8,11 +8,11 @@ public interface MsgCreateTopicOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string topicName = 1;</code>
+   * <code>string topic_name = 1;</code>
    */
   java.lang.String getTopicName();
   /**
-   * <code>string topicName = 1;</code>
+   * <code>string topic_name = 1;</code>
    */
   com.google.protobuf.ByteString
       getTopicNameBytes();
@@ -28,11 +28,11 @@ public interface MsgCreateTopicOrBuilder extends
       getDescriptionBytes();
 
   /**
-   * <code>string ownerAddress = 3;</code>
+   * <code>string owner_address = 3;</code>
    */
   java.lang.String getOwnerAddress();
   /**
-   * <code>string ownerAddress = 3;</code>
+   * <code>string owner_address = 3;</code>
    */
   com.google.protobuf.ByteString
       getOwnerAddressBytes();

@@ -21,7 +21,7 @@ public interface DIDDocumentWithSeqOrBuilder extends
   panacea.did.v2.DIDDocumentOrBuilder getDocumentOrBuilder();
 
   /**
-   * <code>uint64 seq = 2[json_name = "sequence", (.gogoproto.jsontag) = "sequence"];</code>
+   * <code>uint64 sequence = 2;</code>
    */
-  long getSeq();
+  long getSequence();
 }

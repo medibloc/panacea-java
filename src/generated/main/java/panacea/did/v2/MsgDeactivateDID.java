@@ -4,6 +4,10 @@
 package panacea.did.v2;
 
 /**
+ * <pre>
+ * MsgDeactivateDID defines the Msg/DeactivateDID request type.
+ * </pre>
+ *
  * Protobuf type {@code panacea.did.v2.MsgDeactivateDID}
  */
 public  final class MsgDeactivateDID extends
@@ -16,8 +20,8 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private MsgDeactivateDID() {
-    dID_ = "";
-    verificationMethodID_ = "";
+    did_ = "";
+    verificationMethodId_ = "";
     signature_ = com.google.protobuf.ByteString.EMPTY;
     fromAddress_ = "";
   }
@@ -49,13 +53,13 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            dID_ = s;
+            did_ = s;
             break;
           }
           case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            verificationMethodID_ = s;
+            verificationMethodId_ = s;
             break;
           }
           case 26: {
@@ -102,67 +106,67 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int DID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object dID_;
+  private volatile java.lang.Object did_;
   /**
-   * <code>string DID = 1[json_name = "did", (.gogoproto.jsontag) = "did"];</code>
+   * <code>string did = 1;</code>
    */
-  public java.lang.String getDID() {
-    java.lang.Object ref = dID_;
+  public java.lang.String getDid() {
+    java.lang.Object ref = did_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      dID_ = s;
+      did_ = s;
       return s;
     }
   }
   /**
-   * <code>string DID = 1[json_name = "did", (.gogoproto.jsontag) = "did"];</code>
+   * <code>string did = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getDIDBytes() {
-    java.lang.Object ref = dID_;
+      getDidBytes() {
+    java.lang.Object ref = did_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      dID_ = b;
+      did_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int VERIFICATIONMETHODID_FIELD_NUMBER = 2;
-  private volatile java.lang.Object verificationMethodID_;
+  public static final int VERIFICATION_METHOD_ID_FIELD_NUMBER = 2;
+  private volatile java.lang.Object verificationMethodId_;
   /**
-   * <code>string verificationMethodID = 2[json_name = "verification_method_id", (.gogoproto.jsontag) = "verification_method_id"];</code>
+   * <code>string verification_method_id = 2;</code>
    */
-  public java.lang.String getVerificationMethodID() {
-    java.lang.Object ref = verificationMethodID_;
+  public java.lang.String getVerificationMethodId() {
+    java.lang.Object ref = verificationMethodId_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      verificationMethodID_ = s;
+      verificationMethodId_ = s;
       return s;
     }
   }
   /**
-   * <code>string verificationMethodID = 2[json_name = "verification_method_id", (.gogoproto.jsontag) = "verification_method_id"];</code>
+   * <code>string verification_method_id = 2;</code>
    */
   public com.google.protobuf.ByteString
-      getVerificationMethodIDBytes() {
-    java.lang.Object ref = verificationMethodID_;
+      getVerificationMethodIdBytes() {
+    java.lang.Object ref = verificationMethodId_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      verificationMethodID_ = b;
+      verificationMethodId_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -178,10 +182,10 @@ private static final long serialVersionUID = 0L;
     return signature_;
   }
 
-  public static final int FROMADDRESS_FIELD_NUMBER = 4;
+  public static final int FROM_ADDRESS_FIELD_NUMBER = 4;
   private volatile java.lang.Object fromAddress_;
   /**
-   * <code>string fromAddress = 4[json_name = "from_address", (.gogoproto.jsontag) = "from_address"];</code>
+   * <code>string from_address = 4;</code>
    */
   public java.lang.String getFromAddress() {
     java.lang.Object ref = fromAddress_;
@@ -196,7 +200,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string fromAddress = 4[json_name = "from_address", (.gogoproto.jsontag) = "from_address"];</code>
+   * <code>string from_address = 4;</code>
    */
   public com.google.protobuf.ByteString
       getFromAddressBytes() {
@@ -226,11 +230,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getDIDBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, dID_);
+    if (!getDidBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, did_);
     }
-    if (!getVerificationMethodIDBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, verificationMethodID_);
+    if (!getVerificationMethodIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, verificationMethodId_);
     }
     if (!signature_.isEmpty()) {
       output.writeBytes(3, signature_);
@@ -247,11 +251,11 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getDIDBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, dID_);
+    if (!getDidBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, did_);
     }
-    if (!getVerificationMethodIDBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, verificationMethodID_);
+    if (!getVerificationMethodIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, verificationMethodId_);
     }
     if (!signature_.isEmpty()) {
       size += com.google.protobuf.CodedOutputStream
@@ -275,10 +279,10 @@ private static final long serialVersionUID = 0L;
     }
     panacea.did.v2.MsgDeactivateDID other = (panacea.did.v2.MsgDeactivateDID) obj;
 
-    if (!getDID()
-        .equals(other.getDID())) return false;
-    if (!getVerificationMethodID()
-        .equals(other.getVerificationMethodID())) return false;
+    if (!getDid()
+        .equals(other.getDid())) return false;
+    if (!getVerificationMethodId()
+        .equals(other.getVerificationMethodId())) return false;
     if (!getSignature()
         .equals(other.getSignature())) return false;
     if (!getFromAddress()
@@ -295,12 +299,12 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + DID_FIELD_NUMBER;
-    hash = (53 * hash) + getDID().hashCode();
-    hash = (37 * hash) + VERIFICATIONMETHODID_FIELD_NUMBER;
-    hash = (53 * hash) + getVerificationMethodID().hashCode();
+    hash = (53 * hash) + getDid().hashCode();
+    hash = (37 * hash) + VERIFICATION_METHOD_ID_FIELD_NUMBER;
+    hash = (53 * hash) + getVerificationMethodId().hashCode();
     hash = (37 * hash) + SIGNATURE_FIELD_NUMBER;
     hash = (53 * hash) + getSignature().hashCode();
-    hash = (37 * hash) + FROMADDRESS_FIELD_NUMBER;
+    hash = (37 * hash) + FROM_ADDRESS_FIELD_NUMBER;
     hash = (53 * hash) + getFromAddress().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -398,6 +402,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * MsgDeactivateDID defines the Msg/DeactivateDID request type.
+   * </pre>
+   *
    * Protobuf type {@code panacea.did.v2.MsgDeactivateDID}
    */
   public static final class Builder extends
@@ -435,9 +443,9 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      dID_ = "";
+      did_ = "";
 
-      verificationMethodID_ = "";
+      verificationMethodId_ = "";
 
       signature_ = com.google.protobuf.ByteString.EMPTY;
 
@@ -469,8 +477,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public panacea.did.v2.MsgDeactivateDID buildPartial() {
       panacea.did.v2.MsgDeactivateDID result = new panacea.did.v2.MsgDeactivateDID(this);
-      result.dID_ = dID_;
-      result.verificationMethodID_ = verificationMethodID_;
+      result.did_ = did_;
+      result.verificationMethodId_ = verificationMethodId_;
       result.signature_ = signature_;
       result.fromAddress_ = fromAddress_;
       onBuilt();
@@ -521,12 +529,12 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(panacea.did.v2.MsgDeactivateDID other) {
       if (other == panacea.did.v2.MsgDeactivateDID.getDefaultInstance()) return this;
-      if (!other.getDID().isEmpty()) {
-        dID_ = other.dID_;
+      if (!other.getDid().isEmpty()) {
+        did_ = other.did_;
         onChanged();
       }
-      if (!other.getVerificationMethodID().isEmpty()) {
-        verificationMethodID_ = other.verificationMethodID_;
+      if (!other.getVerificationMethodId().isEmpty()) {
+        verificationMethodId_ = other.verificationMethodId_;
         onChanged();
       }
       if (other.getSignature() != com.google.protobuf.ByteString.EMPTY) {
@@ -565,140 +573,140 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object dID_ = "";
+    private java.lang.Object did_ = "";
     /**
-     * <code>string DID = 1[json_name = "did", (.gogoproto.jsontag) = "did"];</code>
+     * <code>string did = 1;</code>
      */
-    public java.lang.String getDID() {
-      java.lang.Object ref = dID_;
+    public java.lang.String getDid() {
+      java.lang.Object ref = did_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        dID_ = s;
+        did_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string DID = 1[json_name = "did", (.gogoproto.jsontag) = "did"];</code>
+     * <code>string did = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getDIDBytes() {
-      java.lang.Object ref = dID_;
+        getDidBytes() {
+      java.lang.Object ref = did_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        dID_ = b;
+        did_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string DID = 1[json_name = "did", (.gogoproto.jsontag) = "did"];</code>
+     * <code>string did = 1;</code>
      */
-    public Builder setDID(
+    public Builder setDid(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      dID_ = value;
+      did_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string DID = 1[json_name = "did", (.gogoproto.jsontag) = "did"];</code>
+     * <code>string did = 1;</code>
      */
-    public Builder clearDID() {
+    public Builder clearDid() {
       
-      dID_ = getDefaultInstance().getDID();
+      did_ = getDefaultInstance().getDid();
       onChanged();
       return this;
     }
     /**
-     * <code>string DID = 1[json_name = "did", (.gogoproto.jsontag) = "did"];</code>
+     * <code>string did = 1;</code>
      */
-    public Builder setDIDBytes(
+    public Builder setDidBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      dID_ = value;
+      did_ = value;
       onChanged();
       return this;
     }
 
-    private java.lang.Object verificationMethodID_ = "";
+    private java.lang.Object verificationMethodId_ = "";
     /**
-     * <code>string verificationMethodID = 2[json_name = "verification_method_id", (.gogoproto.jsontag) = "verification_method_id"];</code>
+     * <code>string verification_method_id = 2;</code>
      */
-    public java.lang.String getVerificationMethodID() {
-      java.lang.Object ref = verificationMethodID_;
+    public java.lang.String getVerificationMethodId() {
+      java.lang.Object ref = verificationMethodId_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        verificationMethodID_ = s;
+        verificationMethodId_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string verificationMethodID = 2[json_name = "verification_method_id", (.gogoproto.jsontag) = "verification_method_id"];</code>
+     * <code>string verification_method_id = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getVerificationMethodIDBytes() {
-      java.lang.Object ref = verificationMethodID_;
+        getVerificationMethodIdBytes() {
+      java.lang.Object ref = verificationMethodId_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        verificationMethodID_ = b;
+        verificationMethodId_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string verificationMethodID = 2[json_name = "verification_method_id", (.gogoproto.jsontag) = "verification_method_id"];</code>
+     * <code>string verification_method_id = 2;</code>
      */
-    public Builder setVerificationMethodID(
+    public Builder setVerificationMethodId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      verificationMethodID_ = value;
+      verificationMethodId_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string verificationMethodID = 2[json_name = "verification_method_id", (.gogoproto.jsontag) = "verification_method_id"];</code>
+     * <code>string verification_method_id = 2;</code>
      */
-    public Builder clearVerificationMethodID() {
+    public Builder clearVerificationMethodId() {
       
-      verificationMethodID_ = getDefaultInstance().getVerificationMethodID();
+      verificationMethodId_ = getDefaultInstance().getVerificationMethodId();
       onChanged();
       return this;
     }
     /**
-     * <code>string verificationMethodID = 2[json_name = "verification_method_id", (.gogoproto.jsontag) = "verification_method_id"];</code>
+     * <code>string verification_method_id = 2;</code>
      */
-    public Builder setVerificationMethodIDBytes(
+    public Builder setVerificationMethodIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      verificationMethodID_ = value;
+      verificationMethodId_ = value;
       onChanged();
       return this;
     }
@@ -734,7 +742,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object fromAddress_ = "";
     /**
-     * <code>string fromAddress = 4[json_name = "from_address", (.gogoproto.jsontag) = "from_address"];</code>
+     * <code>string from_address = 4;</code>
      */
     public java.lang.String getFromAddress() {
       java.lang.Object ref = fromAddress_;
@@ -749,7 +757,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string fromAddress = 4[json_name = "from_address", (.gogoproto.jsontag) = "from_address"];</code>
+     * <code>string from_address = 4;</code>
      */
     public com.google.protobuf.ByteString
         getFromAddressBytes() {
@@ -765,7 +773,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string fromAddress = 4[json_name = "from_address", (.gogoproto.jsontag) = "from_address"];</code>
+     * <code>string from_address = 4;</code>
      */
     public Builder setFromAddress(
         java.lang.String value) {
@@ -778,7 +786,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string fromAddress = 4[json_name = "from_address", (.gogoproto.jsontag) = "from_address"];</code>
+     * <code>string from_address = 4;</code>
      */
     public Builder clearFromAddress() {
       
@@ -787,7 +795,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string fromAddress = 4[json_name = "from_address", (.gogoproto.jsontag) = "from_address"];</code>
+     * <code>string from_address = 4;</code>
      */
     public Builder setFromAddressBytes(
         com.google.protobuf.ByteString value) {

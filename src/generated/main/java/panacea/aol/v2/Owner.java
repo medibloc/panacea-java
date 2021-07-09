@@ -4,6 +4,10 @@
 package panacea.aol.v2;
 
 /**
+ * <pre>
+ * Owner defines a owner type.
+ * </pre>
+ *
  * Protobuf type {@code panacea.aol.v2.Owner}
  */
 public  final class Owner extends
@@ -79,10 +83,10 @@ private static final long serialVersionUID = 0L;
             panacea.aol.v2.Owner.class, panacea.aol.v2.Owner.Builder.class);
   }
 
-  public static final int TOTALTOPICS_FIELD_NUMBER = 1;
+  public static final int TOTAL_TOPICS_FIELD_NUMBER = 1;
   private long totalTopics_;
   /**
-   * <code>uint64 totalTopics = 1;</code>
+   * <code>uint64 total_topics = 1;</code>
    */
   public long getTotalTopics() {
     return totalTopics_;
@@ -146,7 +150,7 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + TOTALTOPICS_FIELD_NUMBER;
+    hash = (37 * hash) + TOTAL_TOPICS_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getTotalTopics());
     hash = (29 * hash) + unknownFields.hashCode();
@@ -245,6 +249,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * Owner defines a owner type.
+   * </pre>
+   *
    * Protobuf type {@code panacea.aol.v2.Owner}
    */
   public static final class Builder extends
@@ -393,13 +401,13 @@ private static final long serialVersionUID = 0L;
 
     private long totalTopics_ ;
     /**
-     * <code>uint64 totalTopics = 1;</code>
+     * <code>uint64 total_topics = 1;</code>
      */
     public long getTotalTopics() {
       return totalTopics_;
     }
     /**
-     * <code>uint64 totalTopics = 1;</code>
+     * <code>uint64 total_topics = 1;</code>
      */
     public Builder setTotalTopics(long value) {
       
@@ -408,7 +416,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>uint64 totalTopics = 1;</code>
+     * <code>uint64 total_topics = 1;</code>
      */
     public Builder clearTotalTopics() {
       

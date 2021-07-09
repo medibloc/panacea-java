@@ -8,11 +8,11 @@ public interface MsgAddRecordOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string topicName = 1;</code>
+   * <code>string topic_name = 1;</code>
    */
   java.lang.String getTopicName();
   /**
-   * <code>string topicName = 1;</code>
+   * <code>string topic_name = 1;</code>
    */
   com.google.protobuf.ByteString
       getTopicNameBytes();
@@ -28,31 +28,31 @@ public interface MsgAddRecordOrBuilder extends
   com.google.protobuf.ByteString getValue();
 
   /**
-   * <code>string writerAddress = 4;</code>
+   * <code>string writer_address = 4;</code>
    */
   java.lang.String getWriterAddress();
   /**
-   * <code>string writerAddress = 4;</code>
+   * <code>string writer_address = 4;</code>
    */
   com.google.protobuf.ByteString
       getWriterAddressBytes();
 
   /**
-   * <code>string ownerAddress = 5;</code>
+   * <code>string owner_address = 5;</code>
    */
   java.lang.String getOwnerAddress();
   /**
-   * <code>string ownerAddress = 5;</code>
+   * <code>string owner_address = 5;</code>
    */
   com.google.protobuf.ByteString
       getOwnerAddressBytes();
 
   /**
-   * <code>string feePayerAddress = 6;</code>
+   * <code>string fee_payer_address = 6;</code>
    */
   java.lang.String getFeePayerAddress();
   /**
-   * <code>string feePayerAddress = 6;</code>
+   * <code>string fee_payer_address = 6;</code>
    */
   com.google.protobuf.ByteString
       getFeePayerAddressBytes();

@@ -4,6 +4,10 @@
 package panacea.token.v2;
 
 /**
+ * <pre>
+ * MsgIssueTokenResponse defines the Msg/IssueToken response type.
+ * </pre>
+ *
  * Protobuf type {@code panacea.token.v2.MsgIssueTokenResponse}
  */
 public  final class MsgIssueTokenResponse extends
@@ -218,6 +222,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * MsgIssueTokenResponse defines the Msg/IssueToken response type.
+   * </pre>
+   *
    * Protobuf type {@code panacea.token.v2.MsgIssueTokenResponse}
    */
   public static final class Builder extends

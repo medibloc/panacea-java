@@ -4,6 +4,10 @@
 package panacea.did.v2;
 
 /**
+ * <pre>
+ * Strings defines a JSON-LD string array format which is marshalled to a single string if the array length is 1.
+ * </pre>
+ *
  * Protobuf type {@code panacea.did.v2.Strings}
  */
 public  final class Strings extends
@@ -278,6 +282,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * Strings defines a JSON-LD string array format which is marshalled to a single string if the array length is 1.
+   * </pre>
+   *
    * Protobuf type {@code panacea.did.v2.Strings}
    */
   public static final class Builder extends

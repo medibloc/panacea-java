@@ -30,30 +30,30 @@ public final class QueryGrpc {
   public static final String SERVICE_NAME = "panacea.aol.v2.Query";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<panacea.aol.v2.QueryGetTopicRequest,
-      panacea.aol.v2.QueryGetTopicResponse> getTopicMethod;
+  private static volatile io.grpc.MethodDescriptor<panacea.aol.v2.QueryTopicRequest,
+      panacea.aol.v2.QueryTopicResponse> getTopicMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Topic",
-      requestType = panacea.aol.v2.QueryGetTopicRequest.class,
-      responseType = panacea.aol.v2.QueryGetTopicResponse.class,
+      requestType = panacea.aol.v2.QueryTopicRequest.class,
+      responseType = panacea.aol.v2.QueryTopicResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<panacea.aol.v2.QueryGetTopicRequest,
-      panacea.aol.v2.QueryGetTopicResponse> getTopicMethod() {
-    io.grpc.MethodDescriptor<panacea.aol.v2.QueryGetTopicRequest, panacea.aol.v2.QueryGetTopicResponse> getTopicMethod;
+  public static io.grpc.MethodDescriptor<panacea.aol.v2.QueryTopicRequest,
+      panacea.aol.v2.QueryTopicResponse> getTopicMethod() {
+    io.grpc.MethodDescriptor<panacea.aol.v2.QueryTopicRequest, panacea.aol.v2.QueryTopicResponse> getTopicMethod;
     if ((getTopicMethod = QueryGrpc.getTopicMethod) == null) {
       synchronized (QueryGrpc.class) {
         if ((getTopicMethod = QueryGrpc.getTopicMethod) == null) {
           QueryGrpc.getTopicMethod = getTopicMethod = 
-              io.grpc.MethodDescriptor.<panacea.aol.v2.QueryGetTopicRequest, panacea.aol.v2.QueryGetTopicResponse>newBuilder()
+              io.grpc.MethodDescriptor.<panacea.aol.v2.QueryTopicRequest, panacea.aol.v2.QueryTopicResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "panacea.aol.v2.Query", "Topic"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  panacea.aol.v2.QueryGetTopicRequest.getDefaultInstance()))
+                  panacea.aol.v2.QueryTopicRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  panacea.aol.v2.QueryGetTopicResponse.getDefaultInstance()))
+                  panacea.aol.v2.QueryTopicResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new QueryMethodDescriptorSupplier("Topic"))
                   .build();
           }
@@ -62,30 +62,30 @@ public final class QueryGrpc {
      return getTopicMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<panacea.aol.v2.QueryListTopicsRequest,
-      panacea.aol.v2.QueryListTopicsResponse> getTopicsMethod;
+  private static volatile io.grpc.MethodDescriptor<panacea.aol.v2.QueryTopicsRequest,
+      panacea.aol.v2.QueryTopicsResponse> getTopicsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Topics",
-      requestType = panacea.aol.v2.QueryListTopicsRequest.class,
-      responseType = panacea.aol.v2.QueryListTopicsResponse.class,
+      requestType = panacea.aol.v2.QueryTopicsRequest.class,
+      responseType = panacea.aol.v2.QueryTopicsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<panacea.aol.v2.QueryListTopicsRequest,
-      panacea.aol.v2.QueryListTopicsResponse> getTopicsMethod() {
-    io.grpc.MethodDescriptor<panacea.aol.v2.QueryListTopicsRequest, panacea.aol.v2.QueryListTopicsResponse> getTopicsMethod;
+  public static io.grpc.MethodDescriptor<panacea.aol.v2.QueryTopicsRequest,
+      panacea.aol.v2.QueryTopicsResponse> getTopicsMethod() {
+    io.grpc.MethodDescriptor<panacea.aol.v2.QueryTopicsRequest, panacea.aol.v2.QueryTopicsResponse> getTopicsMethod;
     if ((getTopicsMethod = QueryGrpc.getTopicsMethod) == null) {
       synchronized (QueryGrpc.class) {
         if ((getTopicsMethod = QueryGrpc.getTopicsMethod) == null) {
           QueryGrpc.getTopicsMethod = getTopicsMethod = 
-              io.grpc.MethodDescriptor.<panacea.aol.v2.QueryListTopicsRequest, panacea.aol.v2.QueryListTopicsResponse>newBuilder()
+              io.grpc.MethodDescriptor.<panacea.aol.v2.QueryTopicsRequest, panacea.aol.v2.QueryTopicsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "panacea.aol.v2.Query", "Topics"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  panacea.aol.v2.QueryListTopicsRequest.getDefaultInstance()))
+                  panacea.aol.v2.QueryTopicsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  panacea.aol.v2.QueryListTopicsResponse.getDefaultInstance()))
+                  panacea.aol.v2.QueryTopicsResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new QueryMethodDescriptorSupplier("Topics"))
                   .build();
           }
@@ -94,30 +94,30 @@ public final class QueryGrpc {
      return getTopicsMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<panacea.aol.v2.QueryGetWriterRequest,
-      panacea.aol.v2.QueryGetWriterResponse> getWriterMethod;
+  private static volatile io.grpc.MethodDescriptor<panacea.aol.v2.QueryWriterRequest,
+      panacea.aol.v2.QueryWriterResponse> getWriterMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Writer",
-      requestType = panacea.aol.v2.QueryGetWriterRequest.class,
-      responseType = panacea.aol.v2.QueryGetWriterResponse.class,
+      requestType = panacea.aol.v2.QueryWriterRequest.class,
+      responseType = panacea.aol.v2.QueryWriterResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<panacea.aol.v2.QueryGetWriterRequest,
-      panacea.aol.v2.QueryGetWriterResponse> getWriterMethod() {
-    io.grpc.MethodDescriptor<panacea.aol.v2.QueryGetWriterRequest, panacea.aol.v2.QueryGetWriterResponse> getWriterMethod;
+  public static io.grpc.MethodDescriptor<panacea.aol.v2.QueryWriterRequest,
+      panacea.aol.v2.QueryWriterResponse> getWriterMethod() {
+    io.grpc.MethodDescriptor<panacea.aol.v2.QueryWriterRequest, panacea.aol.v2.QueryWriterResponse> getWriterMethod;
     if ((getWriterMethod = QueryGrpc.getWriterMethod) == null) {
       synchronized (QueryGrpc.class) {
         if ((getWriterMethod = QueryGrpc.getWriterMethod) == null) {
           QueryGrpc.getWriterMethod = getWriterMethod = 
-              io.grpc.MethodDescriptor.<panacea.aol.v2.QueryGetWriterRequest, panacea.aol.v2.QueryGetWriterResponse>newBuilder()
+              io.grpc.MethodDescriptor.<panacea.aol.v2.QueryWriterRequest, panacea.aol.v2.QueryWriterResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "panacea.aol.v2.Query", "Writer"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  panacea.aol.v2.QueryGetWriterRequest.getDefaultInstance()))
+                  panacea.aol.v2.QueryWriterRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  panacea.aol.v2.QueryGetWriterResponse.getDefaultInstance()))
+                  panacea.aol.v2.QueryWriterResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new QueryMethodDescriptorSupplier("Writer"))
                   .build();
           }
@@ -126,30 +126,30 @@ public final class QueryGrpc {
      return getWriterMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<panacea.aol.v2.QueryListWritersRequest,
-      panacea.aol.v2.QueryListWritersResponse> getWritersMethod;
+  private static volatile io.grpc.MethodDescriptor<panacea.aol.v2.QueryWritersRequest,
+      panacea.aol.v2.QueryWritersResponse> getWritersMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Writers",
-      requestType = panacea.aol.v2.QueryListWritersRequest.class,
-      responseType = panacea.aol.v2.QueryListWritersResponse.class,
+      requestType = panacea.aol.v2.QueryWritersRequest.class,
+      responseType = panacea.aol.v2.QueryWritersResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<panacea.aol.v2.QueryListWritersRequest,
-      panacea.aol.v2.QueryListWritersResponse> getWritersMethod() {
-    io.grpc.MethodDescriptor<panacea.aol.v2.QueryListWritersRequest, panacea.aol.v2.QueryListWritersResponse> getWritersMethod;
+  public static io.grpc.MethodDescriptor<panacea.aol.v2.QueryWritersRequest,
+      panacea.aol.v2.QueryWritersResponse> getWritersMethod() {
+    io.grpc.MethodDescriptor<panacea.aol.v2.QueryWritersRequest, panacea.aol.v2.QueryWritersResponse> getWritersMethod;
     if ((getWritersMethod = QueryGrpc.getWritersMethod) == null) {
       synchronized (QueryGrpc.class) {
         if ((getWritersMethod = QueryGrpc.getWritersMethod) == null) {
           QueryGrpc.getWritersMethod = getWritersMethod = 
-              io.grpc.MethodDescriptor.<panacea.aol.v2.QueryListWritersRequest, panacea.aol.v2.QueryListWritersResponse>newBuilder()
+              io.grpc.MethodDescriptor.<panacea.aol.v2.QueryWritersRequest, panacea.aol.v2.QueryWritersResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "panacea.aol.v2.Query", "Writers"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  panacea.aol.v2.QueryListWritersRequest.getDefaultInstance()))
+                  panacea.aol.v2.QueryWritersRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  panacea.aol.v2.QueryListWritersResponse.getDefaultInstance()))
+                  panacea.aol.v2.QueryWritersResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new QueryMethodDescriptorSupplier("Writers"))
                   .build();
           }
@@ -158,30 +158,30 @@ public final class QueryGrpc {
      return getWritersMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<panacea.aol.v2.QueryGetRecordRequest,
-      panacea.aol.v2.QueryGetRecordResponse> getRecordMethod;
+  private static volatile io.grpc.MethodDescriptor<panacea.aol.v2.QueryRecordRequest,
+      panacea.aol.v2.QueryRecordResponse> getRecordMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Record",
-      requestType = panacea.aol.v2.QueryGetRecordRequest.class,
-      responseType = panacea.aol.v2.QueryGetRecordResponse.class,
+      requestType = panacea.aol.v2.QueryRecordRequest.class,
+      responseType = panacea.aol.v2.QueryRecordResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<panacea.aol.v2.QueryGetRecordRequest,
-      panacea.aol.v2.QueryGetRecordResponse> getRecordMethod() {
-    io.grpc.MethodDescriptor<panacea.aol.v2.QueryGetRecordRequest, panacea.aol.v2.QueryGetRecordResponse> getRecordMethod;
+  public static io.grpc.MethodDescriptor<panacea.aol.v2.QueryRecordRequest,
+      panacea.aol.v2.QueryRecordResponse> getRecordMethod() {
+    io.grpc.MethodDescriptor<panacea.aol.v2.QueryRecordRequest, panacea.aol.v2.QueryRecordResponse> getRecordMethod;
     if ((getRecordMethod = QueryGrpc.getRecordMethod) == null) {
       synchronized (QueryGrpc.class) {
         if ((getRecordMethod = QueryGrpc.getRecordMethod) == null) {
           QueryGrpc.getRecordMethod = getRecordMethod = 
-              io.grpc.MethodDescriptor.<panacea.aol.v2.QueryGetRecordRequest, panacea.aol.v2.QueryGetRecordResponse>newBuilder()
+              io.grpc.MethodDescriptor.<panacea.aol.v2.QueryRecordRequest, panacea.aol.v2.QueryRecordResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "panacea.aol.v2.Query", "Record"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  panacea.aol.v2.QueryGetRecordRequest.getDefaultInstance()))
+                  panacea.aol.v2.QueryRecordRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  panacea.aol.v2.QueryGetRecordResponse.getDefaultInstance()))
+                  panacea.aol.v2.QueryRecordResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new QueryMethodDescriptorSupplier("Record"))
                   .build();
           }
@@ -221,37 +221,52 @@ public final class QueryGrpc {
   public static abstract class QueryImplBase implements io.grpc.BindableService {
 
     /**
+     * <pre>
+     * Topic returns topic details.
+     * </pre>
      */
-    public void topic(panacea.aol.v2.QueryGetTopicRequest request,
-        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryGetTopicResponse> responseObserver) {
+    public void topic(panacea.aol.v2.QueryTopicRequest request,
+        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryTopicResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getTopicMethod(), responseObserver);
     }
 
     /**
+     * <pre>
+     * Topics returns topic names.
+     * </pre>
      */
-    public void topics(panacea.aol.v2.QueryListTopicsRequest request,
-        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryListTopicsResponse> responseObserver) {
+    public void topics(panacea.aol.v2.QueryTopicsRequest request,
+        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryTopicsResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getTopicsMethod(), responseObserver);
     }
 
     /**
+     * <pre>
+     * Writer returns writer details.
+     * </pre>
      */
-    public void writer(panacea.aol.v2.QueryGetWriterRequest request,
-        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryGetWriterResponse> responseObserver) {
+    public void writer(panacea.aol.v2.QueryWriterRequest request,
+        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryWriterResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getWriterMethod(), responseObserver);
     }
 
     /**
+     * <pre>
+     * Writers returns writer addresses.
+     * </pre>
      */
-    public void writers(panacea.aol.v2.QueryListWritersRequest request,
-        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryListWritersResponse> responseObserver) {
+    public void writers(panacea.aol.v2.QueryWritersRequest request,
+        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryWritersResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getWritersMethod(), responseObserver);
     }
 
     /**
+     * <pre>
+     * Record returns record details.
+     * </pre>
      */
-    public void record(panacea.aol.v2.QueryGetRecordRequest request,
-        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryGetRecordResponse> responseObserver) {
+    public void record(panacea.aol.v2.QueryRecordRequest request,
+        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryRecordResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getRecordMethod(), responseObserver);
     }
 
@@ -261,36 +276,36 @@ public final class QueryGrpc {
             getTopicMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                panacea.aol.v2.QueryGetTopicRequest,
-                panacea.aol.v2.QueryGetTopicResponse>(
+                panacea.aol.v2.QueryTopicRequest,
+                panacea.aol.v2.QueryTopicResponse>(
                   this, METHODID_TOPIC)))
           .addMethod(
             getTopicsMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                panacea.aol.v2.QueryListTopicsRequest,
-                panacea.aol.v2.QueryListTopicsResponse>(
+                panacea.aol.v2.QueryTopicsRequest,
+                panacea.aol.v2.QueryTopicsResponse>(
                   this, METHODID_TOPICS)))
           .addMethod(
             getWriterMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                panacea.aol.v2.QueryGetWriterRequest,
-                panacea.aol.v2.QueryGetWriterResponse>(
+                panacea.aol.v2.QueryWriterRequest,
+                panacea.aol.v2.QueryWriterResponse>(
                   this, METHODID_WRITER)))
           .addMethod(
             getWritersMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                panacea.aol.v2.QueryListWritersRequest,
-                panacea.aol.v2.QueryListWritersResponse>(
+                panacea.aol.v2.QueryWritersRequest,
+                panacea.aol.v2.QueryWritersResponse>(
                   this, METHODID_WRITERS)))
           .addMethod(
             getRecordMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                panacea.aol.v2.QueryGetRecordRequest,
-                panacea.aol.v2.QueryGetRecordResponse>(
+                panacea.aol.v2.QueryRecordRequest,
+                panacea.aol.v2.QueryRecordResponse>(
                   this, METHODID_RECORD)))
           .build();
     }
@@ -318,41 +333,56 @@ public final class QueryGrpc {
     }
 
     /**
+     * <pre>
+     * Topic returns topic details.
+     * </pre>
      */
-    public void topic(panacea.aol.v2.QueryGetTopicRequest request,
-        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryGetTopicResponse> responseObserver) {
+    public void topic(panacea.aol.v2.QueryTopicRequest request,
+        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryTopicResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getTopicMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
+     * <pre>
+     * Topics returns topic names.
+     * </pre>
      */
-    public void topics(panacea.aol.v2.QueryListTopicsRequest request,
-        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryListTopicsResponse> responseObserver) {
+    public void topics(panacea.aol.v2.QueryTopicsRequest request,
+        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryTopicsResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getTopicsMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
+     * <pre>
+     * Writer returns writer details.
+     * </pre>
      */
-    public void writer(panacea.aol.v2.QueryGetWriterRequest request,
-        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryGetWriterResponse> responseObserver) {
+    public void writer(panacea.aol.v2.QueryWriterRequest request,
+        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryWriterResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getWriterMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
+     * <pre>
+     * Writers returns writer addresses.
+     * </pre>
      */
-    public void writers(panacea.aol.v2.QueryListWritersRequest request,
-        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryListWritersResponse> responseObserver) {
+    public void writers(panacea.aol.v2.QueryWritersRequest request,
+        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryWritersResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getWritersMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
+     * <pre>
+     * Record returns record details.
+     * </pre>
      */
-    public void record(panacea.aol.v2.QueryGetRecordRequest request,
-        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryGetRecordResponse> responseObserver) {
+    public void record(panacea.aol.v2.QueryRecordRequest request,
+        io.grpc.stub.StreamObserver<panacea.aol.v2.QueryRecordResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getRecordMethod(), getCallOptions()), request, responseObserver);
     }
@@ -380,36 +410,51 @@ public final class QueryGrpc {
     }
 
     /**
+     * <pre>
+     * Topic returns topic details.
+     * </pre>
      */
-    public panacea.aol.v2.QueryGetTopicResponse topic(panacea.aol.v2.QueryGetTopicRequest request) {
+    public panacea.aol.v2.QueryTopicResponse topic(panacea.aol.v2.QueryTopicRequest request) {
       return blockingUnaryCall(
           getChannel(), getTopicMethod(), getCallOptions(), request);
     }
 
     /**
+     * <pre>
+     * Topics returns topic names.
+     * </pre>
      */
-    public panacea.aol.v2.QueryListTopicsResponse topics(panacea.aol.v2.QueryListTopicsRequest request) {
+    public panacea.aol.v2.QueryTopicsResponse topics(panacea.aol.v2.QueryTopicsRequest request) {
       return blockingUnaryCall(
           getChannel(), getTopicsMethod(), getCallOptions(), request);
     }
 
     /**
+     * <pre>
+     * Writer returns writer details.
+     * </pre>
      */
-    public panacea.aol.v2.QueryGetWriterResponse writer(panacea.aol.v2.QueryGetWriterRequest request) {
+    public panacea.aol.v2.QueryWriterResponse writer(panacea.aol.v2.QueryWriterRequest request) {
       return blockingUnaryCall(
           getChannel(), getWriterMethod(), getCallOptions(), request);
     }
 
     /**
+     * <pre>
+     * Writers returns writer addresses.
+     * </pre>
      */
-    public panacea.aol.v2.QueryListWritersResponse writers(panacea.aol.v2.QueryListWritersRequest request) {
+    public panacea.aol.v2.QueryWritersResponse writers(panacea.aol.v2.QueryWritersRequest request) {
       return blockingUnaryCall(
           getChannel(), getWritersMethod(), getCallOptions(), request);
     }
 
     /**
+     * <pre>
+     * Record returns record details.
+     * </pre>
      */
-    public panacea.aol.v2.QueryGetRecordResponse record(panacea.aol.v2.QueryGetRecordRequest request) {
+    public panacea.aol.v2.QueryRecordResponse record(panacea.aol.v2.QueryRecordRequest request) {
       return blockingUnaryCall(
           getChannel(), getRecordMethod(), getCallOptions(), request);
     }
@@ -437,41 +482,56 @@ public final class QueryGrpc {
     }
 
     /**
+     * <pre>
+     * Topic returns topic details.
+     * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<panacea.aol.v2.QueryGetTopicResponse> topic(
-        panacea.aol.v2.QueryGetTopicRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<panacea.aol.v2.QueryTopicResponse> topic(
+        panacea.aol.v2.QueryTopicRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getTopicMethod(), getCallOptions()), request);
     }
 
     /**
+     * <pre>
+     * Topics returns topic names.
+     * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<panacea.aol.v2.QueryListTopicsResponse> topics(
-        panacea.aol.v2.QueryListTopicsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<panacea.aol.v2.QueryTopicsResponse> topics(
+        panacea.aol.v2.QueryTopicsRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getTopicsMethod(), getCallOptions()), request);
     }
 
     /**
+     * <pre>
+     * Writer returns writer details.
+     * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<panacea.aol.v2.QueryGetWriterResponse> writer(
-        panacea.aol.v2.QueryGetWriterRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<panacea.aol.v2.QueryWriterResponse> writer(
+        panacea.aol.v2.QueryWriterRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getWriterMethod(), getCallOptions()), request);
     }
 
     /**
+     * <pre>
+     * Writers returns writer addresses.
+     * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<panacea.aol.v2.QueryListWritersResponse> writers(
-        panacea.aol.v2.QueryListWritersRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<panacea.aol.v2.QueryWritersResponse> writers(
+        panacea.aol.v2.QueryWritersRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getWritersMethod(), getCallOptions()), request);
     }
 
     /**
+     * <pre>
+     * Record returns record details.
+     * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<panacea.aol.v2.QueryGetRecordResponse> record(
-        panacea.aol.v2.QueryGetRecordRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<panacea.aol.v2.QueryRecordResponse> record(
+        panacea.aol.v2.QueryRecordRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getRecordMethod(), getCallOptions()), request);
     }
@@ -501,24 +561,24 @@ public final class QueryGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_TOPIC:
-          serviceImpl.topic((panacea.aol.v2.QueryGetTopicRequest) request,
-              (io.grpc.stub.StreamObserver<panacea.aol.v2.QueryGetTopicResponse>) responseObserver);
+          serviceImpl.topic((panacea.aol.v2.QueryTopicRequest) request,
+              (io.grpc.stub.StreamObserver<panacea.aol.v2.QueryTopicResponse>) responseObserver);
           break;
         case METHODID_TOPICS:
-          serviceImpl.topics((panacea.aol.v2.QueryListTopicsRequest) request,
-              (io.grpc.stub.StreamObserver<panacea.aol.v2.QueryListTopicsResponse>) responseObserver);
+          serviceImpl.topics((panacea.aol.v2.QueryTopicsRequest) request,
+              (io.grpc.stub.StreamObserver<panacea.aol.v2.QueryTopicsResponse>) responseObserver);
           break;
         case METHODID_WRITER:
-          serviceImpl.writer((panacea.aol.v2.QueryGetWriterRequest) request,
-              (io.grpc.stub.StreamObserver<panacea.aol.v2.QueryGetWriterResponse>) responseObserver);
+          serviceImpl.writer((panacea.aol.v2.QueryWriterRequest) request,
+              (io.grpc.stub.StreamObserver<panacea.aol.v2.QueryWriterResponse>) responseObserver);
           break;
         case METHODID_WRITERS:
-          serviceImpl.writers((panacea.aol.v2.QueryListWritersRequest) request,
-              (io.grpc.stub.StreamObserver<panacea.aol.v2.QueryListWritersResponse>) responseObserver);
+          serviceImpl.writers((panacea.aol.v2.QueryWritersRequest) request,
+              (io.grpc.stub.StreamObserver<panacea.aol.v2.QueryWritersResponse>) responseObserver);
           break;
         case METHODID_RECORD:
-          serviceImpl.record((panacea.aol.v2.QueryGetRecordRequest) request,
-              (io.grpc.stub.StreamObserver<panacea.aol.v2.QueryGetRecordResponse>) responseObserver);
+          serviceImpl.record((panacea.aol.v2.QueryRecordRequest) request,
+              (io.grpc.stub.StreamObserver<panacea.aol.v2.QueryRecordResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();

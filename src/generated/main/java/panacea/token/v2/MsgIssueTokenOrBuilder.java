@@ -18,25 +18,25 @@ public interface MsgIssueTokenOrBuilder extends
       getNameBytes();
 
   /**
-   * <code>string shortSymbol = 2;</code>
+   * <code>string short_symbol = 2;</code>
    */
   java.lang.String getShortSymbol();
   /**
-   * <code>string shortSymbol = 2;</code>
+   * <code>string short_symbol = 2;</code>
    */
   com.google.protobuf.ByteString
       getShortSymbolBytes();
 
   /**
-   * <code>.cosmos.base.v1beta1.IntProto totalSupplyMicro = 3 [(.gogoproto.nullable) = false];</code>
+   * <code>.cosmos.base.v1beta1.IntProto total_supply_micro = 3 [(.gogoproto.nullable) = false];</code>
    */
   boolean hasTotalSupplyMicro();
   /**
-   * <code>.cosmos.base.v1beta1.IntProto totalSupplyMicro = 3 [(.gogoproto.nullable) = false];</code>
+   * <code>.cosmos.base.v1beta1.IntProto total_supply_micro = 3 [(.gogoproto.nullable) = false];</code>
    */
   cosmos.base.v1beta1.IntProto getTotalSupplyMicro();
   /**
-   * <code>.cosmos.base.v1beta1.IntProto totalSupplyMicro = 3 [(.gogoproto.nullable) = false];</code>
+   * <code>.cosmos.base.v1beta1.IntProto total_supply_micro = 3 [(.gogoproto.nullable) = false];</code>
    */
   cosmos.base.v1beta1.IntProtoOrBuilder getTotalSupplyMicroOrBuilder();
 
@@ -46,11 +46,11 @@ public interface MsgIssueTokenOrBuilder extends
   boolean getMintable();
 
   /**
-   * <code>string ownerAddress = 5;</code>
+   * <code>string owner_address = 5;</code>
    */
   java.lang.String getOwnerAddress();
   /**
-   * <code>string ownerAddress = 5;</code>
+   * <code>string owner_address = 5;</code>
    */
   com.google.protobuf.ByteString
       getOwnerAddressBytes();

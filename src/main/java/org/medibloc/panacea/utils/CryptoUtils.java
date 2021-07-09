@@ -3,6 +3,8 @@ package org.medibloc.panacea.utils;
 import com.google.protobuf.InvalidProtocolBufferException;
 import cosmos.auth.v1beta1.BaseAccount;
 import cosmos.crypto.secp256k1.Keys;
+import cosmos.crypto.secp256k1.PrivKey;
+import cosmos.crypto.secp256k1.PubKey;
 import org.apache.commons.net.util.Base64;
 import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.Sha256Hash;
@@ -46,7 +48,7 @@ public class CryptoUtils {
         return Bech32.encode(hrp, convertedCode);
     }
 
-    public static String getAddressFromPrivateKey(Keys.PrivKey privateKey, String hrp) {
+    public static String getAddressFromPrivateKey(PrivKey privateKey, String hrp) {
         ECKey ecKey = ECKey.fromPrivate(new BigInteger(privateKey.getKey().toStringUtf8(), 16));
         return getAddressFromECKey(ecKey, hrp);
     }
@@ -58,7 +60,7 @@ public class CryptoUtils {
 
     public static String getPublicKeyFrom(BaseAccount account) throws PanaceaApiException {
         try {
-            byte[] publicKeyToByteArray = account.getPubKey().unpack(Keys.PubKey.class).getKey().toByteArray();
+            byte[] publicKeyToByteArray = account.getPubKey().unpack(PubKey.class).getKey().toByteArray();
             return Base64.encodeBase64StringUnChunked(publicKeyToByteArray);
         } catch (InvalidProtocolBufferException e) {
             throw new PanaceaApiException(e.getMessage());

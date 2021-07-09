@@ -17,6 +17,9 @@ plugins {
 
 sourceSets {
     main {
+        proto {
+            srcDir 'src/main/resources/proto'
+        }
         java {
             srcDir 'src/main/java'
         }
@@ -51,7 +54,7 @@ idea {
 }
 
 group 'org.medibloc.panacea'
-version '2.0.0-alpha.2'
+version '2.0.0-alpha.3'
 
 sourceCompatibility = JavaVersion.VERSION_1_6
 targetCompatibility = JavaVersion.VERSION_1_6

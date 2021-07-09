@@ -8,14 +8,14 @@ public interface VerificationMethodOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+   * <code>string id = 1;</code>
    */
-  java.lang.String getID();
+  java.lang.String getId();
   /**
-   * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+   * <code>string id = 1;</code>
    */
   com.google.protobuf.ByteString
-      getIDBytes();
+      getIdBytes();
 
   /**
    * <code>string type = 2;</code>
@@ -38,12 +38,12 @@ public interface VerificationMethodOrBuilder extends
       getControllerBytes();
 
   /**
-   * <code>string pubKeyBase58 = 4[json_name = "publicKeyBase58", (.gogoproto.jsontag) = "publicKeyBase58"];</code>
+   * <code>string public_key_base58 = 4[json_name = "publicKeyBase58"];</code>
    */
-  java.lang.String getPubKeyBase58();
+  java.lang.String getPublicKeyBase58();
   /**
-   * <code>string pubKeyBase58 = 4[json_name = "publicKeyBase58", (.gogoproto.jsontag) = "publicKeyBase58"];</code>
+   * <code>string public_key_base58 = 4[json_name = "publicKeyBase58"];</code>
    */
   com.google.protobuf.ByteString
-      getPubKeyBase58Bytes();
+      getPublicKeyBase58Bytes();
 }

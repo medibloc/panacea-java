@@ -4,6 +4,10 @@
 package panacea.aol.v2;
 
 /**
+ * <pre>
+ * MsgDeleteWriter defines the Msg/DeleteWriter response type.
+ * </pre>
+ *
  * Protobuf type {@code panacea.aol.v2.MsgDeleteWriterResponse}
  */
 public  final class MsgDeleteWriterResponse extends
@@ -218,6 +222,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * MsgDeleteWriter defines the Msg/DeleteWriter response type.
+   * </pre>
+   *
    * Protobuf type {@code panacea.aol.v2.MsgDeleteWriterResponse}
    */
   public static final class Builder extends

@@ -10,10 +10,11 @@ import cosmos.base.tendermint.v1beta1.*;
 import cosmos.base.v1beta1.Coin;
 import cosmos.tx.v1beta1.*;
 import io.grpc.Channel;
+import org.apache.commons.net.util.Base64;
 import panacea.aol.v2.*;
 import panacea.did.v2.DIDDocumentWithSeq;
-import panacea.did.v2.QueryGetDIDRequest;
-import panacea.did.v2.QueryGetDIDResponse;
+import panacea.did.v2.QueryDIDRequest;
+import panacea.did.v2.QueryDIDResponse;
 import tendermint.p2p.DefaultNodeInfo;
 import tendermint.types.Block;
 
@@ -54,30 +55,30 @@ public class PanaceaGrpcClient {
     }
 
     public Topic getTopic(String ownerAddress, String topicName) {
-        QueryGetTopicRequest request = QueryGetTopicRequest.newBuilder()
+        QueryTopicRequest request = QueryTopicRequest.newBuilder()
                 .setTopicName(topicName)
                 .setOwnerAddress(ownerAddress)
                 .build();
-        QueryGetTopicResponse response = grpcStub.getAolQueryStub().topic(request);
+        QueryTopicResponse response = grpcStub.getAolQueryStub().topic(request);
         return response.getTopic();
     }
 
     public Record getRecord(String ownerAddress, String topicName, Long offset) {
-        QueryGetRecordRequest request = QueryGetRecordRequest.newBuilder()
+        QueryRecordRequest request = QueryRecordRequest.newBuilder()
                 .setOwnerAddress(ownerAddress)
                 .setTopicName(topicName)
                 .setOffset(offset)
                 .build();
-        QueryGetRecordResponse response = grpcStub.getAolQueryStub().record(request);
+        QueryRecordResponse response = grpcStub.getAolQueryStub().record(request);
         return response.getRecord();
     }
 
     public DIDDocumentWithSeq getDIDDocumentWithSeq(String did) {
-        QueryGetDIDRequest request = QueryGetDIDRequest.newBuilder()
-                .setDID(did)
+        QueryDIDRequest request = QueryDIDRequest.newBuilder()
+                .setDidBase64(Base64.encodeBase64String(did.getBytes()))
                 .build();
-        QueryGetDIDResponse response = grpcStub.getDidQueryStub().dIDDocumentWithSeq(request);
-        return response.getDIDDocumentWithSeq();
+        QueryDIDResponse response = grpcStub.getDidQueryStub().dID(request);
+        return response.getDidDocumentWithSeq();
     }
 
     public TxResponse broadcast(BroadcastTxRequest request) {

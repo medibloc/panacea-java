@@ -4,6 +4,10 @@
 package panacea.did.v2;
 
 /**
+ * <pre>
+ * VerificationRelationship defines a W3C verification relationship
+ * </pre>
+ *
  * Protobuf type {@code panacea.did.v2.VerificationRelationship}
  */
 public  final class VerificationRelationship extends
@@ -16,7 +20,6 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private VerificationRelationship() {
-    verificationMethodID_ = "";
   }
 
   @java.lang.Override
@@ -45,21 +48,22 @@ private static final long serialVersionUID = 0L;
             break;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
-
-            verificationMethodID_ = s;
+            contentCase_ = 1;
+            content_ = s;
             break;
           }
           case 18: {
             panacea.did.v2.VerificationMethod.Builder subBuilder = null;
-            if (dedicatedVerificationMethod_ != null) {
-              subBuilder = dedicatedVerificationMethod_.toBuilder();
+            if (contentCase_ == 2) {
+              subBuilder = ((panacea.did.v2.VerificationMethod) content_).toBuilder();
             }
-            dedicatedVerificationMethod_ = input.readMessage(panacea.did.v2.VerificationMethod.parser(), extensionRegistry);
+            content_ =
+                input.readMessage(panacea.did.v2.VerificationMethod.parser(), extensionRegistry);
             if (subBuilder != null) {
-              subBuilder.mergeFrom(dedicatedVerificationMethod_);
-              dedicatedVerificationMethod_ = subBuilder.buildPartial();
+              subBuilder.mergeFrom((panacea.did.v2.VerificationMethod) content_);
+              content_ = subBuilder.buildPartial();
             }
-
+            contentCase_ = 2;
             break;
           }
           default: {
@@ -94,59 +98,111 @@ private static final long serialVersionUID = 0L;
             panacea.did.v2.VerificationRelationship.class, panacea.did.v2.VerificationRelationship.Builder.class);
   }
 
-  public static final int VERIFICATIONMETHODID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object verificationMethodID_;
+  private int contentCase_ = 0;
+  private java.lang.Object content_;
+  public enum ContentCase
+      implements com.google.protobuf.Internal.EnumLite {
+    VERIFICATION_METHOD_ID(1),
+    VERIFICATION_METHOD(2),
+    CONTENT_NOT_SET(0);
+    private final int value;
+    private ContentCase(int value) {
+      this.value = value;
+    }
+    /**
+     * @deprecated Use {@link #forNumber(int)} instead.
+     */
+    @java.lang.Deprecated
+    public static ContentCase valueOf(int value) {
+      return forNumber(value);
+    }
+
+    public static ContentCase forNumber(int value) {
+      switch (value) {
+        case 1: return VERIFICATION_METHOD_ID;
+        case 2: return VERIFICATION_METHOD;
+        case 0: return CONTENT_NOT_SET;
+        default: return null;
+      }
+    }
+    public int getNumber() {
+      return this.value;
+    }
+  };
+
+  public ContentCase
+  getContentCase() {
+    return ContentCase.forNumber(
+        contentCase_);
+  }
+
+  public static final int VERIFICATION_METHOD_ID_FIELD_NUMBER = 1;
   /**
-   * <code>string verificationMethodID = 1;</code>
+   * <code>string verification_method_id = 1;</code>
    */
-  public java.lang.String getVerificationMethodID() {
-    java.lang.Object ref = verificationMethodID_;
+  public java.lang.String getVerificationMethodId() {
+    java.lang.Object ref = "";
+    if (contentCase_ == 1) {
+      ref = content_;
+    }
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      verificationMethodID_ = s;
+      if (contentCase_ == 1) {
+        content_ = s;
+      }
       return s;
     }
   }
   /**
-   * <code>string verificationMethodID = 1;</code>
+   * <code>string verification_method_id = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getVerificationMethodIDBytes() {
-    java.lang.Object ref = verificationMethodID_;
+      getVerificationMethodIdBytes() {
+    java.lang.Object ref = "";
+    if (contentCase_ == 1) {
+      ref = content_;
+    }
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      verificationMethodID_ = b;
+      if (contentCase_ == 1) {
+        content_ = b;
+      }
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
     }
   }
 
-  public static final int DEDICATEDVERIFICATIONMETHOD_FIELD_NUMBER = 2;
-  private panacea.did.v2.VerificationMethod dedicatedVerificationMethod_;
+  public static final int VERIFICATION_METHOD_FIELD_NUMBER = 2;
   /**
-   * <code>.panacea.did.v2.VerificationMethod dedicatedVerificationMethod = 2;</code>
+   * <code>.panacea.did.v2.VerificationMethod verification_method = 2;</code>
    */
-  public boolean hasDedicatedVerificationMethod() {
-    return dedicatedVerificationMethod_ != null;
+  public boolean hasVerificationMethod() {
+    return contentCase_ == 2;
   }
   /**
-   * <code>.panacea.did.v2.VerificationMethod dedicatedVerificationMethod = 2;</code>
+   * <code>.panacea.did.v2.VerificationMethod verification_method = 2;</code>
    */
-  public panacea.did.v2.VerificationMethod getDedicatedVerificationMethod() {
-    return dedicatedVerificationMethod_ == null ? panacea.did.v2.VerificationMethod.getDefaultInstance() : dedicatedVerificationMethod_;
+  public panacea.did.v2.VerificationMethod getVerificationMethod() {
+    if (contentCase_ == 2) {
+       return (panacea.did.v2.VerificationMethod) content_;
+    }
+    return panacea.did.v2.VerificationMethod.getDefaultInstance();
   }
   /**
-   * <code>.panacea.did.v2.VerificationMethod dedicatedVerificationMethod = 2;</code>
+   * <code>.panacea.did.v2.VerificationMethod verification_method = 2;</code>
    */
-  public panacea.did.v2.VerificationMethodOrBuilder getDedicatedVerificationMethodOrBuilder() {
-    return getDedicatedVerificationMethod();
+  public panacea.did.v2.VerificationMethodOrBuilder getVerificationMethodOrBuilder() {
+    if (contentCase_ == 2) {
+       return (panacea.did.v2.VerificationMethod) content_;
+    }
+    return panacea.did.v2.VerificationMethod.getDefaultInstance();
   }
 
   private byte memoizedIsInitialized = -1;
@@ -163,11 +219,11 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getVerificationMethodIDBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, verificationMethodID_);
+    if (contentCase_ == 1) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, content_);
     }
-    if (dedicatedVerificationMethod_ != null) {
-      output.writeMessage(2, getDedicatedVerificationMethod());
+    if (contentCase_ == 2) {
+      output.writeMessage(2, (panacea.did.v2.VerificationMethod) content_);
     }
     unknownFields.writeTo(output);
   }
@@ -178,12 +234,12 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getVerificationMethodIDBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, verificationMethodID_);
+    if (contentCase_ == 1) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, content_);
     }
-    if (dedicatedVerificationMethod_ != null) {
+    if (contentCase_ == 2) {
       size += com.google.protobuf.CodedOutputStream
-        .computeMessageSize(2, getDedicatedVerificationMethod());
+        .computeMessageSize(2, (panacea.did.v2.VerificationMethod) content_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -200,12 +256,18 @@ private static final long serialVersionUID = 0L;
     }
     panacea.did.v2.VerificationRelationship other = (panacea.did.v2.VerificationRelationship) obj;
 
-    if (!getVerificationMethodID()
-        .equals(other.getVerificationMethodID())) return false;
-    if (hasDedicatedVerificationMethod() != other.hasDedicatedVerificationMethod()) return false;
-    if (hasDedicatedVerificationMethod()) {
-      if (!getDedicatedVerificationMethod()
-          .equals(other.getDedicatedVerificationMethod())) return false;
+    if (!getContentCase().equals(other.getContentCase())) return false;
+    switch (contentCase_) {
+      case 1:
+        if (!getVerificationMethodId()
+            .equals(other.getVerificationMethodId())) return false;
+        break;
+      case 2:
+        if (!getVerificationMethod()
+            .equals(other.getVerificationMethod())) return false;
+        break;
+      case 0:
+      default:
     }
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
@@ -218,11 +280,17 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + VERIFICATIONMETHODID_FIELD_NUMBER;
-    hash = (53 * hash) + getVerificationMethodID().hashCode();
-    if (hasDedicatedVerificationMethod()) {
-      hash = (37 * hash) + DEDICATEDVERIFICATIONMETHOD_FIELD_NUMBER;
-      hash = (53 * hash) + getDedicatedVerificationMethod().hashCode();
+    switch (contentCase_) {
+      case 1:
+        hash = (37 * hash) + VERIFICATION_METHOD_ID_FIELD_NUMBER;
+        hash = (53 * hash) + getVerificationMethodId().hashCode();
+        break;
+      case 2:
+        hash = (37 * hash) + VERIFICATION_METHOD_FIELD_NUMBER;
+        hash = (53 * hash) + getVerificationMethod().hashCode();
+        break;
+      case 0:
+      default:
     }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -320,6 +388,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * VerificationRelationship defines a W3C verification relationship
+   * </pre>
+   *
    * Protobuf type {@code panacea.did.v2.VerificationRelationship}
    */
   public static final class Builder extends
@@ -357,14 +429,8 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      verificationMethodID_ = "";
-
-      if (dedicatedVerificationMethodBuilder_ == null) {
-        dedicatedVerificationMethod_ = null;
-      } else {
-        dedicatedVerificationMethod_ = null;
-        dedicatedVerificationMethodBuilder_ = null;
-      }
+      contentCase_ = 0;
+      content_ = null;
       return this;
     }
 
@@ -391,12 +457,17 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public panacea.did.v2.VerificationRelationship buildPartial() {
       panacea.did.v2.VerificationRelationship result = new panacea.did.v2.VerificationRelationship(this);
-      result.verificationMethodID_ = verificationMethodID_;
-      if (dedicatedVerificationMethodBuilder_ == null) {
-        result.dedicatedVerificationMethod_ = dedicatedVerificationMethod_;
-      } else {
-        result.dedicatedVerificationMethod_ = dedicatedVerificationMethodBuilder_.build();
+      if (contentCase_ == 1) {
+        result.content_ = content_;
       }
+      if (contentCase_ == 2) {
+        if (verificationMethodBuilder_ == null) {
+          result.content_ = content_;
+        } else {
+          result.content_ = verificationMethodBuilder_.build();
+        }
+      }
+      result.contentCase_ = contentCase_;
       onBuilt();
       return result;
     }
@@ -445,12 +516,20 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(panacea.did.v2.VerificationRelationship other) {
       if (other == panacea.did.v2.VerificationRelationship.getDefaultInstance()) return this;
-      if (!other.getVerificationMethodID().isEmpty()) {
-        verificationMethodID_ = other.verificationMethodID_;
-        onChanged();
-      }
-      if (other.hasDedicatedVerificationMethod()) {
-        mergeDedicatedVerificationMethod(other.getDedicatedVerificationMethod());
+      switch (other.getContentCase()) {
+        case VERIFICATION_METHOD_ID: {
+          contentCase_ = 1;
+          content_ = other.content_;
+          onChanged();
+          break;
+        }
+        case VERIFICATION_METHOD: {
+          mergeVerificationMethod(other.getVerificationMethod());
+          break;
+        }
+        case CONTENT_NOT_SET: {
+          break;
+        }
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -480,191 +559,236 @@ private static final long serialVersionUID = 0L;
       }
       return this;
     }
+    private int contentCase_ = 0;
+    private java.lang.Object content_;
+    public ContentCase
+        getContentCase() {
+      return ContentCase.forNumber(
+          contentCase_);
+    }
 
-    private java.lang.Object verificationMethodID_ = "";
+    public Builder clearContent() {
+      contentCase_ = 0;
+      content_ = null;
+      onChanged();
+      return this;
+    }
+
+
     /**
-     * <code>string verificationMethodID = 1;</code>
+     * <code>string verification_method_id = 1;</code>
      */
-    public java.lang.String getVerificationMethodID() {
-      java.lang.Object ref = verificationMethodID_;
+    public java.lang.String getVerificationMethodId() {
+      java.lang.Object ref = "";
+      if (contentCase_ == 1) {
+        ref = content_;
+      }
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        verificationMethodID_ = s;
+        if (contentCase_ == 1) {
+          content_ = s;
+        }
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string verificationMethodID = 1;</code>
+     * <code>string verification_method_id = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getVerificationMethodIDBytes() {
-      java.lang.Object ref = verificationMethodID_;
+        getVerificationMethodIdBytes() {
+      java.lang.Object ref = "";
+      if (contentCase_ == 1) {
+        ref = content_;
+      }
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        verificationMethodID_ = b;
+        if (contentCase_ == 1) {
+          content_ = b;
+        }
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string verificationMethodID = 1;</code>
+     * <code>string verification_method_id = 1;</code>
      */
-    public Builder setVerificationMethodID(
+    public Builder setVerificationMethodId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
-  
-      verificationMethodID_ = value;
+  contentCase_ = 1;
+      content_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string verificationMethodID = 1;</code>
+     * <code>string verification_method_id = 1;</code>
      */
-    public Builder clearVerificationMethodID() {
-      
-      verificationMethodID_ = getDefaultInstance().getVerificationMethodID();
-      onChanged();
+    public Builder clearVerificationMethodId() {
+      if (contentCase_ == 1) {
+        contentCase_ = 0;
+        content_ = null;
+        onChanged();
+      }
       return this;
     }
     /**
-     * <code>string verificationMethodID = 1;</code>
+     * <code>string verification_method_id = 1;</code>
      */
-    public Builder setVerificationMethodIDBytes(
+    public Builder setVerificationMethodIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
-      
-      verificationMethodID_ = value;
+      contentCase_ = 1;
+      content_ = value;
       onChanged();
       return this;
     }
 
-    private panacea.did.v2.VerificationMethod dedicatedVerificationMethod_;
     private com.google.protobuf.SingleFieldBuilderV3<
-        panacea.did.v2.VerificationMethod, panacea.did.v2.VerificationMethod.Builder, panacea.did.v2.VerificationMethodOrBuilder> dedicatedVerificationMethodBuilder_;
+        panacea.did.v2.VerificationMethod, panacea.did.v2.VerificationMethod.Builder, panacea.did.v2.VerificationMethodOrBuilder> verificationMethodBuilder_;
     /**
-     * <code>.panacea.did.v2.VerificationMethod dedicatedVerificationMethod = 2;</code>
+     * <code>.panacea.did.v2.VerificationMethod verification_method = 2;</code>
      */
-    public boolean hasDedicatedVerificationMethod() {
-      return dedicatedVerificationMethodBuilder_ != null || dedicatedVerificationMethod_ != null;
+    public boolean hasVerificationMethod() {
+      return contentCase_ == 2;
     }
     /**
-     * <code>.panacea.did.v2.VerificationMethod dedicatedVerificationMethod = 2;</code>
+     * <code>.panacea.did.v2.VerificationMethod verification_method = 2;</code>
      */
-    public panacea.did.v2.VerificationMethod getDedicatedVerificationMethod() {
-      if (dedicatedVerificationMethodBuilder_ == null) {
-        return dedicatedVerificationMethod_ == null ? panacea.did.v2.VerificationMethod.getDefaultInstance() : dedicatedVerificationMethod_;
+    public panacea.did.v2.VerificationMethod getVerificationMethod() {
+      if (verificationMethodBuilder_ == null) {
+        if (contentCase_ == 2) {
+          return (panacea.did.v2.VerificationMethod) content_;
+        }
+        return panacea.did.v2.VerificationMethod.getDefaultInstance();
       } else {
-        return dedicatedVerificationMethodBuilder_.getMessage();
+        if (contentCase_ == 2) {
+          return verificationMethodBuilder_.getMessage();
+        }
+        return panacea.did.v2.VerificationMethod.getDefaultInstance();
       }
     }
     /**
-     * <code>.panacea.did.v2.VerificationMethod dedicatedVerificationMethod = 2;</code>
+     * <code>.panacea.did.v2.VerificationMethod verification_method = 2;</code>
      */
-    public Builder setDedicatedVerificationMethod(panacea.did.v2.VerificationMethod value) {
-      if (dedicatedVerificationMethodBuilder_ == null) {
+    public Builder setVerificationMethod(panacea.did.v2.VerificationMethod value) {
+      if (verificationMethodBuilder_ == null) {
         if (value == null) {
           throw new NullPointerException();
         }
-        dedicatedVerificationMethod_ = value;
+        content_ = value;
         onChanged();
       } else {
-        dedicatedVerificationMethodBuilder_.setMessage(value);
+        verificationMethodBuilder_.setMessage(value);
       }
-
+      contentCase_ = 2;
       return this;
     }
     /**
-     * <code>.panacea.did.v2.VerificationMethod dedicatedVerificationMethod = 2;</code>
+     * <code>.panacea.did.v2.VerificationMethod verification_method = 2;</code>
      */
-    public Builder setDedicatedVerificationMethod(
+    public Builder setVerificationMethod(
         panacea.did.v2.VerificationMethod.Builder builderForValue) {
-      if (dedicatedVerificationMethodBuilder_ == null) {
-        dedicatedVerificationMethod_ = builderForValue.build();
+      if (verificationMethodBuilder_ == null) {
+        content_ = builderForValue.build();
         onChanged();
       } else {
-        dedicatedVerificationMethodBuilder_.setMessage(builderForValue.build());
+        verificationMethodBuilder_.setMessage(builderForValue.build());
       }
-
+      contentCase_ = 2;
       return this;
     }
     /**
-     * <code>.panacea.did.v2.VerificationMethod dedicatedVerificationMethod = 2;</code>
+     * <code>.panacea.did.v2.VerificationMethod verification_method = 2;</code>
      */
-    public Builder mergeDedicatedVerificationMethod(panacea.did.v2.VerificationMethod value) {
-      if (dedicatedVerificationMethodBuilder_ == null) {
-        if (dedicatedVerificationMethod_ != null) {
-          dedicatedVerificationMethod_ =
-            panacea.did.v2.VerificationMethod.newBuilder(dedicatedVerificationMethod_).mergeFrom(value).buildPartial();
+    public Builder mergeVerificationMethod(panacea.did.v2.VerificationMethod value) {
+      if (verificationMethodBuilder_ == null) {
+        if (contentCase_ == 2 &&
+            content_ != panacea.did.v2.VerificationMethod.getDefaultInstance()) {
+          content_ = panacea.did.v2.VerificationMethod.newBuilder((panacea.did.v2.VerificationMethod) content_)
+              .mergeFrom(value).buildPartial();
         } else {
-          dedicatedVerificationMethod_ = value;
+          content_ = value;
         }
         onChanged();
       } else {
-        dedicatedVerificationMethodBuilder_.mergeFrom(value);
+        if (contentCase_ == 2) {
+          verificationMethodBuilder_.mergeFrom(value);
+        }
+        verificationMethodBuilder_.setMessage(value);
       }
-
+      contentCase_ = 2;
       return this;
     }
     /**
-     * <code>.panacea.did.v2.VerificationMethod dedicatedVerificationMethod = 2;</code>
+     * <code>.panacea.did.v2.VerificationMethod verification_method = 2;</code>
      */
-    public Builder clearDedicatedVerificationMethod() {
-      if (dedicatedVerificationMethodBuilder_ == null) {
-        dedicatedVerificationMethod_ = null;
-        onChanged();
+    public Builder clearVerificationMethod() {
+      if (verificationMethodBuilder_ == null) {
+        if (contentCase_ == 2) {
+          contentCase_ = 0;
+          content_ = null;
+          onChanged();
+        }
       } else {
-        dedicatedVerificationMethod_ = null;
-        dedicatedVerificationMethodBuilder_ = null;
+        if (contentCase_ == 2) {
+          contentCase_ = 0;
+          content_ = null;
+        }
+        verificationMethodBuilder_.clear();
       }
-
       return this;
     }
     /**
-     * <code>.panacea.did.v2.VerificationMethod dedicatedVerificationMethod = 2;</code>
+     * <code>.panacea.did.v2.VerificationMethod verification_method = 2;</code>
      */
-    public panacea.did.v2.VerificationMethod.Builder getDedicatedVerificationMethodBuilder() {
-      
-      onChanged();
-      return getDedicatedVerificationMethodFieldBuilder().getBuilder();
+    public panacea.did.v2.VerificationMethod.Builder getVerificationMethodBuilder() {
+      return getVerificationMethodFieldBuilder().getBuilder();
     }
     /**
-     * <code>.panacea.did.v2.VerificationMethod dedicatedVerificationMethod = 2;</code>
+     * <code>.panacea.did.v2.VerificationMethod verification_method = 2;</code>
      */
-    public panacea.did.v2.VerificationMethodOrBuilder getDedicatedVerificationMethodOrBuilder() {
-      if (dedicatedVerificationMethodBuilder_ != null) {
-        return dedicatedVerificationMethodBuilder_.getMessageOrBuilder();
+    public panacea.did.v2.VerificationMethodOrBuilder getVerificationMethodOrBuilder() {
+      if ((contentCase_ == 2) && (verificationMethodBuilder_ != null)) {
+        return verificationMethodBuilder_.getMessageOrBuilder();
       } else {
-        return dedicatedVerificationMethod_ == null ?
-            panacea.did.v2.VerificationMethod.getDefaultInstance() : dedicatedVerificationMethod_;
+        if (contentCase_ == 2) {
+          return (panacea.did.v2.VerificationMethod) content_;
+        }
+        return panacea.did.v2.VerificationMethod.getDefaultInstance();
       }
     }
     /**
-     * <code>.panacea.did.v2.VerificationMethod dedicatedVerificationMethod = 2;</code>
+     * <code>.panacea.did.v2.VerificationMethod verification_method = 2;</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         panacea.did.v2.VerificationMethod, panacea.did.v2.VerificationMethod.Builder, panacea.did.v2.VerificationMethodOrBuilder> 
-        getDedicatedVerificationMethodFieldBuilder() {
-      if (dedicatedVerificationMethodBuilder_ == null) {
-        dedicatedVerificationMethodBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+        getVerificationMethodFieldBuilder() {
+      if (verificationMethodBuilder_ == null) {
+        if (!(contentCase_ == 2)) {
+          content_ = panacea.did.v2.VerificationMethod.getDefaultInstance();
+        }
+        verificationMethodBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
             panacea.did.v2.VerificationMethod, panacea.did.v2.VerificationMethod.Builder, panacea.did.v2.VerificationMethodOrBuilder>(
-                getDedicatedVerificationMethod(),
+                (panacea.did.v2.VerificationMethod) content_,
                 getParentForChildren(),
                 isClean());
-        dedicatedVerificationMethod_ = null;
+        content_ = null;
       }
-      return dedicatedVerificationMethodBuilder_;
+      contentCase_ = 2;
+      onChanged();;
+      return verificationMethodBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

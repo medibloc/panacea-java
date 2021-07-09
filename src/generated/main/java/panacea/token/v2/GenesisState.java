@@ -130,10 +130,6 @@ private static final long serialVersionUID = 0L;
     return internalGetTokens().getMap().size();
   }
   /**
-   * <pre>
-   * this line is used by starport scaffolding # genesis/proto/state
-   * </pre>
-   *
    * <code>map&lt;string, .panacea.token.v2.Token&gt; tokens = 1;</code>
    */
 
@@ -150,10 +146,6 @@ private static final long serialVersionUID = 0L;
     return getTokensMap();
   }
   /**
-   * <pre>
-   * this line is used by starport scaffolding # genesis/proto/state
-   * </pre>
-   *
    * <code>map&lt;string, .panacea.token.v2.Token&gt; tokens = 1;</code>
    */
 
@@ -161,10 +153,6 @@ private static final long serialVersionUID = 0L;
     return internalGetTokens().getMap();
   }
   /**
-   * <pre>
-   * this line is used by starport scaffolding # genesis/proto/state
-   * </pre>
-   *
    * <code>map&lt;string, .panacea.token.v2.Token&gt; tokens = 1;</code>
    */
 
@@ -177,10 +165,6 @@ private static final long serialVersionUID = 0L;
     return map.containsKey(key) ? map.get(key) : defaultValue;
   }
   /**
-   * <pre>
-   * this line is used by starport scaffolding # genesis/proto/state
-   * </pre>
-   *
    * <code>map&lt;string, .panacea.token.v2.Token&gt; tokens = 1;</code>
    */
 
@@ -562,10 +546,6 @@ private static final long serialVersionUID = 0L;
       return internalGetTokens().getMap().size();
     }
     /**
-     * <pre>
-     * this line is used by starport scaffolding # genesis/proto/state
-     * </pre>
-     *
      * <code>map&lt;string, .panacea.token.v2.Token&gt; tokens = 1;</code>
      */
 
@@ -582,10 +562,6 @@ private static final long serialVersionUID = 0L;
       return getTokensMap();
     }
     /**
-     * <pre>
-     * this line is used by starport scaffolding # genesis/proto/state
-     * </pre>
-     *
      * <code>map&lt;string, .panacea.token.v2.Token&gt; tokens = 1;</code>
      */
 
@@ -593,10 +569,6 @@ private static final long serialVersionUID = 0L;
       return internalGetTokens().getMap();
     }
     /**
-     * <pre>
-     * this line is used by starport scaffolding # genesis/proto/state
-     * </pre>
-     *
      * <code>map&lt;string, .panacea.token.v2.Token&gt; tokens = 1;</code>
      */
 
@@ -609,10 +581,6 @@ private static final long serialVersionUID = 0L;
       return map.containsKey(key) ? map.get(key) : defaultValue;
     }
     /**
-     * <pre>
-     * this line is used by starport scaffolding # genesis/proto/state
-     * </pre>
-     *
      * <code>map&lt;string, .panacea.token.v2.Token&gt; tokens = 1;</code>
      */
 
@@ -633,10 +601,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * this line is used by starport scaffolding # genesis/proto/state
-     * </pre>
-     *
      * <code>map&lt;string, .panacea.token.v2.Token&gt; tokens = 1;</code>
      */
 
@@ -656,10 +620,6 @@ private static final long serialVersionUID = 0L;
       return internalGetMutableTokens().getMutableMap();
     }
     /**
-     * <pre>
-     * this line is used by starport scaffolding # genesis/proto/state
-     * </pre>
-     *
      * <code>map&lt;string, .panacea.token.v2.Token&gt; tokens = 1;</code>
      */
     public Builder putTokens(
@@ -672,10 +632,6 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <pre>
-     * this line is used by starport scaffolding # genesis/proto/state
-     * </pre>
-     *
      * <code>map&lt;string, .panacea.token.v2.Token&gt; tokens = 1;</code>
      */
 

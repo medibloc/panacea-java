@@ -15,25 +15,25 @@ public final class QueryOuterClass {
         (com.google.protobuf.ExtensionRegistryLite) registry);
   }
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_panacea_token_v2_QueryGetTokenRequest_descriptor;
+    internal_static_panacea_token_v2_QueryTokenRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_panacea_token_v2_QueryGetTokenRequest_fieldAccessorTable;
+      internal_static_panacea_token_v2_QueryTokenRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_panacea_token_v2_QueryGetTokenResponse_descriptor;
+    internal_static_panacea_token_v2_QueryTokenResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_panacea_token_v2_QueryGetTokenResponse_fieldAccessorTable;
+      internal_static_panacea_token_v2_QueryTokenResponse_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_panacea_token_v2_QueryAllTokenRequest_descriptor;
+    internal_static_panacea_token_v2_QueryTokensRequest_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_panacea_token_v2_QueryAllTokenRequest_fieldAccessorTable;
+      internal_static_panacea_token_v2_QueryTokensRequest_fieldAccessorTable;
   static final com.google.protobuf.Descriptors.Descriptor
-    internal_static_panacea_token_v2_QueryAllTokenResponse_descriptor;
+    internal_static_panacea_token_v2_QueryTokensResponse_descriptor;
   static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
-      internal_static_panacea_token_v2_QueryAllTokenResponse_fieldAccessorTable;
+      internal_static_panacea_token_v2_QueryTokensResponse_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -46,23 +46,23 @@ public final class QueryOuterClass {
       "\n\034panacea/token/v2/query.proto\022\020panacea." +
       "token.v2\032\034google/api/annotations.proto\032*" +
       "cosmos/base/query/v1beta1/pagination.pro" +
-      "to\032\034panacea/token/v2/token.proto\"&\n\024Quer" +
-      "yGetTokenRequest\022\016\n\006symbol\030\001 \001(\t\"?\n\025Quer" +
-      "yGetTokenResponse\022&\n\005Token\030\001 \001(\0132\027.panac" +
-      "ea.token.v2.Token\"R\n\024QueryAllTokenReques" +
-      "t\022:\n\npagination\030\001 \001(\0132&.cosmos.base.quer" +
-      "y.v1beta1.PageRequest\"|\n\025QueryAllTokenRe" +
-      "sponse\022&\n\005Token\030\001 \003(\0132\027.panacea.token.v2" +
-      ".Token\022;\n\npagination\030\002 \001(\0132\'.cosmos.base" +
-      ".query.v1beta1.PageResponse2\214\002\n\005Query\022\203\001" +
-      "\n\005Token\022&.panacea.token.v2.QueryGetToken" +
-      "Request\032\'.panacea.token.v2.QueryGetToken" +
-      "Response\")\202\323\344\223\002#\022!/panacea/token/v2/toke" +
-      "ns/{symbol}\022}\n\010TokenAll\022&.panacea.token." +
-      "v2.QueryAllTokenRequest\032\'.panacea.token." +
-      "v2.QueryAllTokenResponse\" \202\323\344\223\002\032\022\030/panac" +
-      "ea/token/v2/tokensB2P\001Z.github.com/medib" +
-      "loc/panacea-core/x/token/typesb\006proto3"
+      "to\032\034panacea/token/v2/token.proto\"#\n\021Quer" +
+      "yTokenRequest\022\016\n\006symbol\030\001 \001(\t\"<\n\022QueryTo" +
+      "kenResponse\022&\n\005token\030\001 \001(\0132\027.panacea.tok" +
+      "en.v2.Token\"P\n\022QueryTokensRequest\022:\n\npag" +
+      "ination\030\001 \001(\0132&.cosmos.base.query.v1beta" +
+      "1.PageRequest\"z\n\023QueryTokensResponse\022&\n\005" +
+      "token\030\001 \003(\0132\027.panacea.token.v2.Token\022;\n\n" +
+      "pagination\030\002 \001(\0132\'.cosmos.base.query.v1b" +
+      "eta1.PageResponse2\377\001\n\005Query\022}\n\005Token\022#.p" +
+      "anacea.token.v2.QueryTokenRequest\032$.pana" +
+      "cea.token.v2.QueryTokenResponse\")\202\323\344\223\002#\022" +
+      "!/panacea/token/v2/tokens/{symbol}\022w\n\006To" +
+      "kens\022$.panacea.token.v2.QueryTokensReque" +
+      "st\032%.panacea.token.v2.QueryTokensRespons" +
+      "e\" \202\323\344\223\002\032\022\030/panacea/token/v2/tokensB2P\001Z" +
+      ".github.com/medibloc/panacea-core/x/toke" +
+      "n/typesb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -79,29 +79,29 @@ public final class QueryOuterClass {
           cosmos.base.query.v1beta1.Pagination.getDescriptor(),
           panacea.token.v2.TokenOuterClass.getDescriptor(),
         }, assigner);
-    internal_static_panacea_token_v2_QueryGetTokenRequest_descriptor =
+    internal_static_panacea_token_v2_QueryTokenRequest_descriptor =
       getDescriptor().getMessageTypes().get(0);
-    internal_static_panacea_token_v2_QueryGetTokenRequest_fieldAccessorTable = new
+    internal_static_panacea_token_v2_QueryTokenRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_panacea_token_v2_QueryGetTokenRequest_descriptor,
+        internal_static_panacea_token_v2_QueryTokenRequest_descriptor,
         new java.lang.String[] { "Symbol", });
-    internal_static_panacea_token_v2_QueryGetTokenResponse_descriptor =
+    internal_static_panacea_token_v2_QueryTokenResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
-    internal_static_panacea_token_v2_QueryGetTokenResponse_fieldAccessorTable = new
+    internal_static_panacea_token_v2_QueryTokenResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_panacea_token_v2_QueryGetTokenResponse_descriptor,
+        internal_static_panacea_token_v2_QueryTokenResponse_descriptor,
         new java.lang.String[] { "Token", });
-    internal_static_panacea_token_v2_QueryAllTokenRequest_descriptor =
+    internal_static_panacea_token_v2_QueryTokensRequest_descriptor =
       getDescriptor().getMessageTypes().get(2);
-    internal_static_panacea_token_v2_QueryAllTokenRequest_fieldAccessorTable = new
+    internal_static_panacea_token_v2_QueryTokensRequest_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_panacea_token_v2_QueryAllTokenRequest_descriptor,
+        internal_static_panacea_token_v2_QueryTokensRequest_descriptor,
         new java.lang.String[] { "Pagination", });
-    internal_static_panacea_token_v2_QueryAllTokenResponse_descriptor =
+    internal_static_panacea_token_v2_QueryTokensResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
-    internal_static_panacea_token_v2_QueryAllTokenResponse_fieldAccessorTable = new
+    internal_static_panacea_token_v2_QueryTokensResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
-        internal_static_panacea_token_v2_QueryAllTokenResponse_descriptor,
+        internal_static_panacea_token_v2_QueryTokensResponse_descriptor,
         new java.lang.String[] { "Token", "Pagination", });
     com.google.protobuf.ExtensionRegistry registry =
         com.google.protobuf.ExtensionRegistry.newInstance();

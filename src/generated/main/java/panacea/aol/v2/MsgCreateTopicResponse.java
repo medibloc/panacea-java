@@ -4,6 +4,10 @@
 package panacea.aol.v2;
 
 /**
+ * <pre>
+ * MsgCreateTopicResponse defines the Msg/CreateTopic response type.
+ * </pre>
+ *
  * Protobuf type {@code panacea.aol.v2.MsgCreateTopicResponse}
  */
 public  final class MsgCreateTopicResponse extends
@@ -218,6 +222,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * MsgCreateTopicResponse defines the Msg/CreateTopic response type.
+   * </pre>
+   *
    * Protobuf type {@code panacea.aol.v2.MsgCreateTopicResponse}
    */
   public static final class Builder extends

@@ -16,6 +16,9 @@ import static io.grpc.stub.ServerCalls.asyncUnimplementedStreamingCall;
 import static io.grpc.stub.ServerCalls.asyncUnimplementedUnaryCall;
 
 /**
+ * <pre>
+ * Msg defines the Msg service.
+ * </pre>
  */
 @javax.annotation.Generated(
     value = "by gRPC proto compiler (version 1.22.1)",
@@ -147,10 +150,16 @@ public final class MsgGrpc {
   }
 
   /**
+   * <pre>
+   * Msg defines the Msg service.
+   * </pre>
    */
   public static abstract class MsgImplBase implements io.grpc.BindableService {
 
     /**
+     * <pre>
+     * CreateDID defines a method for creating a DID.
+     * </pre>
      */
     public void createDID(panacea.did.v2.MsgCreateDID request,
         io.grpc.stub.StreamObserver<panacea.did.v2.MsgCreateDIDResponse> responseObserver) {
@@ -158,6 +167,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * UpdateDID defines a method for updating a DID.
+     * </pre>
      */
     public void updateDID(panacea.did.v2.MsgUpdateDID request,
         io.grpc.stub.StreamObserver<panacea.did.v2.MsgUpdateDIDResponse> responseObserver) {
@@ -165,6 +177,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * DeactivateDID defines a method for deactivating a DID.
+     * </pre>
      */
     public void deactivateDID(panacea.did.v2.MsgDeactivateDID request,
         io.grpc.stub.StreamObserver<panacea.did.v2.MsgDeactivateDIDResponse> responseObserver) {
@@ -199,6 +214,9 @@ public final class MsgGrpc {
   }
 
   /**
+   * <pre>
+   * Msg defines the Msg service.
+   * </pre>
    */
   public static final class MsgStub extends io.grpc.stub.AbstractStub<MsgStub> {
     private MsgStub(io.grpc.Channel channel) {
@@ -217,6 +235,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * CreateDID defines a method for creating a DID.
+     * </pre>
      */
     public void createDID(panacea.did.v2.MsgCreateDID request,
         io.grpc.stub.StreamObserver<panacea.did.v2.MsgCreateDIDResponse> responseObserver) {
@@ -225,6 +246,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * UpdateDID defines a method for updating a DID.
+     * </pre>
      */
     public void updateDID(panacea.did.v2.MsgUpdateDID request,
         io.grpc.stub.StreamObserver<panacea.did.v2.MsgUpdateDIDResponse> responseObserver) {
@@ -233,6 +257,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * DeactivateDID defines a method for deactivating a DID.
+     * </pre>
      */
     public void deactivateDID(panacea.did.v2.MsgDeactivateDID request,
         io.grpc.stub.StreamObserver<panacea.did.v2.MsgDeactivateDIDResponse> responseObserver) {
@@ -242,6 +269,9 @@ public final class MsgGrpc {
   }
 
   /**
+   * <pre>
+   * Msg defines the Msg service.
+   * </pre>
    */
   public static final class MsgBlockingStub extends io.grpc.stub.AbstractStub<MsgBlockingStub> {
     private MsgBlockingStub(io.grpc.Channel channel) {
@@ -260,6 +290,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * CreateDID defines a method for creating a DID.
+     * </pre>
      */
     public panacea.did.v2.MsgCreateDIDResponse createDID(panacea.did.v2.MsgCreateDID request) {
       return blockingUnaryCall(
@@ -267,6 +300,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * UpdateDID defines a method for updating a DID.
+     * </pre>
      */
     public panacea.did.v2.MsgUpdateDIDResponse updateDID(panacea.did.v2.MsgUpdateDID request) {
       return blockingUnaryCall(
@@ -274,6 +310,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * DeactivateDID defines a method for deactivating a DID.
+     * </pre>
      */
     public panacea.did.v2.MsgDeactivateDIDResponse deactivateDID(panacea.did.v2.MsgDeactivateDID request) {
       return blockingUnaryCall(
@@ -282,6 +321,9 @@ public final class MsgGrpc {
   }
 
   /**
+   * <pre>
+   * Msg defines the Msg service.
+   * </pre>
    */
   public static final class MsgFutureStub extends io.grpc.stub.AbstractStub<MsgFutureStub> {
     private MsgFutureStub(io.grpc.Channel channel) {
@@ -300,6 +342,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * CreateDID defines a method for creating a DID.
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<panacea.did.v2.MsgCreateDIDResponse> createDID(
         panacea.did.v2.MsgCreateDID request) {
@@ -308,6 +353,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * UpdateDID defines a method for updating a DID.
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<panacea.did.v2.MsgUpdateDIDResponse> updateDID(
         panacea.did.v2.MsgUpdateDID request) {
@@ -316,6 +364,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * DeactivateDID defines a method for deactivating a DID.
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<panacea.did.v2.MsgDeactivateDIDResponse> deactivateDID(
         panacea.did.v2.MsgDeactivateDID request) {

@@ -4,6 +4,10 @@
 package panacea.did.v2;
 
 /**
+ * <pre>
+ * MsgDeactivateDIDResponse defines the Msg/DeactivateDID response type.
+ * </pre>
+ *
  * Protobuf type {@code panacea.did.v2.MsgDeactivateDIDResponse}
  */
 public  final class MsgDeactivateDIDResponse extends
@@ -218,6 +222,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * MsgDeactivateDIDResponse defines the Msg/DeactivateDID response type.
+   * </pre>
+   *
    * Protobuf type {@code panacea.did.v2.MsgDeactivateDIDResponse}
    */
   public static final class Builder extends

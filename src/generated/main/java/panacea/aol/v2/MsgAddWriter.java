@@ -4,6 +4,10 @@
 package panacea.aol.v2;
 
 /**
+ * <pre>
+ * MsgAddWriter defines the Msg/AddWriter request type.
+ * </pre>
+ *
  * Protobuf type {@code panacea.aol.v2.MsgAddWriter}
  */
 public  final class MsgAddWriter extends
@@ -109,10 +113,10 @@ private static final long serialVersionUID = 0L;
             panacea.aol.v2.MsgAddWriter.class, panacea.aol.v2.MsgAddWriter.Builder.class);
   }
 
-  public static final int TOPICNAME_FIELD_NUMBER = 1;
+  public static final int TOPIC_NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object topicName_;
   /**
-   * <code>string topicName = 1;</code>
+   * <code>string topic_name = 1;</code>
    */
   public java.lang.String getTopicName() {
     java.lang.Object ref = topicName_;
@@ -127,7 +131,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string topicName = 1;</code>
+   * <code>string topic_name = 1;</code>
    */
   public com.google.protobuf.ByteString
       getTopicNameBytes() {
@@ -211,10 +215,10 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int WRITERADDRESS_FIELD_NUMBER = 4;
+  public static final int WRITER_ADDRESS_FIELD_NUMBER = 4;
   private volatile java.lang.Object writerAddress_;
   /**
-   * <code>string writerAddress = 4;</code>
+   * <code>string writer_address = 4;</code>
    */
   public java.lang.String getWriterAddress() {
     java.lang.Object ref = writerAddress_;
@@ -229,7 +233,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string writerAddress = 4;</code>
+   * <code>string writer_address = 4;</code>
    */
   public com.google.protobuf.ByteString
       getWriterAddressBytes() {
@@ -245,10 +249,10 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int OWNERADDRESS_FIELD_NUMBER = 5;
+  public static final int OWNER_ADDRESS_FIELD_NUMBER = 5;
   private volatile java.lang.Object ownerAddress_;
   /**
-   * <code>string ownerAddress = 5;</code>
+   * <code>string owner_address = 5;</code>
    */
   public java.lang.String getOwnerAddress() {
     java.lang.Object ref = ownerAddress_;
@@ -263,7 +267,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string ownerAddress = 5;</code>
+   * <code>string owner_address = 5;</code>
    */
   public com.google.protobuf.ByteString
       getOwnerAddressBytes() {
@@ -368,15 +372,15 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + TOPICNAME_FIELD_NUMBER;
+    hash = (37 * hash) + TOPIC_NAME_FIELD_NUMBER;
     hash = (53 * hash) + getTopicName().hashCode();
     hash = (37 * hash) + MONIKER_FIELD_NUMBER;
     hash = (53 * hash) + getMoniker().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
     hash = (53 * hash) + getDescription().hashCode();
-    hash = (37 * hash) + WRITERADDRESS_FIELD_NUMBER;
+    hash = (37 * hash) + WRITER_ADDRESS_FIELD_NUMBER;
     hash = (53 * hash) + getWriterAddress().hashCode();
-    hash = (37 * hash) + OWNERADDRESS_FIELD_NUMBER;
+    hash = (37 * hash) + OWNER_ADDRESS_FIELD_NUMBER;
     hash = (53 * hash) + getOwnerAddress().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -474,6 +478,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * MsgAddWriter defines the Msg/AddWriter request type.
+   * </pre>
+   *
    * Protobuf type {@code panacea.aol.v2.MsgAddWriter}
    */
   public static final class Builder extends
@@ -651,7 +659,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object topicName_ = "";
     /**
-     * <code>string topicName = 1;</code>
+     * <code>string topic_name = 1;</code>
      */
     public java.lang.String getTopicName() {
       java.lang.Object ref = topicName_;
@@ -666,7 +674,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string topicName = 1;</code>
+     * <code>string topic_name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getTopicNameBytes() {
@@ -682,7 +690,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string topicName = 1;</code>
+     * <code>string topic_name = 1;</code>
      */
     public Builder setTopicName(
         java.lang.String value) {
@@ -695,7 +703,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string topicName = 1;</code>
+     * <code>string topic_name = 1;</code>
      */
     public Builder clearTopicName() {
       
@@ -704,7 +712,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string topicName = 1;</code>
+     * <code>string topic_name = 1;</code>
      */
     public Builder setTopicNameBytes(
         com.google.protobuf.ByteString value) {
@@ -858,7 +866,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object writerAddress_ = "";
     /**
-     * <code>string writerAddress = 4;</code>
+     * <code>string writer_address = 4;</code>
      */
     public java.lang.String getWriterAddress() {
       java.lang.Object ref = writerAddress_;
@@ -873,7 +881,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string writerAddress = 4;</code>
+     * <code>string writer_address = 4;</code>
      */
     public com.google.protobuf.ByteString
         getWriterAddressBytes() {
@@ -889,7 +897,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string writerAddress = 4;</code>
+     * <code>string writer_address = 4;</code>
      */
     public Builder setWriterAddress(
         java.lang.String value) {
@@ -902,7 +910,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string writerAddress = 4;</code>
+     * <code>string writer_address = 4;</code>
      */
     public Builder clearWriterAddress() {
       
@@ -911,7 +919,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string writerAddress = 4;</code>
+     * <code>string writer_address = 4;</code>
      */
     public Builder setWriterAddressBytes(
         com.google.protobuf.ByteString value) {
@@ -927,7 +935,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object ownerAddress_ = "";
     /**
-     * <code>string ownerAddress = 5;</code>
+     * <code>string owner_address = 5;</code>
      */
     public java.lang.String getOwnerAddress() {
       java.lang.Object ref = ownerAddress_;
@@ -942,7 +950,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string ownerAddress = 5;</code>
+     * <code>string owner_address = 5;</code>
      */
     public com.google.protobuf.ByteString
         getOwnerAddressBytes() {
@@ -958,7 +966,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string ownerAddress = 5;</code>
+     * <code>string owner_address = 5;</code>
      */
     public Builder setOwnerAddress(
         java.lang.String value) {
@@ -971,7 +979,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string ownerAddress = 5;</code>
+     * <code>string owner_address = 5;</code>
      */
     public Builder clearOwnerAddress() {
       
@@ -980,7 +988,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string ownerAddress = 5;</code>
+     * <code>string owner_address = 5;</code>
      */
     public Builder setOwnerAddressBytes(
         com.google.protobuf.ByteString value) {
