@@ -2,21 +2,21 @@ proto_outdir = "./src/main/resources/proto"
 
 [[dependencies]]
   target = "github.com/cosmos/cosmos-sdk/third_party/proto"
-  revision = "a7e19ad4588bcceeeeab522f5807b9ff22e91a8c"
+  revision = "84c33215658131d87daf3c629e909e12ed9370fa"
   branch = ""
   path = ""
   protocol = ""
 
 [[dependencies]]
   target = "github.com/cosmos/cosmos-sdk/proto"
-  revision = "a7e19ad4588bcceeeeab522f5807b9ff22e91a8c"
+  revision = "84c33215658131d87daf3c629e909e12ed9370fa"
   branch = ""
   path = ""
   protocol = ""
 
 [[dependencies]]
   target = "github.com/medibloc/panacea-core/proto"
-  revision = "3a415531da3f0d2b94667296900e007f3333aaab"
+  revision = "6c6abc575c37c7e5e7f4dd64c3e3e0853e072d1e"
   branch = "master"
   path = ""
   protocol = ""
