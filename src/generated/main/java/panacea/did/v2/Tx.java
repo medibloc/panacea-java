@@ -55,34 +55,27 @@ public final class Tx {
     java.lang.String[] descriptorData = {
       "\n\027panacea/did/v2/tx.proto\022\016panacea.did.v" +
       "2\032\024gogoproto/gogo.proto\032\030panacea/did/v2/" +
-      "did.proto\"\362\001\n\014MsgCreateDID\022\031\n\003DID\030\001 \001(\tB" +
-      "\007\352\336\037\003didR\003did\022-\n\010document\030\002 \001(\0132\033.panace" +
-      "a.did.v2.DIDDocument\022P\n\024verificationMeth" +
-      "odID\030\003 \001(\tB\032\352\336\037\026verification_method_idR\026" +
-      "verification_method_id\022\021\n\tsignature\030\004 \001(" +
-      "\014\0223\n\013fromAddress\030\005 \001(\tB\020\352\336\037\014from_address" +
-      "R\014from_address\"\026\n\024MsgCreateDIDResponse\"\362" +
-      "\001\n\014MsgUpdateDID\022\031\n\003DID\030\001 \001(\tB\007\352\336\037\003didR\003d" +
-      "id\022-\n\010document\030\002 \001(\0132\033.panacea.did.v2.DI" +
-      "DDocument\022P\n\024verificationMethodID\030\003 \001(\tB" +
-      "\032\352\336\037\026verification_method_idR\026verificatio" +
-      "n_method_id\022\021\n\tsignature\030\004 \001(\014\0223\n\013fromAd" +
-      "dress\030\005 \001(\tB\020\352\336\037\014from_addressR\014from_addr" +
-      "ess\"\026\n\024MsgUpdateDIDResponse\"\307\001\n\020MsgDeact" +
-      "ivateDID\022\031\n\003DID\030\001 \001(\tB\007\352\336\037\003didR\003did\022P\n\024v" +
-      "erificationMethodID\030\002 \001(\tB\032\352\336\037\026verificat" +
-      "ion_method_idR\026verification_method_id\022\021\n" +
-      "\tsignature\030\003 \001(\014\0223\n\013fromAddress\030\004 \001(\tB\020\352" +
-      "\336\037\014from_addressR\014from_address\"\032\n\030MsgDeac" +
-      "tivateDIDResponse2\204\002\n\003Msg\022O\n\tCreateDID\022\034" +
-      ".panacea.did.v2.MsgCreateDID\032$.panacea.d" +
-      "id.v2.MsgCreateDIDResponse\022O\n\tUpdateDID\022" +
-      "\034.panacea.did.v2.MsgUpdateDID\032$.panacea." +
-      "did.v2.MsgUpdateDIDResponse\022[\n\rDeactivat" +
-      "eDID\022 .panacea.did.v2.MsgDeactivateDID\032(" +
-      ".panacea.did.v2.MsgDeactivateDIDResponse" +
-      "B0P\001Z,github.com/medibloc/panacea-core/x" +
-      "/did/typesb\006proto3"
+      "did.proto\"\223\001\n\014MsgCreateDID\022\013\n\003did\030\001 \001(\t\022" +
+      "-\n\010document\030\002 \001(\0132\033.panacea.did.v2.DIDDo" +
+      "cument\022\036\n\026verification_method_id\030\003 \001(\t\022\021" +
+      "\n\tsignature\030\004 \001(\014\022\024\n\014from_address\030\005 \001(\t\"" +
+      "\026\n\024MsgCreateDIDResponse\"\223\001\n\014MsgUpdateDID" +
+      "\022\013\n\003did\030\001 \001(\t\022-\n\010document\030\002 \001(\0132\033.panace" +
+      "a.did.v2.DIDDocument\022\036\n\026verification_met" +
+      "hod_id\030\003 \001(\t\022\021\n\tsignature\030\004 \001(\014\022\024\n\014from_" +
+      "address\030\005 \001(\t\"\026\n\024MsgUpdateDIDResponse\"h\n" +
+      "\020MsgDeactivateDID\022\013\n\003did\030\001 \001(\t\022\036\n\026verifi" +
+      "cation_method_id\030\002 \001(\t\022\021\n\tsignature\030\003 \001(" +
+      "\014\022\024\n\014from_address\030\004 \001(\t\"\032\n\030MsgDeactivate" +
+      "DIDResponse2\204\002\n\003Msg\022O\n\tCreateDID\022\034.panac" +
+      "ea.did.v2.MsgCreateDID\032$.panacea.did.v2." +
+      "MsgCreateDIDResponse\022O\n\tUpdateDID\022\034.pana" +
+      "cea.did.v2.MsgUpdateDID\032$.panacea.did.v2" +
+      ".MsgUpdateDIDResponse\022[\n\rDeactivateDID\022 " +
+      ".panacea.did.v2.MsgDeactivateDID\032(.panac" +
+      "ea.did.v2.MsgDeactivateDIDResponseB0P\001Z," +
+      "github.com/medibloc/panacea-core/x/did/t" +
+      "ypesb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -103,7 +96,7 @@ public final class Tx {
     internal_static_panacea_did_v2_MsgCreateDID_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_panacea_did_v2_MsgCreateDID_descriptor,
-        new java.lang.String[] { "DID", "Document", "VerificationMethodID", "Signature", "FromAddress", });
+        new java.lang.String[] { "Did", "Document", "VerificationMethodId", "Signature", "FromAddress", });
     internal_static_panacea_did_v2_MsgCreateDIDResponse_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_panacea_did_v2_MsgCreateDIDResponse_fieldAccessorTable = new
@@ -115,7 +108,7 @@ public final class Tx {
     internal_static_panacea_did_v2_MsgUpdateDID_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_panacea_did_v2_MsgUpdateDID_descriptor,
-        new java.lang.String[] { "DID", "Document", "VerificationMethodID", "Signature", "FromAddress", });
+        new java.lang.String[] { "Did", "Document", "VerificationMethodId", "Signature", "FromAddress", });
     internal_static_panacea_did_v2_MsgUpdateDIDResponse_descriptor =
       getDescriptor().getMessageTypes().get(3);
     internal_static_panacea_did_v2_MsgUpdateDIDResponse_fieldAccessorTable = new
@@ -127,18 +120,13 @@ public final class Tx {
     internal_static_panacea_did_v2_MsgDeactivateDID_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_panacea_did_v2_MsgDeactivateDID_descriptor,
-        new java.lang.String[] { "DID", "VerificationMethodID", "Signature", "FromAddress", });
+        new java.lang.String[] { "Did", "VerificationMethodId", "Signature", "FromAddress", });
     internal_static_panacea_did_v2_MsgDeactivateDIDResponse_descriptor =
       getDescriptor().getMessageTypes().get(5);
     internal_static_panacea_did_v2_MsgDeactivateDIDResponse_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_panacea_did_v2_MsgDeactivateDIDResponse_descriptor,
         new java.lang.String[] { });
-    com.google.protobuf.ExtensionRegistry registry =
-        com.google.protobuf.ExtensionRegistry.newInstance();
-    registry.add(com.google.protobuf.GoGoProtos.jsontag);
-    com.google.protobuf.Descriptors.FileDescriptor
-        .internalUpdateFileDescriptor(descriptor, registry);
     com.google.protobuf.GoGoProtos.getDescriptor();
     panacea.did.v2.Did.getDescriptor();
   }

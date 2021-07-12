@@ -4,6 +4,10 @@
 package panacea.aol.v2;
 
 /**
+ * <pre>
+ * Topic defines a topic type.
+ * </pre>
+ *
  * Protobuf type {@code panacea.aol.v2.Writer}
  */
 public  final class Writer extends
@@ -161,10 +165,10 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int NANOTIMESTAMP_FIELD_NUMBER = 3;
+  public static final int NANO_TIMESTAMP_FIELD_NUMBER = 3;
   private long nanoTimestamp_;
   /**
-   * <code>int64 nanoTimestamp = 3;</code>
+   * <code>int64 nano_timestamp = 3;</code>
    */
   public long getNanoTimestamp() {
     return nanoTimestamp_;
@@ -248,7 +252,7 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getMoniker().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
     hash = (53 * hash) + getDescription().hashCode();
-    hash = (37 * hash) + NANOTIMESTAMP_FIELD_NUMBER;
+    hash = (37 * hash) + NANO_TIMESTAMP_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getNanoTimestamp());
     hash = (29 * hash) + unknownFields.hashCode();
@@ -347,6 +351,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * Topic defines a topic type.
+   * </pre>
+   *
    * Protobuf type {@code panacea.aol.v2.Writer}
    */
   public static final class Builder extends
@@ -647,13 +655,13 @@ private static final long serialVersionUID = 0L;
 
     private long nanoTimestamp_ ;
     /**
-     * <code>int64 nanoTimestamp = 3;</code>
+     * <code>int64 nano_timestamp = 3;</code>
      */
     public long getNanoTimestamp() {
       return nanoTimestamp_;
     }
     /**
-     * <code>int64 nanoTimestamp = 3;</code>
+     * <code>int64 nano_timestamp = 3;</code>
      */
     public Builder setNanoTimestamp(long value) {
       
@@ -662,7 +670,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int64 nanoTimestamp = 3;</code>
+     * <code>int64 nano_timestamp = 3;</code>
      */
     public Builder clearNanoTimestamp() {
       

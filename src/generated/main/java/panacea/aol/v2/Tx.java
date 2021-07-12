@@ -64,31 +64,31 @@ public final class Tx {
   static {
     java.lang.String[] descriptorData = {
       "\n\027panacea/aol/v2/tx.proto\022\016panacea.aol.v" +
-      "2\"N\n\016MsgCreateTopic\022\021\n\ttopicName\030\001 \001(\t\022\023" +
-      "\n\013description\030\002 \001(\t\022\024\n\014ownerAddress\030\003 \001(" +
-      "\t\"\030\n\026MsgCreateTopicResponse\"t\n\014MsgAddWri" +
-      "ter\022\021\n\ttopicName\030\001 \001(\t\022\017\n\007moniker\030\002 \001(\t\022" +
-      "\023\n\013description\030\003 \001(\t\022\025\n\rwriterAddress\030\004 " +
-      "\001(\t\022\024\n\014ownerAddress\030\005 \001(\t\"\026\n\024MsgAddWrite" +
-      "rResponse\"Q\n\017MsgDeleteWriter\022\021\n\ttopicNam" +
-      "e\030\001 \001(\t\022\025\n\rwriterAddress\030\002 \001(\t\022\024\n\014ownerA" +
-      "ddress\030\003 \001(\t\"\031\n\027MsgDeleteWriterResponse\"" +
-      "\203\001\n\014MsgAddRecord\022\021\n\ttopicName\030\001 \001(\t\022\013\n\003k" +
-      "ey\030\002 \001(\014\022\r\n\005value\030\003 \001(\014\022\025\n\rwriterAddress" +
-      "\030\004 \001(\t\022\024\n\014ownerAddress\030\005 \001(\t\022\027\n\017feePayer" +
-      "Address\030\006 \001(\t\"O\n\024MsgAddRecordResponse\022\024\n" +
-      "\014ownerAddress\030\001 \001(\t\022\021\n\ttopicName\030\002 \001(\t\022\016" +
-      "\n\006offset\030\003 \001(\0042\330\002\n\003Msg\022U\n\013CreateTopic\022\036." +
-      "panacea.aol.v2.MsgCreateTopic\032&.panacea." +
-      "aol.v2.MsgCreateTopicResponse\022O\n\tAddWrit" +
-      "er\022\034.panacea.aol.v2.MsgAddWriter\032$.panac" +
-      "ea.aol.v2.MsgAddWriterResponse\022X\n\014Delete" +
-      "Writer\022\037.panacea.aol.v2.MsgDeleteWriter\032" +
-      "\'.panacea.aol.v2.MsgDeleteWriterResponse" +
-      "\022O\n\tAddRecord\022\034.panacea.aol.v2.MsgAddRec" +
-      "ord\032$.panacea.aol.v2.MsgAddRecordRespons" +
-      "eB0P\001Z,github.com/medibloc/panacea-core/" +
-      "x/aol/typesb\006proto3"
+      "2\"P\n\016MsgCreateTopic\022\022\n\ntopic_name\030\001 \001(\t\022" +
+      "\023\n\013description\030\002 \001(\t\022\025\n\rowner_address\030\003 " +
+      "\001(\t\"\030\n\026MsgCreateTopicResponse\"w\n\014MsgAddW" +
+      "riter\022\022\n\ntopic_name\030\001 \001(\t\022\017\n\007moniker\030\002 \001" +
+      "(\t\022\023\n\013description\030\003 \001(\t\022\026\n\016writer_addres" +
+      "s\030\004 \001(\t\022\025\n\rowner_address\030\005 \001(\t\"\026\n\024MsgAdd" +
+      "WriterResponse\"T\n\017MsgDeleteWriter\022\022\n\ntop" +
+      "ic_name\030\001 \001(\t\022\026\n\016writer_address\030\002 \001(\t\022\025\n" +
+      "\rowner_address\030\003 \001(\t\"\031\n\027MsgDeleteWriterR" +
+      "esponse\"\210\001\n\014MsgAddRecord\022\022\n\ntopic_name\030\001" +
+      " \001(\t\022\013\n\003key\030\002 \001(\014\022\r\n\005value\030\003 \001(\014\022\026\n\016writ" +
+      "er_address\030\004 \001(\t\022\025\n\rowner_address\030\005 \001(\t\022" +
+      "\031\n\021fee_payer_address\030\006 \001(\t\"Q\n\024MsgAddReco" +
+      "rdResponse\022\025\n\rowner_address\030\001 \001(\t\022\022\n\ntop" +
+      "ic_name\030\002 \001(\t\022\016\n\006offset\030\003 \001(\0042\330\002\n\003Msg\022U\n" +
+      "\013CreateTopic\022\036.panacea.aol.v2.MsgCreateT" +
+      "opic\032&.panacea.aol.v2.MsgCreateTopicResp" +
+      "onse\022O\n\tAddWriter\022\034.panacea.aol.v2.MsgAd" +
+      "dWriter\032$.panacea.aol.v2.MsgAddWriterRes" +
+      "ponse\022X\n\014DeleteWriter\022\037.panacea.aol.v2.M" +
+      "sgDeleteWriter\032\'.panacea.aol.v2.MsgDelet" +
+      "eWriterResponse\022O\n\tAddRecord\022\034.panacea.a" +
+      "ol.v2.MsgAddRecord\032$.panacea.aol.v2.MsgA" +
+      "ddRecordResponseB0P\001Z,github.com/mediblo" +
+      "c/panacea-core/x/aol/typesb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

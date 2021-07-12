@@ -29,10 +29,10 @@ public final class WriterOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\033panacea/aol/v2/writer.proto\022\016panacea.a" +
-      "ol.v2\032\024gogoproto/gogo.proto\"E\n\006Writer\022\017\n" +
-      "\007moniker\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022\025\n\rn" +
-      "anoTimestamp\030\003 \001(\003B0P\001Z,github.com/medib" +
-      "loc/panacea-core/x/aol/typesb\006proto3"
+      "ol.v2\032\024gogoproto/gogo.proto\"F\n\006Writer\022\017\n" +
+      "\007moniker\030\001 \001(\t\022\023\n\013description\030\002 \001(\t\022\026\n\016n" +
+      "ano_timestamp\030\003 \001(\003B0P\001Z,github.com/medi" +
+      "bloc/panacea-core/x/aol/typesb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

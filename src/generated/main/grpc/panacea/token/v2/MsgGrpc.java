@@ -94,7 +94,7 @@ public final class MsgGrpc {
 
     /**
      * <pre>
-     * this line is used by starport scaffolding # proto/tx/rpc
+     * IssueToken defines a method for issuing a token.
      * </pre>
      */
     public void issueToken(panacea.token.v2.MsgIssueToken request,
@@ -138,7 +138,7 @@ public final class MsgGrpc {
 
     /**
      * <pre>
-     * this line is used by starport scaffolding # proto/tx/rpc
+     * IssueToken defines a method for issuing a token.
      * </pre>
      */
     public void issueToken(panacea.token.v2.MsgIssueToken request,
@@ -171,7 +171,7 @@ public final class MsgGrpc {
 
     /**
      * <pre>
-     * this line is used by starport scaffolding # proto/tx/rpc
+     * IssueToken defines a method for issuing a token.
      * </pre>
      */
     public panacea.token.v2.MsgIssueTokenResponse issueToken(panacea.token.v2.MsgIssueToken request) {
@@ -203,7 +203,7 @@ public final class MsgGrpc {
 
     /**
      * <pre>
-     * this line is used by starport scaffolding # proto/tx/rpc
+     * IssueToken defines a method for issuing a token.
      * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<panacea.token.v2.MsgIssueTokenResponse> issueToken(

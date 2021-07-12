@@ -8,31 +8,31 @@ public interface MsgDeleteWriterOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string topicName = 1;</code>
+   * <code>string topic_name = 1;</code>
    */
   java.lang.String getTopicName();
   /**
-   * <code>string topicName = 1;</code>
+   * <code>string topic_name = 1;</code>
    */
   com.google.protobuf.ByteString
       getTopicNameBytes();
 
   /**
-   * <code>string writerAddress = 2;</code>
+   * <code>string writer_address = 2;</code>
    */
   java.lang.String getWriterAddress();
   /**
-   * <code>string writerAddress = 2;</code>
+   * <code>string writer_address = 2;</code>
    */
   com.google.protobuf.ByteString
       getWriterAddressBytes();
 
   /**
-   * <code>string ownerAddress = 3;</code>
+   * <code>string owner_address = 3;</code>
    */
   java.lang.String getOwnerAddress();
   /**
-   * <code>string ownerAddress = 3;</code>
+   * <code>string owner_address = 3;</code>
    */
   com.google.protobuf.ByteString
       getOwnerAddressBytes();

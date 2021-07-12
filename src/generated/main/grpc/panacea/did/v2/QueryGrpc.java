@@ -30,36 +30,36 @@ public final class QueryGrpc {
   public static final String SERVICE_NAME = "panacea.did.v2.Query";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<panacea.did.v2.QueryGetDIDRequest,
-      panacea.did.v2.QueryGetDIDResponse> getDIDDocumentWithSeqMethod;
+  private static volatile io.grpc.MethodDescriptor<panacea.did.v2.QueryDIDRequest,
+      panacea.did.v2.QueryDIDResponse> getDIDMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "DIDDocumentWithSeq",
-      requestType = panacea.did.v2.QueryGetDIDRequest.class,
-      responseType = panacea.did.v2.QueryGetDIDResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "DID",
+      requestType = panacea.did.v2.QueryDIDRequest.class,
+      responseType = panacea.did.v2.QueryDIDResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<panacea.did.v2.QueryGetDIDRequest,
-      panacea.did.v2.QueryGetDIDResponse> getDIDDocumentWithSeqMethod() {
-    io.grpc.MethodDescriptor<panacea.did.v2.QueryGetDIDRequest, panacea.did.v2.QueryGetDIDResponse> getDIDDocumentWithSeqMethod;
-    if ((getDIDDocumentWithSeqMethod = QueryGrpc.getDIDDocumentWithSeqMethod) == null) {
+  public static io.grpc.MethodDescriptor<panacea.did.v2.QueryDIDRequest,
+      panacea.did.v2.QueryDIDResponse> getDIDMethod() {
+    io.grpc.MethodDescriptor<panacea.did.v2.QueryDIDRequest, panacea.did.v2.QueryDIDResponse> getDIDMethod;
+    if ((getDIDMethod = QueryGrpc.getDIDMethod) == null) {
       synchronized (QueryGrpc.class) {
-        if ((getDIDDocumentWithSeqMethod = QueryGrpc.getDIDDocumentWithSeqMethod) == null) {
-          QueryGrpc.getDIDDocumentWithSeqMethod = getDIDDocumentWithSeqMethod = 
-              io.grpc.MethodDescriptor.<panacea.did.v2.QueryGetDIDRequest, panacea.did.v2.QueryGetDIDResponse>newBuilder()
+        if ((getDIDMethod = QueryGrpc.getDIDMethod) == null) {
+          QueryGrpc.getDIDMethod = getDIDMethod = 
+              io.grpc.MethodDescriptor.<panacea.did.v2.QueryDIDRequest, panacea.did.v2.QueryDIDResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "panacea.did.v2.Query", "DIDDocumentWithSeq"))
+                  "panacea.did.v2.Query", "DID"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  panacea.did.v2.QueryGetDIDRequest.getDefaultInstance()))
+                  panacea.did.v2.QueryDIDRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  panacea.did.v2.QueryGetDIDResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new QueryMethodDescriptorSupplier("DIDDocumentWithSeq"))
+                  panacea.did.v2.QueryDIDResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new QueryMethodDescriptorSupplier("DID"))
                   .build();
           }
         }
      }
-     return getDIDDocumentWithSeqMethod;
+     return getDIDMethod;
   }
 
   /**
@@ -93,21 +93,24 @@ public final class QueryGrpc {
   public static abstract class QueryImplBase implements io.grpc.BindableService {
 
     /**
+     * <pre>
+     * DID returns a DID Document with a sequence number.
+     * </pre>
      */
-    public void dIDDocumentWithSeq(panacea.did.v2.QueryGetDIDRequest request,
-        io.grpc.stub.StreamObserver<panacea.did.v2.QueryGetDIDResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(getDIDDocumentWithSeqMethod(), responseObserver);
+    public void dID(panacea.did.v2.QueryDIDRequest request,
+        io.grpc.stub.StreamObserver<panacea.did.v2.QueryDIDResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getDIDMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
       return io.grpc.ServerServiceDefinition.builder(getServiceDescriptor())
           .addMethod(
-            getDIDDocumentWithSeqMethod(),
+            getDIDMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                panacea.did.v2.QueryGetDIDRequest,
-                panacea.did.v2.QueryGetDIDResponse>(
-                  this, METHODID_DIDDOCUMENT_WITH_SEQ)))
+                panacea.did.v2.QueryDIDRequest,
+                panacea.did.v2.QueryDIDResponse>(
+                  this, METHODID_DID)))
           .build();
     }
   }
@@ -134,11 +137,14 @@ public final class QueryGrpc {
     }
 
     /**
+     * <pre>
+     * DID returns a DID Document with a sequence number.
+     * </pre>
      */
-    public void dIDDocumentWithSeq(panacea.did.v2.QueryGetDIDRequest request,
-        io.grpc.stub.StreamObserver<panacea.did.v2.QueryGetDIDResponse> responseObserver) {
+    public void dID(panacea.did.v2.QueryDIDRequest request,
+        io.grpc.stub.StreamObserver<panacea.did.v2.QueryDIDResponse> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getDIDDocumentWithSeqMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getDIDMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -164,10 +170,13 @@ public final class QueryGrpc {
     }
 
     /**
+     * <pre>
+     * DID returns a DID Document with a sequence number.
+     * </pre>
      */
-    public panacea.did.v2.QueryGetDIDResponse dIDDocumentWithSeq(panacea.did.v2.QueryGetDIDRequest request) {
+    public panacea.did.v2.QueryDIDResponse dID(panacea.did.v2.QueryDIDRequest request) {
       return blockingUnaryCall(
-          getChannel(), getDIDDocumentWithSeqMethod(), getCallOptions(), request);
+          getChannel(), getDIDMethod(), getCallOptions(), request);
     }
   }
 
@@ -193,15 +202,18 @@ public final class QueryGrpc {
     }
 
     /**
+     * <pre>
+     * DID returns a DID Document with a sequence number.
+     * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<panacea.did.v2.QueryGetDIDResponse> dIDDocumentWithSeq(
-        panacea.did.v2.QueryGetDIDRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<panacea.did.v2.QueryDIDResponse> dID(
+        panacea.did.v2.QueryDIDRequest request) {
       return futureUnaryCall(
-          getChannel().newCall(getDIDDocumentWithSeqMethod(), getCallOptions()), request);
+          getChannel().newCall(getDIDMethod(), getCallOptions()), request);
     }
   }
 
-  private static final int METHODID_DIDDOCUMENT_WITH_SEQ = 0;
+  private static final int METHODID_DID = 0;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -220,9 +232,9 @@ public final class QueryGrpc {
     @java.lang.SuppressWarnings("unchecked")
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
-        case METHODID_DIDDOCUMENT_WITH_SEQ:
-          serviceImpl.dIDDocumentWithSeq((panacea.did.v2.QueryGetDIDRequest) request,
-              (io.grpc.stub.StreamObserver<panacea.did.v2.QueryGetDIDResponse>) responseObserver);
+        case METHODID_DID:
+          serviceImpl.dID((panacea.did.v2.QueryDIDRequest) request,
+              (io.grpc.stub.StreamObserver<panacea.did.v2.QueryDIDResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -285,7 +297,7 @@ public final class QueryGrpc {
         if (result == null) {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new QueryFileDescriptorSupplier())
-              .addMethod(getDIDDocumentWithSeqMethod())
+              .addMethod(getDIDMethod())
               .build();
         }
       }

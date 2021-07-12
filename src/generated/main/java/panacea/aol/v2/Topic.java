@@ -4,6 +4,10 @@
 package panacea.aol.v2;
 
 /**
+ * <pre>
+ * Topic defines a topic type.
+ * </pre>
+ *
  * Protobuf type {@code panacea.aol.v2.Topic}
  */
 public  final class Topic extends
@@ -125,19 +129,19 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int TOTALRECORDS_FIELD_NUMBER = 2;
+  public static final int TOTAL_RECORDS_FIELD_NUMBER = 2;
   private long totalRecords_;
   /**
-   * <code>uint64 totalRecords = 2;</code>
+   * <code>uint64 total_records = 2;</code>
    */
   public long getTotalRecords() {
     return totalRecords_;
   }
 
-  public static final int TOTALWRITERS_FIELD_NUMBER = 3;
+  public static final int TOTAL_WRITERS_FIELD_NUMBER = 3;
   private long totalWriters_;
   /**
-   * <code>uint64 totalWriters = 3;</code>
+   * <code>uint64 total_writers = 3;</code>
    */
   public long getTotalWriters() {
     return totalWriters_;
@@ -220,10 +224,10 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
     hash = (53 * hash) + getDescription().hashCode();
-    hash = (37 * hash) + TOTALRECORDS_FIELD_NUMBER;
+    hash = (37 * hash) + TOTAL_RECORDS_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getTotalRecords());
-    hash = (37 * hash) + TOTALWRITERS_FIELD_NUMBER;
+    hash = (37 * hash) + TOTAL_WRITERS_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getTotalWriters());
     hash = (29 * hash) + unknownFields.hashCode();
@@ -322,6 +326,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * Topic defines a topic type.
+   * </pre>
+   *
    * Protobuf type {@code panacea.aol.v2.Topic}
    */
   public static final class Builder extends
@@ -552,13 +560,13 @@ private static final long serialVersionUID = 0L;
 
     private long totalRecords_ ;
     /**
-     * <code>uint64 totalRecords = 2;</code>
+     * <code>uint64 total_records = 2;</code>
      */
     public long getTotalRecords() {
       return totalRecords_;
     }
     /**
-     * <code>uint64 totalRecords = 2;</code>
+     * <code>uint64 total_records = 2;</code>
      */
     public Builder setTotalRecords(long value) {
       
@@ -567,7 +575,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>uint64 totalRecords = 2;</code>
+     * <code>uint64 total_records = 2;</code>
      */
     public Builder clearTotalRecords() {
       
@@ -578,13 +586,13 @@ private static final long serialVersionUID = 0L;
 
     private long totalWriters_ ;
     /**
-     * <code>uint64 totalWriters = 3;</code>
+     * <code>uint64 total_writers = 3;</code>
      */
     public long getTotalWriters() {
       return totalWriters_;
     }
     /**
-     * <code>uint64 totalWriters = 3;</code>
+     * <code>uint64 total_writers = 3;</code>
      */
     public Builder setTotalWriters(long value) {
       
@@ -593,7 +601,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>uint64 totalWriters = 3;</code>
+     * <code>uint64 total_writers = 3;</code>
      */
     public Builder clearTotalWriters() {
       

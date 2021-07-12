@@ -90,4 +90,14 @@ public interface VersionInfoOrBuilder extends
    */
   cosmos.base.tendermint.v1beta1.ModuleOrBuilder getBuildDepsOrBuilder(
       int index);
+
+  /**
+   * <code>string cosmos_sdk_version = 8;</code>
+   */
+  java.lang.String getCosmosSdkVersion();
+  /**
+   * <code>string cosmos_sdk_version = 8;</code>
+   */
+  com.google.protobuf.ByteString
+      getCosmosSdkVersionBytes();
 }

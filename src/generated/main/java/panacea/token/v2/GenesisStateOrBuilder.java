@@ -8,18 +8,10 @@ public interface GenesisStateOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <pre>
-   * this line is used by starport scaffolding # genesis/proto/state
-   * </pre>
-   *
    * <code>map&lt;string, .panacea.token.v2.Token&gt; tokens = 1;</code>
    */
   int getTokensCount();
   /**
-   * <pre>
-   * this line is used by starport scaffolding # genesis/proto/state
-   * </pre>
-   *
    * <code>map&lt;string, .panacea.token.v2.Token&gt; tokens = 1;</code>
    */
   boolean containsTokens(
@@ -31,19 +23,11 @@ public interface GenesisStateOrBuilder extends
   java.util.Map<java.lang.String, panacea.token.v2.Token>
   getTokens();
   /**
-   * <pre>
-   * this line is used by starport scaffolding # genesis/proto/state
-   * </pre>
-   *
    * <code>map&lt;string, .panacea.token.v2.Token&gt; tokens = 1;</code>
    */
   java.util.Map<java.lang.String, panacea.token.v2.Token>
   getTokensMap();
   /**
-   * <pre>
-   * this line is used by starport scaffolding # genesis/proto/state
-   * </pre>
-   *
    * <code>map&lt;string, .panacea.token.v2.Token&gt; tokens = 1;</code>
    */
 
@@ -51,10 +35,6 @@ public interface GenesisStateOrBuilder extends
       java.lang.String key,
       panacea.token.v2.Token defaultValue);
   /**
-   * <pre>
-   * this line is used by starport scaffolding # genesis/proto/state
-   * </pre>
-   *
    * <code>map&lt;string, .panacea.token.v2.Token&gt; tokens = 1;</code>
    */
 

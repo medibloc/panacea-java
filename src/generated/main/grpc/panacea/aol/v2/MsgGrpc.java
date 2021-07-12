@@ -189,6 +189,9 @@ public final class MsgGrpc {
   public static abstract class MsgImplBase implements io.grpc.BindableService {
 
     /**
+     * <pre>
+     * CreateTopic defines a method for creating a topic.
+     * </pre>
      */
     public void createTopic(panacea.aol.v2.MsgCreateTopic request,
         io.grpc.stub.StreamObserver<panacea.aol.v2.MsgCreateTopicResponse> responseObserver) {
@@ -196,6 +199,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * AddWriter defines a method for adding a writer to the topic.
+     * </pre>
      */
     public void addWriter(panacea.aol.v2.MsgAddWriter request,
         io.grpc.stub.StreamObserver<panacea.aol.v2.MsgAddWriterResponse> responseObserver) {
@@ -203,6 +209,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * DeleteWriter defines a method for deleting a writer to the topic.
+     * </pre>
      */
     public void deleteWriter(panacea.aol.v2.MsgDeleteWriter request,
         io.grpc.stub.StreamObserver<panacea.aol.v2.MsgDeleteWriterResponse> responseObserver) {
@@ -210,6 +219,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * AddRecord defines a method for adding a record to the topic with the writer.
+     * </pre>
      */
     public void addRecord(panacea.aol.v2.MsgAddRecord request,
         io.grpc.stub.StreamObserver<panacea.aol.v2.MsgAddRecordResponse> responseObserver) {
@@ -272,6 +284,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * CreateTopic defines a method for creating a topic.
+     * </pre>
      */
     public void createTopic(panacea.aol.v2.MsgCreateTopic request,
         io.grpc.stub.StreamObserver<panacea.aol.v2.MsgCreateTopicResponse> responseObserver) {
@@ -280,6 +295,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * AddWriter defines a method for adding a writer to the topic.
+     * </pre>
      */
     public void addWriter(panacea.aol.v2.MsgAddWriter request,
         io.grpc.stub.StreamObserver<panacea.aol.v2.MsgAddWriterResponse> responseObserver) {
@@ -288,6 +306,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * DeleteWriter defines a method for deleting a writer to the topic.
+     * </pre>
      */
     public void deleteWriter(panacea.aol.v2.MsgDeleteWriter request,
         io.grpc.stub.StreamObserver<panacea.aol.v2.MsgDeleteWriterResponse> responseObserver) {
@@ -296,6 +317,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * AddRecord defines a method for adding a record to the topic with the writer.
+     * </pre>
      */
     public void addRecord(panacea.aol.v2.MsgAddRecord request,
         io.grpc.stub.StreamObserver<panacea.aol.v2.MsgAddRecordResponse> responseObserver) {
@@ -326,6 +350,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * CreateTopic defines a method for creating a topic.
+     * </pre>
      */
     public panacea.aol.v2.MsgCreateTopicResponse createTopic(panacea.aol.v2.MsgCreateTopic request) {
       return blockingUnaryCall(
@@ -333,6 +360,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * AddWriter defines a method for adding a writer to the topic.
+     * </pre>
      */
     public panacea.aol.v2.MsgAddWriterResponse addWriter(panacea.aol.v2.MsgAddWriter request) {
       return blockingUnaryCall(
@@ -340,6 +370,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * DeleteWriter defines a method for deleting a writer to the topic.
+     * </pre>
      */
     public panacea.aol.v2.MsgDeleteWriterResponse deleteWriter(panacea.aol.v2.MsgDeleteWriter request) {
       return blockingUnaryCall(
@@ -347,6 +380,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * AddRecord defines a method for adding a record to the topic with the writer.
+     * </pre>
      */
     public panacea.aol.v2.MsgAddRecordResponse addRecord(panacea.aol.v2.MsgAddRecord request) {
       return blockingUnaryCall(
@@ -376,6 +412,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * CreateTopic defines a method for creating a topic.
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<panacea.aol.v2.MsgCreateTopicResponse> createTopic(
         panacea.aol.v2.MsgCreateTopic request) {
@@ -384,6 +423,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * AddWriter defines a method for adding a writer to the topic.
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<panacea.aol.v2.MsgAddWriterResponse> addWriter(
         panacea.aol.v2.MsgAddWriter request) {
@@ -392,6 +434,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * DeleteWriter defines a method for deleting a writer to the topic.
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<panacea.aol.v2.MsgDeleteWriterResponse> deleteWriter(
         panacea.aol.v2.MsgDeleteWriter request) {
@@ -400,6 +445,9 @@ public final class MsgGrpc {
     }
 
     /**
+     * <pre>
+     * AddRecord defines a method for adding a record to the topic with the writer.
+     * </pre>
      */
     public com.google.common.util.concurrent.ListenableFuture<panacea.aol.v2.MsgAddRecordResponse> addRecord(
         panacea.aol.v2.MsgAddRecord request) {

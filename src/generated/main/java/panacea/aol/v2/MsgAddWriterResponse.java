@@ -4,6 +4,10 @@
 package panacea.aol.v2;
 
 /**
+ * <pre>
+ * MsgAddWriter defines the Msg/AddWriter response type.
+ * </pre>
+ *
  * Protobuf type {@code panacea.aol.v2.MsgAddWriterResponse}
  */
 public  final class MsgAddWriterResponse extends
@@ -218,6 +222,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * MsgAddWriter defines the Msg/AddWriter response type.
+   * </pre>
+   *
    * Protobuf type {@code panacea.aol.v2.MsgAddWriterResponse}
    */
   public static final class Builder extends

@@ -4,6 +4,10 @@
 package panacea.token.v2;
 
 /**
+ * <pre>
+ * Token defines a token.
+ * </pre>
+ *
  * Protobuf type {@code panacea.token.v2.Token}
  */
 public  final class Token extends
@@ -181,22 +185,22 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int TOTALSUPPLY_FIELD_NUMBER = 3;
+  public static final int TOTAL_SUPPLY_FIELD_NUMBER = 3;
   private cosmos.base.v1beta1.Coin totalSupply_;
   /**
-   * <code>.cosmos.base.v1beta1.Coin totalSupply = 3 [(.gogoproto.nullable) = false];</code>
+   * <code>.cosmos.base.v1beta1.Coin total_supply = 3 [(.gogoproto.nullable) = false];</code>
    */
   public boolean hasTotalSupply() {
     return totalSupply_ != null;
   }
   /**
-   * <code>.cosmos.base.v1beta1.Coin totalSupply = 3 [(.gogoproto.nullable) = false];</code>
+   * <code>.cosmos.base.v1beta1.Coin total_supply = 3 [(.gogoproto.nullable) = false];</code>
    */
   public cosmos.base.v1beta1.Coin getTotalSupply() {
     return totalSupply_ == null ? cosmos.base.v1beta1.Coin.getDefaultInstance() : totalSupply_;
   }
   /**
-   * <code>.cosmos.base.v1beta1.Coin totalSupply = 3 [(.gogoproto.nullable) = false];</code>
+   * <code>.cosmos.base.v1beta1.Coin total_supply = 3 [(.gogoproto.nullable) = false];</code>
    */
   public cosmos.base.v1beta1.CoinOrBuilder getTotalSupplyOrBuilder() {
     return getTotalSupply();
@@ -211,10 +215,10 @@ private static final long serialVersionUID = 0L;
     return mintable_;
   }
 
-  public static final int OWNERADDRESS_FIELD_NUMBER = 5;
+  public static final int OWNER_ADDRESS_FIELD_NUMBER = 5;
   private volatile java.lang.Object ownerAddress_;
   /**
-   * <code>string ownerAddress = 5;</code>
+   * <code>string owner_address = 5;</code>
    */
   public java.lang.String getOwnerAddress() {
     java.lang.Object ref = ownerAddress_;
@@ -229,7 +233,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string ownerAddress = 5;</code>
+   * <code>string owner_address = 5;</code>
    */
   public com.google.protobuf.ByteString
       getOwnerAddressBytes() {
@@ -344,13 +348,13 @@ private static final long serialVersionUID = 0L;
     hash = (37 * hash) + SYMBOL_FIELD_NUMBER;
     hash = (53 * hash) + getSymbol().hashCode();
     if (hasTotalSupply()) {
-      hash = (37 * hash) + TOTALSUPPLY_FIELD_NUMBER;
+      hash = (37 * hash) + TOTAL_SUPPLY_FIELD_NUMBER;
       hash = (53 * hash) + getTotalSupply().hashCode();
     }
     hash = (37 * hash) + MINTABLE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getMintable());
-    hash = (37 * hash) + OWNERADDRESS_FIELD_NUMBER;
+    hash = (37 * hash) + OWNER_ADDRESS_FIELD_NUMBER;
     hash = (53 * hash) + getOwnerAddress().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -448,6 +452,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * Token defines a token.
+   * </pre>
+   *
    * Protobuf type {@code panacea.token.v2.Token}
    */
   public static final class Builder extends
@@ -771,13 +779,13 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         cosmos.base.v1beta1.Coin, cosmos.base.v1beta1.Coin.Builder, cosmos.base.v1beta1.CoinOrBuilder> totalSupplyBuilder_;
     /**
-     * <code>.cosmos.base.v1beta1.Coin totalSupply = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.Coin total_supply = 3 [(.gogoproto.nullable) = false];</code>
      */
     public boolean hasTotalSupply() {
       return totalSupplyBuilder_ != null || totalSupply_ != null;
     }
     /**
-     * <code>.cosmos.base.v1beta1.Coin totalSupply = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.Coin total_supply = 3 [(.gogoproto.nullable) = false];</code>
      */
     public cosmos.base.v1beta1.Coin getTotalSupply() {
       if (totalSupplyBuilder_ == null) {
@@ -787,7 +795,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.cosmos.base.v1beta1.Coin totalSupply = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.Coin total_supply = 3 [(.gogoproto.nullable) = false];</code>
      */
     public Builder setTotalSupply(cosmos.base.v1beta1.Coin value) {
       if (totalSupplyBuilder_ == null) {
@@ -803,7 +811,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.cosmos.base.v1beta1.Coin totalSupply = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.Coin total_supply = 3 [(.gogoproto.nullable) = false];</code>
      */
     public Builder setTotalSupply(
         cosmos.base.v1beta1.Coin.Builder builderForValue) {
@@ -817,7 +825,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.cosmos.base.v1beta1.Coin totalSupply = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.Coin total_supply = 3 [(.gogoproto.nullable) = false];</code>
      */
     public Builder mergeTotalSupply(cosmos.base.v1beta1.Coin value) {
       if (totalSupplyBuilder_ == null) {
@@ -835,7 +843,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.cosmos.base.v1beta1.Coin totalSupply = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.Coin total_supply = 3 [(.gogoproto.nullable) = false];</code>
      */
     public Builder clearTotalSupply() {
       if (totalSupplyBuilder_ == null) {
@@ -849,7 +857,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.cosmos.base.v1beta1.Coin totalSupply = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.Coin total_supply = 3 [(.gogoproto.nullable) = false];</code>
      */
     public cosmos.base.v1beta1.Coin.Builder getTotalSupplyBuilder() {
       
@@ -857,7 +865,7 @@ private static final long serialVersionUID = 0L;
       return getTotalSupplyFieldBuilder().getBuilder();
     }
     /**
-     * <code>.cosmos.base.v1beta1.Coin totalSupply = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.Coin total_supply = 3 [(.gogoproto.nullable) = false];</code>
      */
     public cosmos.base.v1beta1.CoinOrBuilder getTotalSupplyOrBuilder() {
       if (totalSupplyBuilder_ != null) {
@@ -868,7 +876,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.cosmos.base.v1beta1.Coin totalSupply = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.Coin total_supply = 3 [(.gogoproto.nullable) = false];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         cosmos.base.v1beta1.Coin, cosmos.base.v1beta1.Coin.Builder, cosmos.base.v1beta1.CoinOrBuilder> 
@@ -912,7 +920,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object ownerAddress_ = "";
     /**
-     * <code>string ownerAddress = 5;</code>
+     * <code>string owner_address = 5;</code>
      */
     public java.lang.String getOwnerAddress() {
       java.lang.Object ref = ownerAddress_;
@@ -927,7 +935,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string ownerAddress = 5;</code>
+     * <code>string owner_address = 5;</code>
      */
     public com.google.protobuf.ByteString
         getOwnerAddressBytes() {
@@ -943,7 +951,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string ownerAddress = 5;</code>
+     * <code>string owner_address = 5;</code>
      */
     public Builder setOwnerAddress(
         java.lang.String value) {
@@ -956,7 +964,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string ownerAddress = 5;</code>
+     * <code>string owner_address = 5;</code>
      */
     public Builder clearOwnerAddress() {
       
@@ -965,7 +973,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string ownerAddress = 5;</code>
+     * <code>string owner_address = 5;</code>
      */
     public Builder setOwnerAddressBytes(
         com.google.protobuf.ByteString value) {

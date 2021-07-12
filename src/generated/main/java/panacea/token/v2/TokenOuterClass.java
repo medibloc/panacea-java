@@ -30,12 +30,12 @@ public final class TokenOuterClass {
     java.lang.String[] descriptorData = {
       "\n\034panacea/token/v2/token.proto\022\020panacea." +
       "token.v2\032\024gogoproto/gogo.proto\032\036cosmos/b" +
-      "ase/v1beta1/coin.proto\"\203\001\n\005Token\022\014\n\004name" +
-      "\030\001 \001(\t\022\016\n\006symbol\030\002 \001(\t\0224\n\013totalSupply\030\003 " +
-      "\001(\0132\031.cosmos.base.v1beta1.CoinB\004\310\336\037\000\022\020\n\010" +
-      "mintable\030\004 \001(\010\022\024\n\014ownerAddress\030\005 \001(\tB2P\001" +
-      "Z.github.com/medibloc/panacea-core/x/tok" +
-      "en/typesb\006proto3"
+      "ase/v1beta1/coin.proto\"\205\001\n\005Token\022\014\n\004name" +
+      "\030\001 \001(\t\022\016\n\006symbol\030\002 \001(\t\0225\n\014total_supply\030\003" +
+      " \001(\0132\031.cosmos.base.v1beta1.CoinB\004\310\336\037\000\022\020\n" +
+      "\010mintable\030\004 \001(\010\022\025\n\rowner_address\030\005 \001(\tB2" +
+      "P\001Z.github.com/medibloc/panacea-core/x/t" +
+      "oken/typesb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

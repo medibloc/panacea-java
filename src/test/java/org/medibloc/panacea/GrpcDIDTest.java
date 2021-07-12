@@ -5,6 +5,7 @@ import cosmos.base.abci.v1beta1.TxResponse;
 import cosmos.tx.v1beta1.BroadcastMode;
 import cosmos.tx.v1beta1.BroadcastTxRequest;
 import cosmos.tx.v1beta1.Fee;
+import org.apache.commons.net.util.Base64;
 import org.junit.Assert;
 import org.junit.Test;
 import org.medibloc.panacea.domain.Coins;
@@ -50,13 +51,13 @@ public class GrpcDIDTest extends AbstractGrpcTest {
 
         DataWithSeq dataWithSeq = DataWithSeq.newBuilder()
                 .setData(createDoc.toByteString())
-                .setSeq(0)
+                .setSequence(0)
                 .build();
         byte[] signature = createDIDWallet.sign(dataWithSeq.toByteArray());
         MsgCreateDID msg = MsgCreateDID.newBuilder()
                 .setDocument(createDoc)
-                .setVerificationMethodID(createDoc.getVerificationMethods(0).getID())
-                .setDID(createDoc.getID())
+                .setVerificationMethodId(createDoc.getVerificationMethods(0).getId())
+                .setDid(createDoc.getId())
                 .setSignature(ByteString.copyFrom(signature))
                 .setFromAddress(ownerAddress)
                 .build();
@@ -83,15 +84,15 @@ public class GrpcDIDTest extends AbstractGrpcTest {
 
         DataWithSeq dataWithSeq = DataWithSeq.newBuilder()
                 .setData(doc.toByteString())
-                .setSeq(seq)
+                .setSequence(seq)
                 .build();
 
         byte[] updateSignature = didWallet.sign(dataWithSeq.toByteArray());
 
         MsgUpdateDID msg = MsgUpdateDID.newBuilder()
-                .setDID(doc.getID())
+                .setDid(doc.getId())
                 .setDocument(doc)
-                .setVerificationMethodID(doc.getVerificationMethods(0).getID())
+                .setVerificationMethodId(doc.getVerificationMethods(0).getId())
                 .setSignature(ByteString.copyFrom(updateSignature))
                 .setFromAddress(ownerAddress)
                 .build();
@@ -111,8 +112,8 @@ public class GrpcDIDTest extends AbstractGrpcTest {
     }
 
     private void testCheckedDID(DIDDocument createDoc, long seq) {
-        DIDDocumentWithSeq createdDocWithSeq = client.getDIDDocumentWithSeq(createDoc.getID());
-        Assert.assertEquals(seq, createdDocWithSeq.getSeq());
+        DIDDocumentWithSeq createdDocWithSeq = client.getDIDDocumentWithSeq(createDoc.getId());
+        Assert.assertEquals(seq, createdDocWithSeq.getSequence());
         Assert.assertEquals(createDoc.toString(), createdDocWithSeq.getDocument().toString());
     }
 }

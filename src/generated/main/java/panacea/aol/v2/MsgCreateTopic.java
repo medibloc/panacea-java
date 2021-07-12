@@ -4,6 +4,10 @@
 package panacea.aol.v2;
 
 /**
+ * <pre>
+ * MsgCreateTopic defines the Msg/CreateTopic request type.
+ * </pre>
+ *
  * Protobuf type {@code panacea.aol.v2.MsgCreateTopic}
  */
 public  final class MsgCreateTopic extends
@@ -95,10 +99,10 @@ private static final long serialVersionUID = 0L;
             panacea.aol.v2.MsgCreateTopic.class, panacea.aol.v2.MsgCreateTopic.Builder.class);
   }
 
-  public static final int TOPICNAME_FIELD_NUMBER = 1;
+  public static final int TOPIC_NAME_FIELD_NUMBER = 1;
   private volatile java.lang.Object topicName_;
   /**
-   * <code>string topicName = 1;</code>
+   * <code>string topic_name = 1;</code>
    */
   public java.lang.String getTopicName() {
     java.lang.Object ref = topicName_;
@@ -113,7 +117,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string topicName = 1;</code>
+   * <code>string topic_name = 1;</code>
    */
   public com.google.protobuf.ByteString
       getTopicNameBytes() {
@@ -163,10 +167,10 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int OWNERADDRESS_FIELD_NUMBER = 3;
+  public static final int OWNER_ADDRESS_FIELD_NUMBER = 3;
   private volatile java.lang.Object ownerAddress_;
   /**
-   * <code>string ownerAddress = 3;</code>
+   * <code>string owner_address = 3;</code>
    */
   public java.lang.String getOwnerAddress() {
     java.lang.Object ref = ownerAddress_;
@@ -181,7 +185,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string ownerAddress = 3;</code>
+   * <code>string owner_address = 3;</code>
    */
   public com.google.protobuf.ByteString
       getOwnerAddressBytes() {
@@ -270,11 +274,11 @@ private static final long serialVersionUID = 0L;
     }
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
-    hash = (37 * hash) + TOPICNAME_FIELD_NUMBER;
+    hash = (37 * hash) + TOPIC_NAME_FIELD_NUMBER;
     hash = (53 * hash) + getTopicName().hashCode();
     hash = (37 * hash) + DESCRIPTION_FIELD_NUMBER;
     hash = (53 * hash) + getDescription().hashCode();
-    hash = (37 * hash) + OWNERADDRESS_FIELD_NUMBER;
+    hash = (37 * hash) + OWNER_ADDRESS_FIELD_NUMBER;
     hash = (53 * hash) + getOwnerAddress().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -372,6 +376,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * MsgCreateTopic defines the Msg/CreateTopic request type.
+   * </pre>
+   *
    * Protobuf type {@code panacea.aol.v2.MsgCreateTopic}
    */
   public static final class Builder extends
@@ -535,7 +543,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object topicName_ = "";
     /**
-     * <code>string topicName = 1;</code>
+     * <code>string topic_name = 1;</code>
      */
     public java.lang.String getTopicName() {
       java.lang.Object ref = topicName_;
@@ -550,7 +558,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string topicName = 1;</code>
+     * <code>string topic_name = 1;</code>
      */
     public com.google.protobuf.ByteString
         getTopicNameBytes() {
@@ -566,7 +574,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string topicName = 1;</code>
+     * <code>string topic_name = 1;</code>
      */
     public Builder setTopicName(
         java.lang.String value) {
@@ -579,7 +587,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string topicName = 1;</code>
+     * <code>string topic_name = 1;</code>
      */
     public Builder clearTopicName() {
       
@@ -588,7 +596,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string topicName = 1;</code>
+     * <code>string topic_name = 1;</code>
      */
     public Builder setTopicNameBytes(
         com.google.protobuf.ByteString value) {
@@ -673,7 +681,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object ownerAddress_ = "";
     /**
-     * <code>string ownerAddress = 3;</code>
+     * <code>string owner_address = 3;</code>
      */
     public java.lang.String getOwnerAddress() {
       java.lang.Object ref = ownerAddress_;
@@ -688,7 +696,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string ownerAddress = 3;</code>
+     * <code>string owner_address = 3;</code>
      */
     public com.google.protobuf.ByteString
         getOwnerAddressBytes() {
@@ -704,7 +712,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string ownerAddress = 3;</code>
+     * <code>string owner_address = 3;</code>
      */
     public Builder setOwnerAddress(
         java.lang.String value) {
@@ -717,7 +725,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string ownerAddress = 3;</code>
+     * <code>string owner_address = 3;</code>
      */
     public Builder clearOwnerAddress() {
       
@@ -726,7 +734,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string ownerAddress = 3;</code>
+     * <code>string owner_address = 3;</code>
      */
     public Builder setOwnerAddressBytes(
         com.google.protobuf.ByteString value) {

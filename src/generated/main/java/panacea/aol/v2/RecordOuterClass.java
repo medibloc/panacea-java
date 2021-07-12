@@ -29,11 +29,11 @@ public final class RecordOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\033panacea/aol/v2/record.proto\022\016panacea.a" +
-      "ol.v2\032\024gogoproto/gogo.proto\"R\n\006Record\022\013\n" +
-      "\003key\030\001 \001(\014\022\r\n\005value\030\002 \001(\014\022\025\n\rnanoTimesta" +
-      "mp\030\003 \001(\003\022\025\n\rwriterAddress\030\004 \001(\tB0P\001Z,git" +
-      "hub.com/medibloc/panacea-core/x/aol/type" +
-      "sb\006proto3"
+      "ol.v2\032\024gogoproto/gogo.proto\"T\n\006Record\022\013\n" +
+      "\003key\030\001 \001(\014\022\r\n\005value\030\002 \001(\014\022\026\n\016nano_timest" +
+      "amp\030\003 \001(\003\022\026\n\016writer_address\030\004 \001(\tB0P\001Z,g" +
+      "ithub.com/medibloc/panacea-core/x/aol/ty" +
+      "pesb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

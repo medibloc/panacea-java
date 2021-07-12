@@ -29,10 +29,10 @@ public final class TopicOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\032panacea/aol/v2/topic.proto\022\016panacea.ao" +
-      "l.v2\032\024gogoproto/gogo.proto\"H\n\005Topic\022\023\n\013d" +
-      "escription\030\001 \001(\t\022\024\n\014totalRecords\030\002 \001(\004\022\024" +
-      "\n\014totalWriters\030\003 \001(\004B0P\001Z,github.com/med" +
-      "ibloc/panacea-core/x/aol/typesb\006proto3"
+      "l.v2\032\024gogoproto/gogo.proto\"J\n\005Topic\022\023\n\013d" +
+      "escription\030\001 \001(\t\022\025\n\rtotal_records\030\002 \001(\004\022" +
+      "\025\n\rtotal_writers\030\003 \001(\004B0P\001Z,github.com/m" +
+      "edibloc/panacea-core/x/aol/typesb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

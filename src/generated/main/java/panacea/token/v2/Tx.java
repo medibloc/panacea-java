@@ -35,15 +35,15 @@ public final class Tx {
     java.lang.String[] descriptorData = {
       "\n\031panacea/token/v2/tx.proto\022\020panacea.tok" +
       "en.v2\032\024gogoproto/gogo.proto\032\036cosmos/base" +
-      "/v1beta1/coin.proto\"\231\001\n\rMsgIssueToken\022\014\n" +
-      "\004name\030\001 \001(\t\022\023\n\013shortSymbol\030\002 \001(\t\022=\n\020tota" +
-      "lSupplyMicro\030\003 \001(\0132\035.cosmos.base.v1beta1" +
-      ".IntProtoB\004\310\336\037\000\022\020\n\010mintable\030\004 \001(\010\022\024\n\014own" +
-      "erAddress\030\005 \001(\t\"\027\n\025MsgIssueTokenResponse" +
-      "2]\n\003Msg\022V\n\nIssueToken\022\037.panacea.token.v2" +
-      ".MsgIssueToken\032\'.panacea.token.v2.MsgIss" +
-      "ueTokenResponseB2P\001Z.github.com/medibloc" +
-      "/panacea-core/x/token/typesb\006proto3"
+      "/v1beta1/coin.proto\"\235\001\n\rMsgIssueToken\022\014\n" +
+      "\004name\030\001 \001(\t\022\024\n\014short_symbol\030\002 \001(\t\022?\n\022tot" +
+      "al_supply_micro\030\003 \001(\0132\035.cosmos.base.v1be" +
+      "ta1.IntProtoB\004\310\336\037\000\022\020\n\010mintable\030\004 \001(\010\022\025\n\r" +
+      "owner_address\030\005 \001(\t\"\027\n\025MsgIssueTokenResp" +
+      "onse2]\n\003Msg\022V\n\nIssueToken\022\037.panacea.toke" +
+      "n.v2.MsgIssueToken\032\'.panacea.token.v2.Ms" +
+      "gIssueTokenResponseB2P\001Z.github.com/medi" +
+      "bloc/panacea-core/x/token/typesb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

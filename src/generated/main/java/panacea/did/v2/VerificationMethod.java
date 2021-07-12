@@ -4,6 +4,10 @@
 package panacea.did.v2;
 
 /**
+ * <pre>
+ * VerificationMethod defines a W3C verification method
+ * </pre>
+ *
  * Protobuf type {@code panacea.did.v2.VerificationMethod}
  */
 public  final class VerificationMethod extends
@@ -16,10 +20,10 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private VerificationMethod() {
-    iD_ = "";
+    id_ = "";
     type_ = "";
     controller_ = "";
-    pubKeyBase58_ = "";
+    publicKeyBase58_ = "";
   }
 
   @java.lang.Override
@@ -49,7 +53,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            iD_ = s;
+            id_ = s;
             break;
           }
           case 18: {
@@ -67,7 +71,7 @@ private static final long serialVersionUID = 0L;
           case 34: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            pubKeyBase58_ = s;
+            publicKeyBase58_ = s;
             break;
           }
           default: {
@@ -103,33 +107,33 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int ID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object iD_;
+  private volatile java.lang.Object id_;
   /**
-   * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+   * <code>string id = 1;</code>
    */
-  public java.lang.String getID() {
-    java.lang.Object ref = iD_;
+  public java.lang.String getId() {
+    java.lang.Object ref = id_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      iD_ = s;
+      id_ = s;
       return s;
     }
   }
   /**
-   * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+   * <code>string id = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getIDBytes() {
-    java.lang.Object ref = iD_;
+      getIdBytes() {
+    java.lang.Object ref = id_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      iD_ = b;
+      id_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -204,34 +208,34 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int PUBKEYBASE58_FIELD_NUMBER = 4;
-  private volatile java.lang.Object pubKeyBase58_;
+  public static final int PUBLIC_KEY_BASE58_FIELD_NUMBER = 4;
+  private volatile java.lang.Object publicKeyBase58_;
   /**
-   * <code>string pubKeyBase58 = 4[json_name = "publicKeyBase58", (.gogoproto.jsontag) = "publicKeyBase58"];</code>
+   * <code>string public_key_base58 = 4[json_name = "publicKeyBase58"];</code>
    */
-  public java.lang.String getPubKeyBase58() {
-    java.lang.Object ref = pubKeyBase58_;
+  public java.lang.String getPublicKeyBase58() {
+    java.lang.Object ref = publicKeyBase58_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      pubKeyBase58_ = s;
+      publicKeyBase58_ = s;
       return s;
     }
   }
   /**
-   * <code>string pubKeyBase58 = 4[json_name = "publicKeyBase58", (.gogoproto.jsontag) = "publicKeyBase58"];</code>
+   * <code>string public_key_base58 = 4[json_name = "publicKeyBase58"];</code>
    */
   public com.google.protobuf.ByteString
-      getPubKeyBase58Bytes() {
-    java.lang.Object ref = pubKeyBase58_;
+      getPublicKeyBase58Bytes() {
+    java.lang.Object ref = publicKeyBase58_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      pubKeyBase58_ = b;
+      publicKeyBase58_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -252,8 +256,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getIDBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, iD_);
+    if (!getIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
     }
     if (!getTypeBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, type_);
@@ -261,8 +265,8 @@ private static final long serialVersionUID = 0L;
     if (!getControllerBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 3, controller_);
     }
-    if (!getPubKeyBase58Bytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, pubKeyBase58_);
+    if (!getPublicKeyBase58Bytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 4, publicKeyBase58_);
     }
     unknownFields.writeTo(output);
   }
@@ -273,8 +277,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getIDBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, iD_);
+    if (!getIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
     }
     if (!getTypeBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, type_);
@@ -282,8 +286,8 @@ private static final long serialVersionUID = 0L;
     if (!getControllerBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, controller_);
     }
-    if (!getPubKeyBase58Bytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, pubKeyBase58_);
+    if (!getPublicKeyBase58Bytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(4, publicKeyBase58_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -300,14 +304,14 @@ private static final long serialVersionUID = 0L;
     }
     panacea.did.v2.VerificationMethod other = (panacea.did.v2.VerificationMethod) obj;
 
-    if (!getID()
-        .equals(other.getID())) return false;
+    if (!getId()
+        .equals(other.getId())) return false;
     if (!getType()
         .equals(other.getType())) return false;
     if (!getController()
         .equals(other.getController())) return false;
-    if (!getPubKeyBase58()
-        .equals(other.getPubKeyBase58())) return false;
+    if (!getPublicKeyBase58()
+        .equals(other.getPublicKeyBase58())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -320,13 +324,13 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
-    hash = (53 * hash) + getID().hashCode();
+    hash = (53 * hash) + getId().hashCode();
     hash = (37 * hash) + TYPE_FIELD_NUMBER;
     hash = (53 * hash) + getType().hashCode();
     hash = (37 * hash) + CONTROLLER_FIELD_NUMBER;
     hash = (53 * hash) + getController().hashCode();
-    hash = (37 * hash) + PUBKEYBASE58_FIELD_NUMBER;
-    hash = (53 * hash) + getPubKeyBase58().hashCode();
+    hash = (37 * hash) + PUBLIC_KEY_BASE58_FIELD_NUMBER;
+    hash = (53 * hash) + getPublicKeyBase58().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -423,6 +427,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * VerificationMethod defines a W3C verification method
+   * </pre>
+   *
    * Protobuf type {@code panacea.did.v2.VerificationMethod}
    */
   public static final class Builder extends
@@ -460,13 +468,13 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      iD_ = "";
+      id_ = "";
 
       type_ = "";
 
       controller_ = "";
 
-      pubKeyBase58_ = "";
+      publicKeyBase58_ = "";
 
       return this;
     }
@@ -494,10 +502,10 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public panacea.did.v2.VerificationMethod buildPartial() {
       panacea.did.v2.VerificationMethod result = new panacea.did.v2.VerificationMethod(this);
-      result.iD_ = iD_;
+      result.id_ = id_;
       result.type_ = type_;
       result.controller_ = controller_;
-      result.pubKeyBase58_ = pubKeyBase58_;
+      result.publicKeyBase58_ = publicKeyBase58_;
       onBuilt();
       return result;
     }
@@ -546,8 +554,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(panacea.did.v2.VerificationMethod other) {
       if (other == panacea.did.v2.VerificationMethod.getDefaultInstance()) return this;
-      if (!other.getID().isEmpty()) {
-        iD_ = other.iD_;
+      if (!other.getId().isEmpty()) {
+        id_ = other.id_;
         onChanged();
       }
       if (!other.getType().isEmpty()) {
@@ -558,8 +566,8 @@ private static final long serialVersionUID = 0L;
         controller_ = other.controller_;
         onChanged();
       }
-      if (!other.getPubKeyBase58().isEmpty()) {
-        pubKeyBase58_ = other.pubKeyBase58_;
+      if (!other.getPublicKeyBase58().isEmpty()) {
+        publicKeyBase58_ = other.publicKeyBase58_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -591,71 +599,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object iD_ = "";
+    private java.lang.Object id_ = "";
     /**
-     * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+     * <code>string id = 1;</code>
      */
-    public java.lang.String getID() {
-      java.lang.Object ref = iD_;
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        iD_ = s;
+        id_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getIDBytes() {
-      java.lang.Object ref = iD_;
+        getIdBytes() {
+      java.lang.Object ref = id_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        iD_ = b;
+        id_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+     * <code>string id = 1;</code>
      */
-    public Builder setID(
+    public Builder setId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      iD_ = value;
+      id_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+     * <code>string id = 1;</code>
      */
-    public Builder clearID() {
+    public Builder clearId() {
       
-      iD_ = getDefaultInstance().getID();
+      id_ = getDefaultInstance().getId();
       onChanged();
       return this;
     }
     /**
-     * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+     * <code>string id = 1;</code>
      */
-    public Builder setIDBytes(
+    public Builder setIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      iD_ = value;
+      id_ = value;
       onChanged();
       return this;
     }
@@ -798,71 +806,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object pubKeyBase58_ = "";
+    private java.lang.Object publicKeyBase58_ = "";
     /**
-     * <code>string pubKeyBase58 = 4[json_name = "publicKeyBase58", (.gogoproto.jsontag) = "publicKeyBase58"];</code>
+     * <code>string public_key_base58 = 4[json_name = "publicKeyBase58"];</code>
      */
-    public java.lang.String getPubKeyBase58() {
-      java.lang.Object ref = pubKeyBase58_;
+    public java.lang.String getPublicKeyBase58() {
+      java.lang.Object ref = publicKeyBase58_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        pubKeyBase58_ = s;
+        publicKeyBase58_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string pubKeyBase58 = 4[json_name = "publicKeyBase58", (.gogoproto.jsontag) = "publicKeyBase58"];</code>
+     * <code>string public_key_base58 = 4[json_name = "publicKeyBase58"];</code>
      */
     public com.google.protobuf.ByteString
-        getPubKeyBase58Bytes() {
-      java.lang.Object ref = pubKeyBase58_;
+        getPublicKeyBase58Bytes() {
+      java.lang.Object ref = publicKeyBase58_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        pubKeyBase58_ = b;
+        publicKeyBase58_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string pubKeyBase58 = 4[json_name = "publicKeyBase58", (.gogoproto.jsontag) = "publicKeyBase58"];</code>
+     * <code>string public_key_base58 = 4[json_name = "publicKeyBase58"];</code>
      */
-    public Builder setPubKeyBase58(
+    public Builder setPublicKeyBase58(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      pubKeyBase58_ = value;
+      publicKeyBase58_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string pubKeyBase58 = 4[json_name = "publicKeyBase58", (.gogoproto.jsontag) = "publicKeyBase58"];</code>
+     * <code>string public_key_base58 = 4[json_name = "publicKeyBase58"];</code>
      */
-    public Builder clearPubKeyBase58() {
+    public Builder clearPublicKeyBase58() {
       
-      pubKeyBase58_ = getDefaultInstance().getPubKeyBase58();
+      publicKeyBase58_ = getDefaultInstance().getPublicKeyBase58();
       onChanged();
       return this;
     }
     /**
-     * <code>string pubKeyBase58 = 4[json_name = "publicKeyBase58", (.gogoproto.jsontag) = "publicKeyBase58"];</code>
+     * <code>string public_key_base58 = 4[json_name = "publicKeyBase58"];</code>
      */
-    public Builder setPubKeyBase58Bytes(
+    public Builder setPublicKeyBase58Bytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      pubKeyBase58_ = value;
+      publicKeyBase58_ = value;
       onChanged();
       return this;
     }

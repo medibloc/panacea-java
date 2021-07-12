@@ -29,9 +29,9 @@ public final class OwnerOuterClass {
   static {
     java.lang.String[] descriptorData = {
       "\n\032panacea/aol/v2/owner.proto\022\016panacea.ao" +
-      "l.v2\032\024gogoproto/gogo.proto\"\034\n\005Owner\022\023\n\013t" +
-      "otalTopics\030\001 \001(\004B0P\001Z,github.com/mediblo" +
-      "c/panacea-core/x/aol/typesb\006proto3"
+      "l.v2\032\024gogoproto/gogo.proto\"\035\n\005Owner\022\024\n\014t" +
+      "otal_topics\030\001 \001(\004B0P\001Z,github.com/medibl" +
+      "oc/panacea-core/x/aol/typesb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

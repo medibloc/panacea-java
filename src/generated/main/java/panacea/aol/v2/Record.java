@@ -4,6 +4,10 @@
 package panacea.aol.v2;
 
 /**
+ * <pre>
+ * Record defines a record type.
+ * </pre>
+ *
  * Protobuf type {@code panacea.aol.v2.Record}
  */
 public  final class Record extends
@@ -116,19 +120,19 @@ private static final long serialVersionUID = 0L;
     return value_;
   }
 
-  public static final int NANOTIMESTAMP_FIELD_NUMBER = 3;
+  public static final int NANO_TIMESTAMP_FIELD_NUMBER = 3;
   private long nanoTimestamp_;
   /**
-   * <code>int64 nanoTimestamp = 3;</code>
+   * <code>int64 nano_timestamp = 3;</code>
    */
   public long getNanoTimestamp() {
     return nanoTimestamp_;
   }
 
-  public static final int WRITERADDRESS_FIELD_NUMBER = 4;
+  public static final int WRITER_ADDRESS_FIELD_NUMBER = 4;
   private volatile java.lang.Object writerAddress_;
   /**
-   * <code>string writerAddress = 4;</code>
+   * <code>string writer_address = 4;</code>
    */
   public java.lang.String getWriterAddress() {
     java.lang.Object ref = writerAddress_;
@@ -143,7 +147,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string writerAddress = 4;</code>
+   * <code>string writer_address = 4;</code>
    */
   public com.google.protobuf.ByteString
       getWriterAddressBytes() {
@@ -247,10 +251,10 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getKey().hashCode();
     hash = (37 * hash) + VALUE_FIELD_NUMBER;
     hash = (53 * hash) + getValue().hashCode();
-    hash = (37 * hash) + NANOTIMESTAMP_FIELD_NUMBER;
+    hash = (37 * hash) + NANO_TIMESTAMP_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
         getNanoTimestamp());
-    hash = (37 * hash) + WRITERADDRESS_FIELD_NUMBER;
+    hash = (37 * hash) + WRITER_ADDRESS_FIELD_NUMBER;
     hash = (53 * hash) + getWriterAddress().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -348,6 +352,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * Record defines a record type.
+   * </pre>
+   *
    * Protobuf type {@code panacea.aol.v2.Record}
    */
   public static final class Builder extends
@@ -573,13 +581,13 @@ private static final long serialVersionUID = 0L;
 
     private long nanoTimestamp_ ;
     /**
-     * <code>int64 nanoTimestamp = 3;</code>
+     * <code>int64 nano_timestamp = 3;</code>
      */
     public long getNanoTimestamp() {
       return nanoTimestamp_;
     }
     /**
-     * <code>int64 nanoTimestamp = 3;</code>
+     * <code>int64 nano_timestamp = 3;</code>
      */
     public Builder setNanoTimestamp(long value) {
       
@@ -588,7 +596,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>int64 nanoTimestamp = 3;</code>
+     * <code>int64 nano_timestamp = 3;</code>
      */
     public Builder clearNanoTimestamp() {
       
@@ -599,7 +607,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object writerAddress_ = "";
     /**
-     * <code>string writerAddress = 4;</code>
+     * <code>string writer_address = 4;</code>
      */
     public java.lang.String getWriterAddress() {
       java.lang.Object ref = writerAddress_;
@@ -614,7 +622,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string writerAddress = 4;</code>
+     * <code>string writer_address = 4;</code>
      */
     public com.google.protobuf.ByteString
         getWriterAddressBytes() {
@@ -630,7 +638,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string writerAddress = 4;</code>
+     * <code>string writer_address = 4;</code>
      */
     public Builder setWriterAddress(
         java.lang.String value) {
@@ -643,7 +651,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string writerAddress = 4;</code>
+     * <code>string writer_address = 4;</code>
      */
     public Builder clearWriterAddress() {
       
@@ -652,7 +660,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string writerAddress = 4;</code>
+     * <code>string writer_address = 4;</code>
      */
     public Builder setWriterAddressBytes(
         com.google.protobuf.ByteString value) {

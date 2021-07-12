@@ -18,12 +18,12 @@ public interface TopicOrBuilder extends
       getDescriptionBytes();
 
   /**
-   * <code>uint64 totalRecords = 2;</code>
+   * <code>uint64 total_records = 2;</code>
    */
   long getTotalRecords();
 
   /**
-   * <code>uint64 totalWriters = 3;</code>
+   * <code>uint64 total_writers = 3;</code>
    */
   long getTotalWriters();
 }

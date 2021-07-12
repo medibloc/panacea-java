@@ -27,6 +27,7 @@ private static final long serialVersionUID = 0L;
     buildTags_ = "";
     goVersion_ = "";
     buildDeps_ = java.util.Collections.emptyList();
+    cosmosSdkVersion_ = "";
   }
 
   @java.lang.Override
@@ -96,6 +97,12 @@ private static final long serialVersionUID = 0L;
             }
             buildDeps_.add(
                 input.readMessage(cosmos.base.tendermint.v1beta1.Module.parser(), extensionRegistry));
+            break;
+          }
+          case 66: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            cosmosSdkVersion_ = s;
             break;
           }
           default: {
@@ -373,6 +380,40 @@ private static final long serialVersionUID = 0L;
     return buildDeps_.get(index);
   }
 
+  public static final int COSMOS_SDK_VERSION_FIELD_NUMBER = 8;
+  private volatile java.lang.Object cosmosSdkVersion_;
+  /**
+   * <code>string cosmos_sdk_version = 8;</code>
+   */
+  public java.lang.String getCosmosSdkVersion() {
+    java.lang.Object ref = cosmosSdkVersion_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      cosmosSdkVersion_ = s;
+      return s;
+    }
+  }
+  /**
+   * <code>string cosmos_sdk_version = 8;</code>
+   */
+  public com.google.protobuf.ByteString
+      getCosmosSdkVersionBytes() {
+    java.lang.Object ref = cosmosSdkVersion_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      cosmosSdkVersion_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -408,6 +449,9 @@ private static final long serialVersionUID = 0L;
     for (int i = 0; i < buildDeps_.size(); i++) {
       output.writeMessage(7, buildDeps_.get(i));
     }
+    if (!getCosmosSdkVersionBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 8, cosmosSdkVersion_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -439,6 +483,9 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(7, buildDeps_.get(i));
     }
+    if (!getCosmosSdkVersionBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(8, cosmosSdkVersion_);
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -468,6 +515,8 @@ private static final long serialVersionUID = 0L;
         .equals(other.getGoVersion())) return false;
     if (!getBuildDepsList()
         .equals(other.getBuildDepsList())) return false;
+    if (!getCosmosSdkVersion()
+        .equals(other.getCosmosSdkVersion())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -495,6 +544,8 @@ private static final long serialVersionUID = 0L;
       hash = (37 * hash) + BUILD_DEPS_FIELD_NUMBER;
       hash = (53 * hash) + getBuildDepsList().hashCode();
     }
+    hash = (37 * hash) + COSMOS_SDK_VERSION_FIELD_NUMBER;
+    hash = (53 * hash) + getCosmosSdkVersion().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -651,6 +702,8 @@ private static final long serialVersionUID = 0L;
       } else {
         buildDepsBuilder_.clear();
       }
+      cosmosSdkVersion_ = "";
+
       return this;
     }
 
@@ -694,6 +747,7 @@ private static final long serialVersionUID = 0L;
       } else {
         result.buildDeps_ = buildDepsBuilder_.build();
       }
+      result.cosmosSdkVersion_ = cosmosSdkVersion_;
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -792,6 +846,10 @@ private static final long serialVersionUID = 0L;
             buildDepsBuilder_.addAllMessages(other.buildDeps_);
           }
         }
+      }
+      if (!other.getCosmosSdkVersion().isEmpty()) {
+        cosmosSdkVersion_ = other.cosmosSdkVersion_;
+        onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -1475,6 +1533,75 @@ private static final long serialVersionUID = 0L;
         buildDeps_ = null;
       }
       return buildDepsBuilder_;
+    }
+
+    private java.lang.Object cosmosSdkVersion_ = "";
+    /**
+     * <code>string cosmos_sdk_version = 8;</code>
+     */
+    public java.lang.String getCosmosSdkVersion() {
+      java.lang.Object ref = cosmosSdkVersion_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        cosmosSdkVersion_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <code>string cosmos_sdk_version = 8;</code>
+     */
+    public com.google.protobuf.ByteString
+        getCosmosSdkVersionBytes() {
+      java.lang.Object ref = cosmosSdkVersion_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        cosmosSdkVersion_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <code>string cosmos_sdk_version = 8;</code>
+     */
+    public Builder setCosmosSdkVersion(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      cosmosSdkVersion_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string cosmos_sdk_version = 8;</code>
+     */
+    public Builder clearCosmosSdkVersion() {
+      
+      cosmosSdkVersion_ = getDefaultInstance().getCosmosSdkVersion();
+      onChanged();
+      return this;
+    }
+    /**
+     * <code>string cosmos_sdk_version = 8;</code>
+     */
+    public Builder setCosmosSdkVersionBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      cosmosSdkVersion_ = value;
+      onChanged();
+      return this;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

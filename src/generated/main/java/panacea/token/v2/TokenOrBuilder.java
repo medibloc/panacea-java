@@ -28,15 +28,15 @@ public interface TokenOrBuilder extends
       getSymbolBytes();
 
   /**
-   * <code>.cosmos.base.v1beta1.Coin totalSupply = 3 [(.gogoproto.nullable) = false];</code>
+   * <code>.cosmos.base.v1beta1.Coin total_supply = 3 [(.gogoproto.nullable) = false];</code>
    */
   boolean hasTotalSupply();
   /**
-   * <code>.cosmos.base.v1beta1.Coin totalSupply = 3 [(.gogoproto.nullable) = false];</code>
+   * <code>.cosmos.base.v1beta1.Coin total_supply = 3 [(.gogoproto.nullable) = false];</code>
    */
   cosmos.base.v1beta1.Coin getTotalSupply();
   /**
-   * <code>.cosmos.base.v1beta1.Coin totalSupply = 3 [(.gogoproto.nullable) = false];</code>
+   * <code>.cosmos.base.v1beta1.Coin total_supply = 3 [(.gogoproto.nullable) = false];</code>
    */
   cosmos.base.v1beta1.CoinOrBuilder getTotalSupplyOrBuilder();
 
@@ -46,11 +46,11 @@ public interface TokenOrBuilder extends
   boolean getMintable();
 
   /**
-   * <code>string ownerAddress = 5;</code>
+   * <code>string owner_address = 5;</code>
    */
   java.lang.String getOwnerAddress();
   /**
-   * <code>string ownerAddress = 5;</code>
+   * <code>string owner_address = 5;</code>
    */
   com.google.protobuf.ByteString
       getOwnerAddressBytes();

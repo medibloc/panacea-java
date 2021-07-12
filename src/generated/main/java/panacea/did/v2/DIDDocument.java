@@ -4,6 +4,12 @@
 package panacea.did.v2;
 
 /**
+ * <pre>
+ * DIDDocument defines a W3C DID Document
+ * NOTE: All 'json_name' and 'gogoproto.customtype' tags are for panacea-core to unmarshal the v1.3 genesis which is in the W3C JSON-LD format.
+ *       On the other hand, the panacea-core and cosmos-sdk don't use those tags to marshal result to JSON (via grpc-gateway).
+ * </pre>
+ *
  * Protobuf type {@code panacea.did.v2.DIDDocument}
  */
 public  final class DIDDocument extends
@@ -16,7 +22,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private DIDDocument() {
-    iD_ = "";
+    id_ = "";
     verificationMethods_ = java.util.Collections.emptyList();
     authentications_ = java.util.Collections.emptyList();
     assertionMethods_ = java.util.Collections.emptyList();
@@ -66,7 +72,7 @@ private static final long serialVersionUID = 0L;
           case 18: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            iD_ = s;
+            id_ = s;
             break;
           }
           case 26: {
@@ -202,52 +208,52 @@ private static final long serialVersionUID = 0L;
   public static final int CONTEXTS_FIELD_NUMBER = 1;
   private panacea.did.v2.Strings contexts_;
   /**
-   * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings", (.gogoproto.jsontag) = "&#64;context"];</code>
+   * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings"];</code>
    */
   public boolean hasContexts() {
     return contexts_ != null;
   }
   /**
-   * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings", (.gogoproto.jsontag) = "&#64;context"];</code>
+   * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings"];</code>
    */
   public panacea.did.v2.Strings getContexts() {
     return contexts_ == null ? panacea.did.v2.Strings.getDefaultInstance() : contexts_;
   }
   /**
-   * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings", (.gogoproto.jsontag) = "&#64;context"];</code>
+   * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings"];</code>
    */
   public panacea.did.v2.StringsOrBuilder getContextsOrBuilder() {
     return getContexts();
   }
 
   public static final int ID_FIELD_NUMBER = 2;
-  private volatile java.lang.Object iD_;
+  private volatile java.lang.Object id_;
   /**
-   * <code>string ID = 2[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+   * <code>string id = 2;</code>
    */
-  public java.lang.String getID() {
-    java.lang.Object ref = iD_;
+  public java.lang.String getId() {
+    java.lang.Object ref = id_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      iD_ = s;
+      id_ = s;
       return s;
     }
   }
   /**
-   * <code>string ID = 2[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+   * <code>string id = 2;</code>
    */
   public com.google.protobuf.ByteString
-      getIDBytes() {
-    java.lang.Object ref = iD_;
+      getIdBytes() {
+    java.lang.Object ref = id_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      iD_ = b;
+      id_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -275,35 +281,35 @@ private static final long serialVersionUID = 0L;
     return getController();
   }
 
-  public static final int VERIFICATIONMETHODS_FIELD_NUMBER = 4;
+  public static final int VERIFICATION_METHODS_FIELD_NUMBER = 4;
   private java.util.List<panacea.did.v2.VerificationMethod> verificationMethods_;
   /**
-   * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
    */
   public java.util.List<panacea.did.v2.VerificationMethod> getVerificationMethodsList() {
     return verificationMethods_;
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
    */
   public java.util.List<? extends panacea.did.v2.VerificationMethodOrBuilder> 
       getVerificationMethodsOrBuilderList() {
     return verificationMethods_;
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
    */
   public int getVerificationMethodsCount() {
     return verificationMethods_.size();
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
    */
   public panacea.did.v2.VerificationMethod getVerificationMethods(int index) {
     return verificationMethods_.get(index);
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
    */
   public panacea.did.v2.VerificationMethodOrBuilder getVerificationMethodsOrBuilder(
       int index) {
@@ -313,172 +319,192 @@ private static final long serialVersionUID = 0L;
   public static final int AUTHENTICATIONS_FIELD_NUMBER = 5;
   private java.util.List<panacea.did.v2.VerificationRelationship> authentications_;
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+   * <pre>
+   * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+   * </pre>
+   *
+   * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public java.util.List<panacea.did.v2.VerificationRelationship> getAuthenticationsList() {
     return authentications_;
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+   * <pre>
+   * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+   * </pre>
+   *
+   * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public java.util.List<? extends panacea.did.v2.VerificationRelationshipOrBuilder> 
       getAuthenticationsOrBuilderList() {
     return authentications_;
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+   * <pre>
+   * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+   * </pre>
+   *
+   * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public int getAuthenticationsCount() {
     return authentications_.size();
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+   * <pre>
+   * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+   * </pre>
+   *
+   * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public panacea.did.v2.VerificationRelationship getAuthentications(int index) {
     return authentications_.get(index);
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+   * <pre>
+   * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+   * </pre>
+   *
+   * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public panacea.did.v2.VerificationRelationshipOrBuilder getAuthenticationsOrBuilder(
       int index) {
     return authentications_.get(index);
   }
 
-  public static final int ASSERTIONMETHODS_FIELD_NUMBER = 6;
+  public static final int ASSERTION_METHODS_FIELD_NUMBER = 6;
   private java.util.List<panacea.did.v2.VerificationRelationship> assertionMethods_;
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public java.util.List<panacea.did.v2.VerificationRelationship> getAssertionMethodsList() {
     return assertionMethods_;
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public java.util.List<? extends panacea.did.v2.VerificationRelationshipOrBuilder> 
       getAssertionMethodsOrBuilderList() {
     return assertionMethods_;
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public int getAssertionMethodsCount() {
     return assertionMethods_.size();
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public panacea.did.v2.VerificationRelationship getAssertionMethods(int index) {
     return assertionMethods_.get(index);
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public panacea.did.v2.VerificationRelationshipOrBuilder getAssertionMethodsOrBuilder(
       int index) {
     return assertionMethods_.get(index);
   }
 
-  public static final int KEYAGREEMENTS_FIELD_NUMBER = 7;
+  public static final int KEY_AGREEMENTS_FIELD_NUMBER = 7;
   private java.util.List<panacea.did.v2.VerificationRelationship> keyAgreements_;
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public java.util.List<panacea.did.v2.VerificationRelationship> getKeyAgreementsList() {
     return keyAgreements_;
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public java.util.List<? extends panacea.did.v2.VerificationRelationshipOrBuilder> 
       getKeyAgreementsOrBuilderList() {
     return keyAgreements_;
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public int getKeyAgreementsCount() {
     return keyAgreements_.size();
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public panacea.did.v2.VerificationRelationship getKeyAgreements(int index) {
     return keyAgreements_.get(index);
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public panacea.did.v2.VerificationRelationshipOrBuilder getKeyAgreementsOrBuilder(
       int index) {
     return keyAgreements_.get(index);
   }
 
-  public static final int CAPABILITYINVOCATIONS_FIELD_NUMBER = 8;
+  public static final int CAPABILITY_INVOCATIONS_FIELD_NUMBER = 8;
   private java.util.List<panacea.did.v2.VerificationRelationship> capabilityInvocations_;
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public java.util.List<panacea.did.v2.VerificationRelationship> getCapabilityInvocationsList() {
     return capabilityInvocations_;
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public java.util.List<? extends panacea.did.v2.VerificationRelationshipOrBuilder> 
       getCapabilityInvocationsOrBuilderList() {
     return capabilityInvocations_;
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public int getCapabilityInvocationsCount() {
     return capabilityInvocations_.size();
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public panacea.did.v2.VerificationRelationship getCapabilityInvocations(int index) {
     return capabilityInvocations_.get(index);
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public panacea.did.v2.VerificationRelationshipOrBuilder getCapabilityInvocationsOrBuilder(
       int index) {
     return capabilityInvocations_.get(index);
   }
 
-  public static final int CAPABILITYDELEGATIONS_FIELD_NUMBER = 9;
+  public static final int CAPABILITY_DELEGATIONS_FIELD_NUMBER = 9;
   private java.util.List<panacea.did.v2.VerificationRelationship> capabilityDelegations_;
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public java.util.List<panacea.did.v2.VerificationRelationship> getCapabilityDelegationsList() {
     return capabilityDelegations_;
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public java.util.List<? extends panacea.did.v2.VerificationRelationshipOrBuilder> 
       getCapabilityDelegationsOrBuilderList() {
     return capabilityDelegations_;
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public int getCapabilityDelegationsCount() {
     return capabilityDelegations_.size();
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public panacea.did.v2.VerificationRelationship getCapabilityDelegations(int index) {
     return capabilityDelegations_.get(index);
   }
   /**
-   * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
    */
   public panacea.did.v2.VerificationRelationshipOrBuilder getCapabilityDelegationsOrBuilder(
       int index) {
@@ -488,32 +514,32 @@ private static final long serialVersionUID = 0L;
   public static final int SERVICES_FIELD_NUMBER = 10;
   private java.util.List<panacea.did.v2.Service> services_;
   /**
-   * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
    */
   public java.util.List<panacea.did.v2.Service> getServicesList() {
     return services_;
   }
   /**
-   * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
    */
   public java.util.List<? extends panacea.did.v2.ServiceOrBuilder> 
       getServicesOrBuilderList() {
     return services_;
   }
   /**
-   * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
    */
   public int getServicesCount() {
     return services_.size();
   }
   /**
-   * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
    */
   public panacea.did.v2.Service getServices(int index) {
     return services_.get(index);
   }
   /**
-   * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+   * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
    */
   public panacea.did.v2.ServiceOrBuilder getServicesOrBuilder(
       int index) {
@@ -537,8 +563,8 @@ private static final long serialVersionUID = 0L;
     if (contexts_ != null) {
       output.writeMessage(1, getContexts());
     }
-    if (!getIDBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, iD_);
+    if (!getIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 2, id_);
     }
     if (controller_ != null) {
       output.writeMessage(3, getController());
@@ -577,8 +603,8 @@ private static final long serialVersionUID = 0L;
       size += com.google.protobuf.CodedOutputStream
         .computeMessageSize(1, getContexts());
     }
-    if (!getIDBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, iD_);
+    if (!getIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, id_);
     }
     if (controller_ != null) {
       size += com.google.protobuf.CodedOutputStream
@@ -632,8 +658,8 @@ private static final long serialVersionUID = 0L;
       if (!getContexts()
           .equals(other.getContexts())) return false;
     }
-    if (!getID()
-        .equals(other.getID())) return false;
+    if (!getId()
+        .equals(other.getId())) return false;
     if (hasController() != other.hasController()) return false;
     if (hasController()) {
       if (!getController()
@@ -669,13 +695,13 @@ private static final long serialVersionUID = 0L;
       hash = (53 * hash) + getContexts().hashCode();
     }
     hash = (37 * hash) + ID_FIELD_NUMBER;
-    hash = (53 * hash) + getID().hashCode();
+    hash = (53 * hash) + getId().hashCode();
     if (hasController()) {
       hash = (37 * hash) + CONTROLLER_FIELD_NUMBER;
       hash = (53 * hash) + getController().hashCode();
     }
     if (getVerificationMethodsCount() > 0) {
-      hash = (37 * hash) + VERIFICATIONMETHODS_FIELD_NUMBER;
+      hash = (37 * hash) + VERIFICATION_METHODS_FIELD_NUMBER;
       hash = (53 * hash) + getVerificationMethodsList().hashCode();
     }
     if (getAuthenticationsCount() > 0) {
@@ -683,19 +709,19 @@ private static final long serialVersionUID = 0L;
       hash = (53 * hash) + getAuthenticationsList().hashCode();
     }
     if (getAssertionMethodsCount() > 0) {
-      hash = (37 * hash) + ASSERTIONMETHODS_FIELD_NUMBER;
+      hash = (37 * hash) + ASSERTION_METHODS_FIELD_NUMBER;
       hash = (53 * hash) + getAssertionMethodsList().hashCode();
     }
     if (getKeyAgreementsCount() > 0) {
-      hash = (37 * hash) + KEYAGREEMENTS_FIELD_NUMBER;
+      hash = (37 * hash) + KEY_AGREEMENTS_FIELD_NUMBER;
       hash = (53 * hash) + getKeyAgreementsList().hashCode();
     }
     if (getCapabilityInvocationsCount() > 0) {
-      hash = (37 * hash) + CAPABILITYINVOCATIONS_FIELD_NUMBER;
+      hash = (37 * hash) + CAPABILITY_INVOCATIONS_FIELD_NUMBER;
       hash = (53 * hash) + getCapabilityInvocationsList().hashCode();
     }
     if (getCapabilityDelegationsCount() > 0) {
-      hash = (37 * hash) + CAPABILITYDELEGATIONS_FIELD_NUMBER;
+      hash = (37 * hash) + CAPABILITY_DELEGATIONS_FIELD_NUMBER;
       hash = (53 * hash) + getCapabilityDelegationsList().hashCode();
     }
     if (getServicesCount() > 0) {
@@ -798,6 +824,12 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * DIDDocument defines a W3C DID Document
+   * NOTE: All 'json_name' and 'gogoproto.customtype' tags are for panacea-core to unmarshal the v1.3 genesis which is in the W3C JSON-LD format.
+   *       On the other hand, the panacea-core and cosmos-sdk don't use those tags to marshal result to JSON (via grpc-gateway).
+   * </pre>
+   *
    * Protobuf type {@code panacea.did.v2.DIDDocument}
    */
   public static final class Builder extends
@@ -848,7 +880,7 @@ private static final long serialVersionUID = 0L;
         contexts_ = null;
         contextsBuilder_ = null;
       }
-      iD_ = "";
+      id_ = "";
 
       if (controllerBuilder_ == null) {
         controller_ = null;
@@ -931,7 +963,7 @@ private static final long serialVersionUID = 0L;
       } else {
         result.contexts_ = contextsBuilder_.build();
       }
-      result.iD_ = iD_;
+      result.id_ = id_;
       if (controllerBuilder_ == null) {
         result.controller_ = controller_;
       } else {
@@ -1052,8 +1084,8 @@ private static final long serialVersionUID = 0L;
       if (other.hasContexts()) {
         mergeContexts(other.getContexts());
       }
-      if (!other.getID().isEmpty()) {
-        iD_ = other.iD_;
+      if (!other.getId().isEmpty()) {
+        id_ = other.id_;
         onChanged();
       }
       if (other.hasController()) {
@@ -1275,13 +1307,13 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         panacea.did.v2.Strings, panacea.did.v2.Strings.Builder, panacea.did.v2.StringsOrBuilder> contextsBuilder_;
     /**
-     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings", (.gogoproto.jsontag) = "&#64;context"];</code>
+     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings"];</code>
      */
     public boolean hasContexts() {
       return contextsBuilder_ != null || contexts_ != null;
     }
     /**
-     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings", (.gogoproto.jsontag) = "&#64;context"];</code>
+     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings"];</code>
      */
     public panacea.did.v2.Strings getContexts() {
       if (contextsBuilder_ == null) {
@@ -1291,7 +1323,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings", (.gogoproto.jsontag) = "&#64;context"];</code>
+     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings"];</code>
      */
     public Builder setContexts(panacea.did.v2.Strings value) {
       if (contextsBuilder_ == null) {
@@ -1307,7 +1339,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings", (.gogoproto.jsontag) = "&#64;context"];</code>
+     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings"];</code>
      */
     public Builder setContexts(
         panacea.did.v2.Strings.Builder builderForValue) {
@@ -1321,7 +1353,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings", (.gogoproto.jsontag) = "&#64;context"];</code>
+     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings"];</code>
      */
     public Builder mergeContexts(panacea.did.v2.Strings value) {
       if (contextsBuilder_ == null) {
@@ -1339,7 +1371,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings", (.gogoproto.jsontag) = "&#64;context"];</code>
+     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings"];</code>
      */
     public Builder clearContexts() {
       if (contextsBuilder_ == null) {
@@ -1353,7 +1385,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings", (.gogoproto.jsontag) = "&#64;context"];</code>
+     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings"];</code>
      */
     public panacea.did.v2.Strings.Builder getContextsBuilder() {
       
@@ -1361,7 +1393,7 @@ private static final long serialVersionUID = 0L;
       return getContextsFieldBuilder().getBuilder();
     }
     /**
-     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings", (.gogoproto.jsontag) = "&#64;context"];</code>
+     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings"];</code>
      */
     public panacea.did.v2.StringsOrBuilder getContextsOrBuilder() {
       if (contextsBuilder_ != null) {
@@ -1372,7 +1404,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings", (.gogoproto.jsontag) = "&#64;context"];</code>
+     * <code>.panacea.did.v2.Strings contexts = 1[json_name = "&#64;context", (.gogoproto.customtype) = "JSONStringOrStrings"];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         panacea.did.v2.Strings, panacea.did.v2.Strings.Builder, panacea.did.v2.StringsOrBuilder> 
@@ -1388,71 +1420,71 @@ private static final long serialVersionUID = 0L;
       return contextsBuilder_;
     }
 
-    private java.lang.Object iD_ = "";
+    private java.lang.Object id_ = "";
     /**
-     * <code>string ID = 2[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+     * <code>string id = 2;</code>
      */
-    public java.lang.String getID() {
-      java.lang.Object ref = iD_;
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        iD_ = s;
+        id_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string ID = 2[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+     * <code>string id = 2;</code>
      */
     public com.google.protobuf.ByteString
-        getIDBytes() {
-      java.lang.Object ref = iD_;
+        getIdBytes() {
+      java.lang.Object ref = id_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        iD_ = b;
+        id_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string ID = 2[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+     * <code>string id = 2;</code>
      */
-    public Builder setID(
+    public Builder setId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      iD_ = value;
+      id_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string ID = 2[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+     * <code>string id = 2;</code>
      */
-    public Builder clearID() {
+    public Builder clearId() {
       
-      iD_ = getDefaultInstance().getID();
+      id_ = getDefaultInstance().getId();
       onChanged();
       return this;
     }
     /**
-     * <code>string ID = 2[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+     * <code>string id = 2;</code>
      */
-    public Builder setIDBytes(
+    public Builder setIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      iD_ = value;
+      id_ = value;
       onChanged();
       return this;
     }
@@ -1587,7 +1619,7 @@ private static final long serialVersionUID = 0L;
         panacea.did.v2.VerificationMethod, panacea.did.v2.VerificationMethod.Builder, panacea.did.v2.VerificationMethodOrBuilder> verificationMethodsBuilder_;
 
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public java.util.List<panacea.did.v2.VerificationMethod> getVerificationMethodsList() {
       if (verificationMethodsBuilder_ == null) {
@@ -1597,7 +1629,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public int getVerificationMethodsCount() {
       if (verificationMethodsBuilder_ == null) {
@@ -1607,7 +1639,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public panacea.did.v2.VerificationMethod getVerificationMethods(int index) {
       if (verificationMethodsBuilder_ == null) {
@@ -1617,7 +1649,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public Builder setVerificationMethods(
         int index, panacea.did.v2.VerificationMethod value) {
@@ -1634,7 +1666,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public Builder setVerificationMethods(
         int index, panacea.did.v2.VerificationMethod.Builder builderForValue) {
@@ -1648,7 +1680,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public Builder addVerificationMethods(panacea.did.v2.VerificationMethod value) {
       if (verificationMethodsBuilder_ == null) {
@@ -1664,7 +1696,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public Builder addVerificationMethods(
         int index, panacea.did.v2.VerificationMethod value) {
@@ -1681,7 +1713,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public Builder addVerificationMethods(
         panacea.did.v2.VerificationMethod.Builder builderForValue) {
@@ -1695,7 +1727,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public Builder addVerificationMethods(
         int index, panacea.did.v2.VerificationMethod.Builder builderForValue) {
@@ -1709,7 +1741,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public Builder addAllVerificationMethods(
         java.lang.Iterable<? extends panacea.did.v2.VerificationMethod> values) {
@@ -1724,7 +1756,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public Builder clearVerificationMethods() {
       if (verificationMethodsBuilder_ == null) {
@@ -1737,7 +1769,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public Builder removeVerificationMethods(int index) {
       if (verificationMethodsBuilder_ == null) {
@@ -1750,14 +1782,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public panacea.did.v2.VerificationMethod.Builder getVerificationMethodsBuilder(
         int index) {
       return getVerificationMethodsFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public panacea.did.v2.VerificationMethodOrBuilder getVerificationMethodsOrBuilder(
         int index) {
@@ -1767,7 +1799,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public java.util.List<? extends panacea.did.v2.VerificationMethodOrBuilder> 
          getVerificationMethodsOrBuilderList() {
@@ -1778,14 +1810,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public panacea.did.v2.VerificationMethod.Builder addVerificationMethodsBuilder() {
       return getVerificationMethodsFieldBuilder().addBuilder(
           panacea.did.v2.VerificationMethod.getDefaultInstance());
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public panacea.did.v2.VerificationMethod.Builder addVerificationMethodsBuilder(
         int index) {
@@ -1793,7 +1825,7 @@ private static final long serialVersionUID = 0L;
           index, panacea.did.v2.VerificationMethod.getDefaultInstance());
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationMethod verificationMethods = 4[json_name = "verificationMethod", (.gogoproto.jsontag) = "verificationMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationMethod verification_methods = 4[json_name = "verificationMethod"];</code>
      */
     public java.util.List<panacea.did.v2.VerificationMethod.Builder> 
          getVerificationMethodsBuilderList() {
@@ -1827,7 +1859,11 @@ private static final long serialVersionUID = 0L;
         panacea.did.v2.VerificationRelationship, panacea.did.v2.VerificationRelationship.Builder, panacea.did.v2.VerificationRelationshipOrBuilder> authenticationsBuilder_;
 
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public java.util.List<panacea.did.v2.VerificationRelationship> getAuthenticationsList() {
       if (authenticationsBuilder_ == null) {
@@ -1837,7 +1873,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public int getAuthenticationsCount() {
       if (authenticationsBuilder_ == null) {
@@ -1847,7 +1887,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship getAuthentications(int index) {
       if (authenticationsBuilder_ == null) {
@@ -1857,7 +1901,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder setAuthentications(
         int index, panacea.did.v2.VerificationRelationship value) {
@@ -1874,7 +1922,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder setAuthentications(
         int index, panacea.did.v2.VerificationRelationship.Builder builderForValue) {
@@ -1888,7 +1940,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addAuthentications(panacea.did.v2.VerificationRelationship value) {
       if (authenticationsBuilder_ == null) {
@@ -1904,7 +1960,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addAuthentications(
         int index, panacea.did.v2.VerificationRelationship value) {
@@ -1921,7 +1981,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addAuthentications(
         panacea.did.v2.VerificationRelationship.Builder builderForValue) {
@@ -1935,7 +1999,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addAuthentications(
         int index, panacea.did.v2.VerificationRelationship.Builder builderForValue) {
@@ -1949,7 +2017,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addAllAuthentications(
         java.lang.Iterable<? extends panacea.did.v2.VerificationRelationship> values) {
@@ -1964,7 +2036,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder clearAuthentications() {
       if (authenticationsBuilder_ == null) {
@@ -1977,7 +2053,11 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder removeAuthentications(int index) {
       if (authenticationsBuilder_ == null) {
@@ -1990,14 +2070,22 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship.Builder getAuthenticationsBuilder(
         int index) {
       return getAuthenticationsFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationshipOrBuilder getAuthenticationsOrBuilder(
         int index) {
@@ -2007,7 +2095,11 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public java.util.List<? extends panacea.did.v2.VerificationRelationshipOrBuilder> 
          getAuthenticationsOrBuilderList() {
@@ -2018,14 +2110,22 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship.Builder addAuthenticationsBuilder() {
       return getAuthenticationsFieldBuilder().addBuilder(
           panacea.did.v2.VerificationRelationship.getDefaultInstance());
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship.Builder addAuthenticationsBuilder(
         int index) {
@@ -2033,7 +2133,11 @@ private static final long serialVersionUID = 0L;
           index, panacea.did.v2.VerificationRelationship.getDefaultInstance());
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.jsontag) = "authentication,omitempty"];</code>
+     * <pre>
+     * TODO: the repeated gogoproto.customtype has an issue: https://github.com/gogo/protobuf/issues/478
+     * </pre>
+     *
+     * <code>repeated .panacea.did.v2.VerificationRelationship authentications = 5[json_name = "authentication", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public java.util.List<panacea.did.v2.VerificationRelationship.Builder> 
          getAuthenticationsBuilderList() {
@@ -2067,7 +2171,7 @@ private static final long serialVersionUID = 0L;
         panacea.did.v2.VerificationRelationship, panacea.did.v2.VerificationRelationship.Builder, panacea.did.v2.VerificationRelationshipOrBuilder> assertionMethodsBuilder_;
 
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public java.util.List<panacea.did.v2.VerificationRelationship> getAssertionMethodsList() {
       if (assertionMethodsBuilder_ == null) {
@@ -2077,7 +2181,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public int getAssertionMethodsCount() {
       if (assertionMethodsBuilder_ == null) {
@@ -2087,7 +2191,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship getAssertionMethods(int index) {
       if (assertionMethodsBuilder_ == null) {
@@ -2097,7 +2201,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder setAssertionMethods(
         int index, panacea.did.v2.VerificationRelationship value) {
@@ -2114,7 +2218,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder setAssertionMethods(
         int index, panacea.did.v2.VerificationRelationship.Builder builderForValue) {
@@ -2128,7 +2232,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addAssertionMethods(panacea.did.v2.VerificationRelationship value) {
       if (assertionMethodsBuilder_ == null) {
@@ -2144,7 +2248,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addAssertionMethods(
         int index, panacea.did.v2.VerificationRelationship value) {
@@ -2161,7 +2265,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addAssertionMethods(
         panacea.did.v2.VerificationRelationship.Builder builderForValue) {
@@ -2175,7 +2279,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addAssertionMethods(
         int index, panacea.did.v2.VerificationRelationship.Builder builderForValue) {
@@ -2189,7 +2293,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addAllAssertionMethods(
         java.lang.Iterable<? extends panacea.did.v2.VerificationRelationship> values) {
@@ -2204,7 +2308,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder clearAssertionMethods() {
       if (assertionMethodsBuilder_ == null) {
@@ -2217,7 +2321,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder removeAssertionMethods(int index) {
       if (assertionMethodsBuilder_ == null) {
@@ -2230,14 +2334,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship.Builder getAssertionMethodsBuilder(
         int index) {
       return getAssertionMethodsFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationshipOrBuilder getAssertionMethodsOrBuilder(
         int index) {
@@ -2247,7 +2351,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public java.util.List<? extends panacea.did.v2.VerificationRelationshipOrBuilder> 
          getAssertionMethodsOrBuilderList() {
@@ -2258,14 +2362,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship.Builder addAssertionMethodsBuilder() {
       return getAssertionMethodsFieldBuilder().addBuilder(
           panacea.did.v2.VerificationRelationship.getDefaultInstance());
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship.Builder addAssertionMethodsBuilder(
         int index) {
@@ -2273,7 +2377,7 @@ private static final long serialVersionUID = 0L;
           index, panacea.did.v2.VerificationRelationship.getDefaultInstance());
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship assertionMethods = 6[json_name = "assertionMethod", (.gogoproto.jsontag) = "assertionMethod,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship assertion_methods = 6[json_name = "assertionMethod", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public java.util.List<panacea.did.v2.VerificationRelationship.Builder> 
          getAssertionMethodsBuilderList() {
@@ -2307,7 +2411,7 @@ private static final long serialVersionUID = 0L;
         panacea.did.v2.VerificationRelationship, panacea.did.v2.VerificationRelationship.Builder, panacea.did.v2.VerificationRelationshipOrBuilder> keyAgreementsBuilder_;
 
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public java.util.List<panacea.did.v2.VerificationRelationship> getKeyAgreementsList() {
       if (keyAgreementsBuilder_ == null) {
@@ -2317,7 +2421,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public int getKeyAgreementsCount() {
       if (keyAgreementsBuilder_ == null) {
@@ -2327,7 +2431,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship getKeyAgreements(int index) {
       if (keyAgreementsBuilder_ == null) {
@@ -2337,7 +2441,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder setKeyAgreements(
         int index, panacea.did.v2.VerificationRelationship value) {
@@ -2354,7 +2458,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder setKeyAgreements(
         int index, panacea.did.v2.VerificationRelationship.Builder builderForValue) {
@@ -2368,7 +2472,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addKeyAgreements(panacea.did.v2.VerificationRelationship value) {
       if (keyAgreementsBuilder_ == null) {
@@ -2384,7 +2488,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addKeyAgreements(
         int index, panacea.did.v2.VerificationRelationship value) {
@@ -2401,7 +2505,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addKeyAgreements(
         panacea.did.v2.VerificationRelationship.Builder builderForValue) {
@@ -2415,7 +2519,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addKeyAgreements(
         int index, panacea.did.v2.VerificationRelationship.Builder builderForValue) {
@@ -2429,7 +2533,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addAllKeyAgreements(
         java.lang.Iterable<? extends panacea.did.v2.VerificationRelationship> values) {
@@ -2444,7 +2548,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder clearKeyAgreements() {
       if (keyAgreementsBuilder_ == null) {
@@ -2457,7 +2561,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder removeKeyAgreements(int index) {
       if (keyAgreementsBuilder_ == null) {
@@ -2470,14 +2574,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship.Builder getKeyAgreementsBuilder(
         int index) {
       return getKeyAgreementsFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationshipOrBuilder getKeyAgreementsOrBuilder(
         int index) {
@@ -2487,7 +2591,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public java.util.List<? extends panacea.did.v2.VerificationRelationshipOrBuilder> 
          getKeyAgreementsOrBuilderList() {
@@ -2498,14 +2602,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship.Builder addKeyAgreementsBuilder() {
       return getKeyAgreementsFieldBuilder().addBuilder(
           panacea.did.v2.VerificationRelationship.getDefaultInstance());
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship.Builder addKeyAgreementsBuilder(
         int index) {
@@ -2513,7 +2617,7 @@ private static final long serialVersionUID = 0L;
           index, panacea.did.v2.VerificationRelationship.getDefaultInstance());
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship keyAgreements = 7[json_name = "keyAgreement", (.gogoproto.jsontag) = "keyAgreement,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship key_agreements = 7[json_name = "keyAgreement", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public java.util.List<panacea.did.v2.VerificationRelationship.Builder> 
          getKeyAgreementsBuilderList() {
@@ -2547,7 +2651,7 @@ private static final long serialVersionUID = 0L;
         panacea.did.v2.VerificationRelationship, panacea.did.v2.VerificationRelationship.Builder, panacea.did.v2.VerificationRelationshipOrBuilder> capabilityInvocationsBuilder_;
 
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public java.util.List<panacea.did.v2.VerificationRelationship> getCapabilityInvocationsList() {
       if (capabilityInvocationsBuilder_ == null) {
@@ -2557,7 +2661,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public int getCapabilityInvocationsCount() {
       if (capabilityInvocationsBuilder_ == null) {
@@ -2567,7 +2671,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship getCapabilityInvocations(int index) {
       if (capabilityInvocationsBuilder_ == null) {
@@ -2577,7 +2681,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder setCapabilityInvocations(
         int index, panacea.did.v2.VerificationRelationship value) {
@@ -2594,7 +2698,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder setCapabilityInvocations(
         int index, panacea.did.v2.VerificationRelationship.Builder builderForValue) {
@@ -2608,7 +2712,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addCapabilityInvocations(panacea.did.v2.VerificationRelationship value) {
       if (capabilityInvocationsBuilder_ == null) {
@@ -2624,7 +2728,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addCapabilityInvocations(
         int index, panacea.did.v2.VerificationRelationship value) {
@@ -2641,7 +2745,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addCapabilityInvocations(
         panacea.did.v2.VerificationRelationship.Builder builderForValue) {
@@ -2655,7 +2759,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addCapabilityInvocations(
         int index, panacea.did.v2.VerificationRelationship.Builder builderForValue) {
@@ -2669,7 +2773,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addAllCapabilityInvocations(
         java.lang.Iterable<? extends panacea.did.v2.VerificationRelationship> values) {
@@ -2684,7 +2788,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder clearCapabilityInvocations() {
       if (capabilityInvocationsBuilder_ == null) {
@@ -2697,7 +2801,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder removeCapabilityInvocations(int index) {
       if (capabilityInvocationsBuilder_ == null) {
@@ -2710,14 +2814,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship.Builder getCapabilityInvocationsBuilder(
         int index) {
       return getCapabilityInvocationsFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationshipOrBuilder getCapabilityInvocationsOrBuilder(
         int index) {
@@ -2727,7 +2831,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public java.util.List<? extends panacea.did.v2.VerificationRelationshipOrBuilder> 
          getCapabilityInvocationsOrBuilderList() {
@@ -2738,14 +2842,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship.Builder addCapabilityInvocationsBuilder() {
       return getCapabilityInvocationsFieldBuilder().addBuilder(
           panacea.did.v2.VerificationRelationship.getDefaultInstance());
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship.Builder addCapabilityInvocationsBuilder(
         int index) {
@@ -2753,7 +2857,7 @@ private static final long serialVersionUID = 0L;
           index, panacea.did.v2.VerificationRelationship.getDefaultInstance());
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityInvocations = 8[json_name = "capabilityInvocation", (.gogoproto.jsontag) = "capabilityInvocation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_invocations = 8[json_name = "capabilityInvocation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public java.util.List<panacea.did.v2.VerificationRelationship.Builder> 
          getCapabilityInvocationsBuilderList() {
@@ -2787,7 +2891,7 @@ private static final long serialVersionUID = 0L;
         panacea.did.v2.VerificationRelationship, panacea.did.v2.VerificationRelationship.Builder, panacea.did.v2.VerificationRelationshipOrBuilder> capabilityDelegationsBuilder_;
 
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public java.util.List<panacea.did.v2.VerificationRelationship> getCapabilityDelegationsList() {
       if (capabilityDelegationsBuilder_ == null) {
@@ -2797,7 +2901,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public int getCapabilityDelegationsCount() {
       if (capabilityDelegationsBuilder_ == null) {
@@ -2807,7 +2911,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship getCapabilityDelegations(int index) {
       if (capabilityDelegationsBuilder_ == null) {
@@ -2817,7 +2921,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder setCapabilityDelegations(
         int index, panacea.did.v2.VerificationRelationship value) {
@@ -2834,7 +2938,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder setCapabilityDelegations(
         int index, panacea.did.v2.VerificationRelationship.Builder builderForValue) {
@@ -2848,7 +2952,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addCapabilityDelegations(panacea.did.v2.VerificationRelationship value) {
       if (capabilityDelegationsBuilder_ == null) {
@@ -2864,7 +2968,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addCapabilityDelegations(
         int index, panacea.did.v2.VerificationRelationship value) {
@@ -2881,7 +2985,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addCapabilityDelegations(
         panacea.did.v2.VerificationRelationship.Builder builderForValue) {
@@ -2895,7 +2999,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addCapabilityDelegations(
         int index, panacea.did.v2.VerificationRelationship.Builder builderForValue) {
@@ -2909,7 +3013,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder addAllCapabilityDelegations(
         java.lang.Iterable<? extends panacea.did.v2.VerificationRelationship> values) {
@@ -2924,7 +3028,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder clearCapabilityDelegations() {
       if (capabilityDelegationsBuilder_ == null) {
@@ -2937,7 +3041,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public Builder removeCapabilityDelegations(int index) {
       if (capabilityDelegationsBuilder_ == null) {
@@ -2950,14 +3054,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship.Builder getCapabilityDelegationsBuilder(
         int index) {
       return getCapabilityDelegationsFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationshipOrBuilder getCapabilityDelegationsOrBuilder(
         int index) {
@@ -2967,7 +3071,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public java.util.List<? extends panacea.did.v2.VerificationRelationshipOrBuilder> 
          getCapabilityDelegationsOrBuilderList() {
@@ -2978,14 +3082,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship.Builder addCapabilityDelegationsBuilder() {
       return getCapabilityDelegationsFieldBuilder().addBuilder(
           panacea.did.v2.VerificationRelationship.getDefaultInstance());
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public panacea.did.v2.VerificationRelationship.Builder addCapabilityDelegationsBuilder(
         int index) {
@@ -2993,7 +3097,7 @@ private static final long serialVersionUID = 0L;
           index, panacea.did.v2.VerificationRelationship.getDefaultInstance());
     }
     /**
-     * <code>repeated .panacea.did.v2.VerificationRelationship capabilityDelegations = 9[json_name = "capabilityDelegation", (.gogoproto.jsontag) = "capabilityDelegation,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.VerificationRelationship capability_delegations = 9[json_name = "capabilityDelegation", (.gogoproto.customtype) = "VerificationRelationship"];</code>
      */
     public java.util.List<panacea.did.v2.VerificationRelationship.Builder> 
          getCapabilityDelegationsBuilderList() {
@@ -3027,7 +3131,7 @@ private static final long serialVersionUID = 0L;
         panacea.did.v2.Service, panacea.did.v2.Service.Builder, panacea.did.v2.ServiceOrBuilder> servicesBuilder_;
 
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public java.util.List<panacea.did.v2.Service> getServicesList() {
       if (servicesBuilder_ == null) {
@@ -3037,7 +3141,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public int getServicesCount() {
       if (servicesBuilder_ == null) {
@@ -3047,7 +3151,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public panacea.did.v2.Service getServices(int index) {
       if (servicesBuilder_ == null) {
@@ -3057,7 +3161,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public Builder setServices(
         int index, panacea.did.v2.Service value) {
@@ -3074,7 +3178,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public Builder setServices(
         int index, panacea.did.v2.Service.Builder builderForValue) {
@@ -3088,7 +3192,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public Builder addServices(panacea.did.v2.Service value) {
       if (servicesBuilder_ == null) {
@@ -3104,7 +3208,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public Builder addServices(
         int index, panacea.did.v2.Service value) {
@@ -3121,7 +3225,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public Builder addServices(
         panacea.did.v2.Service.Builder builderForValue) {
@@ -3135,7 +3239,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public Builder addServices(
         int index, panacea.did.v2.Service.Builder builderForValue) {
@@ -3149,7 +3253,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public Builder addAllServices(
         java.lang.Iterable<? extends panacea.did.v2.Service> values) {
@@ -3164,7 +3268,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public Builder clearServices() {
       if (servicesBuilder_ == null) {
@@ -3177,7 +3281,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public Builder removeServices(int index) {
       if (servicesBuilder_ == null) {
@@ -3190,14 +3294,14 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public panacea.did.v2.Service.Builder getServicesBuilder(
         int index) {
       return getServicesFieldBuilder().getBuilder(index);
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public panacea.did.v2.ServiceOrBuilder getServicesOrBuilder(
         int index) {
@@ -3207,7 +3311,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public java.util.List<? extends panacea.did.v2.ServiceOrBuilder> 
          getServicesOrBuilderList() {
@@ -3218,14 +3322,14 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public panacea.did.v2.Service.Builder addServicesBuilder() {
       return getServicesFieldBuilder().addBuilder(
           panacea.did.v2.Service.getDefaultInstance());
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public panacea.did.v2.Service.Builder addServicesBuilder(
         int index) {
@@ -3233,7 +3337,7 @@ private static final long serialVersionUID = 0L;
           index, panacea.did.v2.Service.getDefaultInstance());
     }
     /**
-     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service", (.gogoproto.jsontag) = "service,omitempty"];</code>
+     * <code>repeated .panacea.did.v2.Service services = 10[json_name = "service"];</code>
      */
     public java.util.List<panacea.did.v2.Service.Builder> 
          getServicesBuilderList() {

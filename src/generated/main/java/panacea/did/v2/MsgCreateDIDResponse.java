@@ -4,6 +4,10 @@
 package panacea.did.v2;
 
 /**
+ * <pre>
+ * MsgCreateDIDResponse defines the Msg/CreateDID response type.
+ * </pre>
+ *
  * Protobuf type {@code panacea.did.v2.MsgCreateDIDResponse}
  */
 public  final class MsgCreateDIDResponse extends
@@ -218,6 +222,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * MsgCreateDIDResponse defines the Msg/CreateDID response type.
+   * </pre>
+   *
    * Protobuf type {@code panacea.did.v2.MsgCreateDIDResponse}
    */
   public static final class Builder extends

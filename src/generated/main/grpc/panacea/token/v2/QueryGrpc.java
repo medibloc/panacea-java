@@ -30,30 +30,30 @@ public final class QueryGrpc {
   public static final String SERVICE_NAME = "panacea.token.v2.Query";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<panacea.token.v2.QueryGetTokenRequest,
-      panacea.token.v2.QueryGetTokenResponse> getTokenMethod;
+  private static volatile io.grpc.MethodDescriptor<panacea.token.v2.QueryTokenRequest,
+      panacea.token.v2.QueryTokenResponse> getTokenMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Token",
-      requestType = panacea.token.v2.QueryGetTokenRequest.class,
-      responseType = panacea.token.v2.QueryGetTokenResponse.class,
+      requestType = panacea.token.v2.QueryTokenRequest.class,
+      responseType = panacea.token.v2.QueryTokenResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<panacea.token.v2.QueryGetTokenRequest,
-      panacea.token.v2.QueryGetTokenResponse> getTokenMethod() {
-    io.grpc.MethodDescriptor<panacea.token.v2.QueryGetTokenRequest, panacea.token.v2.QueryGetTokenResponse> getTokenMethod;
+  public static io.grpc.MethodDescriptor<panacea.token.v2.QueryTokenRequest,
+      panacea.token.v2.QueryTokenResponse> getTokenMethod() {
+    io.grpc.MethodDescriptor<panacea.token.v2.QueryTokenRequest, panacea.token.v2.QueryTokenResponse> getTokenMethod;
     if ((getTokenMethod = QueryGrpc.getTokenMethod) == null) {
       synchronized (QueryGrpc.class) {
         if ((getTokenMethod = QueryGrpc.getTokenMethod) == null) {
           QueryGrpc.getTokenMethod = getTokenMethod = 
-              io.grpc.MethodDescriptor.<panacea.token.v2.QueryGetTokenRequest, panacea.token.v2.QueryGetTokenResponse>newBuilder()
+              io.grpc.MethodDescriptor.<panacea.token.v2.QueryTokenRequest, panacea.token.v2.QueryTokenResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "panacea.token.v2.Query", "Token"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  panacea.token.v2.QueryGetTokenRequest.getDefaultInstance()))
+                  panacea.token.v2.QueryTokenRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  panacea.token.v2.QueryGetTokenResponse.getDefaultInstance()))
+                  panacea.token.v2.QueryTokenResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new QueryMethodDescriptorSupplier("Token"))
                   .build();
           }
@@ -62,36 +62,36 @@ public final class QueryGrpc {
      return getTokenMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<panacea.token.v2.QueryAllTokenRequest,
-      panacea.token.v2.QueryAllTokenResponse> getTokenAllMethod;
+  private static volatile io.grpc.MethodDescriptor<panacea.token.v2.QueryTokensRequest,
+      panacea.token.v2.QueryTokensResponse> getTokensMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
-      fullMethodName = SERVICE_NAME + '/' + "TokenAll",
-      requestType = panacea.token.v2.QueryAllTokenRequest.class,
-      responseType = panacea.token.v2.QueryAllTokenResponse.class,
+      fullMethodName = SERVICE_NAME + '/' + "Tokens",
+      requestType = panacea.token.v2.QueryTokensRequest.class,
+      responseType = panacea.token.v2.QueryTokensResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<panacea.token.v2.QueryAllTokenRequest,
-      panacea.token.v2.QueryAllTokenResponse> getTokenAllMethod() {
-    io.grpc.MethodDescriptor<panacea.token.v2.QueryAllTokenRequest, panacea.token.v2.QueryAllTokenResponse> getTokenAllMethod;
-    if ((getTokenAllMethod = QueryGrpc.getTokenAllMethod) == null) {
+  public static io.grpc.MethodDescriptor<panacea.token.v2.QueryTokensRequest,
+      panacea.token.v2.QueryTokensResponse> getTokensMethod() {
+    io.grpc.MethodDescriptor<panacea.token.v2.QueryTokensRequest, panacea.token.v2.QueryTokensResponse> getTokensMethod;
+    if ((getTokensMethod = QueryGrpc.getTokensMethod) == null) {
       synchronized (QueryGrpc.class) {
-        if ((getTokenAllMethod = QueryGrpc.getTokenAllMethod) == null) {
-          QueryGrpc.getTokenAllMethod = getTokenAllMethod = 
-              io.grpc.MethodDescriptor.<panacea.token.v2.QueryAllTokenRequest, panacea.token.v2.QueryAllTokenResponse>newBuilder()
+        if ((getTokensMethod = QueryGrpc.getTokensMethod) == null) {
+          QueryGrpc.getTokensMethod = getTokensMethod = 
+              io.grpc.MethodDescriptor.<panacea.token.v2.QueryTokensRequest, panacea.token.v2.QueryTokensResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
-                  "panacea.token.v2.Query", "TokenAll"))
+                  "panacea.token.v2.Query", "Tokens"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  panacea.token.v2.QueryAllTokenRequest.getDefaultInstance()))
+                  panacea.token.v2.QueryTokensRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  panacea.token.v2.QueryAllTokenResponse.getDefaultInstance()))
-                  .setSchemaDescriptor(new QueryMethodDescriptorSupplier("TokenAll"))
+                  panacea.token.v2.QueryTokensResponse.getDefaultInstance()))
+                  .setSchemaDescriptor(new QueryMethodDescriptorSupplier("Tokens"))
                   .build();
           }
         }
      }
-     return getTokenAllMethod;
+     return getTokensMethod;
   }
 
   /**
@@ -126,19 +126,22 @@ public final class QueryGrpc {
 
     /**
      * <pre>
-     * this line is used by starport scaffolding # 2
+     * Token returns token details.
      * </pre>
      */
-    public void token(panacea.token.v2.QueryGetTokenRequest request,
-        io.grpc.stub.StreamObserver<panacea.token.v2.QueryGetTokenResponse> responseObserver) {
+    public void token(panacea.token.v2.QueryTokenRequest request,
+        io.grpc.stub.StreamObserver<panacea.token.v2.QueryTokenResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getTokenMethod(), responseObserver);
     }
 
     /**
+     * <pre>
+     * Tokens returns details of all tokens.
+     * </pre>
      */
-    public void tokenAll(panacea.token.v2.QueryAllTokenRequest request,
-        io.grpc.stub.StreamObserver<panacea.token.v2.QueryAllTokenResponse> responseObserver) {
-      asyncUnimplementedUnaryCall(getTokenAllMethod(), responseObserver);
+    public void tokens(panacea.token.v2.QueryTokensRequest request,
+        io.grpc.stub.StreamObserver<panacea.token.v2.QueryTokensResponse> responseObserver) {
+      asyncUnimplementedUnaryCall(getTokensMethod(), responseObserver);
     }
 
     @java.lang.Override public final io.grpc.ServerServiceDefinition bindService() {
@@ -147,16 +150,16 @@ public final class QueryGrpc {
             getTokenMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                panacea.token.v2.QueryGetTokenRequest,
-                panacea.token.v2.QueryGetTokenResponse>(
+                panacea.token.v2.QueryTokenRequest,
+                panacea.token.v2.QueryTokenResponse>(
                   this, METHODID_TOKEN)))
           .addMethod(
-            getTokenAllMethod(),
+            getTokensMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                panacea.token.v2.QueryAllTokenRequest,
-                panacea.token.v2.QueryAllTokenResponse>(
-                  this, METHODID_TOKEN_ALL)))
+                panacea.token.v2.QueryTokensRequest,
+                panacea.token.v2.QueryTokensResponse>(
+                  this, METHODID_TOKENS)))
           .build();
     }
   }
@@ -184,21 +187,24 @@ public final class QueryGrpc {
 
     /**
      * <pre>
-     * this line is used by starport scaffolding # 2
+     * Token returns token details.
      * </pre>
      */
-    public void token(panacea.token.v2.QueryGetTokenRequest request,
-        io.grpc.stub.StreamObserver<panacea.token.v2.QueryGetTokenResponse> responseObserver) {
+    public void token(panacea.token.v2.QueryTokenRequest request,
+        io.grpc.stub.StreamObserver<panacea.token.v2.QueryTokenResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getTokenMethod(), getCallOptions()), request, responseObserver);
     }
 
     /**
+     * <pre>
+     * Tokens returns details of all tokens.
+     * </pre>
      */
-    public void tokenAll(panacea.token.v2.QueryAllTokenRequest request,
-        io.grpc.stub.StreamObserver<panacea.token.v2.QueryAllTokenResponse> responseObserver) {
+    public void tokens(panacea.token.v2.QueryTokensRequest request,
+        io.grpc.stub.StreamObserver<panacea.token.v2.QueryTokensResponse> responseObserver) {
       asyncUnaryCall(
-          getChannel().newCall(getTokenAllMethod(), getCallOptions()), request, responseObserver);
+          getChannel().newCall(getTokensMethod(), getCallOptions()), request, responseObserver);
     }
   }
 
@@ -225,19 +231,22 @@ public final class QueryGrpc {
 
     /**
      * <pre>
-     * this line is used by starport scaffolding # 2
+     * Token returns token details.
      * </pre>
      */
-    public panacea.token.v2.QueryGetTokenResponse token(panacea.token.v2.QueryGetTokenRequest request) {
+    public panacea.token.v2.QueryTokenResponse token(panacea.token.v2.QueryTokenRequest request) {
       return blockingUnaryCall(
           getChannel(), getTokenMethod(), getCallOptions(), request);
     }
 
     /**
+     * <pre>
+     * Tokens returns details of all tokens.
+     * </pre>
      */
-    public panacea.token.v2.QueryAllTokenResponse tokenAll(panacea.token.v2.QueryAllTokenRequest request) {
+    public panacea.token.v2.QueryTokensResponse tokens(panacea.token.v2.QueryTokensRequest request) {
       return blockingUnaryCall(
-          getChannel(), getTokenAllMethod(), getCallOptions(), request);
+          getChannel(), getTokensMethod(), getCallOptions(), request);
     }
   }
 
@@ -264,26 +273,29 @@ public final class QueryGrpc {
 
     /**
      * <pre>
-     * this line is used by starport scaffolding # 2
+     * Token returns token details.
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<panacea.token.v2.QueryGetTokenResponse> token(
-        panacea.token.v2.QueryGetTokenRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<panacea.token.v2.QueryTokenResponse> token(
+        panacea.token.v2.QueryTokenRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getTokenMethod(), getCallOptions()), request);
     }
 
     /**
+     * <pre>
+     * Tokens returns details of all tokens.
+     * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<panacea.token.v2.QueryAllTokenResponse> tokenAll(
-        panacea.token.v2.QueryAllTokenRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<panacea.token.v2.QueryTokensResponse> tokens(
+        panacea.token.v2.QueryTokensRequest request) {
       return futureUnaryCall(
-          getChannel().newCall(getTokenAllMethod(), getCallOptions()), request);
+          getChannel().newCall(getTokensMethod(), getCallOptions()), request);
     }
   }
 
   private static final int METHODID_TOKEN = 0;
-  private static final int METHODID_TOKEN_ALL = 1;
+  private static final int METHODID_TOKENS = 1;
 
   private static final class MethodHandlers<Req, Resp> implements
       io.grpc.stub.ServerCalls.UnaryMethod<Req, Resp>,
@@ -303,12 +315,12 @@ public final class QueryGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_TOKEN:
-          serviceImpl.token((panacea.token.v2.QueryGetTokenRequest) request,
-              (io.grpc.stub.StreamObserver<panacea.token.v2.QueryGetTokenResponse>) responseObserver);
+          serviceImpl.token((panacea.token.v2.QueryTokenRequest) request,
+              (io.grpc.stub.StreamObserver<panacea.token.v2.QueryTokenResponse>) responseObserver);
           break;
-        case METHODID_TOKEN_ALL:
-          serviceImpl.tokenAll((panacea.token.v2.QueryAllTokenRequest) request,
-              (io.grpc.stub.StreamObserver<panacea.token.v2.QueryAllTokenResponse>) responseObserver);
+        case METHODID_TOKENS:
+          serviceImpl.tokens((panacea.token.v2.QueryTokensRequest) request,
+              (io.grpc.stub.StreamObserver<panacea.token.v2.QueryTokensResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
@@ -372,7 +384,7 @@ public final class QueryGrpc {
           serviceDescriptor = result = io.grpc.ServiceDescriptor.newBuilder(SERVICE_NAME)
               .setSchemaDescriptor(new QueryFileDescriptorSupplier())
               .addMethod(getTokenMethod())
-              .addMethod(getTokenAllMethod())
+              .addMethod(getTokensMethod())
               .build();
         }
       }

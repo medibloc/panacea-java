@@ -8,14 +8,14 @@ public interface MsgCreateDIDOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string DID = 1[json_name = "did", (.gogoproto.jsontag) = "did"];</code>
+   * <code>string did = 1;</code>
    */
-  java.lang.String getDID();
+  java.lang.String getDid();
   /**
-   * <code>string DID = 1[json_name = "did", (.gogoproto.jsontag) = "did"];</code>
+   * <code>string did = 1;</code>
    */
   com.google.protobuf.ByteString
-      getDIDBytes();
+      getDidBytes();
 
   /**
    * <code>.panacea.did.v2.DIDDocument document = 2;</code>
@@ -31,14 +31,14 @@ public interface MsgCreateDIDOrBuilder extends
   panacea.did.v2.DIDDocumentOrBuilder getDocumentOrBuilder();
 
   /**
-   * <code>string verificationMethodID = 3[json_name = "verification_method_id", (.gogoproto.jsontag) = "verification_method_id"];</code>
+   * <code>string verification_method_id = 3;</code>
    */
-  java.lang.String getVerificationMethodID();
+  java.lang.String getVerificationMethodId();
   /**
-   * <code>string verificationMethodID = 3[json_name = "verification_method_id", (.gogoproto.jsontag) = "verification_method_id"];</code>
+   * <code>string verification_method_id = 3;</code>
    */
   com.google.protobuf.ByteString
-      getVerificationMethodIDBytes();
+      getVerificationMethodIdBytes();
 
   /**
    * <code>bytes signature = 4;</code>
@@ -46,11 +46,11 @@ public interface MsgCreateDIDOrBuilder extends
   com.google.protobuf.ByteString getSignature();
 
   /**
-   * <code>string fromAddress = 5[json_name = "from_address", (.gogoproto.jsontag) = "from_address"];</code>
+   * <code>string from_address = 5;</code>
    */
   java.lang.String getFromAddress();
   /**
-   * <code>string fromAddress = 5[json_name = "from_address", (.gogoproto.jsontag) = "from_address"];</code>
+   * <code>string from_address = 5;</code>
    */
   com.google.protobuf.ByteString
       getFromAddressBytes();

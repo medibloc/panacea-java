@@ -4,6 +4,10 @@
 package panacea.did.v2;
 
 /**
+ * <pre>
+ * Service defines a service in the W3C DID Document.
+ * </pre>
+ *
  * Protobuf type {@code panacea.did.v2.Service}
  */
 public  final class Service extends
@@ -16,7 +20,7 @@ private static final long serialVersionUID = 0L;
     super(builder);
   }
   private Service() {
-    iD_ = "";
+    id_ = "";
     type_ = "";
     serviceEndpoint_ = "";
   }
@@ -48,7 +52,7 @@ private static final long serialVersionUID = 0L;
           case 10: {
             java.lang.String s = input.readStringRequireUtf8();
 
-            iD_ = s;
+            id_ = s;
             break;
           }
           case 18: {
@@ -96,33 +100,33 @@ private static final long serialVersionUID = 0L;
   }
 
   public static final int ID_FIELD_NUMBER = 1;
-  private volatile java.lang.Object iD_;
+  private volatile java.lang.Object id_;
   /**
-   * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+   * <code>string id = 1;</code>
    */
-  public java.lang.String getID() {
-    java.lang.Object ref = iD_;
+  public java.lang.String getId() {
+    java.lang.Object ref = id_;
     if (ref instanceof java.lang.String) {
       return (java.lang.String) ref;
     } else {
       com.google.protobuf.ByteString bs = 
           (com.google.protobuf.ByteString) ref;
       java.lang.String s = bs.toStringUtf8();
-      iD_ = s;
+      id_ = s;
       return s;
     }
   }
   /**
-   * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+   * <code>string id = 1;</code>
    */
   public com.google.protobuf.ByteString
-      getIDBytes() {
-    java.lang.Object ref = iD_;
+      getIdBytes() {
+    java.lang.Object ref = id_;
     if (ref instanceof java.lang.String) {
       com.google.protobuf.ByteString b = 
           com.google.protobuf.ByteString.copyFromUtf8(
               (java.lang.String) ref);
-      iD_ = b;
+      id_ = b;
       return b;
     } else {
       return (com.google.protobuf.ByteString) ref;
@@ -163,10 +167,10 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int SERVICEENDPOINT_FIELD_NUMBER = 3;
+  public static final int SERVICE_ENDPOINT_FIELD_NUMBER = 3;
   private volatile java.lang.Object serviceEndpoint_;
   /**
-   * <code>string serviceEndpoint = 3;</code>
+   * <code>string service_endpoint = 3[json_name = "serviceEndpoint"];</code>
    */
   public java.lang.String getServiceEndpoint() {
     java.lang.Object ref = serviceEndpoint_;
@@ -181,7 +185,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string serviceEndpoint = 3;</code>
+   * <code>string service_endpoint = 3[json_name = "serviceEndpoint"];</code>
    */
   public com.google.protobuf.ByteString
       getServiceEndpointBytes() {
@@ -211,8 +215,8 @@ private static final long serialVersionUID = 0L;
   @java.lang.Override
   public void writeTo(com.google.protobuf.CodedOutputStream output)
                       throws java.io.IOException {
-    if (!getIDBytes().isEmpty()) {
-      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, iD_);
+    if (!getIdBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
     }
     if (!getTypeBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 2, type_);
@@ -229,8 +233,8 @@ private static final long serialVersionUID = 0L;
     if (size != -1) return size;
 
     size = 0;
-    if (!getIDBytes().isEmpty()) {
-      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, iD_);
+    if (!getIdBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
     }
     if (!getTypeBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, type_);
@@ -253,8 +257,8 @@ private static final long serialVersionUID = 0L;
     }
     panacea.did.v2.Service other = (panacea.did.v2.Service) obj;
 
-    if (!getID()
-        .equals(other.getID())) return false;
+    if (!getId()
+        .equals(other.getId())) return false;
     if (!getType()
         .equals(other.getType())) return false;
     if (!getServiceEndpoint()
@@ -271,10 +275,10 @@ private static final long serialVersionUID = 0L;
     int hash = 41;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + ID_FIELD_NUMBER;
-    hash = (53 * hash) + getID().hashCode();
+    hash = (53 * hash) + getId().hashCode();
     hash = (37 * hash) + TYPE_FIELD_NUMBER;
     hash = (53 * hash) + getType().hashCode();
-    hash = (37 * hash) + SERVICEENDPOINT_FIELD_NUMBER;
+    hash = (37 * hash) + SERVICE_ENDPOINT_FIELD_NUMBER;
     hash = (53 * hash) + getServiceEndpoint().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -372,6 +376,10 @@ private static final long serialVersionUID = 0L;
     return builder;
   }
   /**
+   * <pre>
+   * Service defines a service in the W3C DID Document.
+   * </pre>
+   *
    * Protobuf type {@code panacea.did.v2.Service}
    */
   public static final class Builder extends
@@ -409,7 +417,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public Builder clear() {
       super.clear();
-      iD_ = "";
+      id_ = "";
 
       type_ = "";
 
@@ -441,7 +449,7 @@ private static final long serialVersionUID = 0L;
     @java.lang.Override
     public panacea.did.v2.Service buildPartial() {
       panacea.did.v2.Service result = new panacea.did.v2.Service(this);
-      result.iD_ = iD_;
+      result.id_ = id_;
       result.type_ = type_;
       result.serviceEndpoint_ = serviceEndpoint_;
       onBuilt();
@@ -492,8 +500,8 @@ private static final long serialVersionUID = 0L;
 
     public Builder mergeFrom(panacea.did.v2.Service other) {
       if (other == panacea.did.v2.Service.getDefaultInstance()) return this;
-      if (!other.getID().isEmpty()) {
-        iD_ = other.iD_;
+      if (!other.getId().isEmpty()) {
+        id_ = other.id_;
         onChanged();
       }
       if (!other.getType().isEmpty()) {
@@ -533,71 +541,71 @@ private static final long serialVersionUID = 0L;
       return this;
     }
 
-    private java.lang.Object iD_ = "";
+    private java.lang.Object id_ = "";
     /**
-     * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+     * <code>string id = 1;</code>
      */
-    public java.lang.String getID() {
-      java.lang.Object ref = iD_;
+    public java.lang.String getId() {
+      java.lang.Object ref = id_;
       if (!(ref instanceof java.lang.String)) {
         com.google.protobuf.ByteString bs =
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        iD_ = s;
+        id_ = s;
         return s;
       } else {
         return (java.lang.String) ref;
       }
     }
     /**
-     * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+     * <code>string id = 1;</code>
      */
     public com.google.protobuf.ByteString
-        getIDBytes() {
-      java.lang.Object ref = iD_;
+        getIdBytes() {
+      java.lang.Object ref = id_;
       if (ref instanceof String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        iD_ = b;
+        id_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
     /**
-     * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+     * <code>string id = 1;</code>
      */
-    public Builder setID(
+    public Builder setId(
         java.lang.String value) {
       if (value == null) {
     throw new NullPointerException();
   }
   
-      iD_ = value;
+      id_ = value;
       onChanged();
       return this;
     }
     /**
-     * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+     * <code>string id = 1;</code>
      */
-    public Builder clearID() {
+    public Builder clearId() {
       
-      iD_ = getDefaultInstance().getID();
+      id_ = getDefaultInstance().getId();
       onChanged();
       return this;
     }
     /**
-     * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+     * <code>string id = 1;</code>
      */
-    public Builder setIDBytes(
+    public Builder setIdBytes(
         com.google.protobuf.ByteString value) {
       if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
       
-      iD_ = value;
+      id_ = value;
       onChanged();
       return this;
     }
@@ -673,7 +681,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object serviceEndpoint_ = "";
     /**
-     * <code>string serviceEndpoint = 3;</code>
+     * <code>string service_endpoint = 3[json_name = "serviceEndpoint"];</code>
      */
     public java.lang.String getServiceEndpoint() {
       java.lang.Object ref = serviceEndpoint_;
@@ -688,7 +696,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string serviceEndpoint = 3;</code>
+     * <code>string service_endpoint = 3[json_name = "serviceEndpoint"];</code>
      */
     public com.google.protobuf.ByteString
         getServiceEndpointBytes() {
@@ -704,7 +712,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string serviceEndpoint = 3;</code>
+     * <code>string service_endpoint = 3[json_name = "serviceEndpoint"];</code>
      */
     public Builder setServiceEndpoint(
         java.lang.String value) {
@@ -717,7 +725,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string serviceEndpoint = 3;</code>
+     * <code>string service_endpoint = 3[json_name = "serviceEndpoint"];</code>
      */
     public Builder clearServiceEndpoint() {
       
@@ -726,7 +734,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string serviceEndpoint = 3;</code>
+     * <code>string service_endpoint = 3[json_name = "serviceEndpoint"];</code>
      */
     public Builder setServiceEndpointBytes(
         com.google.protobuf.ByteString value) {

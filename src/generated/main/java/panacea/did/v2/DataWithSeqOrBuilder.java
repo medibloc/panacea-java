@@ -13,7 +13,7 @@ public interface DataWithSeqOrBuilder extends
   com.google.protobuf.ByteString getData();
 
   /**
-   * <code>uint64 seq = 2;</code>
+   * <code>uint64 sequence = 2;</code>
    */
-  long getSeq();
+  long getSequence();
 }

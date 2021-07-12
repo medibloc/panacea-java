@@ -8,14 +8,14 @@ public interface ServiceOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+   * <code>string id = 1;</code>
    */
-  java.lang.String getID();
+  java.lang.String getId();
   /**
-   * <code>string ID = 1[json_name = "id", (.gogoproto.jsontag) = "id"];</code>
+   * <code>string id = 1;</code>
    */
   com.google.protobuf.ByteString
-      getIDBytes();
+      getIdBytes();
 
   /**
    * <code>string type = 2;</code>
@@ -28,11 +28,11 @@ public interface ServiceOrBuilder extends
       getTypeBytes();
 
   /**
-   * <code>string serviceEndpoint = 3;</code>
+   * <code>string service_endpoint = 3[json_name = "serviceEndpoint"];</code>
    */
   java.lang.String getServiceEndpoint();
   /**
-   * <code>string serviceEndpoint = 3;</code>
+   * <code>string service_endpoint = 3[json_name = "serviceEndpoint"];</code>
    */
   com.google.protobuf.ByteString
       getServiceEndpointBytes();

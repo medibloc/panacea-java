@@ -8,25 +8,27 @@ public interface VerificationRelationshipOrBuilder extends
     com.google.protobuf.MessageOrBuilder {
 
   /**
-   * <code>string verificationMethodID = 1;</code>
+   * <code>string verification_method_id = 1;</code>
    */
-  java.lang.String getVerificationMethodID();
+  java.lang.String getVerificationMethodId();
   /**
-   * <code>string verificationMethodID = 1;</code>
+   * <code>string verification_method_id = 1;</code>
    */
   com.google.protobuf.ByteString
-      getVerificationMethodIDBytes();
+      getVerificationMethodIdBytes();
 
   /**
-   * <code>.panacea.did.v2.VerificationMethod dedicatedVerificationMethod = 2;</code>
+   * <code>.panacea.did.v2.VerificationMethod verification_method = 2;</code>
    */
-  boolean hasDedicatedVerificationMethod();
+  boolean hasVerificationMethod();
   /**
-   * <code>.panacea.did.v2.VerificationMethod dedicatedVerificationMethod = 2;</code>
+   * <code>.panacea.did.v2.VerificationMethod verification_method = 2;</code>
    */
-  panacea.did.v2.VerificationMethod getDedicatedVerificationMethod();
+  panacea.did.v2.VerificationMethod getVerificationMethod();
   /**
-   * <code>.panacea.did.v2.VerificationMethod dedicatedVerificationMethod = 2;</code>
+   * <code>.panacea.did.v2.VerificationMethod verification_method = 2;</code>
    */
-  panacea.did.v2.VerificationMethodOrBuilder getDedicatedVerificationMethodOrBuilder();
+  panacea.did.v2.VerificationMethodOrBuilder getVerificationMethodOrBuilder();
+
+  public panacea.did.v2.VerificationRelationship.ContentCase getContentCase();
 }

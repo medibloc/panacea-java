@@ -28,10 +28,10 @@ public class DIDs {
         byte[] pubKey = wallet.getPubKeyBytes();
 
         return VerificationMethod.newBuilder()
-                .setID(createVerificationMethodId(did, key))
+                .setId(createVerificationMethodId(did, key))
                 .setType(DIDKey.ES256K.getValue())
                 .setController(did)
-                .setPubKeyBase58(Base58.encode(pubKey))
+                .setPublicKeyBase58(Base58.encode(pubKey))
                 .build();
     }
 
@@ -41,21 +41,21 @@ public class DIDs {
 
     public static VerificationRelationship createVerificationRelationship(String verificationMethodId) {
         return VerificationRelationship.newBuilder()
-                .setVerificationMethodID(verificationMethodId)
+                .setVerificationMethodId(verificationMethodId)
                 .build();
     }
 
     public static VerificationRelationship createVerificationRelationship(VerificationMethod verificationMethod) {
         return VerificationRelationship.newBuilder()
-                .setVerificationMethodID(verificationMethod.getID())
-                .setDedicatedVerificationMethod(verificationMethod)
+                .setVerificationMethodId(verificationMethod.getId())
+                .setVerificationMethod(verificationMethod)
                 .build();
     }
 
     public static DIDDocument createDIDDocument(String did, DIDWallet wallet) {
         VerificationMethod verificationMethod = createVerificationMethod(did, wallet, "key1");
 
-        VerificationRelationship authentication = createVerificationRelationship(verificationMethod.getID());
+        VerificationRelationship authentication = createVerificationRelationship(verificationMethod.getId());
 
         return createDIDDocument(
                 Collections.singletonList(Context.DID_V1.getValue()),
@@ -72,7 +72,7 @@ public class DIDs {
                 .setContexts(Strings.newBuilder()
                         .addAllValues(contexts)
                         .build())
-                .setID(did)
+                .setId(did)
                 .addAllVerificationMethods(verificationMethods)
                 .addAllAuthentications(authentications)
                 .build();

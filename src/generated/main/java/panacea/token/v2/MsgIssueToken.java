@@ -5,7 +5,7 @@ package panacea.token.v2;
 
 /**
  * <pre>
- * this line is used by starport scaffolding # proto/tx/message
+ * MsgIssueToken defines the Msg/IssueToken request type.
  * </pre>
  *
  * Protobuf type {@code panacea.token.v2.MsgIssueToken}
@@ -151,10 +151,10 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int SHORTSYMBOL_FIELD_NUMBER = 2;
+  public static final int SHORT_SYMBOL_FIELD_NUMBER = 2;
   private volatile java.lang.Object shortSymbol_;
   /**
-   * <code>string shortSymbol = 2;</code>
+   * <code>string short_symbol = 2;</code>
    */
   public java.lang.String getShortSymbol() {
     java.lang.Object ref = shortSymbol_;
@@ -169,7 +169,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string shortSymbol = 2;</code>
+   * <code>string short_symbol = 2;</code>
    */
   public com.google.protobuf.ByteString
       getShortSymbolBytes() {
@@ -185,22 +185,22 @@ private static final long serialVersionUID = 0L;
     }
   }
 
-  public static final int TOTALSUPPLYMICRO_FIELD_NUMBER = 3;
+  public static final int TOTAL_SUPPLY_MICRO_FIELD_NUMBER = 3;
   private cosmos.base.v1beta1.IntProto totalSupplyMicro_;
   /**
-   * <code>.cosmos.base.v1beta1.IntProto totalSupplyMicro = 3 [(.gogoproto.nullable) = false];</code>
+   * <code>.cosmos.base.v1beta1.IntProto total_supply_micro = 3 [(.gogoproto.nullable) = false];</code>
    */
   public boolean hasTotalSupplyMicro() {
     return totalSupplyMicro_ != null;
   }
   /**
-   * <code>.cosmos.base.v1beta1.IntProto totalSupplyMicro = 3 [(.gogoproto.nullable) = false];</code>
+   * <code>.cosmos.base.v1beta1.IntProto total_supply_micro = 3 [(.gogoproto.nullable) = false];</code>
    */
   public cosmos.base.v1beta1.IntProto getTotalSupplyMicro() {
     return totalSupplyMicro_ == null ? cosmos.base.v1beta1.IntProto.getDefaultInstance() : totalSupplyMicro_;
   }
   /**
-   * <code>.cosmos.base.v1beta1.IntProto totalSupplyMicro = 3 [(.gogoproto.nullable) = false];</code>
+   * <code>.cosmos.base.v1beta1.IntProto total_supply_micro = 3 [(.gogoproto.nullable) = false];</code>
    */
   public cosmos.base.v1beta1.IntProtoOrBuilder getTotalSupplyMicroOrBuilder() {
     return getTotalSupplyMicro();
@@ -215,10 +215,10 @@ private static final long serialVersionUID = 0L;
     return mintable_;
   }
 
-  public static final int OWNERADDRESS_FIELD_NUMBER = 5;
+  public static final int OWNER_ADDRESS_FIELD_NUMBER = 5;
   private volatile java.lang.Object ownerAddress_;
   /**
-   * <code>string ownerAddress = 5;</code>
+   * <code>string owner_address = 5;</code>
    */
   public java.lang.String getOwnerAddress() {
     java.lang.Object ref = ownerAddress_;
@@ -233,7 +233,7 @@ private static final long serialVersionUID = 0L;
     }
   }
   /**
-   * <code>string ownerAddress = 5;</code>
+   * <code>string owner_address = 5;</code>
    */
   public com.google.protobuf.ByteString
       getOwnerAddressBytes() {
@@ -345,16 +345,16 @@ private static final long serialVersionUID = 0L;
     hash = (19 * hash) + getDescriptor().hashCode();
     hash = (37 * hash) + NAME_FIELD_NUMBER;
     hash = (53 * hash) + getName().hashCode();
-    hash = (37 * hash) + SHORTSYMBOL_FIELD_NUMBER;
+    hash = (37 * hash) + SHORT_SYMBOL_FIELD_NUMBER;
     hash = (53 * hash) + getShortSymbol().hashCode();
     if (hasTotalSupplyMicro()) {
-      hash = (37 * hash) + TOTALSUPPLYMICRO_FIELD_NUMBER;
+      hash = (37 * hash) + TOTAL_SUPPLY_MICRO_FIELD_NUMBER;
       hash = (53 * hash) + getTotalSupplyMicro().hashCode();
     }
     hash = (37 * hash) + MINTABLE_FIELD_NUMBER;
     hash = (53 * hash) + com.google.protobuf.Internal.hashBoolean(
         getMintable());
-    hash = (37 * hash) + OWNERADDRESS_FIELD_NUMBER;
+    hash = (37 * hash) + OWNER_ADDRESS_FIELD_NUMBER;
     hash = (53 * hash) + getOwnerAddress().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
@@ -453,7 +453,7 @@ private static final long serialVersionUID = 0L;
   }
   /**
    * <pre>
-   * this line is used by starport scaffolding # proto/tx/message
+   * MsgIssueToken defines the Msg/IssueToken request type.
    * </pre>
    *
    * Protobuf type {@code panacea.token.v2.MsgIssueToken}
@@ -708,7 +708,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object shortSymbol_ = "";
     /**
-     * <code>string shortSymbol = 2;</code>
+     * <code>string short_symbol = 2;</code>
      */
     public java.lang.String getShortSymbol() {
       java.lang.Object ref = shortSymbol_;
@@ -723,7 +723,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string shortSymbol = 2;</code>
+     * <code>string short_symbol = 2;</code>
      */
     public com.google.protobuf.ByteString
         getShortSymbolBytes() {
@@ -739,7 +739,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string shortSymbol = 2;</code>
+     * <code>string short_symbol = 2;</code>
      */
     public Builder setShortSymbol(
         java.lang.String value) {
@@ -752,7 +752,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string shortSymbol = 2;</code>
+     * <code>string short_symbol = 2;</code>
      */
     public Builder clearShortSymbol() {
       
@@ -761,7 +761,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string shortSymbol = 2;</code>
+     * <code>string short_symbol = 2;</code>
      */
     public Builder setShortSymbolBytes(
         com.google.protobuf.ByteString value) {
@@ -779,13 +779,13 @@ private static final long serialVersionUID = 0L;
     private com.google.protobuf.SingleFieldBuilderV3<
         cosmos.base.v1beta1.IntProto, cosmos.base.v1beta1.IntProto.Builder, cosmos.base.v1beta1.IntProtoOrBuilder> totalSupplyMicroBuilder_;
     /**
-     * <code>.cosmos.base.v1beta1.IntProto totalSupplyMicro = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.IntProto total_supply_micro = 3 [(.gogoproto.nullable) = false];</code>
      */
     public boolean hasTotalSupplyMicro() {
       return totalSupplyMicroBuilder_ != null || totalSupplyMicro_ != null;
     }
     /**
-     * <code>.cosmos.base.v1beta1.IntProto totalSupplyMicro = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.IntProto total_supply_micro = 3 [(.gogoproto.nullable) = false];</code>
      */
     public cosmos.base.v1beta1.IntProto getTotalSupplyMicro() {
       if (totalSupplyMicroBuilder_ == null) {
@@ -795,7 +795,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.cosmos.base.v1beta1.IntProto totalSupplyMicro = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.IntProto total_supply_micro = 3 [(.gogoproto.nullable) = false];</code>
      */
     public Builder setTotalSupplyMicro(cosmos.base.v1beta1.IntProto value) {
       if (totalSupplyMicroBuilder_ == null) {
@@ -811,7 +811,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.cosmos.base.v1beta1.IntProto totalSupplyMicro = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.IntProto total_supply_micro = 3 [(.gogoproto.nullable) = false];</code>
      */
     public Builder setTotalSupplyMicro(
         cosmos.base.v1beta1.IntProto.Builder builderForValue) {
@@ -825,7 +825,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.cosmos.base.v1beta1.IntProto totalSupplyMicro = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.IntProto total_supply_micro = 3 [(.gogoproto.nullable) = false];</code>
      */
     public Builder mergeTotalSupplyMicro(cosmos.base.v1beta1.IntProto value) {
       if (totalSupplyMicroBuilder_ == null) {
@@ -843,7 +843,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.cosmos.base.v1beta1.IntProto totalSupplyMicro = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.IntProto total_supply_micro = 3 [(.gogoproto.nullable) = false];</code>
      */
     public Builder clearTotalSupplyMicro() {
       if (totalSupplyMicroBuilder_ == null) {
@@ -857,7 +857,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>.cosmos.base.v1beta1.IntProto totalSupplyMicro = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.IntProto total_supply_micro = 3 [(.gogoproto.nullable) = false];</code>
      */
     public cosmos.base.v1beta1.IntProto.Builder getTotalSupplyMicroBuilder() {
       
@@ -865,7 +865,7 @@ private static final long serialVersionUID = 0L;
       return getTotalSupplyMicroFieldBuilder().getBuilder();
     }
     /**
-     * <code>.cosmos.base.v1beta1.IntProto totalSupplyMicro = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.IntProto total_supply_micro = 3 [(.gogoproto.nullable) = false];</code>
      */
     public cosmos.base.v1beta1.IntProtoOrBuilder getTotalSupplyMicroOrBuilder() {
       if (totalSupplyMicroBuilder_ != null) {
@@ -876,7 +876,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>.cosmos.base.v1beta1.IntProto totalSupplyMicro = 3 [(.gogoproto.nullable) = false];</code>
+     * <code>.cosmos.base.v1beta1.IntProto total_supply_micro = 3 [(.gogoproto.nullable) = false];</code>
      */
     private com.google.protobuf.SingleFieldBuilderV3<
         cosmos.base.v1beta1.IntProto, cosmos.base.v1beta1.IntProto.Builder, cosmos.base.v1beta1.IntProtoOrBuilder> 
@@ -920,7 +920,7 @@ private static final long serialVersionUID = 0L;
 
     private java.lang.Object ownerAddress_ = "";
     /**
-     * <code>string ownerAddress = 5;</code>
+     * <code>string owner_address = 5;</code>
      */
     public java.lang.String getOwnerAddress() {
       java.lang.Object ref = ownerAddress_;
@@ -935,7 +935,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string ownerAddress = 5;</code>
+     * <code>string owner_address = 5;</code>
      */
     public com.google.protobuf.ByteString
         getOwnerAddressBytes() {
@@ -951,7 +951,7 @@ private static final long serialVersionUID = 0L;
       }
     }
     /**
-     * <code>string ownerAddress = 5;</code>
+     * <code>string owner_address = 5;</code>
      */
     public Builder setOwnerAddress(
         java.lang.String value) {
@@ -964,7 +964,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string ownerAddress = 5;</code>
+     * <code>string owner_address = 5;</code>
      */
     public Builder clearOwnerAddress() {
       
@@ -973,7 +973,7 @@ private static final long serialVersionUID = 0L;
       return this;
     }
     /**
-     * <code>string ownerAddress = 5;</code>
+     * <code>string owner_address = 5;</code>
      */
     public Builder setOwnerAddressBytes(
         com.google.protobuf.ByteString value) {
