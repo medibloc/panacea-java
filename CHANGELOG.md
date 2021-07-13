@@ -4,10 +4,11 @@
 
 TBD
 
-## [v2.0.0-alpha.2](https://github.com/medibloc/panacea-java/releases/tag/v2.0.0-alpha.2) - 2021-07-01 
+## [v2.0.0-alpha.3](https://github.com/medibloc/panacea-java/releases/tag/v2.0.0-alpha.3) - 2021-07-12 
 
 ### Features
-- [\#32](https://github.com/medibloc/panacea-java/pull/32) feat: Make compatible with panacea-core v2.0.0 based on Cosmos SDK Stargate  
+- [\#32](https://github.com/medibloc/panacea-java/pull/32) feat: Make compatible with panacea-core v2.0.0 based on Cosmos SDK Stargate
+- [\#38](https://github.com/medibloc/panacea-java/pull/38) feat: Apply changes to cosmos-sdk version and panacea-core(snake_case & did module)
 
 ## [v0.1.5](https://github.com/medibloc/panacea-java/releases/tag/v0.1.5) - 2021-04-08
 
