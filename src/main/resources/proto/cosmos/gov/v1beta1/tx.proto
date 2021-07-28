@@ -1,5 +1,6 @@
 syntax = "proto3";
 package cosmos.gov.v1beta1;
+option java_multiple_files = true;
 
 import "cosmos/base/v1beta1/coin.proto";
 import "cosmos/gov/v1beta1/gov.proto";
@@ -7,7 +8,6 @@ import "cosmos_proto/cosmos.proto";
 import "gogoproto/gogo.proto";
 import "google/protobuf/any.proto";
 
-option java_multiple_files = true;
 option go_package = "github.com/cosmos/cosmos-sdk/x/gov/types";
 
 // Msg defines the bank Msg service.

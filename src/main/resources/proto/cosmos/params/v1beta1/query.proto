@@ -1,11 +1,11 @@
 syntax = "proto3";
 package cosmos.params.v1beta1;
+option java_multiple_files = true;
 
 import "gogoproto/gogo.proto";
 import "google/api/annotations.proto";
 import "cosmos/params/v1beta1/params.proto";
 
-option java_multiple_files = true;
 option go_package = "github.com/cosmos/cosmos-sdk/x/params/types/proposal";
 
 // Query defines the gRPC querier service.

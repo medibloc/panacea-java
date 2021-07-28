@@ -1,9 +1,9 @@
 syntax = "proto3";
 package cosmos.base.reflection.v1beta1;
+option java_multiple_files = true;
 
 import "google/api/annotations.proto";
 
-option java_multiple_files = true;
 option go_package = "github.com/cosmos/cosmos-sdk/client/grpc/reflection";
 
 // ReflectionService defines a service for interface reflection.

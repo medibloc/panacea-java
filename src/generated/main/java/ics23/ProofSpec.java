@@ -127,7 +127,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * any field in the ExistenceProof must be the same as in this spec.
-   * except Prefix, which is just the first bytes of prefix (spec can be longer) 
+   * except Prefix, which is just the first bytes of prefix (spec can be longer)
    * </pre>
    *
    * <code>.ics23.LeafOp leaf_spec = 1;</code>
@@ -138,7 +138,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * any field in the ExistenceProof must be the same as in this spec.
-   * except Prefix, which is just the first bytes of prefix (spec can be longer) 
+   * except Prefix, which is just the first bytes of prefix (spec can be longer)
    * </pre>
    *
    * <code>.ics23.LeafOp leaf_spec = 1;</code>
@@ -149,7 +149,7 @@ private static final long serialVersionUID = 0L;
   /**
    * <pre>
    * any field in the ExistenceProof must be the same as in this spec.
-   * except Prefix, which is just the first bytes of prefix (spec can be longer) 
+   * except Prefix, which is just the first bytes of prefix (spec can be longer)
    * </pre>
    *
    * <code>.ics23.LeafOp leaf_spec = 1;</code>
@@ -602,7 +602,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * any field in the ExistenceProof must be the same as in this spec.
-     * except Prefix, which is just the first bytes of prefix (spec can be longer) 
+     * except Prefix, which is just the first bytes of prefix (spec can be longer)
      * </pre>
      *
      * <code>.ics23.LeafOp leaf_spec = 1;</code>
@@ -613,7 +613,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * any field in the ExistenceProof must be the same as in this spec.
-     * except Prefix, which is just the first bytes of prefix (spec can be longer) 
+     * except Prefix, which is just the first bytes of prefix (spec can be longer)
      * </pre>
      *
      * <code>.ics23.LeafOp leaf_spec = 1;</code>
@@ -628,7 +628,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * any field in the ExistenceProof must be the same as in this spec.
-     * except Prefix, which is just the first bytes of prefix (spec can be longer) 
+     * except Prefix, which is just the first bytes of prefix (spec can be longer)
      * </pre>
      *
      * <code>.ics23.LeafOp leaf_spec = 1;</code>
@@ -649,7 +649,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * any field in the ExistenceProof must be the same as in this spec.
-     * except Prefix, which is just the first bytes of prefix (spec can be longer) 
+     * except Prefix, which is just the first bytes of prefix (spec can be longer)
      * </pre>
      *
      * <code>.ics23.LeafOp leaf_spec = 1;</code>
@@ -668,7 +668,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * any field in the ExistenceProof must be the same as in this spec.
-     * except Prefix, which is just the first bytes of prefix (spec can be longer) 
+     * except Prefix, which is just the first bytes of prefix (spec can be longer)
      * </pre>
      *
      * <code>.ics23.LeafOp leaf_spec = 1;</code>
@@ -691,7 +691,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * any field in the ExistenceProof must be the same as in this spec.
-     * except Prefix, which is just the first bytes of prefix (spec can be longer) 
+     * except Prefix, which is just the first bytes of prefix (spec can be longer)
      * </pre>
      *
      * <code>.ics23.LeafOp leaf_spec = 1;</code>
@@ -710,7 +710,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * any field in the ExistenceProof must be the same as in this spec.
-     * except Prefix, which is just the first bytes of prefix (spec can be longer) 
+     * except Prefix, which is just the first bytes of prefix (spec can be longer)
      * </pre>
      *
      * <code>.ics23.LeafOp leaf_spec = 1;</code>
@@ -723,7 +723,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * any field in the ExistenceProof must be the same as in this spec.
-     * except Prefix, which is just the first bytes of prefix (spec can be longer) 
+     * except Prefix, which is just the first bytes of prefix (spec can be longer)
      * </pre>
      *
      * <code>.ics23.LeafOp leaf_spec = 1;</code>
@@ -739,7 +739,7 @@ private static final long serialVersionUID = 0L;
     /**
      * <pre>
      * any field in the ExistenceProof must be the same as in this spec.
-     * except Prefix, which is just the first bytes of prefix (spec can be longer) 
+     * except Prefix, which is just the first bytes of prefix (spec can be longer)
      * </pre>
      *
      * <code>.ics23.LeafOp leaf_spec = 1;</code>

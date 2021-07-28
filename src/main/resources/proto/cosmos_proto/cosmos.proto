@@ -1,9 +1,9 @@
 syntax = "proto3";
 package cosmos_proto;
+option java_multiple_files = true;
 
 import "google/protobuf/descriptor.proto";
 
-option java_multiple_files = true;
 option go_package = "github.com/regen-network/cosmos-proto";
 
 extend google.protobuf.MessageOptions {

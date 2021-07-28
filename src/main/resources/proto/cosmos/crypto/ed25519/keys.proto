@@ -1,9 +1,9 @@
 syntax = "proto3";
 package cosmos.crypto.ed25519;
+option java_multiple_files = true;
 
 import "gogoproto/gogo.proto";
 
-option java_multiple_files = true;
 option go_package = "github.com/cosmos/cosmos-sdk/crypto/keys/ed25519";
 
 // PubKey defines a ed25519 public key
