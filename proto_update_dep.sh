@@ -1,5 +1,9 @@
 #!/bin/bash
 
+##############################################################
+# This script updates 3rd-party proto files stored in the 'src/main/resources/proto'
+##############################################################
+
 set -eo pipefail
 
 SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )"
