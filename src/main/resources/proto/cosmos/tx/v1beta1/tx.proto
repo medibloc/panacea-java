@@ -1,5 +1,6 @@
 syntax = "proto3";
 package cosmos.tx.v1beta1;
+option java_multiple_files = true;
 
 import "gogoproto/gogo.proto";
 import "cosmos/crypto/multisig/v1beta1/multisig.proto";
@@ -7,7 +8,6 @@ import "cosmos/base/v1beta1/coin.proto";
 import "cosmos/tx/signing/v1beta1/signing.proto";
 import "google/protobuf/any.proto";
 
-option java_multiple_files = true;
 option go_package = "github.com/cosmos/cosmos-sdk/types/tx";
 
 // Tx is the standard type used for broadcasting transactions.

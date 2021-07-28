@@ -1,12 +1,12 @@
 syntax = "proto3";
 package ibc.applications.transfer.v1;
+option java_multiple_files = true;
 
 import "gogoproto/gogo.proto";
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "ibc/applications/transfer/v1/transfer.proto";
 import "google/api/annotations.proto";
 
-option java_multiple_files = true;
 option go_package = "github.com/cosmos/cosmos-sdk/x/ibc/applications/transfer/types";
 
 // Query provides defines the gRPC querier service.

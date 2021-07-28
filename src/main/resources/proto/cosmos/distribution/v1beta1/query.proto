@@ -1,5 +1,6 @@
 syntax = "proto3";
 package cosmos.distribution.v1beta1;
+option java_multiple_files = true;
 
 import "cosmos/base/query/v1beta1/pagination.proto";
 import "gogoproto/gogo.proto";
@@ -7,7 +8,6 @@ import "google/api/annotations.proto";
 import "cosmos/base/v1beta1/coin.proto";
 import "cosmos/distribution/v1beta1/distribution.proto";
 
-option java_multiple_files = true;
 option go_package = "github.com/cosmos/cosmos-sdk/x/distribution/types";
 
 // Query defines the gRPC querier service for distribution module.

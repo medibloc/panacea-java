@@ -1,9 +1,9 @@
 syntax = "proto3";
 package cosmos.base.store.v1beta1;
+option java_multiple_files = true;
 
 import "gogoproto/gogo.proto";
 
-option java_multiple_files = true;
 option go_package = "github.com/cosmos/cosmos-sdk/store/types";
 
 // CommitInfo defines commit information used by the multi-store when committing

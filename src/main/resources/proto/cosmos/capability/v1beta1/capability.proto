@@ -1,7 +1,7 @@
 syntax = "proto3";
 package cosmos.capability.v1beta1;
-
 option java_multiple_files = true;
+
 option go_package = "github.com/cosmos/cosmos-sdk/x/capability/types";
 
 import "gogoproto/gogo.proto";

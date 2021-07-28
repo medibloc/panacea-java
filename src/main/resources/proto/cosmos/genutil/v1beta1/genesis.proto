@@ -1,9 +1,9 @@
 syntax = "proto3";
 package cosmos.genutil.v1beta1;
+option java_multiple_files = true;
 
 import "gogoproto/gogo.proto";
 
-option java_multiple_files = true;
 option go_package = "github.com/cosmos/cosmos-sdk/x/genutil/types";
 
 // GenesisState defines the raw genesis transaction in JSON.

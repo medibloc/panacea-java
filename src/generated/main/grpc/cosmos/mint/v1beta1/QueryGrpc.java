@@ -30,30 +30,30 @@ public final class QueryGrpc {
   public static final String SERVICE_NAME = "cosmos.mint.v1beta1.Query";
 
   // Static method descriptors that strictly reflect the proto.
-  private static volatile io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryOuterClass.QueryParamsRequest,
-      cosmos.mint.v1beta1.QueryOuterClass.QueryParamsResponse> getParamsMethod;
+  private static volatile io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryParamsRequest,
+      cosmos.mint.v1beta1.QueryParamsResponse> getParamsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Params",
-      requestType = cosmos.mint.v1beta1.QueryOuterClass.QueryParamsRequest.class,
-      responseType = cosmos.mint.v1beta1.QueryOuterClass.QueryParamsResponse.class,
+      requestType = cosmos.mint.v1beta1.QueryParamsRequest.class,
+      responseType = cosmos.mint.v1beta1.QueryParamsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryOuterClass.QueryParamsRequest,
-      cosmos.mint.v1beta1.QueryOuterClass.QueryParamsResponse> getParamsMethod() {
-    io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryOuterClass.QueryParamsRequest, cosmos.mint.v1beta1.QueryOuterClass.QueryParamsResponse> getParamsMethod;
+  public static io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryParamsRequest,
+      cosmos.mint.v1beta1.QueryParamsResponse> getParamsMethod() {
+    io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryParamsRequest, cosmos.mint.v1beta1.QueryParamsResponse> getParamsMethod;
     if ((getParamsMethod = QueryGrpc.getParamsMethod) == null) {
       synchronized (QueryGrpc.class) {
         if ((getParamsMethod = QueryGrpc.getParamsMethod) == null) {
           QueryGrpc.getParamsMethod = getParamsMethod = 
-              io.grpc.MethodDescriptor.<cosmos.mint.v1beta1.QueryOuterClass.QueryParamsRequest, cosmos.mint.v1beta1.QueryOuterClass.QueryParamsResponse>newBuilder()
+              io.grpc.MethodDescriptor.<cosmos.mint.v1beta1.QueryParamsRequest, cosmos.mint.v1beta1.QueryParamsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "cosmos.mint.v1beta1.Query", "Params"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cosmos.mint.v1beta1.QueryOuterClass.QueryParamsRequest.getDefaultInstance()))
+                  cosmos.mint.v1beta1.QueryParamsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cosmos.mint.v1beta1.QueryOuterClass.QueryParamsResponse.getDefaultInstance()))
+                  cosmos.mint.v1beta1.QueryParamsResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new QueryMethodDescriptorSupplier("Params"))
                   .build();
           }
@@ -62,30 +62,30 @@ public final class QueryGrpc {
      return getParamsMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryOuterClass.QueryInflationRequest,
-      cosmos.mint.v1beta1.QueryOuterClass.QueryInflationResponse> getInflationMethod;
+  private static volatile io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryInflationRequest,
+      cosmos.mint.v1beta1.QueryInflationResponse> getInflationMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "Inflation",
-      requestType = cosmos.mint.v1beta1.QueryOuterClass.QueryInflationRequest.class,
-      responseType = cosmos.mint.v1beta1.QueryOuterClass.QueryInflationResponse.class,
+      requestType = cosmos.mint.v1beta1.QueryInflationRequest.class,
+      responseType = cosmos.mint.v1beta1.QueryInflationResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryOuterClass.QueryInflationRequest,
-      cosmos.mint.v1beta1.QueryOuterClass.QueryInflationResponse> getInflationMethod() {
-    io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryOuterClass.QueryInflationRequest, cosmos.mint.v1beta1.QueryOuterClass.QueryInflationResponse> getInflationMethod;
+  public static io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryInflationRequest,
+      cosmos.mint.v1beta1.QueryInflationResponse> getInflationMethod() {
+    io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryInflationRequest, cosmos.mint.v1beta1.QueryInflationResponse> getInflationMethod;
     if ((getInflationMethod = QueryGrpc.getInflationMethod) == null) {
       synchronized (QueryGrpc.class) {
         if ((getInflationMethod = QueryGrpc.getInflationMethod) == null) {
           QueryGrpc.getInflationMethod = getInflationMethod = 
-              io.grpc.MethodDescriptor.<cosmos.mint.v1beta1.QueryOuterClass.QueryInflationRequest, cosmos.mint.v1beta1.QueryOuterClass.QueryInflationResponse>newBuilder()
+              io.grpc.MethodDescriptor.<cosmos.mint.v1beta1.QueryInflationRequest, cosmos.mint.v1beta1.QueryInflationResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "cosmos.mint.v1beta1.Query", "Inflation"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cosmos.mint.v1beta1.QueryOuterClass.QueryInflationRequest.getDefaultInstance()))
+                  cosmos.mint.v1beta1.QueryInflationRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cosmos.mint.v1beta1.QueryOuterClass.QueryInflationResponse.getDefaultInstance()))
+                  cosmos.mint.v1beta1.QueryInflationResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new QueryMethodDescriptorSupplier("Inflation"))
                   .build();
           }
@@ -94,30 +94,30 @@ public final class QueryGrpc {
      return getInflationMethod;
   }
 
-  private static volatile io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsRequest,
-      cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsResponse> getAnnualProvisionsMethod;
+  private static volatile io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryAnnualProvisionsRequest,
+      cosmos.mint.v1beta1.QueryAnnualProvisionsResponse> getAnnualProvisionsMethod;
 
   @io.grpc.stub.annotations.RpcMethod(
       fullMethodName = SERVICE_NAME + '/' + "AnnualProvisions",
-      requestType = cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsRequest.class,
-      responseType = cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsResponse.class,
+      requestType = cosmos.mint.v1beta1.QueryAnnualProvisionsRequest.class,
+      responseType = cosmos.mint.v1beta1.QueryAnnualProvisionsResponse.class,
       methodType = io.grpc.MethodDescriptor.MethodType.UNARY)
-  public static io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsRequest,
-      cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsResponse> getAnnualProvisionsMethod() {
-    io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsRequest, cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsResponse> getAnnualProvisionsMethod;
+  public static io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryAnnualProvisionsRequest,
+      cosmos.mint.v1beta1.QueryAnnualProvisionsResponse> getAnnualProvisionsMethod() {
+    io.grpc.MethodDescriptor<cosmos.mint.v1beta1.QueryAnnualProvisionsRequest, cosmos.mint.v1beta1.QueryAnnualProvisionsResponse> getAnnualProvisionsMethod;
     if ((getAnnualProvisionsMethod = QueryGrpc.getAnnualProvisionsMethod) == null) {
       synchronized (QueryGrpc.class) {
         if ((getAnnualProvisionsMethod = QueryGrpc.getAnnualProvisionsMethod) == null) {
           QueryGrpc.getAnnualProvisionsMethod = getAnnualProvisionsMethod = 
-              io.grpc.MethodDescriptor.<cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsRequest, cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsResponse>newBuilder()
+              io.grpc.MethodDescriptor.<cosmos.mint.v1beta1.QueryAnnualProvisionsRequest, cosmos.mint.v1beta1.QueryAnnualProvisionsResponse>newBuilder()
               .setType(io.grpc.MethodDescriptor.MethodType.UNARY)
               .setFullMethodName(generateFullMethodName(
                   "cosmos.mint.v1beta1.Query", "AnnualProvisions"))
               .setSampledToLocalTracing(true)
               .setRequestMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsRequest.getDefaultInstance()))
+                  cosmos.mint.v1beta1.QueryAnnualProvisionsRequest.getDefaultInstance()))
               .setResponseMarshaller(io.grpc.protobuf.ProtoUtils.marshaller(
-                  cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsResponse.getDefaultInstance()))
+                  cosmos.mint.v1beta1.QueryAnnualProvisionsResponse.getDefaultInstance()))
                   .setSchemaDescriptor(new QueryMethodDescriptorSupplier("AnnualProvisions"))
                   .build();
           }
@@ -161,8 +161,8 @@ public final class QueryGrpc {
      * Params returns the total set of minting parameters.
      * </pre>
      */
-    public void params(cosmos.mint.v1beta1.QueryOuterClass.QueryParamsRequest request,
-        io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryOuterClass.QueryParamsResponse> responseObserver) {
+    public void params(cosmos.mint.v1beta1.QueryParamsRequest request,
+        io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryParamsResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getParamsMethod(), responseObserver);
     }
 
@@ -171,8 +171,8 @@ public final class QueryGrpc {
      * Inflation returns the current minting inflation value.
      * </pre>
      */
-    public void inflation(cosmos.mint.v1beta1.QueryOuterClass.QueryInflationRequest request,
-        io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryOuterClass.QueryInflationResponse> responseObserver) {
+    public void inflation(cosmos.mint.v1beta1.QueryInflationRequest request,
+        io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryInflationResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getInflationMethod(), responseObserver);
     }
 
@@ -181,8 +181,8 @@ public final class QueryGrpc {
      * AnnualProvisions current minting annual provisions value.
      * </pre>
      */
-    public void annualProvisions(cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsRequest request,
-        io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsResponse> responseObserver) {
+    public void annualProvisions(cosmos.mint.v1beta1.QueryAnnualProvisionsRequest request,
+        io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryAnnualProvisionsResponse> responseObserver) {
       asyncUnimplementedUnaryCall(getAnnualProvisionsMethod(), responseObserver);
     }
 
@@ -192,22 +192,22 @@ public final class QueryGrpc {
             getParamsMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                cosmos.mint.v1beta1.QueryOuterClass.QueryParamsRequest,
-                cosmos.mint.v1beta1.QueryOuterClass.QueryParamsResponse>(
+                cosmos.mint.v1beta1.QueryParamsRequest,
+                cosmos.mint.v1beta1.QueryParamsResponse>(
                   this, METHODID_PARAMS)))
           .addMethod(
             getInflationMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                cosmos.mint.v1beta1.QueryOuterClass.QueryInflationRequest,
-                cosmos.mint.v1beta1.QueryOuterClass.QueryInflationResponse>(
+                cosmos.mint.v1beta1.QueryInflationRequest,
+                cosmos.mint.v1beta1.QueryInflationResponse>(
                   this, METHODID_INFLATION)))
           .addMethod(
             getAnnualProvisionsMethod(),
             asyncUnaryCall(
               new MethodHandlers<
-                cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsRequest,
-                cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsResponse>(
+                cosmos.mint.v1beta1.QueryAnnualProvisionsRequest,
+                cosmos.mint.v1beta1.QueryAnnualProvisionsResponse>(
                   this, METHODID_ANNUAL_PROVISIONS)))
           .build();
     }
@@ -239,8 +239,8 @@ public final class QueryGrpc {
      * Params returns the total set of minting parameters.
      * </pre>
      */
-    public void params(cosmos.mint.v1beta1.QueryOuterClass.QueryParamsRequest request,
-        io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryOuterClass.QueryParamsResponse> responseObserver) {
+    public void params(cosmos.mint.v1beta1.QueryParamsRequest request,
+        io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryParamsResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getParamsMethod(), getCallOptions()), request, responseObserver);
     }
@@ -250,8 +250,8 @@ public final class QueryGrpc {
      * Inflation returns the current minting inflation value.
      * </pre>
      */
-    public void inflation(cosmos.mint.v1beta1.QueryOuterClass.QueryInflationRequest request,
-        io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryOuterClass.QueryInflationResponse> responseObserver) {
+    public void inflation(cosmos.mint.v1beta1.QueryInflationRequest request,
+        io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryInflationResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getInflationMethod(), getCallOptions()), request, responseObserver);
     }
@@ -261,8 +261,8 @@ public final class QueryGrpc {
      * AnnualProvisions current minting annual provisions value.
      * </pre>
      */
-    public void annualProvisions(cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsRequest request,
-        io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsResponse> responseObserver) {
+    public void annualProvisions(cosmos.mint.v1beta1.QueryAnnualProvisionsRequest request,
+        io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryAnnualProvisionsResponse> responseObserver) {
       asyncUnaryCall(
           getChannel().newCall(getAnnualProvisionsMethod(), getCallOptions()), request, responseObserver);
     }
@@ -294,7 +294,7 @@ public final class QueryGrpc {
      * Params returns the total set of minting parameters.
      * </pre>
      */
-    public cosmos.mint.v1beta1.QueryOuterClass.QueryParamsResponse params(cosmos.mint.v1beta1.QueryOuterClass.QueryParamsRequest request) {
+    public cosmos.mint.v1beta1.QueryParamsResponse params(cosmos.mint.v1beta1.QueryParamsRequest request) {
       return blockingUnaryCall(
           getChannel(), getParamsMethod(), getCallOptions(), request);
     }
@@ -304,7 +304,7 @@ public final class QueryGrpc {
      * Inflation returns the current minting inflation value.
      * </pre>
      */
-    public cosmos.mint.v1beta1.QueryOuterClass.QueryInflationResponse inflation(cosmos.mint.v1beta1.QueryOuterClass.QueryInflationRequest request) {
+    public cosmos.mint.v1beta1.QueryInflationResponse inflation(cosmos.mint.v1beta1.QueryInflationRequest request) {
       return blockingUnaryCall(
           getChannel(), getInflationMethod(), getCallOptions(), request);
     }
@@ -314,7 +314,7 @@ public final class QueryGrpc {
      * AnnualProvisions current minting annual provisions value.
      * </pre>
      */
-    public cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsResponse annualProvisions(cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsRequest request) {
+    public cosmos.mint.v1beta1.QueryAnnualProvisionsResponse annualProvisions(cosmos.mint.v1beta1.QueryAnnualProvisionsRequest request) {
       return blockingUnaryCall(
           getChannel(), getAnnualProvisionsMethod(), getCallOptions(), request);
     }
@@ -346,8 +346,8 @@ public final class QueryGrpc {
      * Params returns the total set of minting parameters.
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<cosmos.mint.v1beta1.QueryOuterClass.QueryParamsResponse> params(
-        cosmos.mint.v1beta1.QueryOuterClass.QueryParamsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<cosmos.mint.v1beta1.QueryParamsResponse> params(
+        cosmos.mint.v1beta1.QueryParamsRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getParamsMethod(), getCallOptions()), request);
     }
@@ -357,8 +357,8 @@ public final class QueryGrpc {
      * Inflation returns the current minting inflation value.
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<cosmos.mint.v1beta1.QueryOuterClass.QueryInflationResponse> inflation(
-        cosmos.mint.v1beta1.QueryOuterClass.QueryInflationRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<cosmos.mint.v1beta1.QueryInflationResponse> inflation(
+        cosmos.mint.v1beta1.QueryInflationRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getInflationMethod(), getCallOptions()), request);
     }
@@ -368,8 +368,8 @@ public final class QueryGrpc {
      * AnnualProvisions current minting annual provisions value.
      * </pre>
      */
-    public com.google.common.util.concurrent.ListenableFuture<cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsResponse> annualProvisions(
-        cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsRequest request) {
+    public com.google.common.util.concurrent.ListenableFuture<cosmos.mint.v1beta1.QueryAnnualProvisionsResponse> annualProvisions(
+        cosmos.mint.v1beta1.QueryAnnualProvisionsRequest request) {
       return futureUnaryCall(
           getChannel().newCall(getAnnualProvisionsMethod(), getCallOptions()), request);
     }
@@ -397,16 +397,16 @@ public final class QueryGrpc {
     public void invoke(Req request, io.grpc.stub.StreamObserver<Resp> responseObserver) {
       switch (methodId) {
         case METHODID_PARAMS:
-          serviceImpl.params((cosmos.mint.v1beta1.QueryOuterClass.QueryParamsRequest) request,
-              (io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryOuterClass.QueryParamsResponse>) responseObserver);
+          serviceImpl.params((cosmos.mint.v1beta1.QueryParamsRequest) request,
+              (io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryParamsResponse>) responseObserver);
           break;
         case METHODID_INFLATION:
-          serviceImpl.inflation((cosmos.mint.v1beta1.QueryOuterClass.QueryInflationRequest) request,
-              (io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryOuterClass.QueryInflationResponse>) responseObserver);
+          serviceImpl.inflation((cosmos.mint.v1beta1.QueryInflationRequest) request,
+              (io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryInflationResponse>) responseObserver);
           break;
         case METHODID_ANNUAL_PROVISIONS:
-          serviceImpl.annualProvisions((cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsRequest) request,
-              (io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryOuterClass.QueryAnnualProvisionsResponse>) responseObserver);
+          serviceImpl.annualProvisions((cosmos.mint.v1beta1.QueryAnnualProvisionsRequest) request,
+              (io.grpc.stub.StreamObserver<cosmos.mint.v1beta1.QueryAnnualProvisionsResponse>) responseObserver);
           break;
         default:
           throw new AssertionError();
