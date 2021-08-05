@@ -48,4 +48,7 @@ jobs:
       run: chmod +x gradlew
 
     - name: Build + Test
+      env:
+        OWNER_MNEMONIC: ${{ secrets.OWNER_MNEMONIC }}
+        RECIPIENT_MNEMONIC: ${{ secrets.RECIPIENT_MNEMONIC }}
       run: ./gradlew build
