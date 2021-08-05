@@ -25,13 +25,9 @@ dependencies {
 ## Feature
 * The functions we support are as follows.
     * Broadcast tx
-        * [GrpcBroadcastTest](src/test/java/org/medibloc/panacea/GrpcBroadcastTest.java) (send coin)
     * Get account / balance / tx(s) / block / node
-        * [GrpcQueryTest](src/test/java/org/medibloc/panacea/GrpcQueryTest.java)
     * Get aol(topic,record)
-        * [GrpcAolTest](src/test/java/org/medibloc/panacea/GrpcAolTest.java)
     * Get did document
-        * [GrpcDIDTest](src/test/java/org/medibloc/panacea/GrpcDIDTest.java)
 
 ## Broadcast tx
 ### Send Coin

@@ -19,8 +19,8 @@ jobs:
 
     - name: Build panacea-core
       env:
-        OWNER_MNEMONIC: genuine key outside escape oval unhappy mansion cricket practice quarter purchase picnic layer bicycle stem soup column creek convince obey rather rice there alcohol
-        RECIPIENT_MNEMONIC: margin river antenna nest drama combine crystal clarify route country genuine acoustic hold ocean image fox flame invite scrub chalk destroy resource item final
+        OWNER_MNEMONIC: ${{ secrets.OWNER_MNEMONIC }}
+        RECIPIENT_MNEMONIC: ${{ secrets.RECIPIENT_MNEMONIC }}
         DOCKER_NAME: panacea-core-${{ github.sha }}
         DOCKER_TAG: panacea-core:${{ github.sha }}
       run: |
