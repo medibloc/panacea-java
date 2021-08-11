@@ -101,9 +101,19 @@ Coin ownerCoin = client.getBalance(ownerAddress, "umed");
 DefaultNodeInfo nodeInfo = client.getNodeInfo();
 ```
 
+### Tx
+```java
+Tx tx = client.getTxResponse(txHash);
+```
+
 ### TxResponse
 ```java
 TxResponse txResponse = client.getTxResponse(txHash);
+```
+
+### Txs
+```java
+List<Tx> txs = client.getTxsByHeight(height);
 ```
 
 ### TxResponses

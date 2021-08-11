@@ -7,6 +7,7 @@ import cosmos.base.v1beta1.Coin;
 import cosmos.tx.v1beta1.BroadcastMode;
 import cosmos.tx.v1beta1.BroadcastTxRequest;
 import cosmos.tx.v1beta1.Fee;
+import cosmos.tx.v1beta1.Tx;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
 import org.junit.Assert;
@@ -18,6 +19,7 @@ import org.medibloc.panacea.domain.Transactions;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
+import java.util.List;
 
 public class GrpcBroadcastTest {
     private PanaceaGrpcClient client;
@@ -67,6 +69,13 @@ public class GrpcBroadcastTest {
         Assert.assertEquals(ownerAddress, event.getAttributes(1).getValue());
         String expectedAmount = String.format("%s%s", sendCoin.getAmount(), sendCoin.getDenom());
         Assert.assertEquals(expectedAmount, event.getAttributes(2).getValue());
+
+        Tx tx = client.getTx(response.getTxhash());
+        Assert.assertEquals(memo, tx.getBody().getMemo());
+
+        List<Tx> txs = client.getTxsByHeight(response.getHeight());
+        Assert.assertEquals(1, txs.size());
+        Assert.assertEquals(memo, txs.get(0).getBody().getMemo());
     }
 
     @Test
@@ -94,5 +103,4 @@ public class GrpcBroadcastTest {
         Assert.assertEquals(0, response.getCode());
         System.out.println(response);
     }
-
 }
