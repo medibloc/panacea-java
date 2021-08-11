@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class GrpcBroadcastTest {
     private PanaceaGrpcClient client;
@@ -39,7 +40,7 @@ public class GrpcBroadcastTest {
     }
 
     @Test
-    public void testSendMsg() throws PanaceaApiException, IOException, NoSuchAlgorithmException {
+    public void testSendMsg() throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException {
         Wallet ownerWallet = getWallet(TestConst.ownerMnemonic);
         String ownerAddress = ownerWallet.getAddress();
         Wallet toWallet = getWallet(TestConst.toMnemonic);
@@ -70,16 +71,19 @@ public class GrpcBroadcastTest {
         String expectedAmount = String.format("%s%s", sendCoin.getAmount(), sendCoin.getDenom());
         Assert.assertEquals(expectedAmount, event.getAttributes(2).getValue());
 
+        TimeUnit.SECONDS.sleep(1);
         Tx tx = client.getTx(response.getTxhash());
         Assert.assertEquals(memo, tx.getBody().getMemo());
 
         List<Tx> txs = client.getTxsByHeight(response.getHeight());
         Assert.assertEquals(1, txs.size());
         Assert.assertEquals(memo, txs.get(0).getBody().getMemo());
+        Assert.assertEquals(1, txs.get(0).getBody().getMessagesCount());
+        Assert.assertEquals(fee, txs.get(0).getAuthInfo().getFee());
     }
 
     @Test
-    public void testSendMsgs() throws PanaceaApiException, IOException, NoSuchAlgorithmException {
+    public void testSendMsgs() throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException {
         Wallet ownerWallet = getWallet(TestConst.ownerMnemonic);
         Wallet toWallet = getWallet(TestConst.toMnemonic);
 
@@ -102,5 +106,16 @@ public class GrpcBroadcastTest {
         TxResponse response = client.broadcast(request);
         Assert.assertEquals(0, response.getCode());
         System.out.println(response);
+
+        TimeUnit.SECONDS.sleep(1);
+        Tx tx = client.getTx(response.getTxhash());
+        Assert.assertEquals(memo, tx.getBody().getMemo());
+
+        List<Tx> txs = client.getTxsByHeight(response.getHeight());
+        Assert.assertEquals(1, txs.size());
+        Assert.assertEquals(memo, txs.get(0).getBody().getMemo());
+        Assert.assertEquals(2, txs.get(0).getBody().getMessagesCount());
+        Assert.assertEquals(fee, txs.get(0).getAuthInfo().getFee());
+
     }
 }
