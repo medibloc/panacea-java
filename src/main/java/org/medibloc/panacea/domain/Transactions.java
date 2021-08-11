@@ -28,6 +28,7 @@ public class Transactions {
         for (GeneratedMessageV3 message : messages) {
             builder.addMessages(Any.pack(message, ""));
         }
+        builder.setMemo(memo);
         return builder.build();
     }
 

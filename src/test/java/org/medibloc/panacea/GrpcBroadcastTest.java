@@ -1,6 +1,7 @@
 package org.medibloc.panacea;
 
 import cosmos.bank.v1beta1.MsgSend;
+import cosmos.base.abci.v1beta1.StringEvent;
 import cosmos.base.abci.v1beta1.TxResponse;
 import cosmos.base.v1beta1.Coin;
 import cosmos.tx.v1beta1.BroadcastMode;
@@ -60,6 +61,12 @@ public class GrpcBroadcastTest {
         TxResponse response = client.broadcast(request);
         Assert.assertEquals(0, response.getCode());
         System.out.println(response);
+
+        StringEvent event = response.getLogs(0).getEvents(1);
+        Assert.assertEquals(toAddress, event.getAttributes(0).getValue());
+        Assert.assertEquals(ownerAddress, event.getAttributes(1).getValue());
+        String expectedAmount = String.format("%s%s", sendCoin.getAmount(), sendCoin.getDenom());
+        Assert.assertEquals(expectedAmount, event.getAttributes(2).getValue());
     }
 
     @Test
