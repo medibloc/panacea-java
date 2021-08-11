@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.medibloc.panacea:panacea-java:2.0.0'
+    implementation 'org.medibloc.panacea:panacea-java:2.0.1'
 }
 ```
 
@@ -103,7 +103,7 @@ DefaultNodeInfo nodeInfo = client.getNodeInfo();
 
 ### Tx
 ```java
-Tx tx = client.getTxResponse(txHash);
+Tx tx = client.getTx(txHash);
 ```
 
 ### TxResponse

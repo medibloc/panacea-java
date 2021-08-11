@@ -4,6 +4,11 @@
 
 TBD
 
+## [v2.0.1](https://github.com/medibloc/panacea-java/releases/tag/v2.0.1) - 2021-08-11
+
+### Bug fixs
+- -[\#47] feat: Add getTx() and getTxs() for fetching a memo and so on
+
 ## [v2.0.0](https://github.com/medibloc/panacea-java/releases/tag/v2.0.0) - 2021-07-14 
 
 ### Features
