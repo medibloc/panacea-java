@@ -8,7 +8,6 @@ TBD
 
 ### Features
 - [\#47] feat: Add getTx() and getTxs() for fetching a memo and so on
-- [\#48] feat: Add check memo when test multi sends. and fee check.
 
 ### Bug fixes
 - [\#46] fix: Include a memo to the tx message
