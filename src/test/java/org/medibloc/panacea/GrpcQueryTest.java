@@ -20,6 +20,7 @@ import tendermint.types.Block;
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class GrpcQueryTest extends AbstractGrpcTest {
 
@@ -56,8 +57,9 @@ public class GrpcQueryTest extends AbstractGrpcTest {
     }
 
     @Test
-    public void testGetTxResponseByHash() throws PanaceaApiException, IOException, NoSuchAlgorithmException {
+    public void testGetTxResponseByHash() throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException {
         TxResponse sendTx = simpleSendTx();
+        TimeUnit.SECONDS.sleep(1);
         TxResponse txResponse = client.getTxResponse(sendTx.getTxhash());
         System.out.println(txResponse);
     }
