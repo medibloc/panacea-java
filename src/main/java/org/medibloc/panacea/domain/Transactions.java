@@ -16,18 +16,12 @@ import java.util.List;
 
 public class Transactions {
 
-    public static TxBody createTxBody(GeneratedMessageV3 message, String memo) {
-        return TxBody.newBuilder()
-                .addMessages(Any.pack(message, ""))
-                .setMemo(memo)
-                .build();
-    }
-
-    public static TxBody createTxBody(List<? extends GeneratedMessageV3> messages, String memo) {
+   public static TxBody createTxBody(List<? extends GeneratedMessageV3> messages, String memo) {
         TxBody.Builder builder = TxBody.newBuilder();
         for (GeneratedMessageV3 message : messages) {
             builder.addMessages(Any.pack(message, ""));
         }
+        builder.setMemo(memo);
         return builder.build();
     }
 
@@ -56,18 +50,6 @@ public class Transactions {
                 .setModeInfo(createSingleModeInfo())
                 .setSequence(wallet.getSequence())
                 .build();
-    }
-
-    public static AuthInfo createAutoInfo(Wallet wallet, Coin coin, long gasLimit) {
-        return createAutoInfo(Collections.singletonList(wallet), createFee(coin, gasLimit));
-    }
-
-    public static AuthInfo createAutoInfo(Wallet wallet, Fee fee) {
-        return createAutoInfo(Collections.singletonList(wallet), fee);
-    }
-
-    public static AuthInfo createAutoInfo(List<Wallet> wallets, Coin coin, long gasLimit) {
-        return createAutoInfo(wallets, createFee(coin, gasLimit));
     }
 
     public static AuthInfo createAutoInfo(List<Wallet> wallets, Fee fee) {
@@ -103,23 +85,12 @@ public class Transactions {
         return signatures;
     }
 
-    public static Tx createTxWithSign(Wallet wallet, TxBody txBody, AuthInfo authInfo) throws IOException, NoSuchAlgorithmException {
-        return createTxWithSign(Collections.singletonList(wallet), txBody, authInfo);
-    }
-
     public static Tx createTxWithSign(List<Wallet> wallets, TxBody txBody, AuthInfo authInfo) throws IOException, NoSuchAlgorithmException {
         return Tx.newBuilder()
                 .setBody(txBody)
                 .setAuthInfo(authInfo)
                 .addAllSignatures(createSignatures(wallets, txBody, authInfo))
                 .build();
-    }
-
-    public static Tx createTxWithSign(List<Wallet> wallets,
-                                      GeneratedMessageV3 msg,
-                                      String memo,
-                                      Fee fee) throws IOException, NoSuchAlgorithmException {
-        return createTxWithSign(wallets, Collections.singletonList(msg), memo, fee);
     }
 
     public static Tx createTxWithSign(List<Wallet> wallets,
