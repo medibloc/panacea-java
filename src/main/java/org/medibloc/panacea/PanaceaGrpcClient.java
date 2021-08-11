@@ -9,6 +9,7 @@ import cosmos.base.abci.v1beta1.TxResponse;
 import cosmos.base.tendermint.v1beta1.*;
 import cosmos.base.v1beta1.Coin;
 import cosmos.tx.v1beta1.*;
+import cosmos.tx.v1beta1.Tx;
 import io.grpc.Channel;
 import org.apache.commons.net.util.Base64;
 import panacea.aol.v2.*;
@@ -86,20 +87,34 @@ public class PanaceaGrpcClient {
         return response.getTxResponse();
     }
 
+    public Tx getTx(String txHash) {
+        return callGetTx(txHash).getTx();
+    }
+
     public TxResponse getTxResponse(String txHash) {
+        return callGetTx(txHash).getTxResponse();
+    }
+
+    private GetTxResponse callGetTx(String txHash) {
         GetTxRequest request = GetTxRequest.newBuilder()
                 .setHash(txHash)
                 .build();
-        GetTxResponse response = grpcStub.getTxServiceStub().getTx(request);
-        return response.getTxResponse();
+        return grpcStub.getTxServiceStub().getTx(request);
+    }
+
+    public List<Tx> getTxsByHeight(long height) {
+        return callGetTxsEvent(height).getTxsList();
     }
 
     public List<TxResponse> getTxResponsesByHeight(long height) {
+        return callGetTxsEvent(height).getTxResponsesList();
+    }
+
+    private GetTxsEventResponse callGetTxsEvent(long height) {
         GetTxsEventRequest request = GetTxsEventRequest.newBuilder()
                 .addEvents("tx.height=" + height)
                 .build();
-        GetTxsEventResponse response = grpcStub.getTxServiceStub().getTxsEvent(request);
-        return response.getTxResponsesList();
+        return grpcStub.getTxServiceStub().getTxsEvent(request);
     }
 
     public Block getBlockByHeight(long height) {
