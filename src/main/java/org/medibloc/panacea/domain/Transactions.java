@@ -23,7 +23,7 @@ public class Transactions {
                 .build();
     }
 
-   public static TxBody createTxBody(List<? extends GeneratedMessageV3> messages, String memo) {
+    public static TxBody createTxBody(List<? extends GeneratedMessageV3> messages, String memo) {
         TxBody.Builder builder = TxBody.newBuilder();
         for (GeneratedMessageV3 message : messages) {
             builder.addMessages(Any.pack(message, ""));
