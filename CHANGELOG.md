@@ -7,10 +7,10 @@ TBD
 ## [v2.0.1](https://github.com/medibloc/panacea-java/releases/tag/v2.0.1) - 2021-08-11
 
 ### Features
-- [\#47] feat: Add getTx() and getTxs() for fetching a memo and so on
+- [\#47](https://github.com/medibloc/panacea-java/pull/47) feat: Add getTx() and getTxs() for fetching a memo and so on
 
 ### Bug fixes
-- [\#46] fix: Include a memo to the tx message
+- [\#46](https://github.com/medibloc/panacea-java/pull/46) fix: Include a memo to the tx message
 
 ## [v2.0.0](https://github.com/medibloc/panacea-java/releases/tag/v2.0.0) - 2021-07-14 
 
