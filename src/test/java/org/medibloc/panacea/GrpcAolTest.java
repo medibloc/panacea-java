@@ -153,7 +153,9 @@ public class GrpcAolTest extends AbstractGrpcTest {
                 System.out.println("offset: " + msgRes.getOffset());
                 break;
             } catch (StatusRuntimeException e) {
-                if (e.getStatus().getCode().equals(Status.Code.INVALID_ARGUMENT)) { // if tx was not found (if tx isn't included in the block yet)
+                // if tx was not found (if tx isn't included in the block yet)
+                // Misc: Yeah. I know that the status code INVALID_ARGUMENT isn't proper, but it's the way how Cosmos was implemented.
+                if (e.getStatus().getCode().equals(Status.Code.INVALID_ARGUMENT)) {
                     Thread.sleep(1000);
                     continue;
                 }
