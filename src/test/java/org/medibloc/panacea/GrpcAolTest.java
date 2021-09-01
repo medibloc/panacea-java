@@ -61,7 +61,7 @@ public class GrpcAolTest extends AbstractGrpcTest {
                 .setWriterAddress(ownerAddress)
                 .setFeePayerAddress(toAddress)
                 .build();
-        testAddRecord(addRecordMsg);
+        testAddRecord(addRecordMsg, 0);
         testGetTopic(topicName, 1, 1, createTopicMsg.getDescription());
 
         MsgDeleteWriter deleteWriteMsg = MsgDeleteWriter.newBuilder()
@@ -124,7 +124,7 @@ public class GrpcAolTest extends AbstractGrpcTest {
         Assert.assertEquals(0, response.getCode());
     }
 
-    private void testAddRecord(MsgAddRecord msg) throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException, DecoderException {
+    private void testAddRecord(MsgAddRecord msg, long expectedOffset) throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException, DecoderException {
         String memo = "add record";
         List<Wallet> groupSignWallets = Arrays.asList(
                 getWallet(TestConst.toMnemonic), getWallet(TestConst.ownerMnemonic));
@@ -150,7 +150,7 @@ public class GrpcAolTest extends AbstractGrpcTest {
 
                 TxMsgData txMsgData = TxMsgData.parseFrom(Hex.decodeHex(response.getData()));
                 MsgAddRecordResponse msgRes = MsgAddRecordResponse.parseFrom(txMsgData.getData(0).getData());
-                System.out.println("offset: " + msgRes.getOffset());
+                Assert.assertEquals(expectedOffset, msgRes.getOffset());
                 break;
             } catch (StatusRuntimeException e) {
                 // if tx was not found (if tx isn't included in the block yet)
