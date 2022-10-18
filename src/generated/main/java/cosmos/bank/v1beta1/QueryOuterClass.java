@@ -127,35 +127,35 @@ public final class QueryOuterClass {
       "se\"*\n\031QueryDenomMetadataRequest\022\r\n\005denom" +
       "\030\001 \001(\t\"S\n\032QueryDenomMetadataResponse\0225\n\010" +
       "metadata\030\001 \001(\0132\035.cosmos.bank.v1beta1.Met" +
-      "adataB\004\310\336\037\0002\262\010\n\005Query\022\227\001\n\007Balance\022(.cosm" +
+      "adataB\004\310\336\037\0002\263\010\n\005Query\022\230\001\n\007Balance\022(.cosm" +
       "os.bank.v1beta1.QueryBalanceRequest\032).co" +
-      "smos.bank.v1beta1.QueryBalanceResponse\"7" +
-      "\202\323\344\223\0021\022//cosmos/bank/v1beta1/balances/{a" +
-      "ddress}/{denom}\022\233\001\n\013AllBalances\022,.cosmos" +
-      ".bank.v1beta1.QueryAllBalancesRequest\032-." +
-      "cosmos.bank.v1beta1.QueryAllBalancesResp" +
-      "onse\"/\202\323\344\223\002)\022\'/cosmos/bank/v1beta1/balan" +
-      "ces/{address}\022\217\001\n\013TotalSupply\022,.cosmos.b" +
-      "ank.v1beta1.QueryTotalSupplyRequest\032-.co" +
-      "smos.bank.v1beta1.QueryTotalSupplyRespon" +
-      "se\"#\202\323\344\223\002\035\022\033/cosmos/bank/v1beta1/supply\022" +
-      "\216\001\n\010SupplyOf\022).cosmos.bank.v1beta1.Query" +
-      "SupplyOfRequest\032*.cosmos.bank.v1beta1.Qu" +
-      "erySupplyOfResponse\"+\202\323\344\223\002%\022#/cosmos/ban" +
-      "k/v1beta1/supply/{denom}\022\200\001\n\006Params\022\'.co" +
-      "smos.bank.v1beta1.QueryParamsRequest\032(.c" +
-      "osmos.bank.v1beta1.QueryParamsResponse\"#" +
-      "\202\323\344\223\002\035\022\033/cosmos/bank/v1beta1/params\022\246\001\n\r" +
-      "DenomMetadata\022..cosmos.bank.v1beta1.Quer" +
-      "yDenomMetadataRequest\032/.cosmos.bank.v1be" +
-      "ta1.QueryDenomMetadataResponse\"4\202\323\344\223\002.\022," +
-      "/cosmos/bank/v1beta1/denoms_metadata/{de" +
-      "nom}\022\241\001\n\016DenomsMetadata\022/.cosmos.bank.v1" +
-      "beta1.QueryDenomsMetadataRequest\0320.cosmo" +
-      "s.bank.v1beta1.QueryDenomsMetadataRespon" +
-      "se\",\202\323\344\223\002&\022$/cosmos/bank/v1beta1/denoms_" +
-      "metadataB-P\001Z)github.com/cosmos/cosmos-s" +
-      "dk/x/bank/typesb\006proto3"
+      "smos.bank.v1beta1.QueryBalanceResponse\"8" +
+      "\202\323\344\223\0022\0220/cosmos/bank/v1beta1/balances/{a" +
+      "ddress}/by_denom\022\233\001\n\013AllBalances\022,.cosmo" +
+      "s.bank.v1beta1.QueryAllBalancesRequest\032-" +
+      ".cosmos.bank.v1beta1.QueryAllBalancesRes" +
+      "ponse\"/\202\323\344\223\002)\022\'/cosmos/bank/v1beta1/bala" +
+      "nces/{address}\022\217\001\n\013TotalSupply\022,.cosmos." +
+      "bank.v1beta1.QueryTotalSupplyRequest\032-.c" +
+      "osmos.bank.v1beta1.QueryTotalSupplyRespo" +
+      "nse\"#\202\323\344\223\002\035\022\033/cosmos/bank/v1beta1/supply" +
+      "\022\216\001\n\010SupplyOf\022).cosmos.bank.v1beta1.Quer" +
+      "ySupplyOfRequest\032*.cosmos.bank.v1beta1.Q" +
+      "uerySupplyOfResponse\"+\202\323\344\223\002%\022#/cosmos/ba" +
+      "nk/v1beta1/supply/{denom}\022\200\001\n\006Params\022\'.c" +
+      "osmos.bank.v1beta1.QueryParamsRequest\032(." +
+      "cosmos.bank.v1beta1.QueryParamsResponse\"" +
+      "#\202\323\344\223\002\035\022\033/cosmos/bank/v1beta1/params\022\246\001\n" +
+      "\rDenomMetadata\022..cosmos.bank.v1beta1.Que" +
+      "ryDenomMetadataRequest\032/.cosmos.bank.v1b" +
+      "eta1.QueryDenomMetadataResponse\"4\202\323\344\223\002.\022" +
+      ",/cosmos/bank/v1beta1/denoms_metadata/{d" +
+      "enom}\022\241\001\n\016DenomsMetadata\022/.cosmos.bank.v" +
+      "1beta1.QueryDenomsMetadataRequest\0320.cosm" +
+      "os.bank.v1beta1.QueryDenomsMetadataRespo" +
+      "nse\",\202\323\344\223\002&\022$/cosmos/bank/v1beta1/denoms" +
+      "_metadataB-P\001Z)github.com/cosmos/cosmos-" +
+      "sdk/x/bank/typesb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {

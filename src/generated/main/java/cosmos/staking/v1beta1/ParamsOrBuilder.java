@@ -76,4 +76,22 @@ public interface ParamsOrBuilder extends
    */
   com.google.protobuf.ByteString
       getBondDenomBytes();
+
+  /**
+   * <pre>
+   * min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators
+   * </pre>
+   *
+   * <code>string min_commission_rate = 6 [(.gogoproto.nullable) = false, (.gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (.gogoproto.moretags) = "yaml:&#92;"min_commission_rate&#92;""];</code>
+   */
+  java.lang.String getMinCommissionRate();
+  /**
+   * <pre>
+   * min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators
+   * </pre>
+   *
+   * <code>string min_commission_rate = 6 [(.gogoproto.nullable) = false, (.gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (.gogoproto.moretags) = "yaml:&#92;"min_commission_rate&#92;""];</code>
+   */
+  com.google.protobuf.ByteString
+      getMinCommissionRateBytes();
 }
