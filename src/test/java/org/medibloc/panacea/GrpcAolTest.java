@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class GrpcAolTest extends AbstractGrpcTest {
 
@@ -156,7 +157,7 @@ public class GrpcAolTest extends AbstractGrpcTest {
             } catch (StatusRuntimeException e) {
                 // if tx was not found (if tx isn't included in the block yet)
                 // Misc: Yeah. I know that the status code INVALID_ARGUMENT isn't proper, but it's the way how Cosmos was implemented.
-                if (e.getStatus().getCode().equals(Status.Code.INVALID_ARGUMENT)) {
+                if (e.getStatus().getCode().equals(Status.Code.NOT_FOUND)) {
                     Thread.sleep(sleepMs);
                     continue;
                 }

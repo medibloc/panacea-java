@@ -65,11 +65,14 @@ public class GrpcBroadcastTest {
         Assert.assertEquals(0, response.getCode());
         System.out.println(response);
 
-        StringEvent event = response.getLogs(0).getEvents(1);
-        Assert.assertEquals(toAddress, event.getAttributes(0).getValue());
-        Assert.assertEquals(ownerAddress, event.getAttributes(1).getValue());
+        StringEvent event = response.getLogs(0).getEvents(0);
         String expectedAmount = String.format("%s%s", sendCoin.getAmount(), sendCoin.getDenom());
-        Assert.assertEquals(expectedAmount, event.getAttributes(2).getValue());
+        Assert.assertEquals(toAddress, event.getAttributes(0).getValue());
+        Assert.assertEquals(expectedAmount, event.getAttributes(1).getValue());
+
+        event = response.getLogs(0).getEvents(1);
+        Assert.assertEquals(ownerAddress, event.getAttributes(0).getValue());
+        Assert.assertEquals(expectedAmount, event.getAttributes(1).getValue());
 
         TimeUnit.SECONDS.sleep(1);
         Tx tx = client.getTx(response.getTxhash());
