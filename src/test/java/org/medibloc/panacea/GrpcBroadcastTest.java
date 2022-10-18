@@ -70,9 +70,9 @@ public class GrpcBroadcastTest {
         Assert.assertEquals(toAddress, event.getAttributes(0).getValue());
         Assert.assertEquals(expectedAmount, event.getAttributes(1).getValue());
 
-        event = response.getLogs(0).getEvents(1);
-        Assert.assertEquals(ownerAddress, event.getAttributes(0).getValue());
-        Assert.assertEquals(expectedAmount, event.getAttributes(1).getValue());
+        StringEvent event2 = response.getLogs(0).getEvents(1);
+        Assert.assertEquals(ownerAddress, event2.getAttributes(0).getValue());
+        Assert.assertEquals(expectedAmount, event2.getAttributes(1).getValue());
 
         TimeUnit.SECONDS.sleep(1);
         Tx tx = client.getTx(response.getTxhash());
