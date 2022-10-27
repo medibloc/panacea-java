@@ -53,7 +53,7 @@ public class GrpcBroadcastTest {
                 .setToAddress(toAddress)
                 .build();
         String memo = "send msg";
-        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000"), 200000);
+        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000000"), 200000);
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
                 ownerWallet,
                 msg,
@@ -97,7 +97,7 @@ public class GrpcBroadcastTest {
                 .setToAddress(toWallet.getAddress())
                 .build();
         String memo = "send msg";
-        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000"), 200000);
+        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000000"), 200000);
 
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
                 ownerWallet,

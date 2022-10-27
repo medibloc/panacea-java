@@ -62,7 +62,7 @@ public class GrpcDIDTest extends AbstractGrpcTest {
                 .setFromAddress(ownerAddress)
                 .build();
         String memo = "create did";
-        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000"), 200000);
+        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000000"), 200000);
 
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
                 ownerWallet,
@@ -97,7 +97,7 @@ public class GrpcDIDTest extends AbstractGrpcTest {
                 .setFromAddress(ownerAddress)
                 .build();
         String memo = "update did";
-        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000"), 200000);
+        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000000"), 200000);
 
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
                 ownerWallet,
