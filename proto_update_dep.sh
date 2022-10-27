@@ -13,8 +13,8 @@ PROTO_PATH="${SCRIPT_DIR}/src/main/resources/proto"
 ##############################################################
 # Download proto files from the 'panacea-core' git repo
 ##############################################################
-PANACEA_CORE_VER_SHORT="v2.0.5"
-PANACEA_CORE_VER="v2.0.5"
+PANACEA_CORE_VER_SHORT="2.0.5"
+PANACEA_CORE_VER="v${PANACEA_CORE_VER_SHORT}"
 
 mkdir -p ${PROTO_PATH}
 curl https://codeload.github.com/medibloc/panacea-core/tar.gz/${PANACEA_CORE_VER} | \
