@@ -13,8 +13,8 @@ PROTO_PATH="${SCRIPT_DIR}/src/main/resources/proto"
 ##############################################################
 # Download proto files from the 'panacea-core' git repo
 ##############################################################
-PANACEA_CORE_VER_SHORT="ft-na-v2.0.5-cosmos-sdk-v0.45.9-dragonberry"
-PANACEA_CORE_VER="ft/na/v2.0.5-cosmos-sdk-v0.45.9-dragonberry"
+PANACEA_CORE_VER_SHORT="v2.0.5"
+PANACEA_CORE_VER="v2.0.5"
 
 mkdir -p ${PROTO_PATH}
 curl https://codeload.github.com/medibloc/panacea-core/tar.gz/${PANACEA_CORE_VER} | \

@@ -156,7 +156,6 @@ public class GrpcAolTest extends AbstractGrpcTest {
                 return client.getTxResponse(txHash);
             } catch (StatusRuntimeException e) {
                 // if tx was not found (if tx isn't included in the block yet)
-                // Misc: Yeah. I know that the status code INVALID_ARGUMENT isn't proper, but it's the way how Cosmos was implemented.
                 if (e.getStatus().getCode().equals(Status.Code.NOT_FOUND)) {
                     Thread.sleep(sleepMs);
                     continue;
