@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 public class GrpcAolTest extends AbstractGrpcTest {
 
@@ -74,7 +75,7 @@ public class GrpcAolTest extends AbstractGrpcTest {
 
     private void testDeleteWriter(MsgDeleteWriter deleteWriteMsg) throws IOException, NoSuchAlgorithmException, PanaceaApiException {
         String memo = "remove writer";
-        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000"), 200000);
+        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000000"), 200000);
 
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
                 getWallet(TestConst.ownerMnemonic),
@@ -91,7 +92,7 @@ public class GrpcAolTest extends AbstractGrpcTest {
 
     private void testCreateTopic(MsgCreateTopic createTopicMsg) throws IOException, NoSuchAlgorithmException, PanaceaApiException {
         String memo = "create topic :" + createTopicMsg.getTopicName();
-        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000"), 200000);
+        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000000"), 200000);
 
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
                 getWallet(TestConst.ownerMnemonic),
@@ -108,7 +109,7 @@ public class GrpcAolTest extends AbstractGrpcTest {
 
     private void testAddWriter(MsgAddWriter msg) throws IOException, NoSuchAlgorithmException, PanaceaApiException {
         String memo = "add writer";
-        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000"), 200000);
+        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000000"), 200000);
 
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
                 getWallet(TestConst.ownerMnemonic),
@@ -127,7 +128,7 @@ public class GrpcAolTest extends AbstractGrpcTest {
         String memo = "add record";
         List<Wallet> groupSignWallets = Arrays.asList(
                 getWallet(TestConst.toMnemonic), getWallet(TestConst.ownerMnemonic));
-        Fee fee = Transactions.createFee(Coins.createCoin("umed", "1000"), 200000);
+        Fee fee = Transactions.createFee(Coins.createCoin("umed", "1000000"), 200000);
 
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
                 groupSignWallets,
@@ -155,8 +156,7 @@ public class GrpcAolTest extends AbstractGrpcTest {
                 return client.getTxResponse(txHash);
             } catch (StatusRuntimeException e) {
                 // if tx was not found (if tx isn't included in the block yet)
-                // Misc: Yeah. I know that the status code INVALID_ARGUMENT isn't proper, but it's the way how Cosmos was implemented.
-                if (e.getStatus().getCode().equals(Status.Code.INVALID_ARGUMENT)) {
+                if (e.getStatus().getCode().equals(Status.Code.NOT_FOUND)) {
                     Thread.sleep(sleepMs);
                     continue;
                 }

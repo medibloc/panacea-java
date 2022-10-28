@@ -216,38 +216,41 @@ public final class Staking {
       "st_address\030\003 \001(\tB \362\336\037\034yaml:\"validator_ds" +
       "t_address\"\022@\n\007entries\030\004 \003(\0132).cosmos.sta" +
       "king.v1beta1.RedelegationEntryB\004\310\336\037\000:\014\350\240" +
-      "\037\000\210\240\037\000\230\240\037\000\"\256\002\n\006Params\022T\n\016unbonding_time\030" +
+      "\037\000\210\240\037\000\230\240\037\000\"\231\003\n\006Params\022T\n\016unbonding_time\030" +
       "\001 \001(\0132\031.google.protobuf.DurationB!\310\336\037\000\230\337" +
       "\037\001\362\336\037\025yaml:\"unbonding_time\"\0221\n\016max_valid" +
       "ators\030\002 \001(\rB\031\362\336\037\025yaml:\"max_validators\"\022+" +
       "\n\013max_entries\030\003 \001(\rB\026\362\336\037\022yaml:\"max_entri" +
       "es\"\0229\n\022historical_entries\030\004 \001(\rB\035\362\336\037\031yam" +
       "l:\"historical_entries\"\022)\n\nbond_denom\030\005 \001" +
-      "(\tB\025\362\336\037\021yaml:\"bond_denom\":\010\350\240\037\001\230\240\037\000\"\216\001\n\022" +
-      "DelegationResponse\022<\n\ndelegation\030\001 \001(\0132\"" +
-      ".cosmos.staking.v1beta1.DelegationB\004\310\336\037\000" +
-      "\0220\n\007balance\030\002 \001(\0132\031.cosmos.base.v1beta1." +
-      "CoinB\004\310\336\037\000:\010\350\240\037\000\230\240\037\000\"\257\001\n\031RedelegationEnt" +
-      "ryResponse\022K\n\022redelegation_entry\030\001 \001(\0132)" +
-      ".cosmos.staking.v1beta1.RedelegationEntr" +
-      "yB\004\310\336\037\000\022?\n\007balance\030\004 \001(\tB.\332\336\037&github.com" +
-      "/cosmos/cosmos-sdk/types.Int\310\336\037\000:\004\350\240\037\001\"\250" +
-      "\001\n\024RedelegationResponse\022@\n\014redelegation\030" +
-      "\001 \001(\0132$.cosmos.staking.v1beta1.Redelegat" +
-      "ionB\004\310\336\037\000\022H\n\007entries\030\002 \003(\01321.cosmos.stak" +
-      "ing.v1beta1.RedelegationEntryResponseB\004\310" +
-      "\336\037\000:\004\350\240\037\000\"\340\001\n\004Pool\022^\n\021not_bonded_tokens\030" +
-      "\001 \001(\tBC\332\336\037&github.com/cosmos/cosmos-sdk/" +
-      "types.Int\352\336\037\021not_bonded_tokens\310\336\037\000\022n\n\rbo" +
-      "nded_tokens\030\002 \001(\tBW\352\336\037\rbonded_tokens\332\336\037&" +
-      "github.com/cosmos/cosmos-sdk/types.Int\310\336" +
-      "\037\000\362\336\037\024yaml:\"bonded_tokens\":\010\360\240\037\001\350\240\037\001*\266\001\n" +
-      "\nBondStatus\022,\n\027BOND_STATUS_UNSPECIFIED\020\000" +
-      "\032\017\212\235 \013Unspecified\022&\n\024BOND_STATUS_UNBONDE" +
-      "D\020\001\032\014\212\235 \010Unbonded\022(\n\025BOND_STATUS_UNBONDI" +
-      "NG\020\002\032\r\212\235 \tUnbonding\022\"\n\022BOND_STATUS_BONDE" +
-      "D\020\003\032\n\212\235 \006Bonded\032\004\210\243\036\000B0P\001Z,github.com/co" +
-      "smos/cosmos-sdk/x/staking/typesb\006proto3"
+      "(\tB\025\362\336\037\021yaml:\"bond_denom\"\022i\n\023min_commiss" +
+      "ion_rate\030\006 \001(\tBL\362\336\037\032yaml:\"min_commission" +
+      "_rate\"\332\336\037&github.com/cosmos/cosmos-sdk/t" +
+      "ypes.Dec\310\336\037\000:\010\350\240\037\001\230\240\037\000\"\216\001\n\022DelegationRes" +
+      "ponse\022<\n\ndelegation\030\001 \001(\0132\".cosmos.staki" +
+      "ng.v1beta1.DelegationB\004\310\336\037\000\0220\n\007balance\030\002" +
+      " \001(\0132\031.cosmos.base.v1beta1.CoinB\004\310\336\037\000:\010\350" +
+      "\240\037\000\230\240\037\000\"\257\001\n\031RedelegationEntryResponse\022K\n" +
+      "\022redelegation_entry\030\001 \001(\0132).cosmos.staki" +
+      "ng.v1beta1.RedelegationEntryB\004\310\336\037\000\022?\n\007ba" +
+      "lance\030\004 \001(\tB.\332\336\037&github.com/cosmos/cosmo" +
+      "s-sdk/types.Int\310\336\037\000:\004\350\240\037\001\"\250\001\n\024Redelegati" +
+      "onResponse\022@\n\014redelegation\030\001 \001(\0132$.cosmo" +
+      "s.staking.v1beta1.RedelegationB\004\310\336\037\000\022H\n\007" +
+      "entries\030\002 \003(\01321.cosmos.staking.v1beta1.R" +
+      "edelegationEntryResponseB\004\310\336\037\000:\004\350\240\037\000\"\340\001\n" +
+      "\004Pool\022^\n\021not_bonded_tokens\030\001 \001(\tBC\332\336\037&gi" +
+      "thub.com/cosmos/cosmos-sdk/types.Int\352\336\037\021" +
+      "not_bonded_tokens\310\336\037\000\022n\n\rbonded_tokens\030\002" +
+      " \001(\tBW\352\336\037\rbonded_tokens\332\336\037&github.com/co" +
+      "smos/cosmos-sdk/types.Int\310\336\037\000\362\336\037\024yaml:\"b" +
+      "onded_tokens\":\010\360\240\037\001\350\240\037\001*\266\001\n\nBondStatus\022," +
+      "\n\027BOND_STATUS_UNSPECIFIED\020\000\032\017\212\235 \013Unspeci" +
+      "fied\022&\n\024BOND_STATUS_UNBONDED\020\001\032\014\212\235 \010Unbo" +
+      "nded\022(\n\025BOND_STATUS_UNBONDING\020\002\032\r\212\235 \tUnb" +
+      "onding\022\"\n\022BOND_STATUS_BONDED\020\003\032\n\212\235 \006Bond" +
+      "ed\032\004\210\243\036\000B0P\001Z,github.com/cosmos/cosmos-s" +
+      "dk/x/staking/typesb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -363,7 +366,7 @@ public final class Staking {
     internal_static_cosmos_staking_v1beta1_Params_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_cosmos_staking_v1beta1_Params_descriptor,
-        new java.lang.String[] { "UnbondingTime", "MaxValidators", "MaxEntries", "HistoricalEntries", "BondDenom", });
+        new java.lang.String[] { "UnbondingTime", "MaxValidators", "MaxEntries", "HistoricalEntries", "BondDenom", "MinCommissionRate", });
     internal_static_cosmos_staking_v1beta1_DelegationResponse_descriptor =
       getDescriptor().getMessageTypes().get(16);
     internal_static_cosmos_staking_v1beta1_DelegationResponse_fieldAccessorTable = new

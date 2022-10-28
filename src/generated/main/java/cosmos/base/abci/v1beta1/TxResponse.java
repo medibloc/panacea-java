@@ -28,6 +28,7 @@ private static final long serialVersionUID = 0L;
     logs_ = java.util.Collections.emptyList();
     info_ = "";
     timestamp_ = "";
+    events_ = java.util.Collections.emptyList();
   }
 
   @java.lang.Override
@@ -132,6 +133,15 @@ private static final long serialVersionUID = 0L;
             timestamp_ = s;
             break;
           }
+          case 106: {
+            if (!((mutable_bitField0_ & 0x00001000) != 0)) {
+              events_ = new java.util.ArrayList<tendermint.abci.Event>();
+              mutable_bitField0_ |= 0x00001000;
+            }
+            events_.add(
+                input.readMessage(tendermint.abci.Event.parser(), extensionRegistry));
+            break;
+          }
           default: {
             if (!parseUnknownField(
                 input, unknownFields, extensionRegistry, tag)) {
@@ -149,6 +159,9 @@ private static final long serialVersionUID = 0L;
     } finally {
       if (((mutable_bitField0_ & 0x00000040) != 0)) {
         logs_ = java.util.Collections.unmodifiableList(logs_);
+      }
+      if (((mutable_bitField0_ & 0x00001000) != 0)) {
+        events_ = java.util.Collections.unmodifiableList(events_);
       }
       this.unknownFields = unknownFields.build();
       makeExtensionsImmutable();
@@ -566,6 +579,81 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int EVENTS_FIELD_NUMBER = 13;
+  private java.util.List<tendermint.abci.Event> events_;
+  /**
+   * <pre>
+   * Events defines all the events emitted by processing a transaction. Note,
+   * these events include those emitted by processing all the messages and those
+   * emitted from the ante handler. Whereas Logs contains the events, with
+   * additional metadata, emitted only by processing the messages.
+   * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+   * </pre>
+   *
+   * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+   */
+  public java.util.List<tendermint.abci.Event> getEventsList() {
+    return events_;
+  }
+  /**
+   * <pre>
+   * Events defines all the events emitted by processing a transaction. Note,
+   * these events include those emitted by processing all the messages and those
+   * emitted from the ante handler. Whereas Logs contains the events, with
+   * additional metadata, emitted only by processing the messages.
+   * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+   * </pre>
+   *
+   * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+   */
+  public java.util.List<? extends tendermint.abci.EventOrBuilder> 
+      getEventsOrBuilderList() {
+    return events_;
+  }
+  /**
+   * <pre>
+   * Events defines all the events emitted by processing a transaction. Note,
+   * these events include those emitted by processing all the messages and those
+   * emitted from the ante handler. Whereas Logs contains the events, with
+   * additional metadata, emitted only by processing the messages.
+   * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+   * </pre>
+   *
+   * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+   */
+  public int getEventsCount() {
+    return events_.size();
+  }
+  /**
+   * <pre>
+   * Events defines all the events emitted by processing a transaction. Note,
+   * these events include those emitted by processing all the messages and those
+   * emitted from the ante handler. Whereas Logs contains the events, with
+   * additional metadata, emitted only by processing the messages.
+   * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+   * </pre>
+   *
+   * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+   */
+  public tendermint.abci.Event getEvents(int index) {
+    return events_.get(index);
+  }
+  /**
+   * <pre>
+   * Events defines all the events emitted by processing a transaction. Note,
+   * these events include those emitted by processing all the messages and those
+   * emitted from the ante handler. Whereas Logs contains the events, with
+   * additional metadata, emitted only by processing the messages.
+   * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+   * </pre>
+   *
+   * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+   */
+  public tendermint.abci.EventOrBuilder getEventsOrBuilder(
+      int index) {
+    return events_.get(index);
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -615,6 +703,9 @@ private static final long serialVersionUID = 0L;
     }
     if (!getTimestampBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 12, timestamp_);
+    }
+    for (int i = 0; i < events_.size(); i++) {
+      output.writeMessage(13, events_.get(i));
     }
     unknownFields.writeTo(output);
   }
@@ -667,6 +758,10 @@ private static final long serialVersionUID = 0L;
     if (!getTimestampBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(12, timestamp_);
     }
+    for (int i = 0; i < events_.size(); i++) {
+      size += com.google.protobuf.CodedOutputStream
+        .computeMessageSize(13, events_.get(i));
+    }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
     return size;
@@ -709,6 +804,8 @@ private static final long serialVersionUID = 0L;
     }
     if (!getTimestamp()
         .equals(other.getTimestamp())) return false;
+    if (!getEventsList()
+        .equals(other.getEventsList())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -751,6 +848,10 @@ private static final long serialVersionUID = 0L;
     }
     hash = (37 * hash) + TIMESTAMP_FIELD_NUMBER;
     hash = (53 * hash) + getTimestamp().hashCode();
+    if (getEventsCount() > 0) {
+      hash = (37 * hash) + EVENTS_FIELD_NUMBER;
+      hash = (53 * hash) + getEventsList().hashCode();
+    }
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -885,6 +986,7 @@ private static final long serialVersionUID = 0L;
       if (com.google.protobuf.GeneratedMessageV3
               .alwaysUseFieldBuilders) {
         getLogsFieldBuilder();
+        getEventsFieldBuilder();
       }
     }
     @java.lang.Override
@@ -922,6 +1024,12 @@ private static final long serialVersionUID = 0L;
       }
       timestamp_ = "";
 
+      if (eventsBuilder_ == null) {
+        events_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00001000);
+      } else {
+        eventsBuilder_.clear();
+      }
       return this;
     }
 
@@ -974,6 +1082,15 @@ private static final long serialVersionUID = 0L;
         result.tx_ = txBuilder_.build();
       }
       result.timestamp_ = timestamp_;
+      if (eventsBuilder_ == null) {
+        if (((bitField0_ & 0x00001000) != 0)) {
+          events_ = java.util.Collections.unmodifiableList(events_);
+          bitField0_ = (bitField0_ & ~0x00001000);
+        }
+        result.events_ = events_;
+      } else {
+        result.events_ = eventsBuilder_.build();
+      }
       result.bitField0_ = to_bitField0_;
       onBuilt();
       return result;
@@ -1087,6 +1204,32 @@ private static final long serialVersionUID = 0L;
       if (!other.getTimestamp().isEmpty()) {
         timestamp_ = other.timestamp_;
         onChanged();
+      }
+      if (eventsBuilder_ == null) {
+        if (!other.events_.isEmpty()) {
+          if (events_.isEmpty()) {
+            events_ = other.events_;
+            bitField0_ = (bitField0_ & ~0x00001000);
+          } else {
+            ensureEventsIsMutable();
+            events_.addAll(other.events_);
+          }
+          onChanged();
+        }
+      } else {
+        if (!other.events_.isEmpty()) {
+          if (eventsBuilder_.isEmpty()) {
+            eventsBuilder_.dispose();
+            eventsBuilder_ = null;
+            events_ = other.events_;
+            bitField0_ = (bitField0_ & ~0x00001000);
+            eventsBuilder_ = 
+              com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                 getEventsFieldBuilder() : null;
+          } else {
+            eventsBuilder_.addAllMessages(other.events_);
+          }
+        }
       }
       this.mergeUnknownFields(other.unknownFields);
       onChanged();
@@ -2282,6 +2425,390 @@ private static final long serialVersionUID = 0L;
       timestamp_ = value;
       onChanged();
       return this;
+    }
+
+    private java.util.List<tendermint.abci.Event> events_ =
+      java.util.Collections.emptyList();
+    private void ensureEventsIsMutable() {
+      if (!((bitField0_ & 0x00001000) != 0)) {
+        events_ = new java.util.ArrayList<tendermint.abci.Event>(events_);
+        bitField0_ |= 0x00001000;
+       }
+    }
+
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        tendermint.abci.Event, tendermint.abci.Event.Builder, tendermint.abci.EventOrBuilder> eventsBuilder_;
+
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public java.util.List<tendermint.abci.Event> getEventsList() {
+      if (eventsBuilder_ == null) {
+        return java.util.Collections.unmodifiableList(events_);
+      } else {
+        return eventsBuilder_.getMessageList();
+      }
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public int getEventsCount() {
+      if (eventsBuilder_ == null) {
+        return events_.size();
+      } else {
+        return eventsBuilder_.getCount();
+      }
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public tendermint.abci.Event getEvents(int index) {
+      if (eventsBuilder_ == null) {
+        return events_.get(index);
+      } else {
+        return eventsBuilder_.getMessage(index);
+      }
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public Builder setEvents(
+        int index, tendermint.abci.Event value) {
+      if (eventsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureEventsIsMutable();
+        events_.set(index, value);
+        onChanged();
+      } else {
+        eventsBuilder_.setMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public Builder setEvents(
+        int index, tendermint.abci.Event.Builder builderForValue) {
+      if (eventsBuilder_ == null) {
+        ensureEventsIsMutable();
+        events_.set(index, builderForValue.build());
+        onChanged();
+      } else {
+        eventsBuilder_.setMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public Builder addEvents(tendermint.abci.Event value) {
+      if (eventsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureEventsIsMutable();
+        events_.add(value);
+        onChanged();
+      } else {
+        eventsBuilder_.addMessage(value);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public Builder addEvents(
+        int index, tendermint.abci.Event value) {
+      if (eventsBuilder_ == null) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
+        ensureEventsIsMutable();
+        events_.add(index, value);
+        onChanged();
+      } else {
+        eventsBuilder_.addMessage(index, value);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public Builder addEvents(
+        tendermint.abci.Event.Builder builderForValue) {
+      if (eventsBuilder_ == null) {
+        ensureEventsIsMutable();
+        events_.add(builderForValue.build());
+        onChanged();
+      } else {
+        eventsBuilder_.addMessage(builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public Builder addEvents(
+        int index, tendermint.abci.Event.Builder builderForValue) {
+      if (eventsBuilder_ == null) {
+        ensureEventsIsMutable();
+        events_.add(index, builderForValue.build());
+        onChanged();
+      } else {
+        eventsBuilder_.addMessage(index, builderForValue.build());
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public Builder addAllEvents(
+        java.lang.Iterable<? extends tendermint.abci.Event> values) {
+      if (eventsBuilder_ == null) {
+        ensureEventsIsMutable();
+        com.google.protobuf.AbstractMessageLite.Builder.addAll(
+            values, events_);
+        onChanged();
+      } else {
+        eventsBuilder_.addAllMessages(values);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public Builder clearEvents() {
+      if (eventsBuilder_ == null) {
+        events_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00001000);
+        onChanged();
+      } else {
+        eventsBuilder_.clear();
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public Builder removeEvents(int index) {
+      if (eventsBuilder_ == null) {
+        ensureEventsIsMutable();
+        events_.remove(index);
+        onChanged();
+      } else {
+        eventsBuilder_.remove(index);
+      }
+      return this;
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public tendermint.abci.Event.Builder getEventsBuilder(
+        int index) {
+      return getEventsFieldBuilder().getBuilder(index);
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public tendermint.abci.EventOrBuilder getEventsOrBuilder(
+        int index) {
+      if (eventsBuilder_ == null) {
+        return events_.get(index);  } else {
+        return eventsBuilder_.getMessageOrBuilder(index);
+      }
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public java.util.List<? extends tendermint.abci.EventOrBuilder> 
+         getEventsOrBuilderList() {
+      if (eventsBuilder_ != null) {
+        return eventsBuilder_.getMessageOrBuilderList();
+      } else {
+        return java.util.Collections.unmodifiableList(events_);
+      }
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public tendermint.abci.Event.Builder addEventsBuilder() {
+      return getEventsFieldBuilder().addBuilder(
+          tendermint.abci.Event.getDefaultInstance());
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public tendermint.abci.Event.Builder addEventsBuilder(
+        int index) {
+      return getEventsFieldBuilder().addBuilder(
+          index, tendermint.abci.Event.getDefaultInstance());
+    }
+    /**
+     * <pre>
+     * Events defines all the events emitted by processing a transaction. Note,
+     * these events include those emitted by processing all the messages and those
+     * emitted from the ante handler. Whereas Logs contains the events, with
+     * additional metadata, emitted only by processing the messages.
+     * Since: cosmos-sdk 0.42.11, 0.44.5, 0.45
+     * </pre>
+     *
+     * <code>repeated .tendermint.abci.Event events = 13 [(.gogoproto.nullable) = false];</code>
+     */
+    public java.util.List<tendermint.abci.Event.Builder> 
+         getEventsBuilderList() {
+      return getEventsFieldBuilder().getBuilderList();
+    }
+    private com.google.protobuf.RepeatedFieldBuilderV3<
+        tendermint.abci.Event, tendermint.abci.Event.Builder, tendermint.abci.EventOrBuilder> 
+        getEventsFieldBuilder() {
+      if (eventsBuilder_ == null) {
+        eventsBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+            tendermint.abci.Event, tendermint.abci.Event.Builder, tendermint.abci.EventOrBuilder>(
+                events_,
+                ((bitField0_ & 0x00001000) != 0),
+                getParentForChildren(),
+                isClean());
+        events_ = null;
+      }
+      return eventsBuilder_;
     }
     @java.lang.Override
     public final Builder setUnknownFields(

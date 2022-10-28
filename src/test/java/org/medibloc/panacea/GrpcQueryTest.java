@@ -78,7 +78,7 @@ public class GrpcQueryTest extends AbstractGrpcTest {
                 .build();
 
         String memo = "create topic :" + createTopicMsg.getTopicName();
-        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000"), 200000);
+        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000000"), 200000);
 
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
                 getWallet(TestConst.ownerMnemonic),

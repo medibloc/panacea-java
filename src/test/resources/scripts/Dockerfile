@@ -1,4 +1,4 @@
-FROM ghcr.io/medibloc/panacea-core:master
+FROM ghcr.io/medibloc/panacea-core:v2.0.5
 
 ADD ./src/test/resources/scripts/simple-init-start.sh /usr/local/bin/init_script.sh
 

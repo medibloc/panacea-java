@@ -21,6 +21,7 @@ private static final long serialVersionUID = 0L;
   }
   private Params() {
     bondDenom_ = "";
+    minCommissionRate_ = "";
   }
 
   @java.lang.Override
@@ -79,6 +80,12 @@ private static final long serialVersionUID = 0L;
             java.lang.String s = input.readStringRequireUtf8();
 
             bondDenom_ = s;
+            break;
+          }
+          case 50: {
+            java.lang.String s = input.readStringRequireUtf8();
+
+            minCommissionRate_ = s;
             break;
           }
           default: {
@@ -227,6 +234,48 @@ private static final long serialVersionUID = 0L;
     }
   }
 
+  public static final int MIN_COMMISSION_RATE_FIELD_NUMBER = 6;
+  private volatile java.lang.Object minCommissionRate_;
+  /**
+   * <pre>
+   * min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators
+   * </pre>
+   *
+   * <code>string min_commission_rate = 6 [(.gogoproto.nullable) = false, (.gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (.gogoproto.moretags) = "yaml:&#92;"min_commission_rate&#92;""];</code>
+   */
+  public java.lang.String getMinCommissionRate() {
+    java.lang.Object ref = minCommissionRate_;
+    if (ref instanceof java.lang.String) {
+      return (java.lang.String) ref;
+    } else {
+      com.google.protobuf.ByteString bs = 
+          (com.google.protobuf.ByteString) ref;
+      java.lang.String s = bs.toStringUtf8();
+      minCommissionRate_ = s;
+      return s;
+    }
+  }
+  /**
+   * <pre>
+   * min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators
+   * </pre>
+   *
+   * <code>string min_commission_rate = 6 [(.gogoproto.nullable) = false, (.gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (.gogoproto.moretags) = "yaml:&#92;"min_commission_rate&#92;""];</code>
+   */
+  public com.google.protobuf.ByteString
+      getMinCommissionRateBytes() {
+    java.lang.Object ref = minCommissionRate_;
+    if (ref instanceof java.lang.String) {
+      com.google.protobuf.ByteString b = 
+          com.google.protobuf.ByteString.copyFromUtf8(
+              (java.lang.String) ref);
+      minCommissionRate_ = b;
+      return b;
+    } else {
+      return (com.google.protobuf.ByteString) ref;
+    }
+  }
+
   private byte memoizedIsInitialized = -1;
   @java.lang.Override
   public final boolean isInitialized() {
@@ -256,6 +305,9 @@ private static final long serialVersionUID = 0L;
     if (!getBondDenomBytes().isEmpty()) {
       com.google.protobuf.GeneratedMessageV3.writeString(output, 5, bondDenom_);
     }
+    if (!getMinCommissionRateBytes().isEmpty()) {
+      com.google.protobuf.GeneratedMessageV3.writeString(output, 6, minCommissionRate_);
+    }
     unknownFields.writeTo(output);
   }
 
@@ -283,6 +335,9 @@ private static final long serialVersionUID = 0L;
     }
     if (!getBondDenomBytes().isEmpty()) {
       size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, bondDenom_);
+    }
+    if (!getMinCommissionRateBytes().isEmpty()) {
+      size += com.google.protobuf.GeneratedMessageV3.computeStringSize(6, minCommissionRate_);
     }
     size += unknownFields.getSerializedSize();
     memoizedSize = size;
@@ -312,6 +367,8 @@ private static final long serialVersionUID = 0L;
         != other.getHistoricalEntries()) return false;
     if (!getBondDenom()
         .equals(other.getBondDenom())) return false;
+    if (!getMinCommissionRate()
+        .equals(other.getMinCommissionRate())) return false;
     if (!unknownFields.equals(other.unknownFields)) return false;
     return true;
   }
@@ -335,6 +392,8 @@ private static final long serialVersionUID = 0L;
     hash = (53 * hash) + getHistoricalEntries();
     hash = (37 * hash) + BOND_DENOM_FIELD_NUMBER;
     hash = (53 * hash) + getBondDenom().hashCode();
+    hash = (37 * hash) + MIN_COMMISSION_RATE_FIELD_NUMBER;
+    hash = (53 * hash) + getMinCommissionRate().hashCode();
     hash = (29 * hash) + unknownFields.hashCode();
     memoizedHashCode = hash;
     return hash;
@@ -486,6 +545,8 @@ private static final long serialVersionUID = 0L;
 
       bondDenom_ = "";
 
+      minCommissionRate_ = "";
+
       return this;
     }
 
@@ -521,6 +582,7 @@ private static final long serialVersionUID = 0L;
       result.maxEntries_ = maxEntries_;
       result.historicalEntries_ = historicalEntries_;
       result.bondDenom_ = bondDenom_;
+      result.minCommissionRate_ = minCommissionRate_;
       onBuilt();
       return result;
     }
@@ -583,6 +645,10 @@ private static final long serialVersionUID = 0L;
       }
       if (!other.getBondDenom().isEmpty()) {
         bondDenom_ = other.bondDenom_;
+        onChanged();
+      }
+      if (!other.getMinCommissionRate().isEmpty()) {
+        minCommissionRate_ = other.minCommissionRate_;
         onChanged();
       }
       this.mergeUnknownFields(other.unknownFields);
@@ -966,6 +1032,95 @@ private static final long serialVersionUID = 0L;
   checkByteStringIsUtf8(value);
       
       bondDenom_ = value;
+      onChanged();
+      return this;
+    }
+
+    private java.lang.Object minCommissionRate_ = "";
+    /**
+     * <pre>
+     * min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators
+     * </pre>
+     *
+     * <code>string min_commission_rate = 6 [(.gogoproto.nullable) = false, (.gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (.gogoproto.moretags) = "yaml:&#92;"min_commission_rate&#92;""];</code>
+     */
+    public java.lang.String getMinCommissionRate() {
+      java.lang.Object ref = minCommissionRate_;
+      if (!(ref instanceof java.lang.String)) {
+        com.google.protobuf.ByteString bs =
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        minCommissionRate_ = s;
+        return s;
+      } else {
+        return (java.lang.String) ref;
+      }
+    }
+    /**
+     * <pre>
+     * min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators
+     * </pre>
+     *
+     * <code>string min_commission_rate = 6 [(.gogoproto.nullable) = false, (.gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (.gogoproto.moretags) = "yaml:&#92;"min_commission_rate&#92;""];</code>
+     */
+    public com.google.protobuf.ByteString
+        getMinCommissionRateBytes() {
+      java.lang.Object ref = minCommissionRate_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        minCommissionRate_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    /**
+     * <pre>
+     * min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators
+     * </pre>
+     *
+     * <code>string min_commission_rate = 6 [(.gogoproto.nullable) = false, (.gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (.gogoproto.moretags) = "yaml:&#92;"min_commission_rate&#92;""];</code>
+     */
+    public Builder setMinCommissionRate(
+        java.lang.String value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  
+      minCommissionRate_ = value;
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators
+     * </pre>
+     *
+     * <code>string min_commission_rate = 6 [(.gogoproto.nullable) = false, (.gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (.gogoproto.moretags) = "yaml:&#92;"min_commission_rate&#92;""];</code>
+     */
+    public Builder clearMinCommissionRate() {
+      
+      minCommissionRate_ = getDefaultInstance().getMinCommissionRate();
+      onChanged();
+      return this;
+    }
+    /**
+     * <pre>
+     * min_commission_rate is the chain-wide minimum commission rate that a validator can charge their delegators
+     * </pre>
+     *
+     * <code>string min_commission_rate = 6 [(.gogoproto.nullable) = false, (.gogoproto.customtype) = "github.com/cosmos/cosmos-sdk/types.Dec", (.gogoproto.moretags) = "yaml:&#92;"min_commission_rate&#92;""];</code>
+     */
+    public Builder setMinCommissionRateBytes(
+        com.google.protobuf.ByteString value) {
+      if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+      
+      minCommissionRate_ = value;
       onChanged();
       return this;
     }
