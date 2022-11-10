@@ -2,10 +2,12 @@ package org.medibloc.panacea;
 
 import cosmos.auth.v1beta1.BaseAccount;
 import cosmos.base.abci.v1beta1.TxResponse;
+import cosmos.base.query.v1beta1.PageRequest;
 import cosmos.base.v1beta1.Coin;
 import cosmos.tx.v1beta1.BroadcastMode;
 import cosmos.tx.v1beta1.BroadcastTxRequest;
 import cosmos.tx.v1beta1.Fee;
+import cosmos.tx.v1beta1.GetTxsEventResponse;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
 import org.junit.Ignore;
@@ -94,9 +96,23 @@ public class GrpcQueryTest extends AbstractGrpcTest {
     public void testGetTxResponsesByHeight() throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException {
         TxResponse txResp = simpleSendTx();
         TimeUnit.SECONDS.sleep(1);
+
         List<TxResponse> txResponses = client.getTxResponsesByHeight(txResp.getHeight());
         Assert.assertEquals(1, txResponses.size());
         Assert.assertEquals(txResp, txResponses.get(0));
+    }
+
+    @Test
+    public void testGetTxsByHeightWithPagination() throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException {
+        TxResponse txResp = simpleSendTx();
+        TimeUnit.SECONDS.sleep(1);
+
+        PageRequest pagination = PageRequest.newBuilder().setOffset(0).setLimit(10).setCountTotal(true).build();
+        GetTxsEventResponse resp = client.getTxsByHeight(txResp.getHeight(), pagination);
+        Assert.assertEquals(1, resp.getTxsCount());
+        Assert.assertEquals(txResp, resp.getTxResponsesList().get(0));
+        Assert.assertEquals(1, resp.getPagination().getTotal());
+        System.out.println("next key: " + resp.getPagination().getNextKey());
     }
 
     @Test
