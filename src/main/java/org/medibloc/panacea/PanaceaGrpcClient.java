@@ -6,6 +6,7 @@ import cosmos.auth.v1beta1.QueryAccountRequest;
 import cosmos.auth.v1beta1.QueryAccountResponse;
 import cosmos.bank.v1beta1.QueryBalanceRequest;
 import cosmos.base.abci.v1beta1.TxResponse;
+import cosmos.base.query.v1beta1.PageRequest;
 import cosmos.base.tendermint.v1beta1.*;
 import cosmos.base.v1beta1.Coin;
 import cosmos.tx.v1beta1.*;
@@ -103,16 +104,21 @@ public class PanaceaGrpcClient {
     }
 
     public List<Tx> getTxsByHeight(long height) {
-        return callGetTxsEvent(height).getTxsList();
+        return getTxsByHeight(height, null).getTxsList();
     }
 
     public List<TxResponse> getTxResponsesByHeight(long height) {
-        return callGetTxsEvent(height).getTxResponsesList();
+        return getTxsByHeight(height, null).getTxResponsesList();
     }
 
-    private GetTxsEventResponse callGetTxsEvent(long height) {
+    public GetTxsEventResponse getTxsByHeight(long height, PageRequest pagination) {
+        return callGetTxsEvent(height, pagination);
+    }
+
+    private GetTxsEventResponse callGetTxsEvent(long height, PageRequest pagination) {
         GetTxsEventRequest request = GetTxsEventRequest.newBuilder()
                 .addEvents("tx.height=" + height)
+                .setPagination(pagination)
                 .build();
         return grpcStub.getTxServiceStub().getTxsEvent(request);
     }

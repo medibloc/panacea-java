@@ -91,9 +91,12 @@ public class GrpcQueryTest extends AbstractGrpcTest {
     }
 
     @Test
-    public void testGetTxResponsesByHeight() {
-        List<TxResponse> txResponses = client.getTxResponsesByHeight(1);
-        System.out.println(txResponses);
+    public void testGetTxResponsesByHeight() throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException {
+        TxResponse txResp = simpleSendTx();
+        TimeUnit.SECONDS.sleep(1);
+        List<TxResponse> txResponses = client.getTxResponsesByHeight(txResp.getHeight());
+        Assert.assertEquals(1, txResponses.size());
+        Assert.assertEquals(txResp, txResponses.get(0));
     }
 
     @Test
