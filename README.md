@@ -133,7 +133,7 @@ while (true) {
 
     offset += resp.getTxsCount();
     total += resp.getTxsCount();
-    if (total == resp.getPagination().getTotal()) {
+    if (total >= resp.getPagination().getTotal()) {
         break;
     }
 }
