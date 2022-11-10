@@ -60,29 +60,28 @@ public class GrpcQueryTest extends AbstractGrpcTest {
 
     @Test
     public void testGetTxResponseByHash() throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException {
-        TxResponse sendTx = broadcastCreateTopicTx(TestConst.ownerMnemonic, BroadcastMode.BROADCAST_MODE_BLOCK);
+        TxResponse txResp = broadcastCreateTopicTx(TestConst.ownerMnemonic, BroadcastMode.BROADCAST_MODE_BLOCK);
         TimeUnit.SECONDS.sleep(1);
-        TxResponse txResponse = client.getTxResponse(sendTx.getTxhash());
+        TxResponse txResponse = client.getTxResponse(txResp.getTxhash());
         System.out.println(txResponse);
     }
 
     private TxResponse broadcastCreateTopicTx(String mnemonic, BroadcastMode broadcastMode) throws PanaceaApiException, IOException, NoSuchAlgorithmException {
         Wallet wallet = getWallet(mnemonic);
-        String addr = wallet.getAddress();
 
         String topicName = RandomStringUtils.randomAlphabetic(10);
 
         MsgCreateTopic createTopicMsg = MsgCreateTopic.newBuilder()
                 .setTopicName(topicName)
                 .setDescription("test topic")
-                .setOwnerAddress(addr)
+                .setOwnerAddress(wallet.getAddress())
                 .build();
 
         String memo = "create topic :" + createTopicMsg.getTopicName();
         Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000000"), 200000);
 
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
-                getWallet(TestConst.ownerMnemonic),
+                wallet,
                 createTopicMsg,
                 memo,
                 fee,
