@@ -60,23 +60,22 @@ public class GrpcQueryTest extends AbstractGrpcTest {
 
     @Test
     public void testGetTxResponseByHash() throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException {
-        TxResponse sendTx = simpleSendTx();
+        TxResponse sendTx = broadcastCreateTopicTx(TestConst.ownerMnemonic, BroadcastMode.BROADCAST_MODE_BLOCK);
         TimeUnit.SECONDS.sleep(1);
         TxResponse txResponse = client.getTxResponse(sendTx.getTxhash());
         System.out.println(txResponse);
     }
 
-    private TxResponse simpleSendTx() throws PanaceaApiException, IOException, NoSuchAlgorithmException {
-        Wallet ownerWallet = getWallet(TestConst.ownerMnemonic);
-        String ownerAddress = ownerWallet.getAddress();
+    private TxResponse broadcastCreateTopicTx(String mnemonic, BroadcastMode broadcastMode) throws PanaceaApiException, IOException, NoSuchAlgorithmException {
+        Wallet wallet = getWallet(mnemonic);
+        String addr = wallet.getAddress();
 
         String topicName = RandomStringUtils.randomAlphabetic(10);
-        System.out.printf("Create topic : %s\n", topicName);
 
         MsgCreateTopic createTopicMsg = MsgCreateTopic.newBuilder()
                 .setTopicName(topicName)
                 .setDescription("test topic")
-                .setOwnerAddress(ownerAddress)
+                .setOwnerAddress(addr)
                 .build();
 
         String memo = "create topic :" + createTopicMsg.getTopicName();
@@ -87,14 +86,14 @@ public class GrpcQueryTest extends AbstractGrpcTest {
                 createTopicMsg,
                 memo,
                 fee,
-                BroadcastMode.BROADCAST_MODE_BLOCK);
+                broadcastMode);
 
-        return  client.broadcast(request);
+        return client.broadcast(request);
     }
 
     @Test
     public void testGetTxResponsesByHeight() throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException {
-        TxResponse txResp = simpleSendTx();
+        TxResponse txResp = broadcastCreateTopicTx(TestConst.ownerMnemonic, BroadcastMode.BROADCAST_MODE_BLOCK);
         TimeUnit.SECONDS.sleep(1);
 
         List<TxResponse> txResponses = client.getTxResponsesByHeight(txResp.getHeight());
@@ -104,21 +103,26 @@ public class GrpcQueryTest extends AbstractGrpcTest {
 
     @Test
     public void testGetTxsByHeightWithPagination() throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException {
-        TxResponse txResp = simpleSendTx();
+        TxResponse txResp1 = broadcastCreateTopicTx(TestConst.ownerMnemonic, BroadcastMode.BROADCAST_MODE_SYNC);
+        TxResponse txResp2 = broadcastCreateTopicTx(TestConst.ownerMnemonic, BroadcastMode.BROADCAST_MODE_SYNC);
+        TxResponse txResp3 = broadcastCreateTopicTx(TestConst.toMnemonic, BroadcastMode.BROADCAST_MODE_BLOCK);
         TimeUnit.SECONDS.sleep(1);
 
-        int offset = 0, limit = 10;
+        long height = txResp2.getHeight();
+        int offset = 0, limit = 2;
         PageRequest pagination = PageRequest.newBuilder().setOffset(offset).setLimit(limit).setCountTotal(true).build();
-        GetTxsEventResponse resp = client.getTxsByHeight(txResp.getHeight(), pagination);
-        Assert.assertEquals(1, resp.getTxsCount());
-        Assert.assertEquals(txResp.getTxhash(), resp.getTxResponsesList().get(0).getTxhash());
-        Assert.assertEquals(1, resp.getPagination().getTotal());
+        GetTxsEventResponse resp = client.getTxsByHeight(height, pagination);
+        Assert.assertEquals(2, resp.getTxsCount());
+        Assert.assertEquals(txResp1.getTxhash(), resp.getTxResponsesList().get(0).getTxhash());
+        Assert.assertEquals(txResp2.getTxhash(), resp.getTxResponsesList().get(1).getTxhash());
+        Assert.assertEquals(3, resp.getPagination().getTotal());
 
         offset += resp.getTxsCount();
         pagination = PageRequest.newBuilder().setOffset(offset).setLimit(limit).setCountTotal(true).build();
-        resp = client.getTxsByHeight(txResp.getHeight(), pagination);
-        Assert.assertEquals(0, resp.getTxsCount());
-        Assert.assertEquals(1, resp.getPagination().getTotal());
+        resp = client.getTxsByHeight(height, pagination);
+        Assert.assertEquals(1, resp.getTxsCount());
+        Assert.assertEquals(txResp3.getTxhash(), resp.getTxResponsesList().get(0).getTxhash());
+        Assert.assertEquals(3, resp.getPagination().getTotal());
     }
 
     @Test
