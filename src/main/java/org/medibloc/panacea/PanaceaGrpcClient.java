@@ -6,6 +6,7 @@ import cosmos.auth.v1beta1.QueryAccountRequest;
 import cosmos.auth.v1beta1.QueryAccountResponse;
 import cosmos.bank.v1beta1.QueryBalanceRequest;
 import cosmos.base.abci.v1beta1.TxResponse;
+import cosmos.base.query.v1beta1.PageRequest;
 import cosmos.base.tendermint.v1beta1.*;
 import cosmos.base.v1beta1.Coin;
 import cosmos.tx.v1beta1.*;
@@ -103,18 +104,31 @@ public class PanaceaGrpcClient {
     }
 
     public List<Tx> getTxsByHeight(long height) {
-        return callGetTxsEvent(height).getTxsList();
+        return getTxsByHeight(height, null).getTxsList();
     }
 
     public List<TxResponse> getTxResponsesByHeight(long height) {
-        return callGetTxsEvent(height).getTxResponsesList();
+        return getTxsByHeight(height, null).getTxResponsesList();
     }
 
-    private GetTxsEventResponse callGetTxsEvent(long height) {
-        GetTxsEventRequest request = GetTxsEventRequest.newBuilder()
-                .addEvents("tx.height=" + height)
-                .build();
-        return grpcStub.getTxServiceStub().getTxsEvent(request);
+    /**
+     * @param height A block height
+     * @param pagination A pagination request. For details: https://github.com/cosmos/cosmos-sdk/blob/2582f0aab7b2cbf66ade066fe570a4622cf0b098/proto/cosmos/base/query/v1beta1/pagination.proto#L13
+     * @return An object which contains Txs, TxResponses, and PageResult. For details: https://github.com/cosmos/cosmos-sdk/blob/2582f0aab7b2cbf66ade066fe570a4622cf0b098/proto/cosmos/tx/v1beta1/service.proto#L69
+     */
+    public GetTxsEventResponse getTxsByHeight(long height, PageRequest pagination) {
+        return callGetTxsEvent(height, pagination);
+    }
+
+    private GetTxsEventResponse callGetTxsEvent(long height, PageRequest pagination) {
+        GetTxsEventRequest.Builder builder = GetTxsEventRequest.newBuilder()
+                .addEvents("tx.height=" + height);
+
+        if (pagination != null) {
+            builder.setPagination(pagination);
+        }
+
+        return grpcStub.getTxServiceStub().getTxsEvent(builder.build());
     }
 
     public Block getBlockByHeight(long height) {
