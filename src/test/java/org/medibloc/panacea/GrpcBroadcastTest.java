@@ -53,7 +53,7 @@ public class GrpcBroadcastTest {
                 .setToAddress(toAddress)
                 .build();
         String memo = "send msg";
-        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000"), 200000);
+        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000000"), 200000);
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
                 ownerWallet,
                 msg,
@@ -65,11 +65,14 @@ public class GrpcBroadcastTest {
         Assert.assertEquals(0, response.getCode());
         System.out.println(response);
 
-        StringEvent event = response.getLogs(0).getEvents(1);
-        Assert.assertEquals(toAddress, event.getAttributes(0).getValue());
-        Assert.assertEquals(ownerAddress, event.getAttributes(1).getValue());
+        StringEvent event = response.getLogs(0).getEvents(0);
         String expectedAmount = String.format("%s%s", sendCoin.getAmount(), sendCoin.getDenom());
-        Assert.assertEquals(expectedAmount, event.getAttributes(2).getValue());
+        Assert.assertEquals(toAddress, event.getAttributes(0).getValue());
+        Assert.assertEquals(expectedAmount, event.getAttributes(1).getValue());
+
+        StringEvent event2 = response.getLogs(0).getEvents(1);
+        Assert.assertEquals(ownerAddress, event2.getAttributes(0).getValue());
+        Assert.assertEquals(expectedAmount, event2.getAttributes(1).getValue());
 
         TimeUnit.SECONDS.sleep(1);
         Tx tx = client.getTx(response.getTxhash());
@@ -94,7 +97,7 @@ public class GrpcBroadcastTest {
                 .setToAddress(toWallet.getAddress())
                 .build();
         String memo = "send msg";
-        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000"), 200000);
+        Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000000"), 200000);
 
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
                 ownerWallet,
