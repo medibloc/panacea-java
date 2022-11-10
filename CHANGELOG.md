@@ -4,6 +4,11 @@
 
 TBD
 
+## [v2.0.2](https://github.com/medibloc/panacea-java/releases/tag/v2.0.2) - 2022-11-10
+
+### Features
+- [\#55](https://github.com/medibloc/panacea-java/pull/55) feat: support pagination
+
 ## [v2.0.1](https://github.com/medibloc/panacea-java/releases/tag/v2.0.1) - 2021-08-11
 
 ### Features
