@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.medibloc.panacea:panacea-java:2.0.1'
+    implementation 'org.medibloc.panacea:panacea-java:2.0.2'
 }
 ```
 
