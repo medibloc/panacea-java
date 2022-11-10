@@ -121,6 +121,24 @@ List<Tx> txs = client.getTxsByHeight(height);
 List<TxResponse> txResponses = client.getTxResponsesByHeight(height);
 ```
 
+### Txs and TxResponses with pagination
+```java
+int offset = 0, limit = 2, total = 0;
+while (true) {
+    PageRequest pagination = PageRequest.newBuilder().setOffset(offset).setLimit(limit).setCountTotal(true).build();
+    GetTxsEventResponse resp = client.getTxsByHeight(height, pagination);
+    
+    List<Tx> txs = resp.getTxsList();
+    List<TxResponse> txResponses = resp.getTxResponsesList();
+
+    offset += resp.getTxsCount();
+    total += resp.getTxsCount();
+    if (total == resp.getPagination().getTotal()) {
+        break;
+    }
+}
+```
+
 ### Block
 ```java
 Block block = client.getBlockByHeight(height);
