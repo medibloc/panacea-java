@@ -107,12 +107,18 @@ public class GrpcQueryTest extends AbstractGrpcTest {
         TxResponse txResp = simpleSendTx();
         TimeUnit.SECONDS.sleep(1);
 
-        PageRequest pagination = PageRequest.newBuilder().setOffset(0).setLimit(10).setCountTotal(true).build();
+        int offset = 0, limit = 10;
+        PageRequest pagination = PageRequest.newBuilder().setOffset(offset).setLimit(limit).setCountTotal(true).build();
         GetTxsEventResponse resp = client.getTxsByHeight(txResp.getHeight(), pagination);
         Assert.assertEquals(1, resp.getTxsCount());
         Assert.assertEquals(txResp.getTxhash(), resp.getTxResponsesList().get(0).getTxhash());
         Assert.assertEquals(1, resp.getPagination().getTotal());
-        System.out.println("next key: " + resp.getPagination().getNextKey());
+
+        offset += resp.getTxsCount();
+        pagination = PageRequest.newBuilder().setOffset(offset).setLimit(limit).setCountTotal(true).build();
+        resp = client.getTxsByHeight(txResp.getHeight(), pagination);
+        Assert.assertEquals(0, resp.getTxsCount());
+        Assert.assertEquals(1, resp.getPagination().getTotal());
     }
 
     @Test
