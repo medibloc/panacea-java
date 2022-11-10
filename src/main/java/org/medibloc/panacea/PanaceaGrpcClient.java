@@ -116,11 +116,14 @@ public class PanaceaGrpcClient {
     }
 
     private GetTxsEventResponse callGetTxsEvent(long height, PageRequest pagination) {
-        GetTxsEventRequest request = GetTxsEventRequest.newBuilder()
-                .addEvents("tx.height=" + height)
-                .setPagination(pagination)
-                .build();
-        return grpcStub.getTxServiceStub().getTxsEvent(request);
+        GetTxsEventRequest.Builder builder = GetTxsEventRequest.newBuilder()
+                .addEvents("tx.height=" + height);
+
+        if (pagination != null) {
+            builder.setPagination(pagination);
+        }
+
+        return grpcStub.getTxServiceStub().getTxsEvent(builder.build());
     }
 
     public Block getBlockByHeight(long height) {
