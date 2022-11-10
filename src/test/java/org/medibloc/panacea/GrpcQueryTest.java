@@ -104,25 +104,23 @@ public class GrpcQueryTest extends AbstractGrpcTest {
     @Test
     public void testGetTxsByHeightWithPagination() throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException {
         TxResponse txResp1 = broadcastCreateTopicTx(TestConst.ownerMnemonic, BroadcastMode.BROADCAST_MODE_SYNC);
-        TxResponse txResp2 = broadcastCreateTopicTx(TestConst.ownerMnemonic, BroadcastMode.BROADCAST_MODE_SYNC);
-        TxResponse txResp3 = broadcastCreateTopicTx(TestConst.toMnemonic, BroadcastMode.BROADCAST_MODE_BLOCK);
+        TxResponse txResp2 = broadcastCreateTopicTx(TestConst.toMnemonic, BroadcastMode.BROADCAST_MODE_BLOCK);
         TimeUnit.SECONDS.sleep(1);
 
         long height = txResp2.getHeight();
-        int offset = 0, limit = 2;
+        int offset = 0, limit = 1;
         PageRequest pagination = PageRequest.newBuilder().setOffset(offset).setLimit(limit).setCountTotal(true).build();
         GetTxsEventResponse resp = client.getTxsByHeight(height, pagination);
-        Assert.assertEquals(2, resp.getTxsCount());
+        Assert.assertEquals(1, resp.getTxsCount());
         Assert.assertEquals(txResp1.getTxhash(), resp.getTxResponsesList().get(0).getTxhash());
-        Assert.assertEquals(txResp2.getTxhash(), resp.getTxResponsesList().get(1).getTxhash());
-        Assert.assertEquals(3, resp.getPagination().getTotal());
+        Assert.assertEquals(2, resp.getPagination().getTotal());
 
         offset += resp.getTxsCount();
         pagination = PageRequest.newBuilder().setOffset(offset).setLimit(limit).setCountTotal(true).build();
         resp = client.getTxsByHeight(height, pagination);
         Assert.assertEquals(1, resp.getTxsCount());
-        Assert.assertEquals(txResp3.getTxhash(), resp.getTxResponsesList().get(0).getTxhash());
-        Assert.assertEquals(3, resp.getPagination().getTotal());
+        Assert.assertEquals(txResp2.getTxhash(), resp.getTxResponsesList().get(0).getTxhash());
+        Assert.assertEquals(2, resp.getPagination().getTotal());
     }
 
     @Test
