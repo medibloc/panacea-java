@@ -111,6 +111,11 @@ public class PanaceaGrpcClient {
         return getTxsByHeight(height, null).getTxResponsesList();
     }
 
+    /**
+     * @param height A block height
+     * @param pagination A pagination request. For details: https://github.com/cosmos/cosmos-sdk/blob/2582f0aab7b2cbf66ade066fe570a4622cf0b098/proto/cosmos/base/query/v1beta1/pagination.proto#L13
+     * @return An object which contains Txs, TxResponses, and PageResult. For details: https://github.com/cosmos/cosmos-sdk/blob/2582f0aab7b2cbf66ade066fe570a4622cf0b098/proto/cosmos/tx/v1beta1/service.proto#L69
+     */
     public GetTxsEventResponse getTxsByHeight(long height, PageRequest pagination) {
         return callGetTxsEvent(height, pagination);
     }
