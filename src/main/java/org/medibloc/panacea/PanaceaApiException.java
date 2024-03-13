@@ -1,6 +1,9 @@
 package org.medibloc.panacea;
 
-//public class PanaceaApiException extends RuntimeException {
+import lombok.Getter;
+
+//public class org.medibloc.panacea.PanaceaApiException extends RuntimeException {
+@Getter
 public class PanaceaApiException extends Exception {
     private static final long serialVersionUID = 3788669840036201041L;
     private PanaceaApiError error;
@@ -17,10 +20,6 @@ public class PanaceaApiException extends Exception {
     }
     public PanaceaApiException(PanaceaApiError error) {
         this.error = error;
-    }
-
-    public PanaceaApiError getError() {
-        return error;
     }
 
     @Override

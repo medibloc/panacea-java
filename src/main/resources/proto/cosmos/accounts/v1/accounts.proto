@@ -1,0 +1,6 @@
+syntax = "proto3";
+
+package cosmos.accounts.v1;
+option java_multiple_files = true;
+
+option go_package = "cosmossdk.io/x/accounts/v1";

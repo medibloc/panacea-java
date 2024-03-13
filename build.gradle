@@ -1,106 +1,64 @@
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath 'com.google.protobuf:protobuf-gradle-plugin:0.8.8'
-    }
-}
-
 plugins {
-    id 'idea'
-    id 'java'
-    id 'maven'
-    id 'maven-publish'
-    id 'com.google.protobuf' version '0.8.8'
+    id('java')
+    id('com.google.protobuf') version '0.9.4'
 }
 
 sourceSets {
     main {
         proto {
-            srcDir 'src/main/resources/proto'
-        }
-        java {
-            srcDir 'src/main/java'
+            srcDir "src/main/resources/proto"
         }
     }
 }
-
-protobuf {
-    protoc {
-        artifact = "com.google.protobuf:protoc:3.7.1"
-    }
-    plugins {
-        grpc {
-            artifact = 'io.grpc:protoc-gen-grpc-java:1.22.1'
-        }
-    }
-    generateProtoTasks {
-        all().each { task ->
-            task.plugins {
-                grpc {}
-            }
-        }
-        ofSourceSet('main')
-    }
-    generatedFilesBaseDir = "$projectDir/src/generated"
-}
-
-idea {
-    module {
-        sourceDirs += file("${projectDir}/src/generated/main/java");
-        sourceDirs += file("${projectDir}/src/generated/main/grpc");
-    }
-}
-
-group 'org.medibloc.panacea'
-version '2.0.2'
-
-sourceCompatibility = JavaVersion.VERSION_1_6
-targetCompatibility = JavaVersion.VERSION_1_6
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    implementation 'org.bitcoinj:bitcoinj-core:0.15.10'
-    implementation 'org.apache.commons:commons-lang3:3.12.0'
-    implementation 'org.usb4java:usb4java:1.2.0'
-    implementation 'org.projectlombok:lombok:1.18.8'
-    implementation 'commons-codec:commons-codec:1.12'
-    implementation 'commons-net:commons-net:3.6'
-    implementation 'org.apache.commons:commons-collections4:4.4'
-    implementation 'com.fasterxml.jackson.core:jackson-core:2.12.3'
-    implementation 'com.fasterxml.jackson.core:jackson-databind:2.12.3'
-    implementation 'io.grpc:grpc-protobuf:1.22.1'
-    implementation 'io.grpc:grpc-netty-shaded:1.22.1'
-    implementation 'io.grpc:grpc-stub:1.22.1'
-    testImplementation 'junit:junit:4.12'
-}
-
-test {
-    //TODO: enable this test when the panacea-core docker image is ready
-    exclude 'org/medibloc/panacea/GrpcAolTest'
-    exclude 'org/medibloc/panacea/GrpcBroadcastTest'
-    exclude 'org/medibloc/panacea/GrpcDIDTest'
-    exclude 'org/medibloc/panacea/GrpcQueryTest'
-}
-
-publishing {
-    repositories {
-        maven {
-            url = uri("https://maven.pkg.github.com/medibloc/panacea-java")
-            credentials {
-                username = System.getenv("GPR_USER")
-                password = System.getenv("GPR_API_KEY")
-            }
-        }
-//        mavenLocal()
+    implementation("org.bitcoinj:bitcoinj-core:0.16.2") {
+        exclude group: "com.google.protobuf", module: "protobuf-javalite"
     }
-    publications {
-        gpr(MavenPublication) {
-            from(components.java)
+    implementation("org.apache.commons:commons-lang3:3.14.0")
+    implementation("org.apache.commons:commons-collections4:4.4")
+    implementation("commons-codec:commons-codec:1.16.1")
+    implementation("commons-net:commons-net:3.10.0")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.16.2")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.16.2")
+    compileOnly("org.projectlombok:lombok:1.18.30")
+    annotationProcessor("org.projectlombok:lombok:1.18.30")
+
+    implementation("ch.qos.logback:logback-classic:1.2.3")
+
+    implementation 'io.grpc:grpc-protobuf:1.62.2'
+    implementation 'io.grpc:grpc-stub:1.62.2'
+    implementation 'io.grpc:grpc-netty-shaded:1.62.2'
+
+    testImplementation 'junit:junit:4.13.2'
+}
+
+protobuf {
+    protoc {
+        // The artifact spec for the Protobuf Compiler
+        artifact = 'com.google.protobuf:protoc:3.25.3'
+    }
+    plugins {
+        // Optional: an artifact spec for a protoc plugin, with "grpc" as
+        // the identifier, which can be referred to in the "plugins"
+        // container of the "generateProtoTasks" closure.
+        grpc {
+            artifact = 'io.grpc:protoc-gen-grpc-java:1.62.2'
+        }
+    }
+    generateProtoTasks {
+        ofSourceSet('main').configureEach {
+            plugins {
+                // Apply the "grpc" plugin whose spec is defined above, without
+                // options.  Note the braces cannot be omitted, otherwise the
+                // plugin will not be added. This is because of the implicit way
+                // NamedDomainObjectContainer binds the methods.
+                grpc {}
+            }
         }
     }
 }

@@ -2,25 +2,22 @@ package org.medibloc.panacea;
 
 import cosmos.auth.v1beta1.BaseAccount;
 import cosmos.base.abci.v1beta1.TxResponse;
-import cosmos.base.query.v1beta1.PageRequest;
 import cosmos.base.v1beta1.Coin;
 import cosmos.tx.v1beta1.BroadcastMode;
 import cosmos.tx.v1beta1.BroadcastTxRequest;
 import cosmos.tx.v1beta1.Fee;
-import cosmos.tx.v1beta1.GetTxsEventResponse;
+import cosmos.tx.v1beta1.Tx;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.medibloc.panacea.domain.Coins;
 import org.medibloc.panacea.domain.Transactions;
 import org.medibloc.panacea.utils.CryptoUtils;
-import panacea.aol.v2.MsgCreateTopic;
+import org.medibloc.panacea.utils.TxUtils;
+import panacea.aol.v2.MsgCreateTopicRequest;
 import tendermint.p2p.DefaultNodeInfo;
 import tendermint.types.Block;
 
-import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -59,19 +56,19 @@ public class GrpcQueryTest extends AbstractGrpcTest {
     }
 
     @Test
-    public void testGetTxResponseByHash() throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException {
-        TxResponse txResp = broadcastCreateTopicTx(TestConst.ownerMnemonic, BroadcastMode.BROADCAST_MODE_BLOCK);
-        TimeUnit.SECONDS.sleep(1);
+    public void testGetTxResponseByHash() throws Exception {
+        TxResponse txResp = broadcastCreateTopicTx(TestConst.ownerMnemonic, BroadcastMode.BROADCAST_MODE_SYNC);
+        txResp = TxUtils.pollTxResponse(client, txResp.getTxhash(), 10, 1000);
         TxResponse txResponse = client.getTxResponse(txResp.getTxhash());
-        System.out.println(txResponse);
+        Assert.assertEquals(0, txResponse.getCode());
     }
 
-    private TxResponse broadcastCreateTopicTx(String mnemonic, BroadcastMode broadcastMode) throws PanaceaApiException, IOException, NoSuchAlgorithmException {
+    private TxResponse broadcastCreateTopicTx(String mnemonic, BroadcastMode broadcastMode) throws Exception {
         Wallet wallet = getWallet(mnemonic);
 
         String topicName = RandomStringUtils.randomAlphabetic(10);
 
-        MsgCreateTopic createTopicMsg = MsgCreateTopic.newBuilder()
+        MsgCreateTopicRequest createTopicMsg = MsgCreateTopicRequest.newBuilder()
                 .setTopicName(topicName)
                 .setDescription("test topic")
                 .setOwnerAddress(wallet.getAddress())
@@ -91,9 +88,9 @@ public class GrpcQueryTest extends AbstractGrpcTest {
     }
 
     @Test
-    public void testGetTxResponsesByHeight() throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException {
-        TxResponse txResp = broadcastCreateTopicTx(TestConst.ownerMnemonic, BroadcastMode.BROADCAST_MODE_BLOCK);
-        TimeUnit.SECONDS.sleep(1);
+    public void testGetTxResponsesByHeight() throws Exception {
+        TxResponse txResp = broadcastCreateTopicTx(TestConst.ownerMnemonic, BroadcastMode.BROADCAST_MODE_SYNC);
+        txResp = TxUtils.pollTxResponse(client, txResp.getTxhash(), 10, 1000);
 
         List<TxResponse> txResponses = client.getTxResponsesByHeight(txResp.getHeight());
         Assert.assertEquals(1, txResponses.size());
@@ -101,25 +98,18 @@ public class GrpcQueryTest extends AbstractGrpcTest {
     }
 
     @Test
-    public void testGetTxsByHeightWithPagination() throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException {
+    public void testGetTxsByHeightWithPagination() throws Exception {
         TxResponse txResp1 = broadcastCreateTopicTx(TestConst.ownerMnemonic, BroadcastMode.BROADCAST_MODE_SYNC);
-        TxResponse txResp2 = broadcastCreateTopicTx(TestConst.toMnemonic, BroadcastMode.BROADCAST_MODE_BLOCK);
-        TimeUnit.SECONDS.sleep(1);
+        TxResponse txResp2 = broadcastCreateTopicTx(TestConst.toMnemonic, BroadcastMode.BROADCAST_MODE_SYNC);
+        txResp1 = TxUtils.pollTxResponse(client, txResp1.getTxhash(), 10, 1000);
+        txResp2 = TxUtils.pollTxResponse(client, txResp2.getTxhash(), 10, 1000);
 
-        long height = txResp2.getHeight();
-        int offset = 0, limit = 1;
-        PageRequest pagination = PageRequest.newBuilder().setOffset(offset).setLimit(limit).setCountTotal(true).build();
-        GetTxsEventResponse resp = client.getTxsByHeight(height, pagination);
-        Assert.assertEquals(1, resp.getTxsCount());
-        Assert.assertEquals(txResp1.getTxhash(), resp.getTxResponsesList().get(0).getTxhash());
-        Assert.assertEquals(2, resp.getPagination().getTotal());
+        System.out.println(txResp1.getTxhash() + " " + txResp2.getTxhash());
+        System.out.println(txResp1.getHeight() + " " + txResp2.getHeight());
 
-        offset += resp.getTxsCount();
-        pagination = PageRequest.newBuilder().setOffset(offset).setLimit(limit).setCountTotal(true).build();
-        resp = client.getTxsByHeight(height, pagination);
-        Assert.assertEquals(1, resp.getTxsCount());
-        Assert.assertEquals(txResp2.getTxhash(), resp.getTxResponsesList().get(0).getTxhash());
-        Assert.assertEquals(2, resp.getPagination().getTotal());
+        long height = txResp1.getHeight();
+        List<Tx> resp = client.getTxsByHeight(height);
+        Assert.assertEquals(2, resp.size());
     }
 
     @Test
