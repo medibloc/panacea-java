@@ -1,7 +1,11 @@
 plugins {
     id('java')
+    id('maven-publish')
     id('com.google.protobuf') version '0.9.4'
 }
+
+group 'org.medibloc.panacea'
+version '2.2.0'
 
 sourceSets {
     main {
@@ -59,6 +63,28 @@ protobuf {
                 // NamedDomainObjectContainer binds the methods.
                 grpc {}
             }
+        }
+    }
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    withSourcesJar()
+}
+
+publishing {
+    repositories {
+        maven {
+            url = uri("https://maven.pkg.github.com/medibloc/panacea-java")
+            credentials {
+                username = System.getenv("GPR_USER")
+                password = System.getenv("GPR_API_KEY")
+            }
+        }
+    }
+    publications {
+        gpr(MavenPublication) {
+            from(components.java)
         }
     }
 }
