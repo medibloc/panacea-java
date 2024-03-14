@@ -1,11 +1,8 @@
 package org.medibloc.panacea.utils;
 
-import com.google.protobuf.InvalidProtocolBufferException;
 import cosmos.auth.v1beta1.BaseAccount;
-import cosmos.crypto.secp256k1.Keys;
 import cosmos.crypto.secp256k1.PrivKey;
-import cosmos.crypto.secp256k1.PubKey;
-import org.apache.commons.net.util.Base64;
+import org.apache.commons.codec.binary.Base64;
 import org.bitcoinj.core.ECKey;
 import org.bitcoinj.core.Sha256Hash;
 import org.bitcoinj.core.Utils;
@@ -59,12 +56,8 @@ public class CryptoUtils {
     }
 
     public static String getPublicKeyFrom(BaseAccount account) throws PanaceaApiException {
-        try {
-            byte[] publicKeyToByteArray = account.getPubKey().unpack(PubKey.class).getKey().toByteArray();
-            return Base64.encodeBase64StringUnChunked(publicKeyToByteArray);
-        } catch (InvalidProtocolBufferException e) {
-            throw new PanaceaApiException(e.getMessage());
-        }
+        byte[] publicKeyToByteArray = account.getPubKey().toByteArray();
+        return Base64.encodeBase64String(publicKeyToByteArray);
     }
 
     public static DeterministicKey getDeterministicKey(List<String> words, String hdPath) {

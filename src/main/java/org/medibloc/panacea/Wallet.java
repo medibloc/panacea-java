@@ -2,7 +2,6 @@ package org.medibloc.panacea;
 
 import com.google.protobuf.ByteString;
 import cosmos.auth.v1beta1.BaseAccount;
-import cosmos.crypto.secp256k1.Keys;
 import cosmos.crypto.secp256k1.PubKey;
 import lombok.Getter;
 import lombok.Setter;

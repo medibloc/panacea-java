@@ -2,7 +2,7 @@ syntax = "proto3";
 package tendermint.version;
 option java_multiple_files = true;
 
-option go_package = "github.com/tendermint/tendermint/proto/tendermint/version";
+option go_package = "github.com/cometbft/cometbft/proto/tendermint/version";
 
 import "gogoproto/gogo.proto";
 

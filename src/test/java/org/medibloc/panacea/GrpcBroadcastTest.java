@@ -1,6 +1,10 @@
 package org.medibloc.panacea;
 
+import cosmos.bank.v1beta1.Input;
+import cosmos.bank.v1beta1.MsgMultiSend;
 import cosmos.bank.v1beta1.MsgSend;
+import cosmos.bank.v1beta1.Output;
+import cosmos.base.abci.v1beta1.Attribute;
 import cosmos.base.abci.v1beta1.StringEvent;
 import cosmos.base.abci.v1beta1.TxResponse;
 import cosmos.base.v1beta1.Coin;
@@ -8,39 +12,23 @@ import cosmos.tx.v1beta1.BroadcastMode;
 import cosmos.tx.v1beta1.BroadcastTxRequest;
 import cosmos.tx.v1beta1.Fee;
 import cosmos.tx.v1beta1.Tx;
-import io.grpc.ManagedChannel;
-import io.grpc.ManagedChannelBuilder;
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.medibloc.panacea.domain.Coins;
 import org.medibloc.panacea.domain.Transactions;
+import org.medibloc.panacea.utils.TxUtils;
 
 import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
+import java.util.stream.Collectors;
 
-public class GrpcBroadcastTest {
-    private PanaceaGrpcClient client;
-
-    @Before
-    public void setUp() {
-        ManagedChannel channel = ManagedChannelBuilder.forTarget("localhost:9090")
-                .usePlaintext()
-                .build();
-        this.client = new PanaceaGrpcClient(channel);
-    }
-
-    private Wallet getWallet(String mnemonic) throws PanaceaApiException {
-        Wallet wallet = Wallet.createWalletFromMnemonicCode(mnemonic, "panacea", 0);
-        wallet.ensureWalletIsReady(client);
-        return wallet;
-    }
-
+public class GrpcBroadcastTest extends AbstractGrpcTest {
     @Test
-    public void testSendMsg() throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException {
+    public void testSendMsg() throws Exception {
         Wallet ownerWallet = getWallet(TestConst.ownerMnemonic);
         String ownerAddress = ownerWallet.getAddress();
         Wallet toWallet = getWallet(TestConst.toMnemonic);
@@ -59,34 +47,44 @@ public class GrpcBroadcastTest {
                 msg,
                 memo,
                 fee,
-                BroadcastMode.BROADCAST_MODE_BLOCK);
+                BroadcastMode.BROADCAST_MODE_SYNC);
 
         TxResponse response = client.broadcast(request);
         Assert.assertEquals(0, response.getCode());
-        System.out.println(response);
+        response = TxUtils.pollTxResponse(this.client, response.getTxhash(), 10, 1000);
 
-        StringEvent event = response.getLogs(0).getEvents(0);
-        String expectedAmount = String.format("%s%s", sendCoin.getAmount(), sendCoin.getDenom());
-        Assert.assertEquals(toAddress, event.getAttributes(0).getValue());
-        Assert.assertEquals(expectedAmount, event.getAttributes(1).getValue());
+        Map<String, List<Attribute>> eventMap = response.getLogsList().stream()
+                .flatMap(abciMessageLog -> abciMessageLog.getEventsList().stream())
+                .collect(Collectors.toMap(
+                        StringEvent::getType,
+                        StringEvent::getAttributesList,
+                        (firstList, secondList) -> firstList
+                ));
 
-        StringEvent event2 = response.getLogs(0).getEvents(1);
-        Assert.assertEquals(ownerAddress, event2.getAttributes(0).getValue());
-        Assert.assertEquals(expectedAmount, event2.getAttributes(1).getValue());
+        List<Attribute> messageEvent = eventMap.get("message");
+        Assert.assertEquals("action", messageEvent.get(0).getKey());
+        Assert.assertEquals("/cosmos.bank.v1beta1.MsgSend", messageEvent.get(0).getValue());
+        Assert.assertEquals("sender", messageEvent.get(1).getKey());
+        Assert.assertEquals(ownerAddress, messageEvent.get(1).getValue());
+        Assert.assertEquals("module", messageEvent.get(2).getKey());
+        Assert.assertEquals("bank", messageEvent.get(2).getValue());
 
-        TimeUnit.SECONDS.sleep(1);
-        Tx tx = client.getTx(response.getTxhash());
+        List<Attribute> transferEvent = eventMap.get("transfer");
+        Assert.assertEquals("recipient", transferEvent.get(0).getKey());
+        Assert.assertEquals(toAddress, transferEvent.get(0).getValue());
+        Assert.assertEquals("sender", transferEvent.get(1).getKey());
+        Assert.assertEquals(ownerAddress, transferEvent.get(1).getValue());
+        Assert.assertEquals("amount", transferEvent.get(2).getKey());
+        Assert.assertEquals(String.format("%s%s", sendCoin.getAmount(), sendCoin.getDenom()), transferEvent.get(2).getValue());
+
+        Tx tx = response.getTx().unpack(Tx.class);
         Assert.assertEquals(memo, tx.getBody().getMemo());
-
-        List<Tx> txs = client.getTxsByHeight(response.getHeight());
-        Assert.assertEquals(1, txs.size());
-        Assert.assertEquals(memo, txs.get(0).getBody().getMemo());
-        Assert.assertEquals(1, txs.get(0).getBody().getMessagesCount());
-        Assert.assertEquals(fee, txs.get(0).getAuthInfo().getFee());
+        Assert.assertEquals(1, tx.getBody().getMessagesCount());
+        Assert.assertEquals(fee, tx.getAuthInfo().getFee());
     }
 
     @Test
-    public void testSendMsgs() throws PanaceaApiException, IOException, NoSuchAlgorithmException, InterruptedException {
+    public void testSendMsgs() throws Exception {
         Wallet ownerWallet = getWallet(TestConst.ownerMnemonic);
         Wallet toWallet = getWallet(TestConst.toMnemonic);
 
@@ -96,7 +94,7 @@ public class GrpcBroadcastTest {
                 .setFromAddress(ownerWallet.getAddress())
                 .setToAddress(toWallet.getAddress())
                 .build();
-        String memo = "send msg";
+        String memo = "send msgs";
         Fee fee = Transactions.createFee(Coins.createCoin(TestConst.denom, "1000000"), 200000);
 
         BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
@@ -104,21 +102,40 @@ public class GrpcBroadcastTest {
                 Arrays.asList(msg, msg),
                 memo,
                 fee,
-                BroadcastMode.BROADCAST_MODE_BLOCK);
+                BroadcastMode.BROADCAST_MODE_SYNC);
 
         TxResponse response = client.broadcast(request);
         Assert.assertEquals(0, response.getCode());
-        System.out.println(response);
-
-        TimeUnit.SECONDS.sleep(1);
-        Tx tx = client.getTx(response.getTxhash());
+        response = TxUtils.pollTxResponse(this.client, response.getTxhash(), 10, 1000);
+        Tx tx = response.getTx().unpack(Tx.class);
         Assert.assertEquals(memo, tx.getBody().getMemo());
 
-        List<Tx> txs = client.getTxsByHeight(response.getHeight());
-        Assert.assertEquals(1, txs.size());
-        Assert.assertEquals(memo, txs.get(0).getBody().getMemo());
-        Assert.assertEquals(2, txs.get(0).getBody().getMessagesCount());
-        Assert.assertEquals(fee, txs.get(0).getAuthInfo().getFee());
+        Assert.assertEquals(memo, tx.getBody().getMemo());
+        Assert.assertEquals(2, tx.getBody().getMessagesCount());
+        Assert.assertEquals(fee, tx.getAuthInfo().getFee());
+    }
 
+    @Test
+    public void testMultiSend() throws Exception {
+        Wallet ownerWallet = getWallet(TestConst.ownerMnemonic);
+        Wallet toWallet = getWallet(TestConst.toMnemonic);
+
+
+        MsgMultiSend msg = MsgMultiSend.newBuilder()
+                .addInputs(Input.newBuilder()
+                        .setAddress(ownerWallet.getAddress())
+                        .addCoins(Coins.createCoin(TestConst.denom, "2000000"))
+                        .build())
+                .addOutputs(Output.newBuilder()
+                        .setAddress(toWallet.getAddress())
+                        .addCoins(Coins.createCoin(TestConst.denom, "1000000"))
+                        .build())
+                .addOutputs(Output.newBuilder()
+                        .setAddress("panacea136e7cal0p66vrrk5plvtkay5t2j6xwx4zmx6e6")
+                        .addCoins(Coins.createCoin(TestConst.denom, "1000000"))
+                        .build())
+                .build();
+        TxResponse response = broadcast(ownerWallet, "multi send", msg);
+        System.out.println(response);
     }
 }

@@ -18,7 +18,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.medibloc.panacea:panacea-java:2.0.2'
+    implementation 'org.medibloc.panacea:panacea-java:2.2.0'
 }
 ```
 
@@ -28,6 +28,7 @@ dependencies {
     * Get account / balance / tx(s) / block / node
     * Get aol(topic,record)
     * Get did document
+    * Get denom / pnft
 
 ## Broadcast tx
 ### Send Coin

@@ -3,7 +3,6 @@ package org.medibloc.panacea;
 import org.bitcoinj.core.ECKey;
 import org.junit.Test;
 import org.medibloc.panacea.domain.DIDs;
-import panacea.did.v2.DIDDocument;
 
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;

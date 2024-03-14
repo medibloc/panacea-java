@@ -4,6 +4,8 @@
 
 TBD
 
+## [v2.2.0](https://github.com/medibloc/panacea-java/releases/tag/v2.2.0) - 2024-03-
+
 ## [v2.0.2](https://github.com/medibloc/panacea-java/releases/tag/v2.0.2) - 2022-11-10
 
 ### Features

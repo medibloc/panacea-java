@@ -9,14 +9,15 @@ import cosmos.base.abci.v1beta1.TxResponse;
 import cosmos.base.query.v1beta1.PageRequest;
 import cosmos.base.tendermint.v1beta1.*;
 import cosmos.base.v1beta1.Coin;
-import cosmos.tx.v1beta1.*;
 import cosmos.tx.v1beta1.Tx;
+import cosmos.tx.v1beta1.*;
 import io.grpc.Channel;
-import org.apache.commons.net.util.Base64;
+import org.apache.commons.codec.binary.Base64;
 import panacea.aol.v2.*;
 import panacea.did.v2.DIDDocumentWithSeq;
 import panacea.did.v2.QueryDIDRequest;
 import panacea.did.v2.QueryDIDResponse;
+import panacea.pnft.v2.*;
 import tendermint.p2p.DefaultNodeInfo;
 import tendermint.types.Block;
 
@@ -81,6 +82,38 @@ public class PanaceaGrpcClient {
                 .build();
         QueryDIDResponse response = grpcStub.getDidQueryStub().dID(request);
         return response.getDidDocumentWithSeq();
+    }
+
+    public List<Denom> getDenoms(int offset, int limit) {
+        QueryDenomsRequest request = QueryDenomsRequest.newBuilder()
+                .setPagination(PageRequest.newBuilder()
+                        .setOffset(offset)
+                        .setLimit(limit)
+                        .build())
+                .build();
+        return grpcStub.getPnftQueryStub().denoms(request).getDenomsList();
+    }
+
+    public Denom getDenom(String id) {
+        QueryDenomRequest request = QueryDenomRequest.newBuilder()
+                .setId(id)
+                .build();
+        return grpcStub.getPnftQueryStub().denom(request).getDenom();
+    }
+
+    public List<Pnft> getPnfts(String denomId) {
+        QueryPNFTsRequest request = QueryPNFTsRequest.newBuilder()
+                .setDenomId(denomId)
+                .build();
+        return grpcStub.getPnftQueryStub().pNFTs(request).getPnftsList();
+    }
+
+    public Pnft getPnft(String denomId, String id) {
+        QueryPNFTRequest request = QueryPNFTRequest.newBuilder()
+                .setDenomId(denomId)
+                .setId(id)
+                .build();
+        return grpcStub.getPnftQueryStub().pNFT(request).getPnft();
     }
 
     public TxResponse broadcast(BroadcastTxRequest request) {
