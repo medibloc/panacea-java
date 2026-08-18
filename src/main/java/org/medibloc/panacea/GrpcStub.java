@@ -26,4 +26,12 @@ public class GrpcStub {
         this.tendermintQueryStub = cosmos.base.tendermint.v1beta1.ServiceGrpc.newBlockingStub(channel);
         this.txServiceStub = cosmos.tx.v1beta1.ServiceGrpc.newBlockingStub(channel);
     }
+
+    /**
+     * @deprecated The PNFT query service was removed in Panacea Core v2.3.0.
+     */
+    @Deprecated
+    public panacea.pnft.v2.QueryGrpc.QueryBlockingStub getPnftQueryStub() {
+        return pnftQueryStub;
+    }
 }

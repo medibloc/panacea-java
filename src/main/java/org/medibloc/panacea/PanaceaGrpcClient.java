@@ -126,6 +126,10 @@ public class PanaceaGrpcClient {
         return grpcStub.getPanaceaNftQueryStub().nFTRecords(request.build());
     }
 
+    /**
+     * @deprecated The PNFT module was removed in Panacea Core v2.3.0. Use {@link #getNftClasses(PageRequest)}.
+     */
+    @Deprecated
     public List<Denom> getDenoms(int offset, int limit) {
         QueryDenomsRequest request = QueryDenomsRequest.newBuilder()
                 .setPagination(PageRequest.newBuilder()
@@ -136,6 +140,10 @@ public class PanaceaGrpcClient {
         return grpcStub.getPnftQueryStub().denoms(request).getDenomsList();
     }
 
+    /**
+     * @deprecated The PNFT module was removed in Panacea Core v2.3.0. Use {@link #getNftClassRecord(String)}.
+     */
+    @Deprecated
     public Denom getDenom(String id) {
         QueryDenomRequest request = QueryDenomRequest.newBuilder()
                 .setId(id)
@@ -143,6 +151,10 @@ public class PanaceaGrpcClient {
         return grpcStub.getPnftQueryStub().denom(request).getDenom();
     }
 
+    /**
+     * @deprecated The PNFT module was removed in Panacea Core v2.3.0. Use {@link #getNftRecords(String, String, PageRequest)}.
+     */
+    @Deprecated
     public List<Pnft> getPnfts(String denomId) {
         QueryPNFTsRequest request = QueryPNFTsRequest.newBuilder()
                 .setDenomId(denomId)
@@ -150,6 +162,10 @@ public class PanaceaGrpcClient {
         return grpcStub.getPnftQueryStub().pNFTs(request).getPnftsList();
     }
 
+    /**
+     * @deprecated The PNFT module was removed in Panacea Core v2.3.0. Use {@link #getNftRecord(String, String)}.
+     */
+    @Deprecated
     public Pnft getPnft(String denomId, String id) {
         QueryPNFTRequest request = QueryPNFTRequest.newBuilder()
                 .setDenomId(denomId)

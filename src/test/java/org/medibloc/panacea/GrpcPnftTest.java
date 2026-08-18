@@ -2,6 +2,7 @@ package org.medibloc.panacea;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Assert;
+import org.junit.Ignore;
 import org.junit.Test;
 import panacea.pnft.v2.*;
 
@@ -11,6 +12,7 @@ import java.util.UUID;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+@Ignore("The legacy PNFT module was removed in Panacea Core v2.3.0")
 public class GrpcPnftTest extends AbstractGrpcTest {
 
     @Test
