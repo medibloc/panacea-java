@@ -66,7 +66,7 @@ public class PanaceaGrpcClient {
         return response.getTopic();
     }
 
-    public Record getRecord(String ownerAddress, String topicName, Long offset) {
+    public panacea.aol.v2.Record getRecord(String ownerAddress, String topicName, Long offset) {
         QueryRecordRequest request = QueryRecordRequest.newBuilder()
                 .setOwnerAddress(ownerAddress)
                 .setTopicName(topicName)
