@@ -7,6 +7,7 @@ import cosmos.auth.v1beta1.QueryAccountResponse;
 import cosmos.bank.v1beta1.QueryBalanceRequest;
 import cosmos.base.abci.v1beta1.TxResponse;
 import cosmos.base.query.v1beta1.PageRequest;
+import cosmos.base.query.v1beta1.PageResponse;
 import cosmos.base.tendermint.v1beta1.*;
 import cosmos.base.v1beta1.Coin;
 import cosmos.nft.v1beta1.QueryClassesRequest;
@@ -195,14 +196,35 @@ public class PanaceaGrpcClient {
     }
 
     private GetTxsEventResponse callGetTxsEvent(long height, PageRequest pagination) {
+        GetTxsEventResponse response = grpcStub.getTxServiceStub()
+                .getTxsEvent(buildGetTxsEventRequest(height, pagination));
+        return normalizeGetTxsEventResponse(response);
+    }
+
+    static GetTxsEventRequest buildGetTxsEventRequest(long height, PageRequest pagination) {
+        String query = "tx.height=" + height;
         GetTxsEventRequest.Builder builder = GetTxsEventRequest.newBuilder()
-                .addEvents("tx.height=" + height);
+                .addEvents(query)
+                .setQuery(query);
 
         if (pagination != null) {
             builder.setPagination(pagination);
+            if (pagination.getLimit() > 0) {
+                builder.setPage(pagination.getOffset() / pagination.getLimit() + 1)
+                        .setLimit(pagination.getLimit());
+            }
         }
 
-        return grpcStub.getTxServiceStub().getTxsEvent(builder.build());
+        return builder.build();
+    }
+
+    static GetTxsEventResponse normalizeGetTxsEventResponse(GetTxsEventResponse response) {
+        if (response.hasPagination()) {
+            return response;
+        }
+        return response.toBuilder()
+                .setPagination(PageResponse.newBuilder().setTotal(response.getTotal()))
+                .build();
     }
 
     public Block getBlockByHeight(long height) {
