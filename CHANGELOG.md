@@ -2,7 +2,19 @@
 
 ## Unreleased
 
-TBD
+## v2.3.0 - 2026-08-18
+
+### Features
+
+- Add standard Cosmos NFT and Panacea NFT v1 protobuf contracts.
+- Add standard NFT class and Panacea NFT record gRPC query APIs.
+- Support Panacea NFT transaction messages through the existing transaction helpers.
+
+### Compatibility
+
+- Support Cosmos SDK v0.50 transaction search while retaining v0.47 request and response compatibility.
+- Deprecate legacy PNFT query APIs removed from Panacea Core v2.3.0 without deleting their types.
+- Build and test with JDK 17 while retaining Java 8 source compatibility.
 
 ## [v2.2.0](https://github.com/medibloc/panacea-java/releases/tag/v2.2.0) - 2024-03-
 

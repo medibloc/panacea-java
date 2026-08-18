@@ -18,17 +18,21 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.medibloc.panacea:panacea-java:2.2.0'
+    implementation 'org.medibloc.panacea:panacea-java:2.3.0'
 }
 ```
 
-## Feature
-* The functions we support are as follows.
-    * Broadcast tx
-    * Get account / balance / tx(s) / block / node
-    * Get aol(topic,record)
-    * Get did document
-    * Get denom / pnft
+Use JDK 17 to build the SDK. Published classes remain Java 8 compatible.
+
+## Features
+
+* Broadcast transactions
+* Query accounts, balances, transactions, blocks, and nodes
+* Query AOL topics and records
+* Query DID documents
+* Create, mint, transfer, revoke, burn, and query Panacea NFTs
+
+The legacy PNFT query APIs remain available for source compatibility but are deprecated because Panacea Core v2.3.0 removed the PNFT module.
 
 ## Broadcast tx
 ### Send Coin
@@ -66,20 +70,24 @@ BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
         msg,
         "send coin",
         fee,
-        BroadcastMode.BROADCAST_MODE_BLOCK);
+        BroadcastMode.BROADCAST_MODE_SYNC);
 ```
 
 |BroadcastMode|Description|
 |:---|:---|
-| BROADCAST_MODE_BLOCK | Waits for the tx to be committed in a block. |
 | BROADCAST_MODE_SYNC | Waits for a CheckTx execution response only. |
 | BROADCAST_MODE_ASYNC | Returns immediately (transaction might fail) |
+
+`BROADCAST_MODE_BLOCK` is not supported by the Cosmos SDK used in Panacea Core v2.3.0. Poll the transaction after a successful SYNC response to wait for block inclusion.
 
 ***
 * Now do broadcast.
 ```java
 TxResponse response = client.broadcast(request);
 Assert.assertEquals(0, response.getCode());
+
+TxResponse committed = TxUtils.pollTxResponse(client, response.getTxhash(), 10, 1000);
+Assert.assertEquals(0, committed.getCode());
 ```
 
 ## Query
@@ -148,4 +156,47 @@ Block block = client.getBlockByHeight(height);
 ### LastBlock
 ```java
 Block block = client.getLatestBlock();
+```
+
+### Panacea NFT
+
+Panacea NFT record list queries use key-based pagination. Use `pagination.next_key` as the next request's key; `offset` and `count_total` are not supported by this endpoint.
+
+```java
+PageRequest firstPage = PageRequest.newBuilder()
+        .setLimit(100)
+        .build();
+
+QueryClassesResponse classes = client.getNftClasses(firstPage);
+ClassRecord classRecord = client.getNftClassRecord(classId);
+NFTRecord nftRecord = client.getNftRecord(classId, nftId);
+QueryNFTRecordsResponse records = client.getNftRecords(classId, ownerAddress, firstPage);
+
+PageRequest nextPage = PageRequest.newBuilder()
+        .setKey(records.getPagination().getNextKey())
+        .setLimit(100)
+        .build();
+```
+
+The existing `Transactions` helpers accept the new NFT messages without a separate signing API. Class creation, controller updates, mint, revoke, and burn use `panacea.nft.v1` messages. Transfers use the standard Cosmos NFT `MsgSend`.
+
+```java
+BasicNFTData data = BasicNFTData.newBuilder()
+        .setName("certificate")
+        .build();
+
+MsgMintRequest mint = MsgMintRequest.newBuilder()
+        .setClassId(classId)
+        .setNftId(nftId)
+        .setController(wallet.getAddress())
+        .setRecipient(recipientAddress)
+        .setData(Any.pack(data, ""))
+        .build();
+
+BroadcastTxRequest request = Transactions.createBroadcastTxRequest(
+        wallet,
+        mint,
+        "mint nft",
+        fee,
+        BroadcastMode.BROADCAST_MODE_SYNC);
 ```
