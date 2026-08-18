@@ -9,6 +9,8 @@ import cosmos.base.abci.v1beta1.TxResponse;
 import cosmos.base.query.v1beta1.PageRequest;
 import cosmos.base.tendermint.v1beta1.*;
 import cosmos.base.v1beta1.Coin;
+import cosmos.nft.v1beta1.QueryClassesRequest;
+import cosmos.nft.v1beta1.QueryClassesResponse;
 import cosmos.tx.v1beta1.Tx;
 import cosmos.tx.v1beta1.*;
 import io.grpc.Channel;
@@ -17,6 +19,12 @@ import panacea.aol.v2.*;
 import panacea.did.v2.DIDDocumentWithSeq;
 import panacea.did.v2.QueryDIDRequest;
 import panacea.did.v2.QueryDIDResponse;
+import panacea.nft.v1.ClassRecord;
+import panacea.nft.v1.NFTRecord;
+import panacea.nft.v1.QueryClassRecordRequest;
+import panacea.nft.v1.QueryNFTRecordRequest;
+import panacea.nft.v1.QueryNFTRecordsRequest;
+import panacea.nft.v1.QueryNFTRecordsResponse;
 import panacea.pnft.v2.*;
 import tendermint.p2p.DefaultNodeInfo;
 import tendermint.types.Block;
@@ -82,6 +90,39 @@ public class PanaceaGrpcClient {
                 .build();
         QueryDIDResponse response = grpcStub.getDidQueryStub().dID(request);
         return response.getDidDocumentWithSeq();
+    }
+
+    public QueryClassesResponse getNftClasses(PageRequest pagination) {
+        QueryClassesRequest.Builder request = QueryClassesRequest.newBuilder();
+        if (pagination != null) {
+            request.setPagination(pagination);
+        }
+        return grpcStub.getCosmosNftQueryStub().classes(request.build());
+    }
+
+    public ClassRecord getNftClassRecord(String classId) {
+        QueryClassRecordRequest request = QueryClassRecordRequest.newBuilder()
+                .setClassId(classId)
+                .build();
+        return grpcStub.getPanaceaNftQueryStub().classRecord(request).getClassRecord();
+    }
+
+    public NFTRecord getNftRecord(String classId, String nftId) {
+        QueryNFTRecordRequest request = QueryNFTRecordRequest.newBuilder()
+                .setClassId(classId)
+                .setNftId(nftId)
+                .build();
+        return grpcStub.getPanaceaNftQueryStub().nFTRecord(request).getNftRecord();
+    }
+
+    public QueryNFTRecordsResponse getNftRecords(String classId, String owner, PageRequest pagination) {
+        QueryNFTRecordsRequest.Builder request = QueryNFTRecordsRequest.newBuilder()
+                .setClassId(classId)
+                .setOwner(owner);
+        if (pagination != null) {
+            request.setPagination(pagination);
+        }
+        return grpcStub.getPanaceaNftQueryStub().nFTRecords(request.build());
     }
 
     public List<Denom> getDenoms(int offset, int limit) {
