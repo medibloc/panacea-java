@@ -73,6 +73,32 @@ java {
     withSourcesJar()
 }
 
+def integrationTestPattern = '**/Grpc*Test.class'
+
+tasks.named('test', Test) {
+    exclude integrationTestPattern
+}
+
+tasks.register('integrationTest', Test) {
+    description = 'Runs tests against the Panacea testnet.'
+    group = 'verification'
+
+    testClassesDirs = sourceSets.test.output.classesDirs
+    classpath = sourceSets.test.runtimeClasspath
+    include integrationTestPattern
+    shouldRunAfter tasks.named('test')
+
+    doFirst {
+        def missingVariables = ['OWNER_MNEMONIC', 'RECIPIENT_MNEMONIC'].findAll {
+            !System.getenv(it)
+        }
+        if (!missingVariables.isEmpty()) {
+            throw new GradleException(
+                    "Missing environment variables for testnet integration tests: ${missingVariables.join(', ')}")
+        }
+    }
+}
+
 publishing {
     repositories {
         maven {

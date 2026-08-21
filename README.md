@@ -34,6 +34,20 @@ Use JDK 17 to build the SDK. Published classes remain Java 8 compatible.
 
 The legacy PNFT query APIs remain available for source compatibility but are deprecated because Panacea Core v2.3.0 removed the PNFT module.
 
+## Testing
+
+```bash
+./gradlew build
+```
+
+The default build runs local unit tests only. Testnet integration tests are explicit because some of them broadcast transactions and spend testnet tokens.
+
+```bash
+export OWNER_MNEMONIC
+export RECIPIENT_MNEMONIC
+./gradlew integrationTest
+```
+
 ## Broadcast tx
 ### Send Coin
 * Create a `PanaceaGrpcClient` object.
