@@ -2,7 +2,9 @@
 
 ## Unreleased
 
-## v2.3.0 - 2026-08-18
+## [v2.3.0](https://github.com/medibloc/panacea-java/releases/tag/v2.3.0) - 2026-08-21
+
+Compatible with [Panacea Core v2.3.0](https://github.com/medibloc/panacea-core/releases/tag/v2.3.0).
 
 ### Features
 
@@ -15,6 +17,13 @@
 - Support Cosmos SDK v0.50 transaction search while retaining v0.47 request and response compatibility.
 - Deprecate legacy PNFT query APIs removed from Panacea Core v2.3.0 without deleting their types.
 - Build and test with JDK 17 while retaining Java 8 source compatibility.
+
+### Migration
+
+- Replace PNFT queries with `getNftClasses`, `getNftClassRecord`, `getNftRecord`, and `getNftRecords`.
+- Use `cosmos.nft.v1beta1.MsgSend` for NFT transfers; other NFT operations use `panacea.nft.v1` messages.
+- Replace `BROADCAST_MODE_BLOCK` with `BROADCAST_MODE_SYNC`, then poll the transaction by hash.
+- Use key-based pagination for Panacea NFT record lists.
 
 ## [v2.2.0](https://github.com/medibloc/panacea-java/releases/tag/v2.2.0) - 2024-03-
 
