@@ -4,4 +4,7 @@
 # Ignore Gradle build output directory
 build
 
+# Local testnet wallet credentials
+.testnet-wallet.env
+
 .idea
