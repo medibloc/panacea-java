@@ -1,0 +1,26 @@
+plugins {
+    id 'java'
+}
+
+def sdkRepository = providers.gradleProperty('sdkRepository').get()
+def sdkVersion = providers.gradleProperty('sdkVersion').get()
+
+repositories {
+    maven {
+        url = uri(sdkRepository)
+        metadataSources {
+            mavenPom()
+            artifact()
+        }
+    }
+    mavenCentral()
+}
+
+dependencies {
+    implementation "org.medibloc.panacea:panacea-java:${sdkVersion}"
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}

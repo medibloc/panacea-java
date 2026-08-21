@@ -39,6 +39,16 @@ jobs:
     - name: Build
       run: ./gradlew --no-daemon clean build
 
+    - name: Verify Maven consumer
+      shell: bash
+      run: |
+        local_repository="${RUNNER_TEMP}/panacea-maven"
+        ./gradlew --no-daemon -Dmaven.repo.local="${local_repository}" publishToMavenLocal
+        ./gradlew --no-daemon -p .github/consumer-smoke \
+          -PsdkRepository="${local_repository}" \
+          -PsdkVersion="${GITHUB_REF_NAME#v}" \
+          clean compileJava
+
     - name: Publish to GitHub Packages
       run: ./gradlew --no-daemon publish
       env:
